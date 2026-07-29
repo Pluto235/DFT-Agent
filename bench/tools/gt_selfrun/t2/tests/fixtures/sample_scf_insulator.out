@@ -1,0 +1,12 @@
+     Program PWSCF v.7.5 starts on ...
+     Self-consistent Calculation
+     iteration #  1
+     ...
+     iteration # 8
+     total energy              =     -16.51234567 Ry
+     highest occupied level (ev):     6.0544
+     ...
+     iteration # 9
+     highest occupied level (ev):     5.9840
+     convergence has been achieved in  9 iterations
+     JOB DONE.

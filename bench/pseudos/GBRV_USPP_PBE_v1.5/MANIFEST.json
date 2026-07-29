@@ -1,0 +1,729 @@
+{
+  "library": "GBRV Ultrasoft Pseudopotential Library",
+  "version": "v1.5",
+  "functional": "PBE",
+  "relativistic": "scalar",
+  "source_url": "http://www.physics.rutgers.edu/gbrv/all_pbe_UPF_v1.5.tar.gz",
+  "source_website": "https://www.physics.rutgers.edu/gbrv/",
+  "tarball_sha256": "4ebfeaa4c9d916c1ac2da6e89ec888fdffce096714f1956db01fea5ec9c9e4f0",
+  "citation": "K.F. Garrity, J.W. Bennett, K.M. Rabe, D. Vanderbilt, Comput. Mater. Sci. 81, 446 (2014). DOI: 10.1016/j.commatsci.2013.08.053",
+  "license": "GNU Public License",
+  "downloaded_at": "2026-04-23",
+  "downloaded_by": "weilin",
+  "total_files": 65,
+  "unique_elements": 64,
+  "covered_elements": [
+    "H",
+    "Li",
+    "Be",
+    "B",
+    "C",
+    "N",
+    "O",
+    "F",
+    "Na",
+    "Mg",
+    "Al",
+    "Si",
+    "P",
+    "S",
+    "Cl",
+    "K",
+    "Ca",
+    "Sc",
+    "Ti",
+    "V",
+    "Cr",
+    "Mn",
+    "Fe",
+    "Co",
+    "Ni",
+    "Cu",
+    "Zn",
+    "Ga",
+    "Ge",
+    "As",
+    "Se",
+    "Br",
+    "Rb",
+    "Sr",
+    "Y",
+    "Zr",
+    "Nb",
+    "Mo",
+    "Tc",
+    "Ru",
+    "Rh",
+    "Pd",
+    "Ag",
+    "Cd",
+    "In",
+    "Sn",
+    "Sb",
+    "Te",
+    "I",
+    "Cs",
+    "Ba",
+    "La",
+    "Hf",
+    "Ta",
+    "W",
+    "Re",
+    "Os",
+    "Ir",
+    "Pt",
+    "Au",
+    "Hg",
+    "Tl",
+    "Pb",
+    "Bi"
+  ],
+  "not_covered": [
+    "He",
+    "Ne",
+    "Ar",
+    "Kr",
+    "Xe",
+    "Ce",
+    "Pr",
+    "Nd",
+    "Pm",
+    "Sm",
+    "Eu",
+    "Gd",
+    "Tb",
+    "Dy",
+    "Ho",
+    "Er",
+    "Tm",
+    "Yb",
+    "Lu",
+    "Po",
+    "At",
+    "Rn",
+    "Fr",
+    "Ra",
+    "Ac"
+  ],
+  "schema_conventions": {
+    "canonical_filename_pattern": "<ElementSymbol>.upf",
+    "hf_dual_version": "Hf has two versions in GBRV. Default symlink Hf.upf points to hf_pbe_v1.uspp.F.UPF (standard). The plus4 variant is exposed as Hf_plus4.upf -> hf_pbe_plus4_v1.uspp.F.UPF, for +4 oxidation states where the semi-core state treatment differs.",
+    "schema_json_usage": "In bench question JSON, use \"material.pseudopotential.files\": {\"Hf\": \"Hf.upf\"} or {\"Hf\": \"Hf_plus4.upf\"} depending on the material."
+  },
+  "known_gaps_for_first_batch": {
+    "affected_questions": [
+      "M2 Filled Skutterudite CeFe4Sb12 (Ce not covered)",
+      "M2 Filled Skutterudite YbCo4Sb12 (Yb not covered)"
+    ],
+    "resolution_options": [
+      "skip these two questions in first batch",
+      "substitute with Co-only or Fe-only skutterudites",
+      "use a different pseudopotential library (e.g. PseudoDojo FR) for lanthanides, breaking schema v1.2 family=GBRV convention"
+    ]
+  },
+  "files": [
+    {
+      "element": "H",
+      "is_plus4": false,
+      "original_name": "h_pbe_v1.4.uspp.F.UPF",
+      "canonical_name": "H.upf",
+      "minor_version": "1.4",
+      "size_bytes": 112487,
+      "sha256": "897f39441a8f0feb1f504af4cebce9dcf95c9cdc16858a7498991c74f1ad127b"
+    },
+    {
+      "element": "Li",
+      "is_plus4": false,
+      "original_name": "li_pbe_v1.4.uspp.F.UPF",
+      "canonical_name": "Li.upf",
+      "minor_version": "1.4",
+      "size_bytes": 382791,
+      "sha256": "02cc4b3810e28a43b570277840d9631ca24f634d922928200c047b72c0a86bf5"
+    },
+    {
+      "element": "Be",
+      "is_plus4": false,
+      "original_name": "be_pbe_v1.4.uspp.F.UPF",
+      "canonical_name": "Be.upf",
+      "minor_version": "1.4",
+      "size_bytes": 501716,
+      "sha256": "469e0c341411bcaf0b93bdff28b1bec7a728d11c92368d4bb25e44ae4b846047"
+    },
+    {
+      "element": "B",
+      "is_plus4": false,
+      "original_name": "b_pbe_v1.4.uspp.F.UPF",
+      "canonical_name": "B.upf",
+      "minor_version": "1.4",
+      "size_bytes": 306486,
+      "sha256": "01a3696c14b1b245b9741165ffea38120b879286cddbeb956142f8fa922941ee"
+    },
+    {
+      "element": "C",
+      "is_plus4": false,
+      "original_name": "c_pbe_v1.2.uspp.F.UPF",
+      "canonical_name": "C.upf",
+      "minor_version": "1.2",
+      "size_bytes": 282539,
+      "sha256": "45f5f9c0e0ebb3cfc361b47215837946b127bc050259484c47c8dad7e20b1fa8"
+    },
+    {
+      "element": "N",
+      "is_plus4": false,
+      "original_name": "n_pbe_v1.2.uspp.F.UPF",
+      "canonical_name": "N.upf",
+      "minor_version": "1.2",
+      "size_bytes": 284233,
+      "sha256": "bde5d9cfd69e3781e3eda659500d1a25f6194179d404abd13dd93da27e909d32"
+    },
+    {
+      "element": "O",
+      "is_plus4": false,
+      "original_name": "o_pbe_v1.2.uspp.F.UPF",
+      "canonical_name": "O.upf",
+      "minor_version": "1.2",
+      "size_bytes": 376733,
+      "sha256": "0640f61fa934269f2500e1cb91f01e48c1d0c3c4ce924f62c2ab35567cfdea41"
+    },
+    {
+      "element": "F",
+      "is_plus4": false,
+      "original_name": "f_pbe_v1.4.uspp.F.UPF",
+      "canonical_name": "F.upf",
+      "minor_version": "1.4",
+      "size_bytes": 294351,
+      "sha256": "9802dd8e5c30fe92ff0a8dc0865f4fb9023d6a3a42caccdd33c0de6de83d0883"
+    },
+    {
+      "element": "Na",
+      "is_plus4": false,
+      "original_name": "na_pbe_v1.5.uspp.F.UPF",
+      "canonical_name": "Na.upf",
+      "minor_version": "1.5",
+      "size_bytes": 425627,
+      "sha256": "f84820c4280d21603bd50ae76a08e15c26864391ea055cf50affc4aedefc8f87"
+    },
+    {
+      "element": "Mg",
+      "is_plus4": false,
+      "original_name": "mg_pbe_v1.4.uspp.F.UPF",
+      "canonical_name": "Mg.upf",
+      "minor_version": "1.4",
+      "size_bytes": 669349,
+      "sha256": "84a2ce998da82ed0d4e82253bbad1ee281cae4c3001fceba688e54f450c096bf"
+    },
+    {
+      "element": "Al",
+      "is_plus4": false,
+      "original_name": "al_pbe_v1.uspp.F.UPF",
+      "canonical_name": "Al.upf",
+      "minor_version": "1",
+      "size_bytes": 266815,
+      "sha256": "0fdd0d7cf85ffb2b872041de4a9626c1f70646c4b81181b7dba92beb61f5811d"
+    },
+    {
+      "element": "Si",
+      "is_plus4": false,
+      "original_name": "si_pbe_v1.uspp.F.UPF",
+      "canonical_name": "Si.upf",
+      "minor_version": "1",
+      "size_bytes": 577736,
+      "sha256": "2c4b1bce6f4e3fa41dd4381f20760fe142399a42784b697712339d0b6b31c316"
+    },
+    {
+      "element": "P",
+      "is_plus4": false,
+      "original_name": "p_pbe_v1.5.uspp.F.UPF",
+      "canonical_name": "P.upf",
+      "minor_version": "1.5",
+      "size_bytes": 580354,
+      "sha256": "444c5da581b9e7dcb6a4b0aebdc19d4931579ebc5a87c534610f27b1d9f1b662"
+    },
+    {
+      "element": "S",
+      "is_plus4": false,
+      "original_name": "s_pbe_v1.4.uspp.F.UPF",
+      "canonical_name": "S.upf",
+      "minor_version": "1.4",
+      "size_bytes": 582972,
+      "sha256": "84ad731864187f416f714e961c3ad2f04dcbf811618e724d277885c18cb470df"
+    },
+    {
+      "element": "Cl",
+      "is_plus4": false,
+      "original_name": "cl_pbe_v1.4.uspp.F.UPF",
+      "canonical_name": "Cl.upf",
+      "minor_version": "1.4",
+      "size_bytes": 584526,
+      "sha256": "5b1ebdea1e5ba743fba0100806206287e1f7f00460c7e6f19791446beaee0655"
+    },
+    {
+      "element": "K",
+      "is_plus4": false,
+      "original_name": "k_pbe_v1.4.uspp.F.UPF",
+      "canonical_name": "K.upf",
+      "minor_version": "1.4",
+      "size_bytes": 582286,
+      "sha256": "f78d943dad09bc2073db4211bb2776fe5992ae90d3130178549adefa818eb9b5"
+    },
+    {
+      "element": "Ca",
+      "is_plus4": false,
+      "original_name": "ca_pbe_v1.uspp.F.UPF",
+      "canonical_name": "Ca.upf",
+      "minor_version": "1",
+      "size_bytes": 575920,
+      "sha256": "5887acb75823f7f92df1b3117fece4e43498cafccaaaf9cfa653615af1a20d6e"
+    },
+    {
+      "element": "Sc",
+      "is_plus4": false,
+      "original_name": "sc_pbe_v1.uspp.F.UPF",
+      "canonical_name": "Sc.upf",
+      "minor_version": "1",
+      "size_bytes": 592305,
+      "sha256": "72f5cdb6ac81600152478326b3b9a6516b96bee23e9062f4af937128253da4f0"
+    },
+    {
+      "element": "Ti",
+      "is_plus4": false,
+      "original_name": "ti_pbe_v1.4.uspp.F.UPF",
+      "canonical_name": "Ti.upf",
+      "minor_version": "1.4",
+      "size_bytes": 577420,
+      "sha256": "747afa52fa17dc061e9eff72bcea534e81ffa5a4a5d33af3eb8fc9f1b3aee580"
+    },
+    {
+      "element": "V",
+      "is_plus4": false,
+      "original_name": "v_pbe_v1.4.uspp.F.UPF",
+      "canonical_name": "V.upf",
+      "minor_version": "1.4",
+      "size_bytes": 582160,
+      "sha256": "4fc8afef98a911c82908fb9142edf71b2f598dd98762b355a6d291d834fb6d0c"
+    },
+    {
+      "element": "Cr",
+      "is_plus4": false,
+      "original_name": "cr_pbe_v1.5.uspp.F.UPF",
+      "canonical_name": "Cr.upf",
+      "minor_version": "1.5",
+      "size_bytes": 584698,
+      "sha256": "c7449bbfea358d76832cf2f7b43dc89101ead6891806773121bfaa93a140f6de"
+    },
+    {
+      "element": "Mn",
+      "is_plus4": false,
+      "original_name": "mn_pbe_v1.5.uspp.F.UPF",
+      "canonical_name": "Mn.upf",
+      "minor_version": "1.5",
+      "size_bytes": 601365,
+      "sha256": "c5b6117e22f571895b69dbec8491df6afb2efee1206dad54680881dbd33eb8f0"
+    },
+    {
+      "element": "Fe",
+      "is_plus4": false,
+      "original_name": "fe_pbe_v1.5.uspp.F.UPF",
+      "canonical_name": "Fe.upf",
+      "minor_version": "1.5",
+      "size_bytes": 605112,
+      "sha256": "6c132e6e7ac1c42df5cb6a13d0c99bb7af5bf3d6e2349f5658f0c22abfe3911a"
+    },
+    {
+      "element": "Co",
+      "is_plus4": false,
+      "original_name": "co_pbe_v1.2.uspp.F.UPF",
+      "canonical_name": "Co.upf",
+      "minor_version": "1.2",
+      "size_bytes": 606524,
+      "sha256": "a5f392a0d35fc78cc9e2ac1636bb1cd02e9b80a063ea368e85be83b0e4523c45"
+    },
+    {
+      "element": "Ni",
+      "is_plus4": false,
+      "original_name": "ni_pbe_v1.4.uspp.F.UPF",
+      "canonical_name": "Ni.upf",
+      "minor_version": "1.4",
+      "size_bytes": 612014,
+      "sha256": "f76b86ce60cde3d83dfcc8df79ba05478db573d158289f1b226919442d977d25"
+    },
+    {
+      "element": "Cu",
+      "is_plus4": false,
+      "original_name": "cu_pbe_v1.2.uspp.F.UPF",
+      "canonical_name": "Cu.upf",
+      "minor_version": "1.2",
+      "size_bytes": 609373,
+      "sha256": "9dede247b34c656925badd5241675d0ad77e199249917cd4a927bf0a2e2ab004"
+    },
+    {
+      "element": "Zn",
+      "is_plus4": false,
+      "original_name": "zn_pbe_v1.uspp.F.UPF",
+      "canonical_name": "Zn.upf",
+      "minor_version": "1",
+      "size_bytes": 645094,
+      "sha256": "7710c776159022cdfa14188f04942712811d9a24ad0e74db5ce7c3bdfb95dbbf"
+    },
+    {
+      "element": "Ga",
+      "is_plus4": false,
+      "original_name": "ga_pbe_v1.4.uspp.F.UPF",
+      "canonical_name": "Ga.upf",
+      "minor_version": "1.4",
+      "size_bytes": 595774,
+      "sha256": "fad177bcfecf1afc8eed2c76d4b865882da32e895874cf2156aea4ce100d33d1"
+    },
+    {
+      "element": "Ge",
+      "is_plus4": false,
+      "original_name": "ge_pbe_v1.4.uspp.F.UPF",
+      "canonical_name": "Ge.upf",
+      "minor_version": "1.4",
+      "size_bytes": 579995,
+      "sha256": "1b95046ab0f3228e0404719ca66d0309af5a62313be0b22171b963566c90430b"
+    },
+    {
+      "element": "As",
+      "is_plus4": false,
+      "original_name": "as_pbe_v1.uspp.F.UPF",
+      "canonical_name": "As.upf",
+      "minor_version": "1",
+      "size_bytes": 564338,
+      "sha256": "4efb445678da201315046920a88080635a23bb15886a6c3bdf698fbd409f5a4a"
+    },
+    {
+      "element": "Se",
+      "is_plus4": false,
+      "original_name": "se_pbe_v1.uspp.F.UPF",
+      "canonical_name": "Se.upf",
+      "minor_version": "1",
+      "size_bytes": 565664,
+      "sha256": "fcb1fe6e9c54d43fd3537f1103b9003ba92975e80c0a0214b21d1bf4abb494c8"
+    },
+    {
+      "element": "Br",
+      "is_plus4": false,
+      "original_name": "br_pbe_v1.4.uspp.F.UPF",
+      "canonical_name": "Br.upf",
+      "minor_version": "1.4",
+      "size_bytes": 566956,
+      "sha256": "611dc0ac2804aed2e5b8a3c138f272b2a4e131009aad5279454170f948176951"
+    },
+    {
+      "element": "Rb",
+      "is_plus4": false,
+      "original_name": "rb_pbe_v1.uspp.F.UPF",
+      "canonical_name": "Rb.upf",
+      "minor_version": "1",
+      "size_bytes": 602026,
+      "sha256": "d5b29ee6e2f933f8cc77448d26fdc1e9a6997fdb008bfd3715a2a176a1d127c1"
+    },
+    {
+      "element": "Sr",
+      "is_plus4": false,
+      "original_name": "sr_pbe_v1.uspp.F.UPF",
+      "canonical_name": "Sr.upf",
+      "minor_version": "1",
+      "size_bytes": 616041,
+      "sha256": "292f7f1da5cae4b18da817ab2e82943ad90e74f267a06a6172db8dbcb6edf0ce"
+    },
+    {
+      "element": "Y",
+      "is_plus4": false,
+      "original_name": "y_pbe_v1.4.uspp.F.UPF",
+      "canonical_name": "Y.upf",
+      "minor_version": "1.4",
+      "size_bytes": 621282,
+      "sha256": "b762ae484e6d84e502a025453005181d6a4512982b0f65b8ec34aa9512b9eef1"
+    },
+    {
+      "element": "Zr",
+      "is_plus4": false,
+      "original_name": "zr_pbe_v1.uspp.F.UPF",
+      "canonical_name": "Zr.upf",
+      "minor_version": "1",
+      "size_bytes": 618662,
+      "sha256": "d56e2997788a4b3d90bb829416161ff9eb6ccdfe377cb52acfbdd2175f4b4acf"
+    },
+    {
+      "element": "Nb",
+      "is_plus4": false,
+      "original_name": "nb_pbe_v1.uspp.F.UPF",
+      "canonical_name": "Nb.upf",
+      "minor_version": "1",
+      "size_bytes": 618890,
+      "sha256": "ca4fa06155a6ddb38faccd98b82990d0aad5053765b5361b42520073d014173f"
+    },
+    {
+      "element": "Mo",
+      "is_plus4": false,
+      "original_name": "mo_pbe_v1.uspp.F.UPF",
+      "canonical_name": "Mo.upf",
+      "minor_version": "1",
+      "size_bytes": 620333,
+      "sha256": "a9655d29e33509aa90c2f7c46707ffa5ecf91ab5f040393033702a7da7d72782"
+    },
+    {
+      "element": "Tc",
+      "is_plus4": false,
+      "original_name": "tc_pbe_v1.uspp.F.UPF",
+      "canonical_name": "Tc.upf",
+      "minor_version": "1",
+      "size_bytes": 679420,
+      "sha256": "c6c8bd82e1b0c3aa89b8caaabff25c8afe7aa1c80e17b74ba4c9dbb885b11985"
+    },
+    {
+      "element": "Ru",
+      "is_plus4": false,
+      "original_name": "ru_pbe_v1.2.uspp.F.UPF",
+      "canonical_name": "Ru.upf",
+      "minor_version": "1.2",
+      "size_bytes": 680598,
+      "sha256": "8ad60085461e72b96209418a3d0dfa54d0430b90859a251892a6a92caaf68c61"
+    },
+    {
+      "element": "Rh",
+      "is_plus4": false,
+      "original_name": "rh_pbe_v1.4.uspp.F.UPF",
+      "canonical_name": "Rh.upf",
+      "minor_version": "1.4",
+      "size_bytes": 813272,
+      "sha256": "6613907691646edb1468ebae3f64ea9732fdb4ed4d57dc06b6ce43dcd83458eb"
+    },
+    {
+      "element": "Pd",
+      "is_plus4": false,
+      "original_name": "pd_pbe_v1.4.uspp.F.UPF",
+      "canonical_name": "Pd.upf",
+      "minor_version": "1.4",
+      "size_bytes": 616102,
+      "sha256": "dc50a693de563f6dca6ab6c906915548e2b578f5cb0d1fe6a87bbbfabfec3c37"
+    },
+    {
+      "element": "Ag",
+      "is_plus4": false,
+      "original_name": "ag_pbe_v1.4.uspp.F.UPF",
+      "canonical_name": "Ag.upf",
+      "minor_version": "1.4",
+      "size_bytes": 629288,
+      "sha256": "cfb16e120775920fbb126a40ea1837800c470f73383350886baea2bc3497a439"
+    },
+    {
+      "element": "Cd",
+      "is_plus4": false,
+      "original_name": "cd_pbe_v1.uspp.F.UPF",
+      "canonical_name": "Cd.upf",
+      "minor_version": "1",
+      "size_bytes": 596211,
+      "sha256": "ee49e094ab5a838423d284bf19d1e47e7b15993a78721aac93e8a91179d5065a"
+    },
+    {
+      "element": "In",
+      "is_plus4": false,
+      "original_name": "in_pbe_v1.4.uspp.F.UPF",
+      "canonical_name": "In.upf",
+      "minor_version": "1.4",
+      "size_bytes": 596211,
+      "sha256": "1d4189c96b7cdd5fc832f6d95ddd4ed8e6b3d54cd525185e18884d52a1bd391e"
+    },
+    {
+      "element": "Sn",
+      "is_plus4": false,
+      "original_name": "sn_pbe_v1.4.uspp.F.UPF",
+      "canonical_name": "Sn.upf",
+      "minor_version": "1.4",
+      "size_bytes": 601579,
+      "sha256": "3f2a3865d4365dbdd3cf5229a6171dcf2c5dad3b8c1df4ac870c99efae9c1dba"
+    },
+    {
+      "element": "Sb",
+      "is_plus4": false,
+      "original_name": "sb_pbe_v1.4.uspp.F.UPF",
+      "canonical_name": "Sb.upf",
+      "minor_version": "1.4",
+      "size_bytes": 601579,
+      "sha256": "efe7c83d2aca3ab7d66eb1fc5b50c6e865e18521318454a41a9c106cb1f456d0"
+    },
+    {
+      "element": "Te",
+      "is_plus4": false,
+      "original_name": "te_pbe_v1.uspp.F.UPF",
+      "canonical_name": "Te.upf",
+      "minor_version": "1",
+      "size_bytes": 459469,
+      "sha256": "5f18f14282ab78c660a46a08ed8787a1247036c7509b7c0436d8441faf497e36"
+    },
+    {
+      "element": "I",
+      "is_plus4": false,
+      "original_name": "i_pbe_v1.uspp.F.UPF",
+      "canonical_name": "I.upf",
+      "minor_version": "1",
+      "size_bytes": 585838,
+      "sha256": "2da54272dafa372c274f092c26d6649f4d7a1ffe3a888ff240e7ad9b85958bb5"
+    },
+    {
+      "element": "Cs",
+      "is_plus4": false,
+      "original_name": "cs_pbe_v1.uspp.F.UPF",
+      "canonical_name": "Cs.upf",
+      "minor_version": "1",
+      "size_bytes": 633805,
+      "sha256": "5039c3123828de0c626459254b67b6637225866dd81d5ee1d855e26f99d3ac2c"
+    },
+    {
+      "element": "Ba",
+      "is_plus4": false,
+      "original_name": "ba_pbe_v1.uspp.F.UPF",
+      "canonical_name": "Ba.upf",
+      "minor_version": "1",
+      "size_bytes": 781311,
+      "sha256": "f5ae4fccde19740ea88079d86135e8e0f43de3c31ac52232024bfd6262481d1f"
+    },
+    {
+      "element": "La",
+      "is_plus4": false,
+      "original_name": "la_pbe_v1.uspp.F.UPF",
+      "canonical_name": "La.upf",
+      "minor_version": "1",
+      "size_bytes": 1048352,
+      "sha256": "9b616892b1e73cb3a8611ee076157655fc12e4bca3c88eddef0e3fba2f97d604"
+    },
+    {
+      "element": "Hf",
+      "is_plus4": false,
+      "original_name": "hf_pbe_v1.uspp.F.UPF",
+      "canonical_name": "Hf.upf",
+      "minor_version": "1",
+      "size_bytes": 956049,
+      "sha256": "c448eb140dac71cfdb4debc9f884ad6dacc92b2d099cff1fe4d0556223a6342e"
+    },
+    {
+      "element": "Hf",
+      "is_plus4": true,
+      "original_name": "hf_pbe_plus4_v1.uspp.F.UPF",
+      "canonical_name": "Hf_plus4.upf",
+      "minor_version": "1",
+      "size_bytes": 809717,
+      "sha256": "68b1276b1dcddaf00ea3eeb70605d133abb4e5779949503bf4f09d667c89afcb"
+    },
+    {
+      "element": "Ta",
+      "is_plus4": false,
+      "original_name": "ta_pbe_v1.uspp.F.UPF",
+      "canonical_name": "Ta.upf",
+      "minor_version": "1",
+      "size_bytes": 792110,
+      "sha256": "e0850b94d7007d47691d131db1fa5ffdaaa6f6a573c1ebf1fb425e46ed891ee1"
+    },
+    {
+      "element": "W",
+      "is_plus4": false,
+      "original_name": "w_pbe_v1.2.uspp.F.UPF",
+      "canonical_name": "W.upf",
+      "minor_version": "1.2",
+      "size_bytes": 955949,
+      "sha256": "3cb024d05ba2413340c9e993bc149bf94d44fb23e609642466d87ca30c88c569"
+    },
+    {
+      "element": "Re",
+      "is_plus4": false,
+      "original_name": "re_pbe_v1.2.uspp.F.UPF",
+      "canonical_name": "Re.upf",
+      "minor_version": "1.2",
+      "size_bytes": 1028073,
+      "sha256": "61146e72676c25b08fce566316216ce8c1e4ec1317f418513daf36e6e52a65eb"
+    },
+    {
+      "element": "Os",
+      "is_plus4": false,
+      "original_name": "os_pbe_v1.2.uspp.F.UPF",
+      "canonical_name": "Os.upf",
+      "minor_version": "1.2",
+      "size_bytes": 1030749,
+      "sha256": "fb26113f4c4f67a8e0f996bff2a6411a1abdbd12c0d023912361536fdfde4d28"
+    },
+    {
+      "element": "Ir",
+      "is_plus4": false,
+      "original_name": "ir_pbe_v1.2.uspp.F.UPF",
+      "canonical_name": "Ir.upf",
+      "minor_version": "1.2",
+      "size_bytes": 827810,
+      "sha256": "7fb680571391e90cc59b343841d65f69fbf47382191c6fc511717f0e0b689e03"
+    },
+    {
+      "element": "Pt",
+      "is_plus4": false,
+      "original_name": "pt_pbe_v1.4.uspp.F.UPF",
+      "canonical_name": "Pt.upf",
+      "minor_version": "1.4",
+      "size_bytes": 675946,
+      "sha256": "69f60fd2451b1845888681f987a801a2c45a8df104d0fe0b43ad4cd1c6e3ad81"
+    },
+    {
+      "element": "Au",
+      "is_plus4": false,
+      "original_name": "au_pbe_v1.uspp.F.UPF",
+      "canonical_name": "Au.upf",
+      "minor_version": "1",
+      "size_bytes": 812574,
+      "sha256": "9c6a15bb8b6555cb83108228ace633e31aee2f5ff39145262bdd3f3cec53e687"
+    },
+    {
+      "element": "Hg",
+      "is_plus4": false,
+      "original_name": "hg_pbe_v1.uspp.F.UPF",
+      "canonical_name": "Hg.upf",
+      "minor_version": "1",
+      "size_bytes": 657993,
+      "sha256": "faaa3ab646d00c57941b898e420d46bebb0e4b3b385059693af302f5c647cb71"
+    },
+    {
+      "element": "Tl",
+      "is_plus4": false,
+      "original_name": "tl_pbe_v1.2.uspp.F.UPF",
+      "canonical_name": "Tl.upf",
+      "minor_version": "1.2",
+      "size_bytes": 605013,
+      "sha256": "018619075345aa953f960db6fbb6d7bba035adf76a8b210d57179489d14b1be2"
+    },
+    {
+      "element": "Pb",
+      "is_plus4": false,
+      "original_name": "pb_pbe_v1.uspp.F.UPF",
+      "canonical_name": "Pb.upf",
+      "minor_version": "1",
+      "size_bytes": 605013,
+      "sha256": "4b8527e7e8c6da86173825f1c5ab9cfeeb04525e46e5a5c5d0d13bf3059ceeeb"
+    },
+    {
+      "element": "Bi",
+      "is_plus4": false,
+      "original_name": "bi_pbe_v1.uspp.F.UPF",
+      "canonical_name": "Bi.upf",
+      "minor_version": "1",
+      "size_bytes": 605013,
+      "sha256": "56e4e097a6b5a74149ba3b3bb75c03f2b022b509f53767143653dcd7b079e97d"
+    },
+    {
+      "element": "Fe1",
+      "is_plus4": false,
+      "original_name": "fe_pbe_v1.5.uspp.F.UPF",
+      "canonical_name": "Fe1.upf",
+      "minor_version": "1.5",
+      "size_bytes": 605112,
+      "sha256": "6c132e6e7ac1c42df5cb6a13d0c99bb7af5bf3d6e2349f5658f0c22abfe3911a"
+    },
+    {
+      "element": "Fe2",
+      "is_plus4": false,
+      "original_name": "fe_pbe_v1.5.uspp.F.UPF",
+      "canonical_name": "Fe2.upf",
+      "minor_version": "1.5",
+      "size_bytes": 605112,
+      "sha256": "6c132e6e7ac1c42df5cb6a13d0c99bb7af5bf3d6e2349f5658f0c22abfe3911a"
+    }
+  ]
+}

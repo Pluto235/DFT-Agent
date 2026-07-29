@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.3",
+  "id": "M1_T1_Si_vc_relax",
+  "difficulty": {
+    "material_tier": "M1",
+    "task_tier": "T1",
+    "overall_level": null
+  },
+  "material": {
+    "formula": "Si",
+    "name": "silicon (diamond)",
+    "structure": "diamond",
+    "space_group": "Fd-3m",
+    "space_group_number": 227,
+    "atoms_per_primitive_cell": 2,
+    "advisory_notes": null,
+    "reference_source": {
+      "database": "Materials Project",
+      "id": "mp-149",
+      "url": "https://next-gen.materialsproject.org/materials/mp-149"
+    },
+    "initial_structure": {
+      "source": "mp-149",
+      "note": "MP conventional/primitive cell, given as the starting geometry for agent",
+      "lattice_type": "primitive",
+      "lattice_constants_angstrom": {"a": 3.866, "b": 3.866, "c": 3.866},
+      "lattice_angles_degree": {"alpha": 60.0, "beta": 60.0, "gamma": 60.0},
+      "atomic_positions_crystal": [
+        {"element": "Si", "position": [0.0, 0.0, 0.0]},
+        {"element": "Si", "position": [0.25, 0.25, 0.25]}
+      ]
+    },
+    "pseudopotential": {
+      "family": "GBRV_USPP_PBE_v1.5",
+      "relativistic": "scalar",
+      "files": {
+        "Si": "Si.upf"
+      }
+    }
+  },
+  "task": {
+    "type": "vc_relax",
+    "prompt": null,
+    "policy": {"network_allowed": false}
+  },
+  "evaluator": {
+    "type": "qe_vc_relax_output",
+    "extract_fields": [
+      "a", "b", "c",
+      "alpha", "beta", "gamma",
+      "space_group_number",
+      "point_group", "crystal_system"
+    ],
+    "data_sources": {
+      "primary": "relax.out"
+    },
+    "extraction_method": "pymatgen_spacegroup_analyzer",
+    "extraction_config": {
+      "symprec": 1e-3,
+      "angle_tolerance": 5
+    }
+  },
+  "ground_truth": {
+    "a": {"value": "TBD_MP", "unit": "angstrom", "tolerance": 0.005, "rule": "relative", "note": "P1 阶段由 MP 查询直接填入（mp-149 的 primitive a ≈ 3.866 Å）"},
+    "b": {"value": "TBD_MP", "unit": "angstrom", "tolerance": 0.005, "rule": "relative"},
+    "c": {"value": "TBD_MP", "unit": "angstrom", "tolerance": 0.005, "rule": "relative"},
+    "alpha": {"value": 60.0, "unit": "degree", "tolerance": 0.5, "rule": "absolute"},
+    "beta": {"value": 60.0, "unit": "degree", "tolerance": 0.5, "rule": "absolute"},
+    "gamma": {"value": 60.0, "unit": "degree", "tolerance": 0.5, "rule": "absolute"},
+    "space_group_number": {"value": 227, "rule": "exact"},
+    "point_group": {"value": "m-3m", "rule": "exact"},
+    "crystal_system": {"value": "cubic", "rule": "exact"}
+  },
+  "scoring": {
+    "aggregate": "all_fields_weighted",
+    "field_weights": {
+      "a": 0.15, "b": 0.15, "c": 0.15,
+      "alpha": 0.05, "beta": 0.05, "gamma": 0.05,
+      "space_group_number": 0.25,
+      "point_group": 0.10,
+      "crystal_system": 0.05
+    },
+    "pass_criterion": "all_fields_passed",
+    "partial_credit": true
+  },
+  "convergence_evidence": null,
+  "metadata": {
+    "author": "weilin",
+    "generated_at": "2026-04-23",
+    "reviewer": null,
+    "gt_qe_version": null,
+    "gt_machine": null,
+    "gt_wall_time_sec": null,
+    "notes": "bench schema v1.2 示例。M1_T1 GT 直接取自 Materials Project（mp-149），convergence_evidence 留空（由 MP 背后的 DFT 计算保证）。"
+  }
+}

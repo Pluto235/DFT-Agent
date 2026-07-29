@@ -1,0 +1,48 @@
+     Program PWSCF v.7.5CNPU-GPU starts on 24Apr2026
+
+... (省略开头)
+
+     number of atoms/cell      =            2
+     number of atomic types    =            1
+
+... (省略中间)
+
+!    total energy              =     -16.03892145 Ry
+
+          total   stress  (Ry/bohr**3)                   (kbar)     P=       -0.12
+  -0.00000008   0.00000000   0.00000000         -0.12      0.00      0.00
+   0.00000000  -0.00000008   0.00000000          0.00     -0.12      0.00
+   0.00000000   0.00000000  -0.00000008          0.00      0.00     -0.12
+
+     BFGS Geometry Optimization
+
+     bfgs converged in   5 scf cycles and   4 bfgs steps
+     (criteria: energy <  1.0E-04 Ry, force <  1.0E-03 Ry/Bohr, cell <  5.0E-01 kbar)
+
+     End of BFGS Geometry Optimization
+
+!    total energy              =     -16.03892150 Ry
+
+          total   stress  (Ry/bohr**3)                   (kbar)     P=        0.08
+   0.00000005   0.00000000   0.00000000          0.08      0.00      0.00
+   0.00000000   0.00000005   0.00000000          0.00      0.08      0.00
+   0.00000000   0.00000000   0.00000005          0.00      0.00      0.08
+
+Begin final coordinates
+     new unit-cell volume =    271.44523 a.u.^3 (    40.22619 Ang^3 )
+     density =      2.32137 g/cm^3
+
+CELL_PARAMETERS (alat=  7.16000000)
+   0.500000000  -0.500000000   0.500000000
+   0.500000000   0.500000000  -0.500000000
+  -0.500000000   0.500000000   0.500000000
+
+ATOMIC_POSITIONS (crystal)
+Si              0.0000000000        0.0000000000        0.0000000000
+Si              0.2500000000        0.2500000000        0.2500000000
+
+End final coordinates
+
+     Writing config-only to output data dir ./tmp/si.save/
+
+     JOB DONE.

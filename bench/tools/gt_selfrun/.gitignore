@@ -1,0 +1,24 @@
+# gt_selfrun: never commit working artifacts (workdir + logs)
+workdir/
+workdir_t2/
+
+# m12-rescue dispatcher artifacts (gen'd inputs staging + backup of failed workdir)
+rental_stage_t2/
+backups/
+
+# historical archive (pre-2026-04-27 1%-threshold switch snapshot of canonical_gt)
+canonical_gt_pre_threshold_switch/
+
+# QE intermediate files (defensive)
+**/pwscf.save/
+**/wfc*.dat
+**/wfc*.hdf5
+**/charge_density*
+**/charge-density*
+
+# log files (keep only canonical_gt + reports + code)
+*.log
+
+# python cache
+__pycache__/
+*.pyc

@@ -1,0 +1,35 @@
+For {formula} ({structure_type}, space group {space_group}, {atoms_per_primitive_cell} atoms per primitive cell), run a full bands + DOS workflow on the initial structure provided below:
+(1) SCF on an appropriate k-mesh,
+(2) NSCF along a high-symmetry k-path for band structure,
+(3) NSCF on a denser k-mesh for DOS.
+
+Use the Python package `seekpath` (`seekpath.get_path`) to derive the high-symmetry k-path from the initial structure — do not hand-pick the path. Choose appropriate convergence parameters, k-mesh densities, and other numerical settings. Report:
+
+- `band_gap_ev`: the band gap in eV; for metals report `0`
+- `gap_type`: one of `direct`, `indirect`, or `metal` (if the material has no gap)
+- `vbm_k_label`, `cbm_k_label`: VBM and CBM k-point labels using seekpath's label convention; for metals report `metal` for both
+
+and produce the DOS curve.
+
+The DOS NSCF (step 3) must use `occupations='tetrahedra'` (Blochl tetrahedron method) so that the Fermi energy line is printed in the NSCF output and dos.x computes the DOS without arbitrary smearing.
+
+When running dos.x, use a sufficiently wide energy window so that the output
+covers all valence and conduction band states the calculation produced. The
+simplest approach is to omit `Emin`/`Emax` (let dos.x use defaults derived
+from the eigenvalue range), or set them generously wide (e.g. `Emin = -30 eV`,
+`Emax = +30 eV` — dos.x will silently clip to the actual eigenvalue extent).
+
+DO NOT modify `dos.dat` after `dos.x` finishes. Submit the raw `dos.dat` file path via `task_outputs.dos_dat`. The harness will read the raw `dos.dat` (column 1 = absolute energy in eV) and handle the EF subtraction internally using the Fermi energy parsed from the DOS NSCF output you provide.
+
+Your `task_outputs` MUST include these keys (all paths relative to your workdir):
+- `scf_out`: SCF pw.x output
+- `bands_out`: bands NSCF pw.x output (step 2)
+- `bands_data`: bands.dat from bands.x
+- `dos_dat`: raw dos.dat from dos.x (do NOT post-process)
+- `nscf_dos_out`: DOS NSCF pw.x output (step 3) — the file containing "the Fermi energy is X.XXXX ev"
+
+{initial_structure_block}
+
+{pseudopotential_block}{advisory_notes_block}
+
+Execution hint: bands NSCF (dense k-path) and DOS NSCF (dense k-mesh) each can take 30+ minutes; prefer a single long wait (e.g. `bash -c 'sleep 1800 && tail -5 <log>'`) over many short polls — every sleep counts as one turn against your budget.

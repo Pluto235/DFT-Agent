@@ -1,0 +1,298 @@
+{
+  "id": "M1_T1_Al_vc_relax",
+  "schema_version": "1.2",
+  "ground_truth": {
+    "a": {
+      "value": 2.856312464568813,
+      "unit": "angstrom",
+      "tolerance": 0.01,
+      "rule": "relative"
+    },
+    "b": {
+      "value": 2.8563123189868573,
+      "unit": "angstrom",
+      "tolerance": 0.01,
+      "rule": "relative"
+    },
+    "c": {
+      "value": 2.856312338,
+      "unit": "angstrom",
+      "tolerance": 0.01,
+      "rule": "relative"
+    },
+    "alpha": {
+      "value": 59.99999977980361,
+      "unit": "degree",
+      "tolerance": 1.0,
+      "rule": "absolute"
+    },
+    "beta": {
+      "value": 60.00000146582794,
+      "unit": "degree",
+      "tolerance": 1.0,
+      "rule": "absolute"
+    },
+    "gamma": {
+      "value": 59.999999336852184,
+      "unit": "degree",
+      "tolerance": 1.0,
+      "rule": "absolute"
+    },
+    "space_group_number": {
+      "value": 225,
+      "rule": "exact"
+    },
+    "point_group": {
+      "value": "m-3m",
+      "rule": "exact"
+    },
+    "crystal_system": {
+      "value": "cubic",
+      "rule": "exact"
+    }
+  },
+  "final_structure": {
+    "source": "bench/workdir/M1_T1_Al_vc_relax/e80_d30/relax.out",
+    "cell_angstrom": [
+      [
+        2.473368553,
+        0.0,
+        1.428
+      ],
+      [
+        0.824456184,
+        2.331914235,
+        1.428
+      ],
+      [
+        0.0,
+        0.0,
+        2.856
+      ]
+    ],
+    "atomic_positions_crystal": [
+      [
+        "Al",
+        0.0,
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "convergence_evidence": {
+    "methodology": "Two-round convergence scan: Round 1 fixes kmesh density at 30 and scans ecutwfc in {30,40,50,60,80}; Round 2 fixes ecutwfc at 80 and scans kmesh density in {20,30,40,50}. Convergence criteria: ΔE < 0.05 meV/atom and ΔP < 0.5 kbar.",
+    "ecutwfc_scan": {
+      "values_ry": [
+        30.0,
+        40.0,
+        50.0,
+        60.0,
+        80.0,
+        100.0,
+        120.0,
+        150.0
+      ],
+      "kmesh_fixed": [
+        14,
+        14,
+        14
+      ],
+      "delta_E_meV_per_atom": [
+        0.3281693151594672,
+        0.2668076397277782,
+        0.19428929604347217,
+        0.16422071451494885,
+        0.12136278155956247,
+        0.08571586589868847,
+        0.027891670649669142,
+        0.0
+      ],
+      "delta_P_kbar": [
+        0.030000000000000027,
+        0.020000000000000018,
+        0.019999999999999962,
+        0.019999999999999962,
+        0.02999999999999997,
+        0.04999999999999999,
+        0.19,
+        0.0
+      ],
+      "lattice_per_point": [
+        {
+          "a_angstrom": 2.856,
+          "b_angstrom": 2.856,
+          "c_angstrom": 2.856,
+          "alpha_degree": 60.0,
+          "beta_degree": 60.0,
+          "gamma_degree": 60.0,
+          "space_group_number": 225
+        },
+        {
+          "a_angstrom": 2.856,
+          "b_angstrom": 2.856,
+          "c_angstrom": 2.856,
+          "alpha_degree": 60.0,
+          "beta_degree": 60.0,
+          "gamma_degree": 60.0,
+          "space_group_number": 225
+        },
+        {
+          "a_angstrom": 2.856,
+          "b_angstrom": 2.856,
+          "c_angstrom": 2.856,
+          "alpha_degree": 60.0,
+          "beta_degree": 60.0,
+          "gamma_degree": 60.0,
+          "space_group_number": 225
+        },
+        {
+          "a_angstrom": 2.856,
+          "b_angstrom": 2.856,
+          "c_angstrom": 2.856,
+          "alpha_degree": 60.0,
+          "beta_degree": 60.0,
+          "gamma_degree": 60.0,
+          "space_group_number": 225
+        },
+        {
+          "a_angstrom": 2.856,
+          "b_angstrom": 2.856,
+          "c_angstrom": 2.856,
+          "alpha_degree": 60.0,
+          "beta_degree": 60.0,
+          "gamma_degree": 60.0,
+          "space_group_number": 225
+        },
+        {
+          "a_angstrom": 2.856,
+          "b_angstrom": 2.856,
+          "c_angstrom": 2.856,
+          "alpha_degree": 60.0,
+          "beta_degree": 60.0,
+          "gamma_degree": 60.0,
+          "space_group_number": 225
+        },
+        {
+          "a_angstrom": 2.855756,
+          "b_angstrom": 2.855755,
+          "c_angstrom": 2.855756,
+          "alpha_degree": 60.0,
+          "beta_degree": 60.0,
+          "gamma_degree": 60.0,
+          "space_group_number": 225
+        },
+        {
+          "a_angstrom": 2.856,
+          "b_angstrom": 2.856,
+          "c_angstrom": 2.856,
+          "alpha_degree": 60.0,
+          "beta_degree": 60.0,
+          "gamma_degree": 60.0,
+          "space_group_number": 225
+        }
+      ]
+    },
+    "kmesh_scan": {
+      "values": [
+        [
+          10,
+          10,
+          10
+        ],
+        [
+          14,
+          14,
+          14
+        ],
+        [
+          18,
+          18,
+          18
+        ],
+        [
+          22,
+          22,
+          22
+        ]
+      ],
+      "ecutwfc_fixed_ry": 80.0,
+      "delta_E_meV_per_atom": [
+        16.85636517156648,
+        8.900028019019588,
+        2.7263087633384893,
+        0.0
+      ],
+      "delta_P_kbar": [
+        0.03999999999999998,
+        0.86,
+        0.030000000000000027,
+        0.0
+      ],
+      "lattice_per_point": [
+        {
+          "a_angstrom": 2.857497,
+          "b_angstrom": 2.857497,
+          "c_angstrom": 2.857497,
+          "alpha_degree": 60.0,
+          "beta_degree": 60.0,
+          "gamma_degree": 60.0,
+          "space_group_number": 225
+        },
+        {
+          "a_angstrom": 2.856,
+          "b_angstrom": 2.856,
+          "c_angstrom": 2.856,
+          "alpha_degree": 60.0,
+          "beta_degree": 60.0,
+          "gamma_degree": 60.0,
+          "space_group_number": 225
+        },
+        {
+          "a_angstrom": 2.856,
+          "b_angstrom": 2.856,
+          "c_angstrom": 2.856,
+          "alpha_degree": 60.0,
+          "beta_degree": 60.0,
+          "gamma_degree": 60.0,
+          "space_group_number": 225
+        },
+        {
+          "a_angstrom": 2.856312,
+          "b_angstrom": 2.856312,
+          "c_angstrom": 2.856312,
+          "alpha_degree": 60.0,
+          "beta_degree": 60.0,
+          "gamma_degree": 60.0,
+          "space_group_number": 225
+        }
+      ]
+    },
+    "converged_params": {
+      "ecutwfc_ry": 80.0,
+      "ecutrho_ry": 800.0,
+      "kmesh": [
+        22,
+        22,
+        22
+      ],
+      "kmesh_density_pts_per_inv_angstrom": 50.0
+    },
+    "convergence_threshold": {
+      "delta_E_meV_per_atom": 0.5,
+      "delta_P_kbar": 0.5,
+      "delta_l_relative_converged": 0.01,
+      "delta_l_relative_marginal": 0.02,
+      "criterion": "geometry-relative (Plan B, 杨博 0427)"
+    },
+    "raw_outputs_dir": "bench/gt_selfrun/workdir/M1_T1_Al_vc_relax"
+  },
+  "self_run_meta": {
+    "qe_version": "7.5CN-GPU",
+    "pseudo_family": "GBRV_USPP_PBE_v1.5",
+    "total_runs": 11,
+    "wall_time_sec_total": 878.2984478473663,
+    "convergence_status": "converged",
+    "delta_lattice_max_relative": 0.00010939445635993601,
+    "delta_lattice_max_angstrom": 0.0003124647492556143
+  }
+}

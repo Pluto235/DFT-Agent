@@ -1,0 +1,249 @@
+{
+  "id": "M1_T2_KCl_bands_dos",
+  "schema_version": "1.2",
+  "ground_truth": {
+    "band_gap_ev": {
+      "value": 5.0546,
+      "unit": "eV",
+      "tolerance": 0.1,
+      "rule": "graded_absolute"
+    },
+    "gap_type": {
+      "value": "direct",
+      "rule": "exact"
+    },
+    "vbm_k_label": {
+      "value": "GAMMA",
+      "rule": "exact"
+    },
+    "cbm_k_label": {
+      "value": "GAMMA",
+      "rule": "exact"
+    },
+    "dos_e_fermi": {
+      "value": 0.6375,
+      "unit": "eV",
+      "tolerance": 0.1,
+      "rule": "absolute"
+    },
+    "dos_curve": {
+      "ref_file": "tools/gt_selfrun/canonical_gt_t2/dos_data/KCl.dat",
+      "unit": "states/eV/fu",
+      "tolerance": 0.1,
+      "rule": "curve_l2"
+    }
+  },
+  "convergence_evidence": {
+    "scan_points": [
+      {
+        "key": "e50_d30",
+        "round": 1,
+        "ecutwfc_ry": 50.0,
+        "ecutrho_ry": 500.0,
+        "kmesh": [
+          8,
+          8,
+          8
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 16,
+        "step_walls_sec": {
+          "scf": 0.0,
+          "nscf": 0.0,
+          "bands_pw": 0.0,
+          "bands_pp": 0.0
+        },
+        "band_gap_ev": 5.0546,
+        "dos_e_fermi": 0.6378,
+        "vbm_k_label": "GAMMA",
+        "cbm_k_label": "GAMMA",
+        "gap_type": "direct"
+      },
+      {
+        "key": "e60_d30",
+        "round": 1,
+        "ecutwfc_ry": 60.0,
+        "ecutrho_ry": 600.0,
+        "kmesh": [
+          8,
+          8,
+          8
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 16,
+        "step_walls_sec": {
+          "scf": 0.0,
+          "nscf": 0.0,
+          "bands_pw": 0.0,
+          "bands_pp": 0.0
+        },
+        "band_gap_ev": 5.0544,
+        "dos_e_fermi": 0.6378,
+        "vbm_k_label": "GAMMA",
+        "cbm_k_label": "GAMMA",
+        "gap_type": "direct"
+      },
+      {
+        "key": "e80_d30",
+        "round": 1,
+        "ecutwfc_ry": 80.0,
+        "ecutrho_ry": 800.0,
+        "kmesh": [
+          8,
+          8,
+          8
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 16,
+        "step_walls_sec": {
+          "scf": 0.0,
+          "nscf": 0.0,
+          "bands_pw": 0.0,
+          "bands_pp": 0.0
+        },
+        "band_gap_ev": 5.0548,
+        "dos_e_fermi": 0.6376,
+        "vbm_k_label": "GAMMA",
+        "cbm_k_label": "GAMMA",
+        "gap_type": "direct"
+      },
+      {
+        "key": "e80_d20",
+        "round": 2,
+        "ecutwfc_ry": 80.0,
+        "ecutrho_ry": 800.0,
+        "kmesh": [
+          6,
+          6,
+          6
+        ],
+        "kmesh_density": 20.0,
+        "nbnd": 16,
+        "step_walls_sec": {
+          "scf": 0.0,
+          "nscf": 0.0,
+          "bands_pw": 0.0,
+          "bands_pp": 0.0
+        },
+        "band_gap_ev": 5.0548,
+        "dos_e_fermi": 0.6376,
+        "vbm_k_label": "GAMMA",
+        "cbm_k_label": "GAMMA",
+        "gap_type": "direct"
+      },
+      {
+        "key": "e80_d40",
+        "round": 2,
+        "ecutwfc_ry": 80.0,
+        "ecutrho_ry": 800.0,
+        "kmesh": [
+          12,
+          12,
+          12
+        ],
+        "kmesh_density": 40.0,
+        "nbnd": 16,
+        "step_walls_sec": {
+          "scf": 0.0,
+          "nscf": 0.0,
+          "bands_pw": 0.0,
+          "bands_pp": 0.0
+        },
+        "band_gap_ev": 5.0545,
+        "dos_e_fermi": 0.6374,
+        "vbm_k_label": "GAMMA",
+        "cbm_k_label": "GAMMA",
+        "gap_type": "direct"
+      },
+      {
+        "key": "e80_d50",
+        "round": 2,
+        "ecutwfc_ry": 80.0,
+        "ecutrho_ry": 800.0,
+        "kmesh": [
+          14,
+          14,
+          14
+        ],
+        "kmesh_density": 50.0,
+        "nbnd": 16,
+        "step_walls_sec": {
+          "scf": 0.0,
+          "nscf": 0.0,
+          "bands_pw": 0.0,
+          "bands_pp": 0.0
+        },
+        "band_gap_ev": 5.0546,
+        "dos_e_fermi": 0.6375,
+        "vbm_k_label": "GAMMA",
+        "cbm_k_label": "GAMMA",
+        "gap_type": "direct"
+      }
+    ],
+    "classification": {
+      "classification": "converged",
+      "round1_ecutwfc": {
+        "delta_band_gap_ev": 0.00039999999999995595,
+        "delta_e_fermi_ev": 0.000200000000000089,
+        "last_two_keys": [
+          "e60_d30",
+          "e80_d30"
+        ],
+        "scan_keys": [
+          "e50_d30",
+          "e60_d30",
+          "e80_d30"
+        ]
+      },
+      "round2_kmesh": {
+        "delta_band_gap_ev": 9.999999999976694e-05,
+        "delta_e_fermi_ev": 9.999999999998899e-05,
+        "last_two_keys": [
+          "e80_d40",
+          "e80_d50"
+        ],
+        "scan_keys": [
+          "e80_d20",
+          "e80_d40",
+          "e80_d50"
+        ]
+      },
+      "thresholds": {
+        "band_gap_thr_ev": 0.02,
+        "e_fermi_thr_ev": 0.02,
+        "marginal_factor": 2.0
+      },
+      "reason": "all 4 deltas within converged thresholds"
+    },
+    "wall_time_sec": 0.0,
+    "canonical_point_key": "e80_d50",
+    "canonical_kmesh": [
+      14,
+      14,
+      14
+    ],
+    "dos_params": {
+      "sigma_ev": 0.02,
+      "de_ev": 0.01
+    }
+  },
+  "metadata": {
+    "author": "weilin",
+    "generated_at": "2026-05-19",
+    "source": "QE GBRV_USPP_PBE_v1.5 self-run T2 pipeline (8-point scan)"
+  },
+  "extracted_raw": {
+    "vbm_k_cryst": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cbm_k_cryst": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "vbm_ev": 0.6376,
+    "cbm_ev": 5.6922
+  }
+}

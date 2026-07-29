@@ -1,0 +1,108 @@
+# providers.yaml — multi-provider routing for LLMClient.
+#
+# 每条 provider:
+#   type:           anthropic_native | openai_compat
+#                   anthropic_native = anthropic SDK 直调
+#                   openai_compat   = openai SDK + 可选 base_url 重定向
+#   key_env:        env var 名（推荐）。例 'OPENAI_API_KEY'
+#   api_key:        字面 key 字符串（只用于本地 / 测试；⚠️ 千万别 commit）
+#   base_url:       openai_compat 用；null 表 SDK 自家 default
+#   model_patterns: glob 列表，fnmatch 风格。先匹配先选。order = 文件 order。
+#
+# 添新 provider 的步骤:
+#   1. 在下面 `providers:` 下加一条
+#   2. 设对应 env var（在 ~/workspace/.env 或 ~/.bashrc），or 用 api_key 字面值（本地）
+#   3. 跑 solver，会自动按 model id 路由
+#
+# 注意: openrouter / ollama 都用 owner/name 形式（如 meta-llama/llama-3.3-...）
+#       所以更具体的 ollama/* 必须排在 catch-all */* 之前。
+#
+# 想覆盖此文件: export DFT_SOLVER_CONFIG=/path/to/your/providers.yaml
+# 或 solve.py --config /path/to/providers.yaml
+#
+# ─── v4.3 新增: models 顶层块（每个角色的默认 model id） ───
+# 角色优先级（高→低）: CLI flag (--<role>-model) > env DFT_MODEL_<ROLE>
+#                  > models.<role> > models.default
+# bench 跑分时 manifest.yaml default_args 注入全 Claude 一套 CLI，覆盖下面默认。
+
+models:
+  default: deepseek-chat            # 兜底（未声明角色时用这个）
+  planner: deepseek-chat            # 决策频繁、JSON 输出
+  executor: deepseek-chat           # tool-use 重负载；bench 切 claude-sonnet-4-6
+  verifier: deepseek-chat           # 短输入短输出，便宜模型够用
+  config_advisor: deepseek-chat     # v4.1 preflight：金属/绝缘体判别
+  prerelax: deepseek-chat           # v4.1 preflight：T2 vc_relax 预弛豫
+  reflection_writer: deepseek-chat  # v4.3 reflexion：verifier-trip-recover 后写 lesson
+
+providers:
+  anthropic:
+    type: anthropic_native
+    key_env: ANTHROPIC_API_KEY
+    base_url: null
+    model_patterns:
+      - "claude-*"
+
+  openai:
+    type: openai_compat
+    key_env: OPENAI_API_KEY
+    base_url: null   # OpenAI SDK default = https://api.openai.com/v1
+    model_patterns:
+      - "gpt-*"
+      - "o1*"
+      - "o3*"
+      - "o4*"
+
+  google:
+    type: openai_compat
+    key_env: GOOGLE_API_KEY
+    base_url: "https://generativelanguage.googleapis.com/v1beta/openai/"
+    model_patterns:
+      - "gemini-*"
+
+  deepseek:
+    type: openai_compat
+    key_env: DEEPSEEK_API_KEY
+    base_url: "https://api.deepseek.com/v1"
+    model_patterns:
+      - "deepseek-*"
+
+  moonshot:
+    type: openai_compat
+    key_env: MOONSHOT_API_KEY
+    # 中国直连用 .cn，海外可改 https://api.moonshot.ai/v1
+    base_url: "https://api.moonshot.cn/v1"
+    model_patterns:
+      - "moonshot-*"
+      - "kimi-*"
+
+  xai:
+    type: openai_compat
+    key_env: XAI_API_KEY
+    base_url: "https://api.x.ai/v1"
+    model_patterns:
+      - "grok-*"
+
+  mistral:
+    type: openai_compat
+    key_env: MISTRAL_API_KEY
+    base_url: "https://api.mistral.ai/v1"
+    model_patterns:
+      - "mistral-*"
+      - "codestral-*"
+      - "ministral-*"
+
+  # 本地 Ollama：必须排在 openrouter（catch-all */*）之前
+  ollama:
+    type: openai_compat
+    key_env: null   # 本地无需 key；LLMClient 给 SDK 一个 placeholder
+    base_url: "http://localhost:11434/v1"
+    model_patterns:
+      - "ollama/*"
+
+  # OpenRouter 是 catch-all：任何 owner/name 形式都会路由到这里
+  openrouter:
+    type: openai_compat
+    key_env: OPENROUTER_API_KEY
+    base_url: "https://openrouter.ai/api/v1"
+    model_patterns:
+      - "*/*"

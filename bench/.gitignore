@@ -1,0 +1,22 @@
+# pseudopotential raw tarball extract + symlinks (rebuild via pseudos/fetch.sh)
+pseudos/GBRV_USPP_PBE_v1.5/raw/
+pseudos/GBRV_USPP_PBE_v1.5/*.upf
+
+# Python
+__pycache__/
+*.pyc
+
+# local venv / env
+.venv/
+.env
+
+# editor / OS
+.vscode/
+.idea/
+.DS_Store
+
+# generated artifacts that shouldn't be tracked
+*.swp
+
+# harness 跑题的 artifact 目录（每次 run 产生 runs/<UTC>_<task_id>/...）
+runs/

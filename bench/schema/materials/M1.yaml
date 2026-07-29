@@ -1,0 +1,485 @@
+# M1: Standard GGA/LDA materials
+# 来源：杨博 2026-04-23 材料分类（见 user_input/2026-04-23_jinyang_meeting.md）
+# 总数：62 种
+#
+# 单条字段说明：
+#   id: 唯一标识，也作为生成题目的文件名前缀（M1 内唯一）。多态同 formula 用后缀区分（如 Sn_alpha / Sn_beta）
+#   formula: MP 查询用的化学式（不带空格）
+#   subclass: 按杨博清单的子类分组，用于后续分析
+#   expected_space_group: 国际符号（用 ASCII 连字符代 U+2212，如 "Fd-3m"）。null 表示不强制匹配，由 energy_above_hull 决定
+#   expected_atoms_per_primitive_cell: 整数。null 表示不校验
+#   polymorph_note: 原义透明描述，给生成脚本和 reviewer 看
+#   mp_id_hint: 已知 MP ID（可选）；null 由脚本查询决定
+
+materials:
+  # ============================================================
+  # Subclass 1: Elemental semiconductors & insulators (Group IV & V)
+  # 原杨博清单编号 1–5
+  # ============================================================
+  - id: C
+    formula: C
+    subclass: elemental_semiconductors
+    expected_space_group: Fd-3m
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "Diamond"
+    mp_id_hint: mp-66
+  - id: Si
+    formula: Si
+    subclass: elemental_semiconductors
+    expected_space_group: Fd-3m
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "Diamond"
+    mp_id_hint: mp-149
+  - id: Ge
+    formula: Ge
+    subclass: elemental_semiconductors
+    expected_space_group: Fd-3m
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "Diamond"
+    mp_id_hint: null
+  - id: Sn_alpha
+    formula: Sn
+    subclass: elemental_semiconductors
+    expected_space_group: Fd-3m
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "α-Sn (gray), diamond structure — stable below ~13°C"
+    mp_id_hint: null
+  - id: P_black
+    formula: P
+    subclass: elemental_semiconductors
+    expected_space_group: Cmca
+    expected_atoms_per_primitive_cell: 8
+    polymorph_note: "Black phosphorus, orthorhombic layered"
+    mp_id_hint: null
+
+  # ============================================================
+  # Subclass 2: III-V Semiconductors (zincblende; N-containing often wurtzite)
+  # 原杨博清单编号 6–16
+  # ============================================================
+  - id: AlN
+    formula: AlN
+    subclass: iii_v
+    expected_space_group: P6_3mc
+    expected_atoms_per_primitive_cell: 4
+    polymorph_note: "Wurtzite (thermodynamically stable)"
+    mp_id_hint: null
+  - id: AlP
+    formula: AlP
+    subclass: iii_v
+    expected_space_group: F-43m
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "Zincblende"
+    mp_id_hint: null
+  - id: AlAs
+    formula: AlAs
+    subclass: iii_v
+    expected_space_group: F-43m
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "Zincblende"
+    mp_id_hint: null
+  - id: AlSb
+    formula: AlSb
+    subclass: iii_v
+    expected_space_group: F-43m
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "Zincblende"
+    mp_id_hint: null
+  - id: GaN
+    formula: GaN
+    subclass: iii_v
+    expected_space_group: P6_3mc
+    expected_atoms_per_primitive_cell: 4
+    polymorph_note: "Wurtzite (thermodynamically stable; zincblende also exists but is metastable)"
+    mp_id_hint: null
+  - id: GaP
+    formula: GaP
+    subclass: iii_v
+    expected_space_group: F-43m
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "Zincblende"
+    mp_id_hint: null
+  - id: GaAs
+    formula: GaAs
+    subclass: iii_v
+    expected_space_group: F-43m
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "Zincblende"
+    mp_id_hint: null
+  - id: GaSb
+    formula: GaSb
+    subclass: iii_v
+    expected_space_group: F-43m
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "Zincblende"
+    mp_id_hint: null
+  - id: InP
+    formula: InP
+    subclass: iii_v
+    expected_space_group: F-43m
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "Zincblende"
+    mp_id_hint: null
+  - id: InAs
+    formula: InAs
+    subclass: iii_v
+    expected_space_group: F-43m
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "Zincblende"
+    mp_id_hint: null
+  - id: InSb
+    formula: InSb
+    subclass: iii_v
+    expected_space_group: F-43m
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "Zincblende"
+    mp_id_hint: null
+
+  # ============================================================
+  # Subclass 3: II-VI Semiconductors
+  # 原杨博清单编号 17–23
+  # Note: Zn/Cd 阳离子的浅 d 态是否作为价电子处理赝势时影响较大；GBRV USPP PBE v1.5 包含 Zn/Cd 3d/4d 的半核态，满足"treating shallow d-states as valence"建议
+  # ============================================================
+  - id: ZnO
+    formula: ZnO
+    subclass: ii_vi
+    expected_space_group: P6_3mc
+    expected_atoms_per_primitive_cell: 4
+    polymorph_note: "Wurtzite (thermodynamically stable)"
+    mp_id_hint: null
+  - id: ZnS
+    formula: ZnS
+    subclass: ii_vi
+    expected_space_group: F-43m
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "Zincblende (cubic sphalerite — standard GGA benchmark; wurtzite is high-T form)"
+    mp_id_hint: null
+  - id: ZnSe
+    formula: ZnSe
+    subclass: ii_vi
+    expected_space_group: F-43m
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "Zincblende"
+    mp_id_hint: null
+  - id: ZnTe
+    formula: ZnTe
+    subclass: ii_vi
+    expected_space_group: F-43m
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "Zincblende"
+    mp_id_hint: null
+  - id: CdS
+    formula: CdS
+    subclass: ii_vi
+    expected_space_group: P6_3mc
+    expected_atoms_per_primitive_cell: 4
+    polymorph_note: "Wurtzite (thermodynamically stable)"
+    mp_id_hint: null
+  - id: CdSe
+    formula: CdSe
+    subclass: ii_vi
+    expected_space_group: P6_3mc
+    expected_atoms_per_primitive_cell: 4
+    polymorph_note: "Wurtzite (thermodynamically stable)"
+    mp_id_hint: null
+  - id: CdTe
+    formula: CdTe
+    subclass: ii_vi
+    expected_space_group: F-43m
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "Zincblende"
+    mp_id_hint: null
+
+  # ============================================================
+  # Subclass 4: Alkali & Alkaline-Earth Halides (all rocksalt except CsCl)
+  # 原杨博清单编号 24–34
+  # ============================================================
+  - id: LiF
+    formula: LiF
+    subclass: alkali_halides
+    expected_space_group: Fm-3m
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "Rocksalt"
+    mp_id_hint: null
+  - id: LiCl
+    formula: LiCl
+    subclass: alkali_halides
+    expected_space_group: Fm-3m
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "Rocksalt"
+    mp_id_hint: null
+  - id: LiBr
+    formula: LiBr
+    subclass: alkali_halides
+    expected_space_group: Fm-3m
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "Rocksalt"
+    mp_id_hint: null
+  - id: NaF
+    formula: NaF
+    subclass: alkali_halides
+    expected_space_group: Fm-3m
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "Rocksalt"
+    mp_id_hint: null
+  - id: NaCl
+    formula: NaCl
+    subclass: alkali_halides
+    expected_space_group: Fm-3m
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "Rocksalt (B1)"
+    mp_id_hint: null
+  - id: NaBr
+    formula: NaBr
+    subclass: alkali_halides
+    expected_space_group: Fm-3m
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "Rocksalt"
+    mp_id_hint: null
+  - id: KF
+    formula: KF
+    subclass: alkali_halides
+    expected_space_group: Fm-3m
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "Rocksalt"
+    mp_id_hint: null
+  - id: KCl
+    formula: KCl
+    subclass: alkali_halides
+    expected_space_group: Fm-3m
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "Rocksalt"
+    mp_id_hint: null
+  - id: KBr
+    formula: KBr
+    subclass: alkali_halides
+    expected_space_group: Fm-3m
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "Rocksalt"
+    mp_id_hint: null
+  - id: RbCl
+    formula: RbCl
+    subclass: alkali_halides
+    expected_space_group: Fm-3m
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "Rocksalt"
+    mp_id_hint: null
+  - id: CsCl
+    formula: CsCl
+    subclass: alkali_halides
+    expected_space_group: Pm-3m
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "CsCl structure (B2) — Cs at corner, Cl at body center"
+    mp_id_hint: null
+
+  # ============================================================
+  # Subclass 5: Simple Metals & Main Group Metals
+  # 原杨博清单编号 35–47
+  # Note: 费米面金属需要密 k-mesh + Methfessel-Paxton 或类似 smearing
+  # ============================================================
+  - id: Li
+    formula: Li
+    subclass: simple_metals
+    expected_space_group: Im-3m
+    expected_atoms_per_primitive_cell: 1
+    polymorph_note: "bcc (室温稳定相)"
+    mp_id_hint: null
+  - id: Na
+    formula: Na
+    subclass: simple_metals
+    expected_space_group: Im-3m
+    expected_atoms_per_primitive_cell: 1
+    polymorph_note: "bcc"
+    mp_id_hint: null
+  - id: K
+    formula: K
+    subclass: simple_metals
+    expected_space_group: Im-3m
+    expected_atoms_per_primitive_cell: 1
+    polymorph_note: "bcc"
+    mp_id_hint: null
+  - id: Rb
+    formula: Rb
+    subclass: simple_metals
+    expected_space_group: Im-3m
+    expected_atoms_per_primitive_cell: 1
+    polymorph_note: "bcc"
+    mp_id_hint: null
+  - id: Be
+    formula: Be
+    subclass: simple_metals
+    expected_space_group: P6_3/mmc
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "hcp"
+    mp_id_hint: null
+  - id: Mg
+    formula: Mg
+    subclass: simple_metals
+    expected_space_group: P6_3/mmc
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "hcp"
+    mp_id_hint: null
+  - id: Ca
+    formula: Ca
+    subclass: simple_metals
+    expected_space_group: Fm-3m
+    expected_atoms_per_primitive_cell: 1
+    polymorph_note: "fcc (α-Ca, room-T)"
+    mp_id_hint: null
+  - id: Sr
+    formula: Sr
+    subclass: simple_metals
+    expected_space_group: Fm-3m
+    expected_atoms_per_primitive_cell: 1
+    polymorph_note: "fcc"
+    mp_id_hint: null
+  - id: Al
+    formula: Al
+    subclass: simple_metals
+    expected_space_group: Fm-3m
+    expected_atoms_per_primitive_cell: 1
+    polymorph_note: "fcc"
+    mp_id_hint: mp-134
+  - id: Ga
+    formula: Ga
+    subclass: simple_metals
+    expected_space_group: Cmce
+    expected_atoms_per_primitive_cell: 4
+    polymorph_note: "α-Ga orthorhombic (室温稳定相；较复杂，可能需要较高精度)"
+    mp_id_hint: null
+  - id: In
+    formula: In
+    subclass: simple_metals
+    expected_space_group: I4/mmm
+    expected_atoms_per_primitive_cell: 1
+    polymorph_note: "body-centered tetragonal"
+    mp_id_hint: null
+  - id: Sn_beta
+    formula: Sn
+    subclass: simple_metals
+    expected_space_group: I4_1/amd
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "β-Sn (white, metallic), bct — 与 Sn_alpha 区分"
+    mp_id_hint: null
+  - id: Pb
+    formula: Pb
+    subclass: simple_metals
+    expected_space_group: Fm-3m
+    expected_atoms_per_primitive_cell: 1
+    polymorph_note: "fcc"
+    mp_id_hint: null
+
+  # ============================================================
+  # Subclass 6: Non-Magnetic Transition Metals (closed/full d-shells)
+  # 原杨博清单编号 48–54
+  # ============================================================
+  - id: Cu
+    formula: Cu
+    subclass: non_mag_tm
+    expected_space_group: Fm-3m
+    expected_atoms_per_primitive_cell: 1
+    polymorph_note: "fcc"
+    mp_id_hint: mp-30
+  - id: Ag
+    formula: Ag
+    subclass: non_mag_tm
+    expected_space_group: Fm-3m
+    expected_atoms_per_primitive_cell: 1
+    polymorph_note: "fcc"
+    mp_id_hint: null
+  - id: Au
+    formula: Au
+    subclass: non_mag_tm
+    expected_space_group: Fm-3m
+    expected_atoms_per_primitive_cell: 1
+    polymorph_note: "fcc (SOC 可忽略在 T1 vc-relax，但带隙计算中 Au 5d 需 SOC)"
+    mp_id_hint: null
+  - id: Zn
+    formula: Zn
+    subclass: non_mag_tm
+    expected_space_group: P6_3/mmc
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "hcp (金属)"
+    mp_id_hint: null
+  - id: Cd
+    formula: Cd
+    subclass: non_mag_tm
+    expected_space_group: P6_3/mmc
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "hcp"
+    mp_id_hint: null
+  - id: Pd
+    formula: Pd
+    subclass: non_mag_tm
+    expected_space_group: Fm-3m
+    expected_atoms_per_primitive_cell: 1
+    polymorph_note: "fcc"
+    mp_id_hint: null
+  - id: Pt
+    formula: Pt
+    subclass: non_mag_tm
+    expected_space_group: Fm-3m
+    expected_atoms_per_primitive_cell: 1
+    polymorph_note: "fcc (Pt 5d 带对 SOC 敏感，若 M5 扩展时需全相对论)"
+    mp_id_hint: null
+
+  # ============================================================
+  # Subclass 7: Simple Oxides, Nitrides, Ternaries
+  # 原杨博清单编号 55–62
+  # Note: MgAl2O4 同时在杨博 M1 class 7 和 M2 class 3 出现；保留在 M1（14 原子普通晶胞）即可，M2 处视为重复待杨博确认
+  # ============================================================
+  - id: MgO
+    formula: MgO
+    subclass: simple_oxides
+    expected_space_group: Fm-3m
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "Rocksalt"
+    mp_id_hint: null
+  - id: CaO
+    formula: CaO
+    subclass: simple_oxides
+    expected_space_group: Fm-3m
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "Rocksalt"
+    mp_id_hint: null
+  - id: SrO
+    formula: SrO
+    subclass: simple_oxides
+    expected_space_group: Fm-3m
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "Rocksalt"
+    mp_id_hint: null
+  - id: SiO2_quartz
+    formula: SiO2
+    subclass: simple_oxides
+    expected_space_group: P3_221
+    expected_atoms_per_primitive_cell: 9
+    polymorph_note: "α-Quartz (room-T trigonal, 3 SiO2 fu / primitive)"
+    mp_id_hint: null
+  - id: Al2O3
+    formula: Al2O3
+    subclass: simple_oxides
+    expected_space_group: R-3c
+    expected_atoms_per_primitive_cell: 10
+    polymorph_note: "α-Al2O3 corundum (sapphire), rhombohedral"
+    mp_id_hint: null
+  - id: LiAlO2
+    formula: LiAlO2
+    subclass: simple_oxides
+    expected_space_group: null
+    expected_atoms_per_primitive_cell: null
+    polymorph_note: "γ-LiAlO2 (tetragonal P4_12_12, 最常见) 或 α-LiAlO2 (rhombohedral R-3m)。让脚本取 lowest-hull"
+    mp_id_hint: null
+  - id: MgAl2O4
+    formula: MgAl2O4
+    subclass: simple_oxides
+    expected_space_group: Fd-3m
+    expected_atoms_per_primitive_cell: 14
+    polymorph_note: "Normal spinel — 杨博 M1 与 M2.3 两边都列了，暂保留在 M1，待杨博确认是否去重"
+    mp_id_hint: null
+  - id: BN_cubic
+    formula: BN
+    subclass: simple_oxides
+    expected_space_group: F-43m
+    expected_atoms_per_primitive_cell: 2
+    polymorph_note: "Cubic BN (sphalerite) — 杨博清单说 'Hexagonal or Cubic'，取 cubic 做标准 GGA 基准（hBN 是层状，DFT 范围不同）"
+    mp_id_hint: null

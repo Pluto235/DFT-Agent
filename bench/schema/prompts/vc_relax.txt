@@ -1,0 +1,5 @@
+For {formula} ({structure_type}, space group {space_group}, {atoms_per_primitive_cell} atoms per primitive cell), perform a variable-cell relaxation (vc-relax) calculation using the provided pseudopotentials. The initial structure is given below. Choose appropriate convergence parameters. Converge stress below 0.5 kbar and forces below 1e-3 Ry/a.u. Return the fully relaxed structure and verify the space group is preserved.
+
+{initial_structure_block}
+
+{pseudopotential_block}{advisory_notes_block}

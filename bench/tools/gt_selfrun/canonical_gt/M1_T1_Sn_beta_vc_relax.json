@@ -1,0 +1,62 @@
+{
+  "id": "M1_T1_Sn_beta_vc_relax",
+  "status": "failed",
+  "error": "canonical final point (e80_d50) not OK",
+  "convergence": {
+    "status": "failed",
+    "ecutwfc_conv": null,
+    "kmesh_conv_density": null,
+    "delta_lattice_max_relative": null,
+    "delta_lattice_max_angstrom": null,
+    "failed_points": [
+      "e30_d30",
+      "e40_d30",
+      "e50_d30",
+      "e60_d30",
+      "e80_d30",
+      "e100_d30",
+      "e120_d30",
+      "e150_d30",
+      "e80_d20",
+      "e80_d30",
+      "e80_d40",
+      "e80_d50"
+    ],
+    "ecutwfc_round": null,
+    "kmesh_round": null
+  },
+  "final_structure": {
+    "source": "bench/workdir/M1_T1_Sn_beta_vc_relax/e80_d30/relax.out",
+    "cell_angstrom": [
+      [
+        4.449241524,
+        -0.008792504,
+        -0.573228363
+      ],
+      [
+        -3.438953957,
+        2.823017037,
+        -0.573229029
+      ],
+      [
+        0.004056002,
+        0.011297212,
+        4.478911344
+      ]
+    ],
+    "atomic_positions_crystal": [
+      [
+        "Sn",
+        0.2500117428,
+        0.7499885236,
+        0.4999999872
+      ],
+      [
+        "Sn",
+        -1.17428e-05,
+        1.14764e-05,
+        1.28e-08
+      ]
+    ]
+  }
+}

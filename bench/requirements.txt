@@ -1,0 +1,9 @@
+# dft-agent-bench harness/evaluator runtime dependencies
+#
+# pinned to versions verified working with bench v1.3 + T2 evaluator.
+# upgrade with care: seekpath label naming has historical churn, and pymatgen
+# SpacegroupAnalyzer behaviour can shift between major versions.
+
+pymatgen>=2024.5,<2026
+seekpath==2.2.1
+numpy>=1.24,<2

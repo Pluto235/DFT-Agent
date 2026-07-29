@@ -1,0 +1,16 @@
+     Program PWSCF v.7.5CNPU-GPU starts on 24Apr2026
+
+     number of atoms/cell      =            2
+     number of atomic types    =            1
+
+!    total energy              =     -15.02120110 Ry
+
+          total   stress  (Ry/bohr**3)                   (kbar)     P=        2.15
+
+     The maximum number of steps has been reached.
+
+     End of BFGS Geometry Optimization
+
+!    total energy              =     -15.02120115 Ry
+
+          total   stress  (Ry/bohr**3)                   (kbar)     P=        2.10

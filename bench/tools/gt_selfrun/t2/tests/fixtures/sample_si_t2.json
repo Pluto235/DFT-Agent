@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.2",
+  "id": "M1_T2_Si_bands_dos",
+  "material": {
+    "formula": "Si",
+    "name": "silicon (diamond)",
+    "initial_structure": {
+      "lattice_constants_angstrom": {"a": 3.849, "b": 3.849, "c": 3.849},
+      "lattice_angles_degree": {"alpha": 60.0, "beta": 60.0, "gamma": 60.0},
+      "atomic_positions_crystal": [
+        {"element": "Si", "position": [0.25, 0.25, 0.25]},
+        {"element": "Si", "position": [0.0, 0.0, 0.0]}
+      ]
+    },
+    "pseudopotential": {"family": "GBRV_USPP_PBE_v1.5", "files": {"Si": "Si.upf"}}
+  },
+  "ground_truth": {
+    "gap_type": {"value": "indirect", "rule": "exact"}
+  }
+}

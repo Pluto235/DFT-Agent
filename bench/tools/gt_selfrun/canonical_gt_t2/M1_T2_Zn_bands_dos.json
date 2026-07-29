@@ -1,0 +1,17 @@
+{
+  "id": "M1_T2_Zn_bands_dos",
+  "schema_version": "1.2",
+  "status": "FAILED",
+  "failed_at": "e30_d30/nscf",
+  "is_metal": true,
+  "convergence_evidence": {
+    "scan_points": [],
+    "classification": null,
+    "wall_time_sec": null
+  },
+  "metadata": {
+    "author": "weilin",
+    "generated_at": "2026-04-28",
+    "source": "QE GBRV_USPP_PBE_v1.5 self-run T2 pipeline (8-point scan)"
+  }
+}

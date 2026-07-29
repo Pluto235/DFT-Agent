@@ -1,0 +1,9 @@
+     Program PWSCF v.7.5CNPU-GPU starts on 24Apr2026
+
+     number of atoms/cell      =            2
+
+     iteration # 100     ecut=    40.00 Ry      beta= 0.70
+     Davidson diagonalization with overlap
+     c_bands:  5 eigenvalues not converged
+
+     convergence NOT achieved after 100 iterations: stopping

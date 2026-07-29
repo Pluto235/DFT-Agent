@@ -1,0 +1,189 @@
+{
+  "schema_version": "1.3",
+  "id": "M1_T1_K_vc_relax",
+  "difficulty": {
+    "material_tier": "M1",
+    "task_tier": "T1",
+    "overall_level": null
+  },
+  "material": {
+    "formula": "K",
+    "name": "potassium (bcc)",
+    "structure": "bcc",
+    "space_group": "Im-3m",
+    "space_group_number": 229,
+    "atoms_per_primitive_cell": 1,
+    "advisory_notes": null,
+    "reference_source": {
+      "database": "Materials Project",
+      "id": "mp-58",
+      "url": "https://next-gen.materialsproject.org/materials/mp-58"
+    },
+    "initial_structure": {
+      "source": "mp-58",
+      "note": "MP primitive cell (VASP+PAW PBE geometry), provided as initial structure. Agent should run QE vc-relax on this.",
+      "lattice_type": "primitive",
+      "lattice_constants_angstrom": {
+        "a": 4.672,
+        "b": 4.672,
+        "c": 4.672
+      },
+      "lattice_angles_degree": {
+        "alpha": 109.471,
+        "beta": 109.471,
+        "gamma": 109.471
+      },
+      "atomic_positions_crystal": [
+        {
+          "element": "K",
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    "pseudopotential": {
+      "family": "GBRV_USPP_PBE_v1.5",
+      "relativistic": "scalar",
+      "files": {
+        "K": "K.upf"
+      }
+    }
+  },
+  "task": {
+    "type": "vc_relax",
+    "prompt": null,
+    "policy": {
+      "network_allowed": false
+    }
+  },
+  "evaluator": {
+    "type": "qe_vc_relax_output",
+    "extract_fields": [
+      "a",
+      "b",
+      "c",
+      "alpha",
+      "beta",
+      "gamma",
+      "space_group_number",
+      "point_group",
+      "crystal_system"
+    ],
+    "data_sources": {
+      "primary": "relax.out"
+    },
+    "extraction_method": "pymatgen_spacegroup_analyzer",
+    "extraction_config": {
+      "symprec": 0.001,
+      "angle_tolerance": 5
+    }
+  },
+  "ground_truth": {
+    "a": {
+      "value": 4.672,
+      "unit": "angstrom",
+      "tolerance": 0.01,
+      "rule": "relative"
+    },
+    "b": {
+      "value": 4.672,
+      "unit": "angstrom",
+      "tolerance": 0.01,
+      "rule": "relative"
+    },
+    "c": {
+      "value": 4.672,
+      "unit": "angstrom",
+      "tolerance": 0.01,
+      "rule": "relative"
+    },
+    "alpha": {
+      "value": 109.471,
+      "unit": "degree",
+      "tolerance": 1.0,
+      "rule": "absolute"
+    },
+    "beta": {
+      "value": 109.471,
+      "unit": "degree",
+      "tolerance": 1.0,
+      "rule": "absolute"
+    },
+    "gamma": {
+      "value": 109.471,
+      "unit": "degree",
+      "tolerance": 1.0,
+      "rule": "absolute"
+    },
+    "space_group_number": {
+      "value": 229,
+      "rule": "exact"
+    },
+    "point_group": {
+      "value": "m-3m",
+      "rule": "exact"
+    },
+    "crystal_system": {
+      "value": "cubic",
+      "rule": "exact"
+    }
+  },
+  "final_structure": {
+    "source": "bench/workdir/M1_T1_K_vc_relax/e80_d30/relax.out",
+    "cell_angstrom": [
+      [
+        4.329972592,
+        -7.745e-06,
+        -1.530868037
+      ],
+      [
+        -2.16495005,
+        3.749909646,
+        -1.530846589
+      ],
+      [
+        -1.1208e-05,
+        6.856e-06,
+        4.592622433
+      ]
+    ],
+    "atomic_positions_crystal": [
+      [
+        "K",
+        0.0,
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "scoring": {
+    "aggregate": "all_fields_weighted",
+    "field_weights": {
+      "a": 0.2,
+      "b": 0.2,
+      "c": 0.2,
+      "alpha": 0.05,
+      "beta": 0.05,
+      "gamma": 0.05,
+      "space_group_number": 0.25
+    },
+    "pass_criterion": "all_fields_passed",
+    "partial_credit": true
+  },
+  "convergence_evidence": null,
+  "metadata": {
+    "author": "weilin",
+    "generated_at": "2026-04-24",
+    "reviewer": null,
+    "gt_qe_version": null,
+    "gt_machine": null,
+    "gt_wall_time_sec": null,
+    "gt_quality": "self_run_failed_kept_mp",
+    "gt_switched_at": "2026-04-29",
+    "notes": "bench schema v1.2. P1: GT = initial_structure (MP VASP+PAW PBE lattice) + wide tolerance (D2: 1% relative / 1° absolute) absorbing QE+GBRV-USPP vs VASP+PAW methodology difference. P2 may self-run QE to replace GT; see review_for_yang_round3.md.; self-run vc_relax FAILED 2026-04-29 (D policy investigation); see https://github.com/wanweilin/dft-gt-issue-cases/tree/main/M1_T1_K_vc_relax; bench keeps MP GT until QE setup is debugged.",
+    "is_stable": false
+  }
+}

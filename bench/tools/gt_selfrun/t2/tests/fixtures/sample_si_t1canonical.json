@@ -1,0 +1,12 @@
+{
+  "id": "M1_T1_Si_vc_relax",
+  "schema_version": "1.2",
+  "ground_truth": {
+    "a": {"value": 3.865, "unit": "angstrom", "tolerance": 0.01, "rule": "relative"},
+    "b": {"value": 3.865, "unit": "angstrom", "tolerance": 0.01, "rule": "relative"},
+    "c": {"value": 3.865, "unit": "angstrom", "tolerance": 0.01, "rule": "relative"},
+    "alpha": {"value": 60.0, "unit": "degree", "tolerance": 1.0, "rule": "absolute"},
+    "beta": {"value": 60.0, "unit": "degree", "tolerance": 1.0, "rule": "absolute"},
+    "gamma": {"value": 60.0, "unit": "degree", "tolerance": 1.0, "rule": "absolute"}
+  }
+}
