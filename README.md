@@ -94,7 +94,19 @@ The two [reference solvers](agent/README.md) are the paper's **v1 near-bare ReAc
 | --- | ---: | ---: | ---: | ---: |
 | `deepseek-v4-pro`, retrieval disabled | 100 | 0.706 | 0.876 | +0.170 [0.108, 0.234] |
 
-Scores are provenance-gated, and failed runs count as zero. The 100-task slice contains 58 stable, 30 exploratory and 12 held-out tasks. Use `--list-tasks frozen` to select these IDs. For the broader DeepSeek and Opus comparisons by workflow and material tier, see the [figures in the paper](https://arxiv.org/abs/2611.10629).
+Scores are provenance-gated, and failed runs count as zero. The 100-task slice contains 58 stable, 30 exploratory and 12 held-out tasks. Use `--list-tasks frozen` to select these IDs.
+
+### Results across workflows and material tiers
+
+The figures show the paper's broader evaluation. Each panel compares v1 and v5.1 on tasks evaluated with the same model. [Read the paper on arXiv](https://arxiv.org/abs/2611.10629).
+
+![Mean execution-gated scores for v1 and v5.1 across four workflows, with separate panels for DeepSeek and Opus](figures/fig_compare.png)
+
+**Figure 1.** On common M1/M2 tasks, both models gain on bands + DOS. Elastic-tensor scores rise for DeepSeek and change little for Opus. Error bars show 95% task-clustered bootstrap intervals.
+
+![Heatmaps of the change in execution-gated score from v1 to v5.1 by material tier and workflow for each model](figures/fig_tierheat.png)
+
+**Figure 2.** Each cell shows the mean paired score difference (v5.1 minus v1). On M3 variable-cell relaxation, both models gain 0.17. Hatched cells contain fewer than ten paired tasks.
 
 ## Local web preview
 
