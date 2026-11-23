@@ -19,10 +19,12 @@ to M1/T2 keeps the material pool fixed and changes the target from a relaxed
 structure to electronic properties. The two labels do not imply a single
 numerical difficulty score.
 
-![Public task counts for T1–T4 by material tier. M1 has 58, 58, 52 and 52. M2 has 28, 28, 5 and 5. M3 has 15, 15, 0 and 0. M4 has no public tasks.](bench/figures/task_coverage.png)
+![M×T task coverage. M1 and M2 show stable tasks out of all public tasks in each cell. M3 has 15 exploratory tasks each for T1 and T2. A dash marks a cell with no public tasks.](bench/figures/task_coverage.png)
+
+For M1×T1, **52 stable of 58** means that all 58 task files are public. Use the 52 stable tasks for benchmark comparisons. The other 6 are held out for diagnostics. M3 tasks are exploratory and are reported separately.
 
 <details>
-<summary>Browse task files by matrix cell</summary>
+<summary>Browse task files by matrix cell (total public counts)</summary>
 
 - **M1** · [T1 · 58](bench/questions/M1_T1/) · [T2 · 58](bench/questions/M1_T2/) · [T3 · 52](bench/questions/M1_T3/) · [T4 · 52](bench/questions/M1_T4/)
 - **M2** · [T1 · 28](bench/questions/M2_T1/) · [T2 · 28](bench/questions/M2_T2/) · [T3 · 5](bench/questions/M2_T3/) · [T4 · 5](bench/questions/M2_T4/)
