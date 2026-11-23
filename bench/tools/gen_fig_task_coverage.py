@@ -9,7 +9,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
 
-HERE = Path(__file__).resolve().parent
+BENCH_ROOT = Path(__file__).resolve().parents[1]
 TIERS = [
     "Simple elemental and\nbinary crystals",
     "Larger or lower-\nsymmetry cells",
@@ -102,4 +102,4 @@ def draw(manifest, output):
 
 
 if __name__ == "__main__":
-    draw(HERE.parent / "task_manifest.tsv", HERE / "task_coverage.png")
+    draw(BENCH_ROOT / "task_manifest.tsv", BENCH_ROOT / "task_coverage.png")
