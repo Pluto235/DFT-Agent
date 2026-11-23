@@ -1,3 +1,4 @@
+import hashlib
 import json
 import subprocess
 import sys
@@ -154,9 +155,9 @@ def test_release_subset(subset, count):
     ).splitlines()
     assert len(set(ids)) == len(ids) == count
     if subset == "frozen":
-        import csv
-        with (BENCH_ROOT.parent / "results/frozen_matched_scores.csv").open() as scores:
-            assert set(ids) == {row["task_id"] for row in csv.DictReader(scores)}
+        # Pin the 100 task IDs from the paper comparison independently of the release manifest.
+        digest = hashlib.sha256("\n".join(sorted(ids)).encode("utf-8")).hexdigest()
+        assert digest == "2fc726fed128cd6e0c9dfe232717a565e797e0aa2d53e2aee882c829e4dde502"
     else:
         for task_id in ids:
             task = load_task(BENCH_ROOT, task_id)

@@ -17,4 +17,4 @@ python -m pip install -r agent/v5.1/requirements.txt
 python bench/harness/run.py --task-id M1_T1_Si_vc_relax --solver agent/v5.1/solve.py --solver-args="--model deepseek-v4-pro --no-experience"
 ```
 
-v5.1 bundles QE tools, input checks, domain guidance, convergence assistance and verification. The fixed diagnostic comparison disables experience retrieval. [Read the archived comparison](../results/README.md) without a model account or QE installation.
+v5.1 bundles QE tools, input checks, domain guidance, convergence assistance and verification. The fixed diagnostic comparison disables experience retrieval. [See the reference scores on the 100-task slice](../README.md#reference-agents-and-paper-results).

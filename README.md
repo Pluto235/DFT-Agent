@@ -94,19 +94,7 @@ The two [reference solvers](agent/README.md) are the paper's **v1 near-bare ReAc
 | --- | ---: | ---: | ---: | ---: |
 | `deepseek-v4-pro`, retrieval disabled | 100 | 0.706 | 0.876 | +0.170 [0.108, 0.234] |
 
-Scores are provenance-gated; failed runs count as zero. The 100 IDs span 58 stable, 30 exploratory and 12 held-out tasks in this checkout. The table reproduces the archived scores on that diagnostic slice. See the [per-task scores](results/frozen_matched_scores.csv), [reproduction command and model-specific results](results/README.md), and [paper](https://arxiv.org/abs/2611.10629).
-
-### Results across workflows and material tiers
-
-The following figures reproduce the broader model-matched evaluation in the [paper](https://arxiv.org/abs/2611.10629). The table above reports the separate 100-task frozen comparison.
-
-![Baseline and engineered agent scores by workflow, shown separately for DeepSeek and Opus](results/figures/fig_compare.png)
-
-**Figure 1.** On common M1/M2 tasks, both models gain on bands + DOS. Elastic-tensor scores rise for DeepSeek and change little for Opus. Error bars show 95% task-clustered bootstrap intervals.
-
-![Heatmaps of the change in gated score from v1 to v5.1 by material tier, workflow and model](results/figures/fig_tierheat.png)
-
-**Figure 2.** Each cell shows the change in execution-gated score from v1 to v5.1. On M3 relaxation, both models gain 0.17. Hatched cells contain fewer than ten paired tasks.
+Scores are provenance-gated, and failed runs count as zero. The 100-task slice contains 58 stable, 30 exploratory and 12 held-out tasks. Use `--list-tasks frozen` to select these IDs. For the broader DeepSeek and Opus comparisons by workflow and material tier, see the [figures in the paper](https://arxiv.org/abs/2611.10629).
 
 ## Local web preview
 
