@@ -5,6 +5,28 @@ contains **116 tasks for 58 M1 materials**. The harness renders each prompt,
 scores properties extracted from the solver's QE outputs, and checks execution
 evidence before assigning the final score.
 
+## Benchmark design: four material tiers × four workflows
+
+Each task pairs a material with a QE workflow. The **M axis** groups materials by
+the physics and crystal structure a solver must handle. The **T axis** specifies
+the calculation and the observable to recover. For example, moving from M1/T1
+to M1/T2 keeps the material pool fixed and changes the target from a relaxed
+structure to electronic properties. The two labels do not imply a single
+numerical difficulty score.
+
+| Material tier | T1 · Variable-cell relaxation | T2 · Bands + DOS | T3 · Equation of state | T4 · Elastic tensor |
+| --- | ---: | ---: | ---: | ---: |
+| **M1** · Simple elemental and binary crystals (e.g., Si, GaAs) | [58](bench/questions/M1_T1/) | [58](bench/questions/M1_T2/) | — | — |
+| **M2** · Larger or lower-symmetry cells (e.g., perovskites and skutterudites) | — | — | — | — |
+| **M3** · Magnetic transition-metal systems requiring spin polarization | — | — | — | — |
+| **M4** · Strongly correlated systems | — | — | — | — |
+
+Counts refer to task files in **this public edition**. A dash means the checkout
+contains no tasks in that cell. T1 relaxes the cell and atomic positions. T2
+computes the band structure and density of states. T3 fits an energy–volume
+curve to obtain equilibrium volume and bulk modulus. T4 uses finite strains and
+their stresses to recover the elastic stiffness tensor.
+
 ## Start with the benchmark
 
 From the repository root, list the task IDs with Python 3.10+:

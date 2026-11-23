@@ -1,5 +1,7 @@
 # 字段规范：`difficulty`
 
+> 历史设计稿。当前发布采用的 4 × 4 框架和各格公开题数见[仓库首页](../../../README.md#benchmark-design-four-material-tiers--four-workflows)。下文保留早期 M5 和 T3/T4 编号提案。
+
 > 分层方案沿袭杨博 0421 框架。三个子字段的语义：`material_tier` 是材料复杂度（硬分类）、`task_tier` 是任务类型（硬分类）、`overall_level` 是题目的整体难度（综合判断，不从前两者自动导出）。请专家看看分层是否合理、是否遗漏了应单列的材料类型。
 
 ## 用途
