@@ -33,15 +33,48 @@ their stresses to recover the elastic stiffness tensor.
 
 ## Start with the benchmark
 
-From the repository root, list the standard evaluation set with Python 3.10+:
+### 1. Choose a task
+
+Run these commands in a POSIX shell. Browsing tasks only requires Python 3.10+.
 
 ```bash
-python3 bench/harness/run.py --list-tasks stable
+git clone https://github.com/Pluto235/DFT-Agent.git
+cd DFT-Agent
+python3 bench/harness/run.py --list-tasks stable | grep '^M1_T1_'
 ```
 
-- **Explore a task.** Inspect the [silicon relaxation task](bench/questions/M1_T1/M1_T1_Si_vc_relax.json) for its input structure, reference values and scoring tolerances. During evaluation, pass only the rendered prompt and prepared working directory to the solver.
-- **Try scoring offline.** Use a [bundled silicon output fixture](bench/harness/README.md#score-a-saved-output) to inspect field scores without running QE or calling a model.
-- **Evaluate your solver.** Follow the [setup and single-task command](bench/README.md#运行自己的-solver). The [solver interface](bench/harness/README.md#solver-interface) specifies the arguments, output files and execution log. Any Python adapter implementing it can participate.
+Start with `M1_T1_Si_vc_relax` (silicon relaxation). Use `stable` for the 245-task benchmark, `exploratory` for the 30 magnetic tasks, or `frozen` for the paper's 100-task diagnostic comparison. The 41 `held_out` IDs are for diagnosis; the unfiltered list includes all 316. To compare agents, save the same task list for each and record the Git commit.
+
+### 2. Connect your agent
+
+From the repository root, prepare the harness environment. Install your own agent's Python package or adapter dependencies into the same environment.
+
+```bash
+python3 -m venv bench/.venv
+. bench/.venv/bin/activate
+python -m pip install -r bench/requirements.txt
+```
+
+To try the evaluator before installing QE, follow the [offline Si scoring example](bench/harness/README.md#score-a-saved-output) from `bench/`. For a live run, install Quantum ESPRESSO, put its binaries on `PATH` (or set `QE_GPU_WRAPPER_DIR`), and fetch the checksummed pseudopotentials:
+
+```bash
+bash bench/setup.sh
+```
+
+Wrap your agent in a Python script accepting `--prompt`, `--workdir` and `--out`. [Copy the adapter example](bench/harness/README.md#minimal-python-adapter) and connect its `run_agent` call to your implementation. Give the agent the rendered prompt and work directory; keep task JSONs with reference answers on the evaluator side. For T1 the adapter returns a path to the actual QE relaxation log. The [solver interface](bench/harness/README.md#solver-interface) lists the outputs for every workflow.
+
+### 3. Run once and read the report
+
+Replace the solver path below with your adapter. The fresh output directory keeps this invocation's report separate from previous attempts.
+
+```bash
+runs_dir="$(mktemp -d)"
+python bench/harness/run.py --task-id M1_T1_Si_vc_relax \
+  --solver /absolute/path/to/solve.py --runs-dir "$runs_dir"
+python -m json.tool "$runs_dir"/*/report.json
+```
+
+Use **`total_score`** (0–1) for comparisons. If it is low and `audit_passed` is true, inspect `extracted_fields` and `per_field_scores` for disagreement with the reference. If `audit_passed` is false, the gate sets `total_score` to zero even when `total_score_raw` is high; the flags identify the missing execution evidence. A report with `failure_reason` can lack score fields. For the paper's failed-as-zero convention, keep that attempt in the denominator and count it as zero. See [report fields and troubleshooting](bench/harness/README.md#read-a-live-result).
 
 ## Public edition and paper scope
 

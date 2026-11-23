@@ -38,10 +38,37 @@ in the prepared work directory. It passes:
 For T1, return `vc_relax_out` (the final relaxation log). For T2, return
 `scf_out`, `bands_out`, `bands_data`, `dos_dat` and `nscf_dos_out`. The prompt
 explains each file. For T3, return `eos_points_csv`; for T4, return
-`stress_strain_csv`. Keep the individual QE output logs in the work directory
+`stress_strain_csv`. Keep the individual QE `.out` logs in the work directory
 so the harness can audit the volume or strain calculations. Log the shell commands actually executed to `workdir/bash.log`
 using `$ command` lines. The audit reads this log for QE invocation and
 network commands, and checks completion and timing in the submitted outputs.
+
+## Minimal Python adapter
+
+Save this as `solve.py` alongside your own code. Replace the example import and call with your agent's API. Here `run_agent` receives the prompt text and working directory and returns a dictionary of output paths on completion, or `None` if the calculation could not finish.
+
+```python
+import argparse
+import json
+from pathlib import Path
+
+from my_agent import run_agent  # Replace with your agent's entry point.
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--prompt", type=Path, required=True)
+parser.add_argument("--workdir", type=Path, required=True)
+parser.add_argument("--out", type=Path, required=True)
+args = parser.parse_args()
+
+outputs = run_agent(args.prompt.read_text(), args.workdir)
+if outputs is None:
+    result = {"incomplete": True, "reason": "agent did not finish the calculation"}
+else:
+    result = {"task_outputs": outputs}
+args.out.write_text(json.dumps(result))
+```
+
+For example, a successful T1 call that wrote `relax.out` directly under `--workdir` should return `{"vc_relax_out": "relax.out"}`. Instrument the agent's command runner to append each actual invocation to `bash.log` in that directory as it runs. Install the agent's dependencies and configure any provider credentials before launching the harness. If your adapter accepts extra flags such as `--model`, forward them with `--solver-args="--model YOUR_MODEL"`.
 
 ## Read a live result
 
@@ -57,3 +84,5 @@ the timestamped run directories are under `bench/runs/`.
   invalidate a numerically accurate result.
 - A missing or incomplete solver result or failed extraction produces a failure
   report with `failure_reason`. Keep these failures visible when aggregating runs.
+
+The harness saves `solver_stdout.log` and `solver_stderr.log` beside the report. Start with stderr if the adapter exited before writing its result. For an execution-audit failure, inspect `workdir/bash.log` and the original QE output logs. A completed harness process can still produce a gated score of zero.
