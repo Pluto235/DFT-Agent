@@ -1,0 +1,663 @@
+{
+  "schema_version": "1.3",
+  "id": "M2_T1_LiAlSi2O6_spodumene_vc_relax",
+  "difficulty": {
+    "material_tier": "M2",
+    "task_tier": "T1",
+    "overall_level": null
+  },
+  "material": {
+    "formula": "LiAlSi2O6",
+    "name": "spodumene (pyroxene)",
+    "structure": "monoclinic pyroxene",
+    "space_group": "C2/c",
+    "space_group_number": 15,
+    "atoms_per_primitive_cell": 20,
+    "advisory_notes": null,
+    "reference_source": {
+      "database": "Materials Project",
+      "id": "mp-6340",
+      "url": "https://next-gen.materialsproject.org/materials/mp-6340"
+    },
+    "initial_structure": {
+      "source": "mp-6340",
+      "note": "MP primitive cell (VASP+PAW PBE geometry), provided as initial structure. Agent should run QE vc-relax on this.",
+      "lattice_type": "primitive",
+      "lattice_constants_angstrom": {
+        "a": 6.41,
+        "b": 6.41,
+        "c": 5.275
+      },
+      "lattice_angles_degree": {
+        "alpha": 74.676,
+        "beta": 105.324,
+        "gamma": 97.263
+      },
+      "atomic_positions_crystal": [
+        {
+          "element": "Li",
+          "position": [
+            0.7295,
+            0.7295,
+            0.25
+          ]
+        },
+        {
+          "element": "Li",
+          "position": [
+            0.2705,
+            0.2705,
+            0.75
+          ]
+        },
+        {
+          "element": "Al",
+          "position": [
+            0.09453,
+            0.09453,
+            0.25
+          ]
+        },
+        {
+          "element": "Al",
+          "position": [
+            0.90547,
+            0.90547,
+            0.75
+          ]
+        },
+        {
+          "element": "Si",
+          "position": [
+            0.613277,
+            0.199956,
+            0.242023
+          ]
+        },
+        {
+          "element": "Si",
+          "position": [
+            0.199956,
+            0.613277,
+            0.257977
+          ]
+        },
+        {
+          "element": "Si",
+          "position": [
+            0.386723,
+            0.800044,
+            0.757977
+          ]
+        },
+        {
+          "element": "Si",
+          "position": [
+            0.800044,
+            0.386723,
+            0.742023
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.807927,
+            0.026128,
+            0.359041
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.026128,
+            0.807927,
+            0.140959
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.192073,
+            0.973872,
+            0.640959
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.973872,
+            0.192073,
+            0.859041
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.367901,
+            0.099609,
+            0.20015
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.099609,
+            0.367901,
+            0.29985
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.632099,
+            0.900391,
+            0.79985
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.900391,
+            0.632099,
+            0.70015
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.662574,
+            0.372536,
+            0.435169
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.372536,
+            0.662574,
+            0.064831
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.337426,
+            0.627464,
+            0.564831
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.627464,
+            0.337426,
+            0.935169
+          ]
+        }
+      ]
+    },
+    "pseudopotential": {
+      "family": "GBRV_USPP_PBE_v1.5",
+      "relativistic": "scalar",
+      "files": {
+        "Li": "Li.upf",
+        "Al": "Al.upf",
+        "Si": "Si.upf",
+        "O": "O.upf"
+      }
+    }
+  },
+  "task": {
+    "type": "vc_relax",
+    "prompt": null,
+    "policy": {
+      "network_allowed": false
+    }
+  },
+  "evaluator": {
+    "type": "qe_vc_relax_output",
+    "extract_fields": [
+      "a",
+      "b",
+      "c",
+      "alpha",
+      "beta",
+      "gamma",
+      "space_group_number",
+      "point_group",
+      "crystal_system"
+    ],
+    "data_sources": {
+      "primary": "relax.out"
+    },
+    "extraction_method": "pymatgen_spacegroup_analyzer",
+    "extraction_config": {
+      "symprec": 0.001,
+      "angle_tolerance": 5
+    }
+  },
+  "ground_truth": {
+    "a": {
+      "value": 6.414620371895874,
+      "unit": "angstrom",
+      "tolerance": 0.01,
+      "rule": "relative"
+    },
+    "b": {
+      "value": 6.414621469738554,
+      "unit": "angstrom",
+      "tolerance": 0.01,
+      "rule": "relative"
+    },
+    "c": {
+      "value": 5.277416014535395,
+      "unit": "angstrom",
+      "tolerance": 0.01,
+      "rule": "relative"
+    },
+    "alpha": {
+      "value": 74.66113917953624,
+      "unit": "degree",
+      "tolerance": 1.0,
+      "rule": "absolute"
+    },
+    "beta": {
+      "value": 105.3388607110743,
+      "unit": "degree",
+      "tolerance": 1.0,
+      "rule": "absolute"
+    },
+    "gamma": {
+      "value": 97.27605115764959,
+      "unit": "degree",
+      "tolerance": 1.0,
+      "rule": "absolute"
+    },
+    "space_group_number": {
+      "value": 15,
+      "rule": "exact"
+    },
+    "point_group": {
+      "value": "2/m",
+      "rule": "exact"
+    },
+    "crystal_system": {
+      "value": "monoclinic",
+      "rule": "exact"
+    }
+  },
+  "final_structure": {
+    "source": "bench/workdir/M2_T1_LiAlSi2O6_spodumene_vc_relax/e80_d30/relax.out",
+    "cell_angstrom": [
+      [
+        6.186400794,
+        -0.00060308,
+        -1.695816399
+      ],
+      [
+        -0.376921838,
+        6.174909677,
+        1.695816978
+      ],
+      [
+        -0.000873986,
+        0.000822839,
+        5.277415831
+      ]
+    ],
+    "atomic_positions_crystal": [
+      [
+        "Li",
+        0.7294671879,
+        0.7294671342,
+        0.2500000304
+      ],
+      [
+        "Li",
+        0.2705328121,
+        0.2705328658,
+        0.7499999696
+      ],
+      [
+        "Al",
+        0.0946211824,
+        0.0946212364,
+        0.2499999908
+      ],
+      [
+        "Al",
+        0.9053788176,
+        0.9053787636,
+        0.7500000092
+      ],
+      [
+        "Si",
+        0.6134229887,
+        0.2000449855,
+        0.2420318859
+      ],
+      [
+        "Si",
+        0.2000449456,
+        0.6134229775,
+        0.2579681241
+      ],
+      [
+        "Si",
+        0.3865770113,
+        0.7999550145,
+        0.7579681141
+      ],
+      [
+        "Si",
+        0.7999550544,
+        0.3865770225,
+        0.7420318759
+      ],
+      [
+        "O",
+        0.8076338333,
+        0.0261869358,
+        0.3588058064
+      ],
+      [
+        "O",
+        0.0261869054,
+        0.8076338153,
+        0.1411941772
+      ],
+      [
+        "O",
+        0.1923661667,
+        0.9738130642,
+        0.6411941936
+      ],
+      [
+        "O",
+        0.9738130946,
+        0.1923661847,
+        0.8588058228
+      ],
+      [
+        "O",
+        0.3683740835,
+        0.0996550794,
+        0.2000829605
+      ],
+      [
+        "O",
+        0.0996550735,
+        0.3683740969,
+        0.2999170248
+      ],
+      [
+        "O",
+        0.6316259165,
+        0.9003449206,
+        0.7999170395
+      ],
+      [
+        "O",
+        0.9003449265,
+        0.6316259031,
+        0.7000829752
+      ],
+      [
+        "O",
+        0.6625900603,
+        0.37252291,
+        0.4350938209
+      ],
+      [
+        "O",
+        0.3725229582,
+        0.6625900088,
+        0.0649061947
+      ],
+      [
+        "O",
+        0.3374099397,
+        0.62747709,
+        0.5649061791
+      ],
+      [
+        "O",
+        0.6274770418,
+        0.3374099912,
+        0.9350938053
+      ]
+    ]
+  },
+  "scoring": {
+    "aggregate": "all_fields_weighted",
+    "field_weights": {
+      "a": 0.2,
+      "b": 0.2,
+      "c": 0.2,
+      "alpha": 0.05,
+      "beta": 0.05,
+      "gamma": 0.05,
+      "space_group_number": 0.25
+    },
+    "pass_criterion": "all_fields_passed",
+    "partial_credit": true
+  },
+  "convergence_evidence": {
+    "methodology": "Two-round convergence scan: Round 1 fixes kmesh density at 30 and scans ecutwfc in {30,40,50,60,80}; Round 2 fixes ecutwfc at 80 and scans kmesh density in {20,30,40,50}. Convergence criteria: ΔE < 0.05 meV/atom and ΔP < 0.5 kbar.",
+    "ecutwfc_scan": {
+      "values_ry": [
+        30.0,
+        40.0,
+        50.0,
+        60.0,
+        80.0,
+        100.0,
+        120.0,
+        150.0
+      ],
+      "kmesh_fixed": [
+        6,
+        6,
+        6
+      ],
+      "delta_E_meV_per_atom": [
+        94.33609284246597,
+        10.799858961070118,
+        8.069611349598835,
+        4.807904961026581,
+        3.580372127180039,
+        1.3794131847948559,
+        1.1251295854536552,
+        0.0
+      ],
+      "delta_P_kbar": [
+        25.18,
+        0.010000000000000002,
+        0.2,
+        0.009999999999999998,
+        0.06,
+        0.019999999999999997,
+        0.04,
+        0.0
+      ],
+      "lattice_per_point": [
+        {
+          "a_angstrom": 6.304443,
+          "b_angstrom": 6.304443,
+          "c_angstrom": 5.199679,
+          "alpha_degree": 74.7945,
+          "beta_degree": 105.2055,
+          "gamma_degree": 97.3523,
+          "space_group_number": 15
+        },
+        {
+          "a_angstrom": 6.415967,
+          "b_angstrom": 6.415969,
+          "c_angstrom": 5.278478,
+          "alpha_degree": 74.6616,
+          "beta_degree": 105.3384,
+          "gamma_degree": 97.2766,
+          "space_group_number": 15
+        },
+        {
+          "a_angstrom": 6.412785,
+          "b_angstrom": 6.412786,
+          "c_angstrom": 5.276677,
+          "alpha_degree": 74.6632,
+          "beta_degree": 105.3367,
+          "gamma_degree": 97.2713,
+          "space_group_number": 15
+        },
+        {
+          "a_angstrom": 6.415181,
+          "b_angstrom": 6.415181,
+          "c_angstrom": 5.277823,
+          "alpha_degree": 74.6611,
+          "beta_degree": 105.3389,
+          "gamma_degree": 97.2764,
+          "space_group_number": 15
+        },
+        {
+          "a_angstrom": 6.41462,
+          "b_angstrom": 6.414622,
+          "c_angstrom": 5.277416,
+          "alpha_degree": 74.6611,
+          "beta_degree": 105.3389,
+          "gamma_degree": 97.276,
+          "space_group_number": 15
+        },
+        {
+          "a_angstrom": 6.415651,
+          "b_angstrom": 6.415651,
+          "c_angstrom": 5.278217,
+          "alpha_degree": 74.6611,
+          "beta_degree": 105.3389,
+          "gamma_degree": 97.2764,
+          "space_group_number": 15
+        },
+        {
+          "a_angstrom": 6.415675,
+          "b_angstrom": 6.415675,
+          "c_angstrom": 5.278246,
+          "alpha_degree": 74.6611,
+          "beta_degree": 105.3389,
+          "gamma_degree": 97.2763,
+          "space_group_number": 15
+        },
+        {
+          "a_angstrom": 6.415782,
+          "b_angstrom": 6.415783,
+          "c_angstrom": 5.278404,
+          "alpha_degree": 74.6609,
+          "beta_degree": 105.3391,
+          "gamma_degree": 97.2753,
+          "space_group_number": 15
+        }
+      ]
+    },
+    "kmesh_scan": {
+      "values": [
+        [
+          4,
+          4,
+          4
+        ],
+        [
+          6,
+          6,
+          6
+        ],
+        [
+          6,
+          6,
+          8
+        ],
+        [
+          8,
+          8,
+          10
+        ]
+      ],
+      "ecutwfc_fixed_ry": 80.0,
+      "delta_E_meV_per_atom": [
+        0.0014013863692746867,
+        0.0005170163187735653,
+        0.0005578334301530646,
+        0.0
+      ],
+      "delta_P_kbar": [
+        0.009999999999999998,
+        0.009999999999999998,
+        0.009999999999999998,
+        0.0
+      ],
+      "lattice_per_point": [
+        {
+          "a_angstrom": 6.414621,
+          "b_angstrom": 6.414619,
+          "c_angstrom": 5.277419,
+          "alpha_degree": 74.6611,
+          "beta_degree": 105.3389,
+          "gamma_degree": 97.276,
+          "space_group_number": 15
+        },
+        {
+          "a_angstrom": 6.41462,
+          "b_angstrom": 6.414622,
+          "c_angstrom": 5.277416,
+          "alpha_degree": 74.6611,
+          "beta_degree": 105.3389,
+          "gamma_degree": 97.276,
+          "space_group_number": 15
+        },
+        {
+          "a_angstrom": 6.41462,
+          "b_angstrom": 6.414621,
+          "c_angstrom": 5.277416,
+          "alpha_degree": 74.6611,
+          "beta_degree": 105.3389,
+          "gamma_degree": 97.276,
+          "space_group_number": 15
+        },
+        {
+          "a_angstrom": 6.41462,
+          "b_angstrom": 6.414621,
+          "c_angstrom": 5.277416,
+          "alpha_degree": 74.6611,
+          "beta_degree": 105.3389,
+          "gamma_degree": 97.2761,
+          "space_group_number": 15
+        }
+      ]
+    },
+    "converged_params": {
+      "ecutwfc_ry": 80.0,
+      "ecutrho_ry": 800.0,
+      "kmesh": [
+        8,
+        8,
+        10
+      ],
+      "kmesh_density_pts_per_inv_angstrom": 50.0
+    },
+    "convergence_threshold": {
+      "delta_E_meV_per_atom": 0.5,
+      "delta_P_kbar": 0.5,
+      "delta_l_relative_converged": 0.01,
+      "delta_l_relative_marginal": 0.02,
+      "criterion": "geometry-relative (Plan B, 杨博 0427)"
+    },
+    "raw_outputs_dir": "bench/gt_selfrun/workdir/M2_T1_LiAlSi2O6_spodumene_vc_relax"
+  },
+  "metadata": {
+    "author": "weilin",
+    "generated_at": "2026-04-24",
+    "reviewer": null,
+    "gt_qe_version": "7.5CN-GPU",
+    "gt_machine": null,
+    "gt_wall_time_sec": 3430.505985021591,
+    "gt_quality": "self_run_converged",
+    "gt_switched_at": "2026-04-29",
+    "notes": "bench schema v1.2. P1: GT = initial_structure (MP VASP+PAW PBE lattice) + wide tolerance (D2: 1% relative / 1° absolute) absorbing QE+GBRV-USPP vs VASP+PAW methodology difference. P2 may self-run QE to replace GT; see review_for_yang_round3.md.; v1.3 GT switched MP→self-run 2026-04-29 (D policy); see todo/bench/t1-gt-full-replacement.md"
+  }
+}

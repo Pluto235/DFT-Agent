@@ -1,0 +1,19 @@
+# Bench does NOT install these — see agents-api.md §6.
+# Listed here purely for human review and local dev.
+#
+# v5 additions:
+#   - claude-agent-sdk: official Anthropic agent framework (subagent/hook/MCP)
+#   - sentence-transformers + onnxruntime: offline embedding for experience retrieval
+#   - pymatgen: program-level verifier (SpacegroupAnalyzer, BandStructureSymmLine)
+#
+# Non-Claude (legacy) path still uses anthropic + openai only.
+
+anthropic>=0.40
+openai>=2.0
+claude-agent-sdk>=0.1.80
+sentence-transformers>=2.7
+onnxruntime>=1.17
+pymatgen>=2024.0
+ase>=3.22
+numpy
+pyyaml

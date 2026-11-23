@@ -1,0 +1,948 @@
+library_version: GBRV_USPP_PBE_v1.5
+generated_at: '2026-05-04'
+source_yaml: m3_m4.yaml
+M3:
+  description: 'Complex magnetism and spin physics (杨博 0504 doc M3).
+
+    Standard collinear magnetism. Standard PBE/LDA may need DFT+U for Mott AFM oxides.
+
+    '
+  categories:
+    fm_metals:
+      label: Ferromagnetic Metals (classic benchmarks)
+      materials:
+      - id: M3_Fe_bcc
+        formula: Fe
+        structure_hint: bcc
+        space_group: Im-3m
+        space_group_number: 229
+        atoms_per_primitive_cell: 1
+        notes: Classic FM metal benchmark
+        mp_id_hint: mp-13
+        hint_mismatch_warning: null
+        candidates:
+        - mp_id: mp-13
+          formula: Fe
+          space_group_symbol: Im-3m
+          space_group_number: 229
+          n_atoms: 2
+          energy_above_hull: 0.0
+          is_stable: true
+          magnetic_ordering: FM
+          formation_energy_per_atom: 0.0
+      - id: M3_Ni_fcc
+        formula: Ni
+        structure_hint: fcc
+        space_group: Fm-3m
+        space_group_number: 225
+        atoms_per_primitive_cell: 1
+        notes: Itinerant FM, dense k-mesh required
+        mp_id_hint: mp-23
+        hint_mismatch_warning: null
+        candidates:
+        - mp_id: mp-23
+          formula: Ni
+          space_group_symbol: Fm-3m
+          space_group_number: 225
+          n_atoms: 1
+          energy_above_hull: 0.0
+          is_stable: true
+          magnetic_ordering: FM
+          formation_energy_per_atom: 0.0
+      - id: M3_Co_hcp
+        formula: Co
+        structure_hint: hcp
+        space_group: P6_3/mmc
+        space_group_number: 194
+        atoms_per_primitive_cell: 2
+        notes: FM with strong uniaxial anisotropy
+        mp_id_hint: mp-54
+        hint_mismatch_warning: null
+        candidates:
+        - mp_id: mp-54
+          formula: Co
+          space_group_symbol: P6_3/mmc
+          space_group_number: 194
+          n_atoms: 2
+          energy_above_hull: 0.025098924999999002
+          is_stable: false
+          magnetic_ordering: FM
+          formation_energy_per_atom: 0.025098924999999002
+    afm_oxides_typeII:
+      label: Type-II AFM Mott Oxides (rocksalt)
+      materials:
+      - id: M3_NiO
+        formula: NiO
+        structure_hint: rocksalt
+        space_group: Fm-3m
+        space_group_number: 225
+        atoms_per_primitive_cell: 2
+        notes: Textbook Type-II AFM; magnetic cell 2× chemical along [111]
+        mp_id_hint: mp-19009
+        hint_mismatch_warning: null
+        candidates:
+        - mp_id: mp-19009
+          formula: NiO
+          space_group_symbol: Fm-3m
+          space_group_number: 225
+          n_atoms: 2
+          energy_above_hull: 0.0
+          is_stable: true
+          magnetic_ordering: FM
+          formation_energy_per_atom: -1.218085299999999
+      - id: M3_CoO
+        formula: CoO
+        structure_hint: rocksalt
+        space_group: Fm-3m
+        space_group_number: 225
+        atoms_per_primitive_cell: 2
+        notes: Type-II AFM, unquenched orbital momentum
+        mp_id_hint: null
+        hint_mismatch_warning: null
+        candidates:
+        - mp_id: mp-19079
+          formula: CoO
+          space_group_symbol: Fm-3m
+          space_group_number: 225
+          n_atoms: 4
+          energy_above_hull: 0.036914996250001005
+          is_stable: false
+          magnetic_ordering: FM
+          formation_energy_per_atom: -1.23491615
+        - mp_id: mp-22408
+          formula: CoO
+          space_group_symbol: F-43m
+          space_group_number: 216
+          n_atoms: 4
+          energy_above_hull: 0.0
+          is_stable: true
+          magnetic_ordering: AFM
+          formation_energy_per_atom: -1.2718311462500012
+        - mp_id: mp-19128
+          formula: CoO
+          space_group_symbol: P6_3mc
+          space_group_number: 186
+          n_atoms: 4
+          energy_above_hull: 0.00041258
+          is_stable: false
+          magnetic_ordering: AFM
+          formation_energy_per_atom: -1.27141856625
+        - mp_id: mp-19275
+          formula: CoO
+          space_group_symbol: I4/mmm
+          space_group_number: 139
+          n_atoms: 8
+          energy_above_hull: 0.131636747499999
+          is_stable: false
+          magnetic_ordering: AFM
+          formation_energy_per_atom: -1.140194398750001
+        - mp_id: mp-1245089
+          formula: CoO
+          space_group_symbol: P1
+          space_group_number: 1
+          n_atoms: 80
+          energy_above_hull: 0.36880369100000104
+          is_stable: false
+          magnetic_ordering: FM
+          formation_energy_per_atom: -0.9030274552499991
+      - id: M3_MnO
+        formula: MnO
+        structure_hint: rocksalt
+        space_group: Fm-3m
+        space_group_number: 225
+        atoms_per_primitive_cell: 2
+        notes: Type-II AFM
+        mp_id_hint: null
+        hint_mismatch_warning: null
+        candidates:
+        - mp_id: mp-19006
+          formula: MnO
+          space_group_symbol: Fm-3m
+          space_group_number: 225
+          n_atoms: 4
+          energy_above_hull: 0.05336856250000101
+          is_stable: false
+          magnetic_ordering: FM
+          formation_energy_per_atom: -1.979201203965518
+        - mp_id: mp-1232659
+          formula: MnO
+          space_group_symbol: Pmmn
+          space_group_number: 59
+          n_atoms: 8
+          energy_above_hull: 0.0
+          is_stable: true
+          magnetic_ordering: AFM
+          formation_energy_per_atom: -2.032569766465519
+        - mp_id: mp-2831286
+          formula: MnO
+          space_group_symbol: Cmc2_1
+          space_group_number: 36
+          n_atoms: 8
+          energy_above_hull: 0.055364538750001004
+          is_stable: false
+          magnetic_ordering: AFM
+          formation_energy_per_atom: -1.9772052277155172
+        - mp_id: mp-999539
+          formula: MnO
+          space_group_symbol: P6_3mc
+          space_group_number: 186
+          n_atoms: 4
+          energy_above_hull: 0.058554023750001
+          is_stable: false
+          magnetic_ordering: FM
+          formation_energy_per_atom: -1.9740157427155172
+        - mp_id: mp-1238899
+          formula: MnO
+          space_group_symbol: F-43m
+          space_group_number: 216
+          n_atoms: 2
+          energy_above_hull: 0.13313903000000202
+          is_stable: false
+          magnetic_ordering: FM
+          formation_energy_per_atom: -1.899430736465516
+    sdw_simple:
+      label: Spin-Density-Wave / Simple AFM Metals
+      materials:
+      - id: M3_Cr_bcc
+        formula: Cr
+        structure_hint: bcc
+        space_group: Im-3m
+        space_group_number: 229
+        atoms_per_primitive_cell: 1
+        notes: Modeled as simple AFM in 2-atom cell for basic testing
+        mp_id_hint: mp-90
+        hint_mismatch_warning: null
+        candidates:
+        - mp_id: mp-90
+          formula: Cr
+          space_group_symbol: Im-3m
+          space_group_number: 229
+          n_atoms: 2
+          energy_above_hull: 0.0
+          is_stable: true
+          magnetic_ordering: AFM
+          formation_energy_per_atom: 0.0
+    afm_complex_oxides:
+      label: Complex AFM/Ferrimagnet Oxides
+      materials:
+      - id: M3_Fe2O3_hematite
+        formula: Fe2O3
+        structure_hint: corundum
+        space_group: R-3c
+        space_group_number: 167
+        atoms_per_primitive_cell: 10
+        notes: α-Fe2O3, AFM Mott insulator
+        mp_id_hint: mp-24972
+        hint_mismatch_warning: mp_id_hint mp-24972 not found in MP
+        candidates:
+        - mp_id: mp-19770
+          formula: Fe2O3
+          space_group_symbol: R-3c
+          space_group_number: 167
+          n_atoms: 10
+          energy_above_hull: 0.0
+          is_stable: true
+          magnetic_ordering: FM
+          formation_energy_per_atom: -1.7070913529999991
+        - mp_id: mp-565814
+          formula: Fe2O3
+          space_group_symbol: Ia-3
+          space_group_number: 206
+          n_atoms: 40
+          energy_above_hull: 0.07129889575000001
+          is_stable: false
+          magnetic_ordering: FM
+          formation_energy_per_atom: -1.635792457249999
+        - mp_id: mp-715572
+          formula: Fe2O3
+          space_group_symbol: C2
+          space_group_number: 5
+          n_atoms: 40
+          energy_above_hull: 0.077177550749999
+          is_stable: false
+          magnetic_ordering: FiM
+          formation_energy_per_atom: -1.62991380225
+        - mp_id: mp-1356129
+          formula: Fe2O3
+          space_group_symbol: I2_12_12_1
+          space_group_number: 24
+          n_atoms: 40
+          energy_above_hull: 0.08465900949999901
+          is_stable: false
+          magnetic_ordering: FM
+          formation_energy_per_atom: -1.6224323434999999
+        - mp_id: mp-1178392
+          formula: Fe2O3
+          space_group_symbol: Pbca
+          space_group_number: 61
+          n_atoms: 40
+          energy_above_hull: 0.11285511324999901
+          is_stable: false
+          magnetic_ordering: FM
+          formation_energy_per_atom: -1.5942362397499998
+      - id: M3_Fe3O4_magnetite
+        formula: Fe3O4
+        structure_hint: spinel_inverse
+        space_group: Fd-3m
+        space_group_number: 227
+        atoms_per_primitive_cell: 14
+        notes: Ferrimagnet; tetra+octa Fe sites anti-aligned unequal moments
+        mp_id_hint: mp-19306
+        hint_mismatch_warning: null
+        candidates:
+        - mp_id: mp-19306
+          formula: Fe3O4
+          space_group_symbol: Fd-3m
+          space_group_number: 227
+          n_atoms: 14
+          energy_above_hull: 0.013059251428572002
+          is_stable: false
+          magnetic_ordering: FM
+          formation_energy_per_atom: -1.6295829685714271
+      - id: M3_CrO2
+        formula: CrO2
+        structure_hint: rutile
+        space_group: P4_2/mnm
+        space_group_number: 136
+        atoms_per_primitive_cell: 6
+        notes: Half-metallic FM
+        mp_id_hint: mp-19177
+        hint_mismatch_warning: null
+        candidates:
+        - mp_id: mp-19177
+          formula: CrO2
+          space_group_symbol: P4_2/mnm
+          space_group_number: 136
+          n_atoms: 6
+          energy_above_hull: 0.0
+          is_stable: true
+          magnetic_ordering: FM
+          formation_energy_per_atom: -2.04770086166665
+      - id: M3_SrRuO3
+        formula: SrRuO3
+        structure_hint: perovskite_orthorhombic
+        space_group: Pbnm
+        space_group_number: 62
+        atoms_per_primitive_cell: 20
+        notes: Itinerant FM oxide
+        mp_id_hint: mp-4651
+        hint_mismatch_warning: mp_id_hint mp-4651 formula mismatch (MP returned SrTiO3,
+          wishlist declared SrRuO3)
+        candidates:
+        - mp_id: mp-22390
+          formula: SrRuO3
+          space_group_symbol: Pnma
+          space_group_number: 62
+          n_atoms: 20
+          energy_above_hull: 0.0
+          is_stable: true
+          magnetic_ordering: FM
+          formation_energy_per_atom: -2.190611637000002
+        - mp_id: mp-1179112
+          formula: SrRuO3
+          space_group_symbol: Pnma
+          space_group_number: 62
+          n_atoms: 20
+          energy_above_hull: 0.49663431550000103
+          is_stable: false
+          magnetic_ordering: FM
+          formation_energy_per_atom: -1.6939773215
+        - mp_id: mp-611033
+          formula: SrRuO3
+          space_group_symbol: Pnma
+          space_group_number: 62
+          n_atoms: 20
+          energy_above_hull: 0.5097280285000021
+          is_stable: false
+          magnetic_ordering: FM
+          formation_energy_per_atom: -1.680883608499999
+        - mp_id: mp-1192792
+          formula: SrRuO3
+          space_group_symbol: Pnma
+          space_group_number: 62
+          n_atoms: 20
+          energy_above_hull: 4.160273152500002
+          is_stable: false
+          magnetic_ordering: FM
+          formation_energy_per_atom: 1.9696615155000001
+        - mp_id: mp-34212
+          formula: SrRuO3
+          space_group_symbol: Imma
+          space_group_number: 74
+          n_atoms: 10
+          energy_above_hull: 0.0036637429999970004
+          is_stable: false
+          magnetic_ordering: FM
+          formation_energy_per_atom: -2.1869478940000042
+      - id: M3_LaFeO3
+        formula: LaFeO3
+        structure_hint: perovskite_orthorhombic
+        space_group: Pbnm
+        space_group_number: 62
+        atoms_per_primitive_cell: 20
+        notes: G-type AFM
+        mp_id_hint: mp-22351
+        hint_mismatch_warning: mp_id_hint mp-22351 formula mismatch (MP returned NbRu3C,
+          wishlist declared LaFeO3)
+        candidates:
+        - mp_id: mp-22590
+          formula: LaFeO3
+          space_group_symbol: Pnma
+          space_group_number: 62
+          n_atoms: 20
+          energy_above_hull: 0.027772022000007
+          is_stable: false
+          magnetic_ordering: FM
+          formation_energy_per_atom: -2.825153782000001
+        - mp_id: mp-1181002
+          formula: LaFeO3
+          space_group_symbol: Pnma
+          space_group_number: 62
+          n_atoms: 20
+          energy_above_hull: 0.10674762050000701
+          is_stable: false
+          magnetic_ordering: FM
+          formation_energy_per_atom: -2.746178183500001
+        - mp_id: mp-1078634
+          formula: LaFeO3
+          space_group_symbol: R-3c
+          space_group_number: 167
+          n_atoms: 10
+          energy_above_hull: 0.0
+          is_stable: true
+          magnetic_ordering: FM
+          formation_energy_per_atom: -2.852925804000007
+        - mp_id: mp-552676
+          formula: LaFeO3
+          space_group_symbol: Pm-3m
+          space_group_number: 221
+          n_atoms: 5
+          energy_above_hull: 0.130008494000007
+          is_stable: false
+          magnetic_ordering: FM
+          formation_energy_per_atom: -2.722917310000001
+        - mp_id: mp-605340
+          formula: LaFeO3
+          space_group_symbol: Pmn2_1
+          space_group_number: 31
+          n_atoms: 20
+          energy_above_hull: 0.291892885500006
+          is_stable: false
+          magnetic_ordering: FM
+          formation_energy_per_atom: -2.561032918500001
+    f_electron_localized:
+      label: 4f-electron Localized Magnetism
+      materials:
+      - id: M3_EuO
+        formula: EuO
+        structure_hint: rocksalt
+        space_group: Fm-3m
+        space_group_number: 225
+        atoms_per_primitive_cell: 2
+        notes: FM semiconductor, localized 4f
+        mp_id_hint: mp-1233306
+        hint_mismatch_warning: mp_id_hint mp-1233306 not found in MP
+        candidates:
+        - mp_id: mp-21394
+          formula: EuO
+          space_group_symbol: Fm-3m
+          space_group_number: 225
+          n_atoms: 2
+          energy_above_hull: 0.0
+          is_stable: true
+          magnetic_ordering: FM
+          formation_energy_per_atom: -3.123422545000004
+      - id: M3_MnF2
+        formula: MnF2
+        structure_hint: rutile
+        space_group: P4_2/mnm
+        space_group_number: 136
+        atoms_per_primitive_cell: 6
+        notes: Rutile AFM
+        mp_id_hint: mp-560902
+        hint_mismatch_warning: null
+        candidates:
+        - mp_id: mp-560902
+          formula: MnF2
+          space_group_symbol: P4_2/mnm
+          space_group_number: 136
+          n_atoms: 6
+          energy_above_hull: 0.00021855750000100002
+          is_stable: false
+          magnetic_ordering: FM
+          formation_energy_per_atom: -2.966748559310345
+    layered_2d_magnetic:
+      label: Layered van der Waals Magnetic
+      materials:
+      - id: M3_CrI3
+        formula: CrI3
+        structure_hint: layered_BiI3_type
+        space_group: R-3
+        space_group_number: 148
+        atoms_per_primitive_cell: 8
+        notes: Layered FM, retains magnetism in monolayer
+        mp_id_hint: mp-541837
+        hint_mismatch_warning: mp_id_hint mp-541837 formula mismatch (MP returned
+          Bi2Se3, wishlist declared CrI3)
+        candidates:
+        - mp_id: mp-1213805
+          formula: CrI3
+          space_group_symbol: P3_112
+          space_group_number: 151
+          n_atoms: 24
+          energy_above_hull: 0.0
+          is_stable: true
+          magnetic_ordering: FM
+          formation_energy_per_atom: -0.723041855833334
+M4:
+  description: 'Strongly Correlated Electron Systems (杨博 0504 doc M4).
+
+    Standard DFT (GGA/LDA) fundamentally breaks down due to self-interaction error.
+
+    Agent should recognize need for DFT+U or Hybrid Functionals (HSE06).
+
+    '
+  categories:
+    spin_singlet_dimer:
+      label: Spin-Singlet Dimerization (d1-d1 bonding)
+      materials:
+      - id: M4_VO2_M1phase
+        formula: VO2
+        structure_hint: monoclinic_M1
+        space_group: P2_1/c
+        space_group_number: 14
+        atoms_per_primitive_cell: 12
+        notes: Peierls-Mott insulator; V4+ dimers; GGA falsely predicts metal
+        mp_id_hint: mp-19094
+        hint_mismatch_warning: null
+        candidates:
+        - mp_id: mp-19094
+          formula: VO2
+          space_group_symbol: P4_2/mnm
+          space_group_number: 136
+          n_atoms: 6
+          energy_above_hull: 0.042192478333317004
+          is_stable: false
+          magnetic_ordering: FM
+          formation_energy_per_atom: -2.480275698333334
+      - id: M4_Ti2O3
+        formula: Ti2O3
+        structure_hint: corundum
+        space_group: R-3c
+        space_group_number: 167
+        atoms_per_primitive_cell: 10
+        notes: Ti3+ d1 metal-metal bonds along c-axis; non-magnetic
+        mp_id_hint: mp-458
+        hint_mismatch_warning: null
+        candidates:
+        - mp_id: mp-458
+          formula: Ti2O3
+          space_group_symbol: R-3c
+          space_group_number: 167
+          n_atoms: 10
+          energy_above_hull: 0.0
+          is_stable: true
+          magnetic_ordering: NM
+          formation_energy_per_atom: -3.303439634333334
+      - id: M4_NbO2
+        formula: NbO2
+        structure_hint: distorted_rutile
+        space_group: I4_1/a
+        space_group_number: 88
+        atoms_per_primitive_cell: 24
+        notes: Nb-Nb dimers; non-magnetic insulator
+        mp_id_hint: mp-19111
+        hint_mismatch_warning: mp_id_hint mp-19111 formula mismatch (MP returned NaV2O5,
+          wishlist declared NbO2)
+        candidates:
+        - mp_id: mp-557057
+          formula: NbO2
+          space_group_symbol: I4_1/a
+          space_group_number: 88
+          n_atoms: 24
+          energy_above_hull: 0.0
+          is_stable: true
+          magnetic_ordering: NM
+          formation_energy_per_atom: -2.897628194166666
+        - mp_id: mp-821
+          formula: NbO2
+          space_group_symbol: I4_1/a
+          space_group_number: 88
+          n_atoms: 48
+          energy_above_hull: 0.002364360416665
+          is_stable: false
+          magnetic_ordering: NM
+          formation_energy_per_atom: -2.89526383375
+        - mp_id: mp-649729
+          formula: NbO2
+          space_group_symbol: I4_1/a
+          space_group_number: 88
+          n_atoms: 48
+          energy_above_hull: 0.31090804249999904
+          is_stable: false
+          magnetic_ordering: NM
+          formation_energy_per_atom: -2.586720151666667
+        - mp_id: mp-2533
+          formula: NbO2
+          space_group_symbol: P4_2/mnm
+          space_group_number: 136
+          n_atoms: 6
+          energy_above_hull: 0.047459152916665005
+          is_stable: false
+          magnetic_ordering: NM
+          formation_energy_per_atom: -2.85016904125
+        - mp_id: mp-754698
+          formula: NbO2
+          space_group_symbol: C2/m
+          space_group_number: 12
+          n_atoms: 12
+          energy_above_hull: 0.052645225416666004
+          is_stable: false
+          magnetic_ordering: NM
+          formation_energy_per_atom: -2.84498296875
+      - id: M4_MgTi2O4
+        formula: MgTi2O4
+        structure_hint: spinel
+        space_group: Fd-3m
+        space_group_number: 227
+        atoms_per_primitive_cell: 14
+        notes: Spin-gap transition; Ti3+ helical dimers
+        mp_id_hint: mp-19416
+        hint_mismatch_warning: mp_id_hint mp-19416 formula mismatch (MP returned BaDy2NiO5,
+          wishlist declared MgTi2O4)
+        candidates:
+        - mp_id: mp-27872
+          formula: MgTi2O4
+          space_group_symbol: Fd-3m
+          space_group_number: 227
+          n_atoms: 14
+          energy_above_hull: 0.015969221428569002
+          is_stable: false
+          magnetic_ordering: FM
+          formation_energy_per_atom: -3.216973033809524
+        - mp_id: mp-1194382
+          formula: MgTi2O4
+          space_group_symbol: P4_12_12
+          space_group_number: 92
+          n_atoms: 28
+          energy_above_hull: 0.016599014285711002
+          is_stable: false
+          magnetic_ordering: FM
+          formation_energy_per_atom: -3.216343240952382
+        - mp_id: mp-1044622
+          formula: MgTi2O4
+          space_group_symbol: P3m1
+          space_group_number: 156
+          n_atoms: 42
+          energy_above_hull: 0.028198966904758004
+          is_stable: false
+          magnetic_ordering: FM
+          formation_energy_per_atom: -3.204743288333334
+        - mp_id: mp-1044907
+          formula: MgTi2O4
+          space_group_symbol: P3m1
+          space_group_number: 156
+          n_atoms: 42
+          energy_above_hull: 0.028891933809521004
+          is_stable: false
+          magnetic_ordering: FM
+          formation_energy_per_atom: -3.204050321428571
+        - mp_id: mp-1044648
+          formula: MgTi2O4
+          space_group_symbol: R3m
+          space_group_number: 160
+          n_atoms: 14
+          energy_above_hull: 0.04103123785714
+          is_stable: false
+          magnetic_ordering: FM
+          formation_energy_per_atom: -3.191911017380953
+    low_spin_d6:
+      label: Low-Spin d6 Octahedral (t2g6 eg0)
+      materials:
+      - id: M4_LaCoO3_lowT
+        formula: LaCoO3
+        structure_hint: perovskite_rhombohedral
+        space_group: R-3c
+        space_group_number: 167
+        atoms_per_primitive_cell: 10
+        notes: 'Low-T phase: Co3+ strictly non-magnetic; needs +U'
+        mp_id_hint: mp-573180
+        hint_mismatch_warning: null
+        candidates:
+        - mp_id: mp-573180
+          formula: LaCoO3
+          space_group_symbol: Pm-3m
+          space_group_number: 221
+          n_atoms: 5
+          energy_above_hull: 0.076548746
+          is_stable: false
+          magnetic_ordering: NM
+          formation_energy_per_atom: -2.523377392
+      - id: M4_YCoO3
+        formula: YCoO3
+        structure_hint: perovskite_orthorhombic
+        space_group: Pbnm
+        space_group_number: 62
+        atoms_per_primitive_cell: 20
+        notes: Larger structural distortion than LaCoO3
+        mp_id_hint: mp-19318
+        hint_mismatch_warning: mp_id_hint mp-19318 formula mismatch (MP returned Ag2MoO4,
+          wishlist declared YCoO3)
+        candidates:
+        - mp_id: mp-22668
+          formula: YCoO3
+          space_group_symbol: Pnma
+          space_group_number: 62
+          n_atoms: 20
+          energy_above_hull: 0.0007048715892850001
+          is_stable: false
+          magnetic_ordering: NM
+          formation_energy_per_atom: -2.591207236500001
+        - mp_id: mp-1273178
+          formula: YCoO3
+          space_group_symbol: P-1
+          space_group_number: 2
+          n_atoms: 20
+          energy_above_hull: 0.011655866589286001
+          is_stable: false
+          magnetic_ordering: FiM
+          formation_energy_per_atom: -2.5802562415
+        - mp_id: mp-1288734
+          formula: YCoO3
+          space_group_symbol: P2_1/c
+          space_group_number: 14
+          n_atoms: 20
+          energy_above_hull: 0.015464709589286002
+          is_stable: false
+          magnetic_ordering: FM
+          formation_energy_per_atom: -2.576447398499999
+        - mp_id: mp-1330514
+          formula: YCoO3
+          space_group_symbol: P6_3cm
+          space_group_number: 185
+          n_atoms: 30
+          energy_above_hull: 0.022722317422617003
+          is_stable: false
+          magnetic_ordering: FM
+          formation_energy_per_atom: -2.569189790666668
+        - mp_id: mp-1387356
+          formula: YCoO3
+          space_group_symbol: P6_3/mmc
+          space_group_number: 194
+          n_atoms: 10
+          energy_above_hull: 0.10634499408928501
+          is_stable: false
+          magnetic_ordering: FM
+          formation_energy_per_atom: -2.485567113999999
+      - id: M4_FeS2_pyrite
+        formula: FeS2
+        structure_hint: pyrite
+        space_group: Pa-3
+        space_group_number: 205
+        atoms_per_primitive_cell: 12
+        notes: Fe2+ low-spin d6; GGA underestimates gap >50%
+        mp_id_hint: mp-226
+        hint_mismatch_warning: null
+        candidates:
+        - mp_id: mp-226
+          formula: FeS2
+          space_group_symbol: Pa-3
+          space_group_number: 205
+          n_atoms: 12
+          energy_above_hull: 0.010058665833334
+          is_stable: false
+          magnetic_ordering: NM
+          formation_energy_per_atom: -0.8374183041666641
+      - id: M4_FeS2_marcasite
+        formula: FeS2
+        structure_hint: marcasite
+        space_group: Pnnm
+        space_group_number: 58
+        atoms_per_primitive_cell: 6
+        notes: Orthorhombic polymorph of pyrite; same correlation issue
+        mp_id_hint: mp-1522
+        hint_mismatch_warning: null
+        candidates:
+        - mp_id: mp-1522
+          formula: FeS2
+          space_group_symbol: Pnnm
+          space_group_number: 58
+          n_atoms: 6
+          energy_above_hull: 0.0
+          is_stable: true
+          magnetic_ordering: NM
+          formation_energy_per_atom: -0.8474769699999981
+    soc_cancellation_f6:
+      label: Spin-Orbit Cancellation (f6 → J=0)
+      materials:
+      - id: M4_SmB6
+        formula: SmB6
+        structure_hint: cscl_type
+        space_group: Pm-3m
+        space_group_number: 221
+        atoms_per_primitive_cell: 7
+        notes: Sm2+ 4f6 J=0; needs +U on f-orbitals
+        mp_id_hint: mp-3231
+        hint_mismatch_warning: mp_id_hint mp-3231 not found in MP
+        candidates:
+        - mp_id: mp-6996
+          formula: SmB6
+          space_group_symbol: Pm-3m
+          space_group_number: 221
+          n_atoms: 7
+          energy_above_hull: 0.0
+          is_stable: true
+          magnetic_ordering: NM
+          formation_energy_per_atom: -0.5186441035714281
+      - id: M4_SmS
+        formula: SmS
+        structure_hint: rocksalt
+        space_group: Fm-3m
+        space_group_number: 225
+        atoms_per_primitive_cell: 2
+        notes: Black phase; correlated semiconductor
+        mp_id_hint: mp-1437
+        hint_mismatch_warning: mp_id_hint mp-1437 formula mismatch (MP returned LiCd,
+          wishlist declared SmS)
+        candidates:
+        - mp_id: mp-1269
+          formula: SmS
+          space_group_symbol: Fm-3m
+          space_group_number: 225
+          n_atoms: 2
+          energy_above_hull: 0.0
+          is_stable: true
+          magnetic_ordering: NM
+          formation_energy_per_atom: -2.27385046625
+        - mp_id: mp-1879
+          formula: SmS
+          space_group_symbol: I4/mmm
+          space_group_number: 139
+          n_atoms: 4
+          energy_above_hull: 0.23140674499999903
+          is_stable: false
+          magnetic_ordering: NM
+          formation_energy_per_atom: -2.04244372125
+      - id: M4_Eu2O3
+        formula: Eu2O3
+        structure_hint: bixbyite
+        space_group: Ia-3
+        space_group_number: 206
+        atoms_per_primitive_cell: 40
+        notes: Eu3+ f6 J=0 ground state
+        mp_id_hint: mp-25144
+        hint_mismatch_warning: mp_id_hint mp-25144 not found in MP
+        candidates:
+        - mp_id: mp-1182469
+          formula: Eu2O3
+          space_group_symbol: Ia-3
+          space_group_number: 206
+          n_atoms: 40
+          energy_above_hull: 0.273209506250001
+          is_stable: false
+          magnetic_ordering: FiM
+          formation_energy_per_atom: -3.17196305075
+        - mp_id: mp-1017564
+          formula: Eu2O3
+          space_group_symbol: P-3m1
+          space_group_number: 164
+          n_atoms: 5
+          energy_above_hull: 0.0
+          is_stable: true
+          magnetic_ordering: FM
+          formation_energy_per_atom: -3.4451725570000002
+        - mp_id: mp-647924
+          formula: Eu2O3
+          space_group_symbol: C2/m
+          space_group_number: 12
+          n_atoms: 15
+          energy_above_hull: 0.011704752000001001
+          is_stable: false
+          magnetic_ordering: FiM
+          formation_energy_per_atom: -3.4334678050000003
+    d10_localized:
+      label: Fully Occupied d10 Localized Shells
+      materials:
+      - id: M4_Cu2O
+        formula: Cu2O
+        structure_hint: cuprite
+        space_group: Pn-3m
+        space_group_number: 224
+        atoms_per_primitive_cell: 6
+        notes: Cu+ 3d10; transparent conducting oxide
+        mp_id_hint: mp-361
+        hint_mismatch_warning: null
+        candidates:
+        - mp_id: mp-361
+          formula: Cu2O
+          space_group_symbol: Pn-3m
+          space_group_number: 224
+          n_atoms: 6
+          energy_above_hull: 0.0
+          is_stable: true
+          magnetic_ordering: NM
+          formation_energy_per_atom: -0.6445054383333331
+      - id: M4_CuAlO2_delafossite
+        formula: CuAlO2
+        structure_hint: delafossite
+        space_group: R-3m
+        space_group_number: 166
+        atoms_per_primitive_cell: 4
+        notes: Delafossite; p-type transparent conductor
+        mp_id_hint: mp-3748
+        hint_mismatch_warning: null
+        candidates:
+        - mp_id: mp-3748
+          formula: AlCuO2
+          space_group_symbol: R-3m
+          space_group_number: 166
+          n_atoms: 4
+          energy_above_hull: 0.000369936249986
+          is_stable: false
+          magnetic_ordering: NM
+          formation_energy_per_atom: -2.417254424999987
+      - id: M4_ZnO_correlated
+        formula: ZnO
+        structure_hint: wurtzite
+        space_group: P6_3mc
+        space_group_number: 186
+        atoms_per_primitive_cell: 4
+        notes: 'Variant focus: correlation lens (vs M1_T*_ZnO standard GGA lens).
+          GT uses experimental gap ~3.3 eV.'
+        mp_id_hint: mp-2133
+        hint_mismatch_warning: null
+        candidates:
+        - mp_id: mp-2133
+          formula: ZnO
+          space_group_symbol: P6_3mc
+          space_group_number: 186
+          n_atoms: 4
+          energy_above_hull: 0.0
+          is_stable: true
+          magnetic_ordering: NM
+          formation_energy_per_atom: -1.7908991124999991
+      - id: M4_Ag2O
+        formula: Ag2O
+        structure_hint: cuprite_ag
+        space_group: Pn-3m
+        space_group_number: 224
+        atoms_per_primitive_cell: 6
+        notes: Ag+ 4d10; localized d states
+        mp_id_hint: mp-353
+        hint_mismatch_warning: null
+        candidates:
+        - mp_id: mp-353
+          formula: Ag2O
+          space_group_symbol: Pn-3m
+          space_group_number: 224
+          n_atoms: 6
+          energy_above_hull: 0.0
+          is_stable: true
+          magnetic_ordering: NM
+          formation_energy_per_atom: -0.31563385777777403
+summary:
+  n_total: 30
+  n_hint_ok: 17
+  n_hint_notfound: 4
+  n_hint_mismatch: 7
+  n_search_only: 2

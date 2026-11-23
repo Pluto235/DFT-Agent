@@ -1,0 +1,417 @@
+{
+  "schema_version": "1.2",
+  "id": "M3_T1_Cr_bcc_vc_relax",
+  "difficulty": "M3",
+  "material": {
+    "formula": "Cr",
+    "name": "Cr, bcc",
+    "structure": "bcc",
+    "space_group": "Im-3m",
+    "space_group_number": 229,
+    "atoms_per_primitive_cell": 2,
+    "advisory_notes": null,
+    "reference_source": "elemental bcc Cr (Materials Project)",
+    "initial_structure": {
+      "source": "Materials Project (mp-90)",
+      "note": "MP VASP+PAW PBE primitive cell (M3 自跑前的初始结构)",
+      "lattice_type": "Cubic",
+      "lattice_constants_angstrom": {
+        "a": 2.96889915140125,
+        "b": 2.9688993423008085,
+        "c": 2.9688995716460274
+      },
+      "lattice_angles_degree": {
+        "alpha": 90.0015093557201,
+        "beta": 89.99831571270103,
+        "gamma": 89.99833464485413
+      },
+      "atomic_positions_crystal": [
+        {
+          "element": "Cr",
+          "position": [
+            0.49999995,
+            0.49999995,
+            0.50000001
+          ]
+        },
+        {
+          "element": "Cr",
+          "position": [
+            5e-08,
+            5e-08,
+            -1e-08
+          ]
+        }
+      ]
+    },
+    "pseudopotential": {
+      "family": "GBRV_USPP_PBE_v1.5",
+      "relativistic": "scalar",
+      "files": {
+        "Cr": "Cr.upf"
+      }
+    },
+    "magnetic_metadata": {
+      "nspin": 2,
+      "magnetic_order": "AFM",
+      "main_magnetic_element": "Cr",
+      "starting_magnetization": {
+        "Cr1": 0.5,
+        "Cr2": -0.5
+      },
+      "afm_species_split": true,
+      "collinear": "Often approximated collinearly",
+      "yaml_hint_magnetic_order": "AFM",
+      "expected_is_metal": true
+    }
+  },
+  "task": {
+    "type": "vc_relax",
+    "prompt": null,
+    "policy": {
+      "network_allowed": false
+    }
+  },
+  "evaluator": {
+    "type": "qe_vc_relax",
+    "extract_fields": [
+      "a",
+      "b",
+      "c",
+      "alpha",
+      "beta",
+      "gamma",
+      "space_group_number",
+      "point_group",
+      "crystal_system",
+      "total_magnetization_per_cell",
+      "absolute_magnetization_per_cell"
+    ],
+    "data_sources": {
+      "relax_out": "relax.out"
+    },
+    "extraction_method": "custom"
+  },
+  "ground_truth": {
+    "a": {
+      "value": 2.8696349276428363,
+      "unit": "angstrom",
+      "tolerance": 0.01,
+      "rule": "relative"
+    },
+    "b": {
+      "value": 2.869634919803816,
+      "unit": "angstrom",
+      "tolerance": 0.01,
+      "rule": "relative"
+    },
+    "c": {
+      "value": 2.8696349393513247,
+      "unit": "angstrom",
+      "tolerance": 0.01,
+      "rule": "relative"
+    },
+    "alpha": {
+      "value": 90.00031094574416,
+      "unit": "degree",
+      "tolerance": 1.0,
+      "rule": "absolute"
+    },
+    "beta": {
+      "value": 89.99964949980303,
+      "unit": "degree",
+      "tolerance": 1.0,
+      "rule": "absolute"
+    },
+    "gamma": {
+      "value": 89.9996547402127,
+      "unit": "degree",
+      "tolerance": 1.0,
+      "rule": "absolute"
+    },
+    "space_group_number": {
+      "value": 229,
+      "rule": "exact"
+    },
+    "point_group": {
+      "value": "m-3m",
+      "rule": "exact"
+    },
+    "crystal_system": {
+      "value": "cubic",
+      "rule": "exact"
+    },
+    "total_magnetization_per_cell": {
+      "value": 0.0,
+      "unit": "bohr_mag/cell",
+      "tolerance": 0.5,
+      "rule": "absolute"
+    },
+    "absolute_magnetization_per_cell": {
+      "value": 2.43,
+      "unit": "bohr_mag/cell",
+      "tolerance": 0.5,
+      "rule": "absolute"
+    }
+  },
+  "final_structure": {
+    "source": "pipeline/m3/M3_Cr_bcc/e80_d50_AFM/relax.out",
+    "cell_angstrom": [
+      [
+        2.869634927,
+        -3.3059e-05,
+        5.0956e-05
+      ],
+      [
+        5.0352e-05,
+        2.869634919,
+        -4.5585e-05
+      ],
+      [
+        -3.3401e-05,
+        3.0012e-05,
+        2.869634939
+      ]
+    ],
+    "atomic_positions_crystal": [
+      [
+        "Cr1",
+        0.4999999823,
+        0.4999999821,
+        0.5000000051
+      ],
+      [
+        "Cr2",
+        1.77e-08,
+        1.79e-08,
+        -5.1e-09
+      ]
+    ]
+  },
+  "scoring": {
+    "aggregate": "all_fields_weighted",
+    "field_weights": {
+      "a": 0.1,
+      "b": 0.1,
+      "c": 0.1,
+      "alpha": 0.05,
+      "beta": 0.05,
+      "gamma": 0.05,
+      "space_group_number": 0.1,
+      "point_group": 0.05,
+      "crystal_system": 0.05,
+      "total_magnetization_per_cell": 0.2,
+      "absolute_magnetization_per_cell": 0.15
+    },
+    "pass_criterion": "all_fields_passed",
+    "partial_credit": true
+  },
+  "convergence_evidence": {
+    "methodology": "Two-round convergence scan: Round 1 fixes kmesh density at 30 and scans ecutwfc in {50,60,80,100,120,150}; Round 2 fixes ecutwfc at 80 and scans kmesh density in {20,30,40,50}. Magnetic methodology (杨博 5/13 双探针): canonical point (e80_d50) runs both FM and AFM initialisations, picks the lower-energy one as physical ground state (AFM for this material); other scan points use the yaml-hint init (AFM) since they only certify convergence of the energy/lattice trend. AFM cells use a species split (e.g. Cr→Cr1/Cr2 共用 Cr.upf) with alternating ±starting_magnetization; FM cells keep the original elements with positive starting_magnetization. Convergence criteria: ΔE < 0.5 meV/atom and Δlattice_rel < 1% (geometry-relative, Plan B 杨博 0427).",
+    "ecutwfc_scan": {
+      "values_ry": [
+        50.0,
+        60.0,
+        80.0,
+        100.0,
+        120.0,
+        150.0
+      ],
+      "kmesh_fixed": [
+        10,
+        10,
+        10
+      ],
+      "delta_E_meV_per_atom": [
+        9.103024958675151,
+        8.357364953937157,
+        5.977797276499634,
+        3.551153901834065,
+        2.4812702324717586,
+        0.0
+      ],
+      "delta_P_kbar": [
+        0.24,
+        0.91,
+        1.23,
+        0.06000000000000005,
+        1.4100000000000001,
+        0.0
+      ],
+      "lattice_per_point": [
+        {
+          "a_angstrom": 2.847537436716786,
+          "b_angstrom": 2.84753738209334,
+          "c_angstrom": 2.847537513192516,
+          "alpha_degree": 90.00061487285977,
+          "beta_degree": 89.99930332844909,
+          "gamma_degree": 89.9993050570201,
+          "space_group_number": 229
+        },
+        {
+          "a_angstrom": 2.8470590937156963,
+          "b_angstrom": 2.847058974080204,
+          "c_angstrom": 2.8470591281954944,
+          "alpha_degree": 90.00061177639576,
+          "beta_degree": 89.99931454162841,
+          "gamma_degree": 89.99932768083431,
+          "space_group_number": 229
+        },
+        {
+          "a_angstrom": 2.84730778271566,
+          "b_angstrom": 2.8473078130866254,
+          "c_angstrom": 2.8473078801933736,
+          "alpha_degree": 90.00062120075356,
+          "beta_degree": 89.99931309222163,
+          "gamma_degree": 89.99932377554053,
+          "space_group_number": 229
+        },
+        {
+          "a_angstrom": 2.8475452087996436,
+          "b_angstrom": 2.8475448063197843,
+          "c_angstrom": 2.8475453621123457,
+          "alpha_degree": 90.0008274291435,
+          "beta_degree": 89.9990714128073,
+          "gamma_degree": 89.99907475706756,
+          "space_group_number": 229
+        },
+        {
+          "a_angstrom": 2.8471340297147543,
+          "b_angstrom": 2.8471341500891123,
+          "c_angstrom": 2.8471341281934257,
+          "alpha_degree": 90.0006198903386,
+          "beta_degree": 89.99931220507376,
+          "gamma_degree": 89.9993175562291,
+          "space_group_number": 229
+        },
+        {
+          "a_angstrom": 2.847560087720682,
+          "b_angstrom": 2.84756009509661,
+          "c_angstrom": 2.847560126189185,
+          "alpha_degree": 90.00062506921265,
+          "beta_degree": 89.9992969354846,
+          "gamma_degree": 89.99930787968046,
+          "space_group_number": 229
+        }
+      ]
+    },
+    "kmesh_scan": {
+      "values": [
+        [
+          8,
+          8,
+          8
+        ],
+        [
+          10,
+          10,
+          10
+        ],
+        [
+          14,
+          14,
+          14
+        ],
+        [
+          18,
+          18,
+          18
+        ]
+      ],
+      "ecutwfc_fixed_ry": 80.0,
+      "delta_E_meV_per_atom": [
+        0.08714446357645837,
+        0.5330030230507181,
+        0.1244240625807583,
+        0.0
+      ],
+      "delta_P_kbar": [
+        0.06,
+        0.14,
+        0.07999999999999999,
+        0.0
+      ],
+      "lattice_per_point": [
+        {
+          "a_angstrom": 2.8480502456899686,
+          "b_angstrom": 2.8480500690284942,
+          "c_angstrom": 2.84805051322237,
+          "alpha_degree": 90.00056684276056,
+          "beta_degree": 89.9993937419517,
+          "gamma_degree": 89.99939092176436,
+          "space_group_number": 229
+        },
+        {
+          "a_angstrom": 2.84730778271566,
+          "b_angstrom": 2.8473078130866254,
+          "c_angstrom": 2.8473078801933736,
+          "alpha_degree": 90.00062120075356,
+          "beta_degree": 89.99931309222163,
+          "gamma_degree": 89.99932377554053,
+          "space_group_number": 229
+        },
+        {
+          "a_angstrom": 2.847239747694623,
+          "b_angstrom": 2.847239264989932,
+          "c_angstrom": 2.847240088235738,
+          "alpha_degree": 90.0005028913951,
+          "beta_degree": 89.99939338863254,
+          "gamma_degree": 89.9994111123722,
+          "space_group_number": 229
+        },
+        {
+          "a_angstrom": 2.8472989206993695,
+          "b_angstrom": 2.8472989430365323,
+          "c_angstrom": 2.8472989622158975,
+          "alpha_degree": 90.00056878296687,
+          "beta_degree": 89.99936770395782,
+          "gamma_degree": 89.99937587046273,
+          "space_group_number": 229
+        }
+      ]
+    },
+    "converged_params": {
+      "ecutwfc_ry": 80.0,
+      "ecutrho_ry": 800.0,
+      "kmesh": [
+        18,
+        18,
+        18
+      ],
+      "kmesh_density_pts_per_inv_angstrom": 50.0
+    },
+    "convergence_threshold": {
+      "delta_E_meV_per_atom": 0.5,
+      "delta_P_kbar": 0.5,
+      "delta_l_relative_converged": 0.01,
+      "delta_l_relative_marginal": 0.02,
+      "criterion": "geometry-relative (Plan B, 杨博 0427)"
+    },
+    "raw_outputs_dir": "dft-gt-pipeline/tools/gt_selfrun/m3/workdir/M3_Cr_bcc",
+    "scan_mag_init": "AFM",
+    "canonical_mag_init": "AFM",
+    "magnetic_ground_state_decision": {
+      "material_id": "M3_Cr_bcc",
+      "canonical_point": "e80_d50",
+      "ground_state": "AFM",
+      "reason": "energy_comparison",
+      "fm_energy_ry": -350.987683,
+      "afm_energy_ry": -350.98966814,
+      "fm_status": "OK",
+      "afm_status": "OK",
+      "fm_total_mag": -0.0,
+      "afm_total_mag": 0.0
+    }
+  },
+  "metadata": {
+    "author": "weilin",
+    "generated_at": "2026-05-15",
+    "reviewer": null,
+    "gt_qe_version": "7.5CN-GPU",
+    "gt_machine": null,
+    "gt_wall_time_sec": 28431.347952604294,
+    "gt_quality": "self_run_converged",
+    "gt_switched_at": "2026-05-15",
+    "notes": "M3 自跑 GT (PBE + nspin=2 + 杨博 5/13 双探针方法论). canonical_point (e80_d50) 同跑 FM 和 AFM, 取能量低的作物理基态; 本材料 ground_state=AFM. AFM cell 用 species 拆分 (e.g. Cr1/Cr2 共用 Cr.upf, ±starting_mag). Hubbard +U 未启用（M1/M2 一致 + 避免 DFT 知识考点泄露）. 救援参数 (mixing_TF / trust_radius / bfgs_ndim 调参) 已拿掉. advisory_notes 留 null，等杨博 5/13 模板定稿."
+  }
+}

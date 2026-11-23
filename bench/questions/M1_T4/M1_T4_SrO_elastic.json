@@ -1,0 +1,558 @@
+{
+  "schema_version": "1.3",
+  "id": "M1_T4_SrO_elastic",
+  "difficulty": {
+    "material_tier": "M1",
+    "task_tier": "T4",
+    "overall_level": null
+  },
+  "material": {
+    "formula": "SrO",
+    "name": "strontium oxide (rocksalt)",
+    "structure": "rocksalt",
+    "space_group": "Fm-3m",
+    "space_group_number": 225,
+    "atoms_per_primitive_cell": 2,
+    "advisory_notes": null,
+    "reference_source": {
+      "database": "Materials Project",
+      "id": "mp-2472",
+      "url": "https://next-gen.materialsproject.org/materials/mp-2472"
+    },
+    "initial_structure": {
+      "source": "M1_T1_SrO_vc_relax canonical GT (T1 vc-relax final structure)",
+      "note": "T1 弛豫后的最终结构。T3/T4 不再走 vc-relax；在此结构基础上做体积扫描 (T3) / 应变扫描 (T4)，每点 fixed cell + ionic relax。",
+      "lattice_type": "primitive",
+      "lattice_constants_angstrom": {
+        "a": 3.6735720111136123,
+        "b": 3.6735720106996816,
+        "c": 3.673572013
+      },
+      "lattice_angles_degree": {
+        "alpha": 59.99999998829092,
+        "beta": 59.99999999201827,
+        "gamma": 59.999999985752574
+      },
+      "atomic_positions_crystal": [
+        {
+          "element": "Sr",
+          "position": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "cell_vectors_angstrom": [
+        [
+          3.181402497,
+          -3.2e-08,
+          1.836783664
+        ],
+        [
+          1.060467469,
+          2.999455136,
+          1.836783664
+        ],
+        [
+          -0.0,
+          0.0,
+          3.673567328
+        ]
+      ]
+    },
+    "pseudopotential": {
+      "family": "GBRV_USPP_PBE_v1.5",
+      "relativistic": "scalar",
+      "files": {
+        "Sr": "Sr.upf",
+        "O": "O.upf"
+      }
+    }
+  },
+  "task": {
+    "type": "elastic_stiffness",
+    "prompt": null,
+    "policy": {
+      "network_allowed": false
+    }
+  },
+  "evaluator": {
+    "type": "qe_elastic_stress_fit",
+    "extract_fields": [
+      "elastic_tensor_cij_gpa",
+      "bulk_modulus_vrh_gpa",
+      "shear_modulus_vrh_gpa",
+      "young_modulus_vrh_gpa",
+      "poisson_ratio_vrh",
+      "stress_rmse_gpa"
+    ],
+    "data_sources": {
+      "stress_strain_csv": "stress_strain.csv",
+      "elastic_tensor_json": "elastic_tensor.json"
+    },
+    "extraction_method": "custom",
+    "extraction_config": {
+      "strain_convention": "voigt_engineering_shear",
+      "stress_unit": "GPa",
+      "strain_modes": [
+        "e1",
+        "e2",
+        "e3",
+        "e4",
+        "e5",
+        "e6"
+      ],
+      "strain_amplitudes": [
+        -0.01,
+        -0.005,
+        0.005,
+        0.01
+      ],
+      "fit_method": "least_squares_stress_strain",
+      "symmetrize_cij": true,
+      "born_stability_check": true
+    }
+  },
+  "ground_truth": {
+    "elastic_tensor_cij_gpa": {
+      "value": [
+        [
+          158.38000000000002,
+          48.730000000000004,
+          47.92000000000001,
+          0.04000000000000014,
+          -0.019999999999999962,
+          1.1200000000000006
+        ],
+        [
+          48.730000000000004,
+          157.34,
+          48.63000000000001,
+          0.04000000000000003,
+          0.0,
+          -0.05
+        ],
+        [
+          47.92000000000001,
+          48.63000000000001,
+          158.22,
+          0.039999999999999925,
+          -0.019999999999999962,
+          -1.2
+        ],
+        [
+          0.04000000000000014,
+          0.04000000000000003,
+          0.039999999999999925,
+          56.000000000000014,
+          -1.12,
+          0.0
+        ],
+        [
+          -0.019999999999999962,
+          0.0,
+          -0.019999999999999962,
+          -1.12,
+          55.20000000000001,
+          1.0285644927470805e-17
+        ],
+        [
+          1.1200000000000006,
+          -0.05,
+          -1.2,
+          0.0,
+          1.0285644927470805e-17,
+          56.00000000000001
+        ]
+      ],
+      "unit": "GPa",
+      "tolerance": 0.12,
+      "rule": "elastic_symmetry_reduced"
+    },
+    "bulk_modulus_vrh_gpa": {
+      "value": 84.94438060728027,
+      "unit": "GPa",
+      "tolerance": 0.1,
+      "rule": "graded_relative"
+    },
+    "shear_modulus_vrh_gpa": {
+      "value": 55.33800143104983,
+      "unit": "GPa",
+      "tolerance": 0.08,
+      "rule": "graded_relative"
+    }
+  },
+  "scoring": {
+    "aggregate": "all_fields_weighted",
+    "field_weights": {
+      "elastic_tensor_cij_gpa": 0.625,
+      "bulk_modulus_vrh_gpa": 0.1875,
+      "shear_modulus_vrh_gpa": 0.1875
+    },
+    "pass_criterion": "all_fields_passed",
+    "partial_credit": true
+  },
+  "convergence_evidence": {
+    "methodology": "T4 弹性刚度: 6 Voigt strain modes × 4 amplitudes (±0.5%, ±1.0%) = 24 个 strained cell，每点 fixed-cell ionic relax，lstsq fit σ=C·ε → Cij (symmetrize)，VRH 平均 → K/G/E/ν。",
+    "source_structure": {
+      "task_id": "M1_T1_SrO_vc_relax",
+      "kind": "T1 canonical 弛豫结构 (zero-strain reference)"
+    },
+    "strain_grid": {
+      "modes": [
+        "e1",
+        "e2",
+        "e3",
+        "e4",
+        "e5",
+        "e6"
+      ],
+      "amplitudes": [
+        -0.01,
+        -0.005,
+        0.005,
+        0.01
+      ],
+      "voigt_convention": "engineering_shear (γ = 2 × ε_tensor off-diag)",
+      "deformation_gradient": "F = I + ε_tensor (symmetric)"
+    },
+    "calculation_protocol": {
+      "cell_fixed_each_point": true,
+      "internal_positions_relaxed": true,
+      "fit_method": "least_squares_stress_strain",
+      "tensor_symmetrized": true,
+      "born_stability_check": true,
+      "failure_policy": "any-point fail = whole material fail (D7)"
+    },
+    "converged_params": {
+      "ecutwfc_ry": 80.0,
+      "ecutrho_ry": 800.0,
+      "kmesh": [
+        18,
+        18,
+        18
+      ],
+      "kmesh_density_pts_per_inv_angstrom": 50.0,
+      "occupations": null
+    },
+    "fit_quality": {
+      "stress_rmse_gpa": 0.009254128207934498,
+      "stress_rmse_threshold_gpa": 0.5,
+      "max_cij_asymmetry_percent": 100.0,
+      "max_cij_asymmetry_abs_gpa": 0.21999999999999886,
+      "asymmetry_threshold_abs_gpa": 1.0,
+      "all_eigenvalues_positive": true,
+      "classification": "converged"
+    },
+    "raw_outputs_dir": "pipeline/tools/gt_selfrun/elastic/workdir/M1_T4_SrO_elastic",
+    "per_strain_points": [
+      {
+        "mode": "e1",
+        "amplitude": -0.01,
+        "sigma_voigt_gpa": [
+          -1.616,
+          -0.505,
+          -0.493,
+          0.0,
+          -0.0,
+          -0.036
+        ]
+      },
+      {
+        "mode": "e1",
+        "amplitude": -0.005,
+        "sigma_voigt_gpa": [
+          -0.799,
+          -0.248,
+          -0.243,
+          -0.0,
+          0.0,
+          -0.012
+        ]
+      },
+      {
+        "mode": "e1",
+        "amplitude": 0.005,
+        "sigma_voigt_gpa": [
+          0.786,
+          0.242,
+          0.239,
+          -0.0,
+          0.0,
+          -0.0
+        ]
+      },
+      {
+        "mode": "e1",
+        "amplitude": 0.01,
+        "sigma_voigt_gpa": [
+          1.551,
+          0.471,
+          0.466,
+          -0.0,
+          0.0,
+          -0.012
+        ]
+      },
+      {
+        "mode": "e2",
+        "amplitude": -0.01,
+        "sigma_voigt_gpa": [
+          -0.507,
+          -1.579,
+          -0.507,
+          -0.0,
+          -0.0,
+          -0.0
+        ]
+      },
+      {
+        "mode": "e2",
+        "amplitude": -0.005,
+        "sigma_voigt_gpa": [
+          -0.248,
+          -0.788,
+          -0.248,
+          -0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "mode": "e2",
+        "amplitude": 0.005,
+        "sigma_voigt_gpa": [
+          0.239,
+          0.787,
+          0.239,
+          0.0,
+          0.0,
+          -0.0
+        ]
+      },
+      {
+        "mode": "e2",
+        "amplitude": 0.01,
+        "sigma_voigt_gpa": [
+          0.465,
+          1.567,
+          0.465,
+          0.0,
+          -0.0,
+          -0.0
+        ]
+      },
+      {
+        "mode": "e3",
+        "amplitude": -0.01,
+        "sigma_voigt_gpa": [
+          -0.486,
+          -0.504,
+          -1.623,
+          0.0,
+          0.0,
+          0.026
+        ]
+      },
+      {
+        "mode": "e3",
+        "amplitude": -0.005,
+        "sigma_voigt_gpa": [
+          -0.238,
+          -0.245,
+          -0.798,
+          -0.0,
+          -0.0,
+          0.009
+        ]
+      },
+      {
+        "mode": "e3",
+        "amplitude": 0.005,
+        "sigma_voigt_gpa": [
+          0.24,
+          0.241,
+          0.783,
+          0.0,
+          -0.0,
+          -0.002
+        ]
+      },
+      {
+        "mode": "e3",
+        "amplitude": 0.01,
+        "sigma_voigt_gpa": [
+          0.471,
+          0.469,
+          1.542,
+          0.0,
+          0.0,
+          0.003
+        ]
+      },
+      {
+        "mode": "e4",
+        "amplitude": -0.01,
+        "sigma_voigt_gpa": [
+          -0.004,
+          -0.014,
+          -0.011,
+          -0.56,
+          0.011,
+          0.005
+        ]
+      },
+      {
+        "mode": "e4",
+        "amplitude": -0.005,
+        "sigma_voigt_gpa": [
+          -0.002,
+          -0.004,
+          -0.003,
+          -0.28,
+          0.006,
+          0.001
+        ]
+      },
+      {
+        "mode": "e4",
+        "amplitude": 0.005,
+        "sigma_voigt_gpa": [
+          0.0,
+          -0.002,
+          -0.001,
+          0.28,
+          -0.006,
+          0.001
+        ]
+      },
+      {
+        "mode": "e4",
+        "amplitude": 0.01,
+        "sigma_voigt_gpa": [
+          -0.003,
+          -0.013,
+          -0.01,
+          0.56,
+          -0.011,
+          0.005
+        ]
+      },
+      {
+        "mode": "e5",
+        "amplitude": -0.01,
+        "sigma_voigt_gpa": [
+          -0.007,
+          -0.004,
+          0.0,
+          0.011,
+          -0.552,
+          0.005
+        ]
+      },
+      {
+        "mode": "e5",
+        "amplitude": -0.005,
+        "sigma_voigt_gpa": [
+          0.002,
+          0.003,
+          0.004,
+          0.006,
+          -0.276,
+          0.001
+        ]
+      },
+      {
+        "mode": "e5",
+        "amplitude": 0.005,
+        "sigma_voigt_gpa": [
+          -0.002,
+          -0.001,
+          -0.0,
+          -0.006,
+          0.276,
+          0.001
+        ]
+      },
+      {
+        "mode": "e5",
+        "amplitude": 0.01,
+        "sigma_voigt_gpa": [
+          -0.006,
+          -0.002,
+          0.001,
+          -0.011,
+          0.552,
+          0.005
+        ]
+      },
+      {
+        "mode": "e6",
+        "amplitude": -0.01,
+        "sigma_voigt_gpa": [
+          -0.02,
+          -0.012,
+          0.009,
+          0.0,
+          0.0,
+          -0.565
+        ]
+      },
+      {
+        "mode": "e6",
+        "amplitude": -0.005,
+        "sigma_voigt_gpa": [
+          -0.004,
+          0.001,
+          0.009,
+          0.0,
+          -0.0,
+          -0.281
+        ]
+      },
+      {
+        "mode": "e6",
+        "amplitude": 0.005,
+        "sigma_voigt_gpa": [
+          0.004,
+          -0.002,
+          -0.006,
+          0.0,
+          0.0,
+          0.279
+        ]
+      },
+      {
+        "mode": "e6",
+        "amplitude": 0.01,
+        "sigma_voigt_gpa": [
+          0.002,
+          -0.013,
+          -0.015,
+          0.0,
+          -0.0,
+          0.555
+        ]
+      }
+    ]
+  },
+  "metadata": {
+    "author": "weilin",
+    "generated_at": "2026-05-21",
+    "reviewer": null,
+    "gt_qe_version": "QE 7.5",
+    "gt_machine": "V100 rental (CSTNET)",
+    "gt_wall_time_sec": null,
+    "gt_quality": "converged",
+    "notes": "T4 elastic stiffness pilot question (M1 7 mat pilot, design D1). Ground truth values 全部 null，待 P6 elastic pipeline 跑完 promote 填入。设计 doc: notes/2026-05-20-t3-t4-pipeline-design.html Promoted 2026-06-05T11:32:09.569899+00:00: K=84.94 GPa, G=55.34 GPa, rmse=0.0093 GPa, asym=0.220 GPa, stable=True."
+  }
+}

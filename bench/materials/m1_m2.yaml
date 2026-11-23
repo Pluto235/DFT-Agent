@@ -1,0 +1,984 @@
+# M1 + M2 候选材料清单
+# 来源：杨博 2026-04-23 会议文档 (user_input/2026-04-23_jingyang_meeting.md)
+# 用途：第一期 182 题生成脚本的输入
+#
+# 每个材料的字段：
+#   id                        全局唯一 ID（格式 Mx_<formula>[_<polymorph>]）
+#   formula                   化学式（原格式，与 GBRV family key 对应）
+#   name                      人类可读名
+#   structure_hint            结构类型口语描述（喂给 prompt 模板）
+#   space_group               Hermann-Mauguin 符号（如 Fd-3m）
+#   space_group_number        整数 1–230
+#   atoms_per_primitive_cell  原胞原子数
+#   mp_id                     Materials Project ID（未知时留 null，由生成脚本根据
+#                             formula + space_group_number 查询补齐）
+#   notes                     特殊说明或警告
+#
+# 生成脚本应：
+#   1. 读本 YAML
+#   2. 对每个 material × task (T1, T2)：
+#      - 若 mp_id==null：用 pymatgen MPRester 按 formula + space_group_number 查询并锁定
+#      - 从 MP 拉 initial_structure (lattice + atomic_positions)
+#      - 基于 formula 自动推出元素集 → 生成 pseudopotential.files dict
+#      - render schema v1.2 JSON 输出到 bench/questions/Mi_Tj/<id>_<task>.json
+#   3. 把解析后的 mp_id 回写进 m1_m2_resolved.yaml 便于复现
+
+library_version: GBRV_USPP_PBE_v1.5
+pseudo_path: bench/pseudos/GBRV_USPP_PBE_v1.5
+generated_at: 2026-04-23
+generated_by: weilin
+source_document: user_input/2026-04-23_jingyang_meeting.md
+
+first_batch_plan:
+  # Final first-batch count after all resolution rounds:
+  #   Yang 0423 spec:                            M1=62, M2=29 = 91 (× 2 = 182)
+  #   0423 follow-up (Yang):
+  #     - MgAl2O4 in M1 was typo → M1 -1 →       M1=61, M2=29 = 90 (× 2 = 180)
+  #     - CeFe4Sb12, YbCo4Sb12 dropped (Ce/Yb
+  #       not in GBRV v1.5) → M2 -2 →            M1=61, M2=27 = 88 (× 2 = 176)
+  #   0425 MP cross-validation + Yang review:
+  #     - 11 Claude-vs-MP conflicts: auto-accept MP authoritative values
+  #       (CdSe, Rb, Sr, In structures/mp_ids; 4 formula casings;
+  #        WO3 SG notation; Sr3AlSb3 and BaZn2Sb2 SG numbers)
+  #     - 5 Yang-vs-MP decisions: see Yang's review (bench/materials/review_for_yang.md)
+  #       · CaTiO3: Option A — tetragonal I4/mcm mp-3442 (rename orth → tet)
+  #       · SrTiO3: Option A — tetragonal I4/mcm mp-4651
+  #       · atoms/cell for Ti3O5/Coesite/Spodumene: Option A — MP primitive as truth
+  #       · Li4SiO4: Option C — dropped (no MP match)
+  #       · FeCr σ-phase: Option C — dropped (MP has no σ-phase) → M2 -2
+  #                                                  M1=61, M2=25 = 86 (× 2 = 172)
+  #   Final: M1=61 + M2=25 = 86 materials × 2 tasks = 172 questions.
+  total_materials: 86
+  m1_count: 61
+  m2_count: 25
+  tasks: [T1_vc_relax, T2_bands_dos]
+  total_questions: 172
+
+# ============================================================
+# M1 · Standard GGA/LDA — 62 materials in 7 categories
+# ============================================================
+M1:
+  description: >
+    Materials computationally inexpensive and generally well-described by standard
+    semi-local functionals (PBE / LDA). Serves as the agent's baseline floor.
+
+  categories:
+
+    # --------- 1. Elemental Semiconductors & Insulators (Group IV & V) ---------
+    elemental_semiconductors:
+      label: "Elemental Semiconductors & Insulators (Group IV & V)"
+      materials:
+        - id: M1_C_diamond
+          formula: C
+          name: "carbon (diamond)"
+          structure_hint: diamond
+          space_group: "Fd-3m"
+          space_group_number: 227
+          atoms_per_primitive_cell: 2
+          mp_id: mp-66
+          notes: null
+        - id: M1_Si
+          formula: Si
+          name: "silicon (diamond)"
+          structure_hint: diamond
+          space_group: "Fd-3m"
+          space_group_number: 227
+          atoms_per_primitive_cell: 2
+          mp_id: mp-149
+          notes: null
+        - id: M1_Ge
+          formula: Ge
+          name: "germanium (diamond)"
+          structure_hint: diamond
+          space_group: "Fd-3m"
+          space_group_number: 227
+          atoms_per_primitive_cell: 2
+          mp_id: mp-32
+          notes: null
+        - id: M1_Sn_alpha
+          formula: Sn
+          name: "α-Sn (gray tin, diamond-cubic semiconductor)"
+          structure_hint: diamond
+          space_group: "Fd-3m"
+          space_group_number: 227
+          atoms_per_primitive_cell: 2
+          mp_id: mp-117
+          notes: "polymorph differentiator — Yang listed Sn twice: α-Sn (gray, semiconductor) here and β-Sn (white, metal) under simple_metals"
+        - id: M1_P_black
+          formula: P
+          name: "black phosphorus"
+          structure_hint: "orthorhombic puckered layers"
+          space_group: "Cmce"
+          space_group_number: 64
+          atoms_per_primitive_cell: 4
+          mp_id: null
+          notes: "multiple phosphorus polymorphs exist; Yang explicitly specified black phosphorus (orthorhombic)"
+
+    # --------- 2. III-V Semiconductors ---------
+    iii_v_semiconductors:
+      label: "III-V Semiconductors"
+      materials:
+        - id: M1_AlN
+          formula: AlN
+          name: "aluminum nitride (wurtzite)"
+          structure_hint: wurtzite
+          space_group: "P6_3mc"
+          space_group_number: 186
+          atoms_per_primitive_cell: 4
+          mp_id: mp-661
+          notes: null
+        - id: M1_AlP
+          formula: AlP
+          name: "aluminum phosphide (zincblende)"
+          structure_hint: zincblende
+          space_group: "F-43m"
+          space_group_number: 216
+          atoms_per_primitive_cell: 2
+          mp_id: mp-1550
+          notes: null
+        - id: M1_AlAs
+          formula: AlAs
+          name: "aluminum arsenide (zincblende)"
+          structure_hint: zincblende
+          space_group: "F-43m"
+          space_group_number: 216
+          atoms_per_primitive_cell: 2
+          mp_id: mp-2172
+          notes: null
+        - id: M1_AlSb
+          formula: AlSb
+          name: "aluminum antimonide (zincblende)"
+          structure_hint: zincblende
+          space_group: "F-43m"
+          space_group_number: 216
+          atoms_per_primitive_cell: 2
+          mp_id: mp-2624
+          notes: null
+        - id: M1_GaN
+          formula: GaN
+          name: "gallium nitride (wurtzite)"
+          structure_hint: wurtzite
+          space_group: "P6_3mc"
+          space_group_number: 186
+          atoms_per_primitive_cell: 4
+          mp_id: mp-804
+          notes: null
+        - id: M1_GaP
+          formula: GaP
+          name: "gallium phosphide (zincblende)"
+          structure_hint: zincblende
+          space_group: "F-43m"
+          space_group_number: 216
+          atoms_per_primitive_cell: 2
+          mp_id: mp-2490
+          notes: null
+        - id: M1_GaAs
+          formula: GaAs
+          name: "gallium arsenide (zincblende)"
+          structure_hint: zincblende
+          space_group: "F-43m"
+          space_group_number: 216
+          atoms_per_primitive_cell: 2
+          mp_id: mp-2534
+          notes: null
+        - id: M1_GaSb
+          formula: GaSb
+          name: "gallium antimonide (zincblende)"
+          structure_hint: zincblende
+          space_group: "F-43m"
+          space_group_number: 216
+          atoms_per_primitive_cell: 2
+          mp_id: mp-1156
+          notes: null
+        - id: M1_InP
+          formula: InP
+          name: "indium phosphide (zincblende)"
+          structure_hint: zincblende
+          space_group: "F-43m"
+          space_group_number: 216
+          atoms_per_primitive_cell: 2
+          mp_id: mp-20351
+          notes: null
+        - id: M1_InAs
+          formula: InAs
+          name: "indium arsenide (zincblende)"
+          structure_hint: zincblende
+          space_group: "F-43m"
+          space_group_number: 216
+          atoms_per_primitive_cell: 2
+          mp_id: mp-20305
+          notes: null
+        - id: M1_InSb
+          formula: InSb
+          name: "indium antimonide (zincblende)"
+          structure_hint: zincblende
+          space_group: "F-43m"
+          space_group_number: 216
+          atoms_per_primitive_cell: 2
+          mp_id: mp-20012
+          notes: null
+
+    # --------- 3. II-VI Semiconductors ---------
+    ii_vi_semiconductors:
+      label: "II-VI Semiconductors"
+      materials:
+        - id: M1_ZnO
+          formula: ZnO
+          name: "zinc oxide (wurtzite)"
+          structure_hint: wurtzite
+          space_group: "P6_3mc"
+          space_group_number: 186
+          atoms_per_primitive_cell: 4
+          mp_id: mp-2133
+          notes: "shallow Zn-3d states — standard GGA underestimates band gap"
+        - id: M1_ZnS
+          formula: ZnS
+          name: "zinc sulfide (zincblende)"
+          structure_hint: zincblende
+          space_group: "F-43m"
+          space_group_number: 216
+          atoms_per_primitive_cell: 2
+          mp_id: mp-10695
+          notes: null
+        - id: M1_ZnSe
+          formula: ZnSe
+          name: "zinc selenide (zincblende)"
+          structure_hint: zincblende
+          space_group: "F-43m"
+          space_group_number: 216
+          atoms_per_primitive_cell: 2
+          mp_id: mp-1190
+          notes: null
+        - id: M1_ZnTe
+          formula: ZnTe
+          name: "zinc telluride (zincblende)"
+          structure_hint: zincblende
+          space_group: "F-43m"
+          space_group_number: 216
+          atoms_per_primitive_cell: 2
+          mp_id: mp-2176
+          notes: null
+        - id: M1_CdS
+          formula: CdS
+          name: "cadmium sulfide (wurtzite)"
+          structure_hint: wurtzite
+          space_group: "P6_3mc"
+          space_group_number: 186
+          atoms_per_primitive_cell: 4
+          mp_id: mp-672
+          notes: null
+        - id: M1_CdSe
+          formula: CdSe
+          name: "cadmium selenide (zincblende)"
+          structure_hint: zincblende
+          space_group: "F-43m"
+          space_group_number: 216
+          atoms_per_primitive_cell: 2
+          mp_id: mp-2691
+          notes: "MP ground state is zincblende (F-43m). CdSe wurtzite and zincblende are nearly degenerate — accepting MP's zincblende per Claude-vs-MP rule."
+        - id: M1_CdTe
+          formula: CdTe
+          name: "cadmium telluride (zincblende)"
+          structure_hint: zincblende
+          space_group: "F-43m"
+          space_group_number: 216
+          atoms_per_primitive_cell: 2
+          mp_id: mp-406
+          notes: null
+
+    # --------- 4. Alkali & Alkaline-Earth Halides ---------
+    alkali_halides:
+      label: "Alkali & Alkaline-Earth Halides"
+      materials:
+        - id: M1_LiF
+          formula: LiF
+          name: "lithium fluoride (rocksalt)"
+          structure_hint: rocksalt
+          space_group: "Fm-3m"
+          space_group_number: 225
+          atoms_per_primitive_cell: 2
+          mp_id: mp-1138
+          notes: null
+        - id: M1_LiCl
+          formula: LiCl
+          name: "lithium chloride (rocksalt)"
+          structure_hint: rocksalt
+          space_group: "Fm-3m"
+          space_group_number: 225
+          atoms_per_primitive_cell: 2
+          mp_id: mp-22905
+          notes: null
+        - id: M1_LiBr
+          formula: LiBr
+          name: "lithium bromide (rocksalt)"
+          structure_hint: rocksalt
+          space_group: "Fm-3m"
+          space_group_number: 225
+          atoms_per_primitive_cell: 2
+          mp_id: mp-23259
+          notes: null
+        - id: M1_NaF
+          formula: NaF
+          name: "sodium fluoride (rocksalt)"
+          structure_hint: rocksalt
+          space_group: "Fm-3m"
+          space_group_number: 225
+          atoms_per_primitive_cell: 2
+          mp_id: mp-682
+          notes: null
+        - id: M1_NaCl
+          formula: NaCl
+          name: "sodium chloride (rocksalt)"
+          structure_hint: rocksalt
+          space_group: "Fm-3m"
+          space_group_number: 225
+          atoms_per_primitive_cell: 2
+          mp_id: mp-22862
+          notes: null
+        - id: M1_NaBr
+          formula: NaBr
+          name: "sodium bromide (rocksalt)"
+          structure_hint: rocksalt
+          space_group: "Fm-3m"
+          space_group_number: 225
+          atoms_per_primitive_cell: 2
+          mp_id: mp-22916
+          notes: null
+        - id: M1_KF
+          formula: KF
+          name: "potassium fluoride (rocksalt)"
+          structure_hint: rocksalt
+          space_group: "Fm-3m"
+          space_group_number: 225
+          atoms_per_primitive_cell: 2
+          mp_id: mp-463
+          notes: null
+        - id: M1_KCl
+          formula: KCl
+          name: "potassium chloride (rocksalt)"
+          structure_hint: rocksalt
+          space_group: "Fm-3m"
+          space_group_number: 225
+          atoms_per_primitive_cell: 2
+          mp_id: mp-23193
+          notes: null
+        - id: M1_KBr
+          formula: KBr
+          name: "potassium bromide (rocksalt)"
+          structure_hint: rocksalt
+          space_group: "Fm-3m"
+          space_group_number: 225
+          atoms_per_primitive_cell: 2
+          mp_id: mp-23251
+          notes: null
+        - id: M1_RbCl
+          formula: RbCl
+          name: "rubidium chloride (rocksalt)"
+          structure_hint: rocksalt
+          space_group: "Fm-3m"
+          space_group_number: 225
+          atoms_per_primitive_cell: 2
+          mp_id: mp-23295
+          notes: null
+        - id: M1_CsCl
+          formula: CsCl
+          name: "cesium chloride (CsCl-type)"
+          structure_hint: "CsCl-type simple cubic"
+          space_group: "Pm-3m"
+          space_group_number: 221
+          atoms_per_primitive_cell: 2
+          mp_id: mp-22865
+          notes: "not rocksalt — CsCl adopts its own CsCl-type structure (space group 221)"
+
+    # --------- 5. Simple & Main-Group Metals ---------
+    simple_metals:
+      label: "Simple Metals & Main Group Metals"
+      materials:
+        - id: M1_Li
+          formula: Li
+          name: "lithium (bcc)"
+          structure_hint: bcc
+          space_group: "Im-3m"
+          space_group_number: 229
+          atoms_per_primitive_cell: 1
+          mp_id: mp-135
+          notes: null
+        - id: M1_Na
+          formula: Na
+          name: "sodium (bcc)"
+          structure_hint: bcc
+          space_group: "Im-3m"
+          space_group_number: 229
+          atoms_per_primitive_cell: 1
+          mp_id: mp-127
+          notes: null
+        - id: M1_K
+          formula: K
+          name: "potassium (bcc)"
+          structure_hint: bcc
+          space_group: "Im-3m"
+          space_group_number: 229
+          atoms_per_primitive_cell: 1
+          mp_id: mp-58
+          notes: null
+        - id: M1_Rb
+          formula: Rb
+          name: "rubidium (body-centered tetragonal, quasi-bcc)"
+          structure_hint: "body-centered tetragonal I4/mmm (Yang 2026-04-25: chose mp-639755 as a quasi-bcc representative; mp-70 is an 8-atom P1 low-symmetry phase)"
+          space_group: "I4/mmm"
+          space_group_number: 139
+          atoms_per_primitive_cell: 1
+          mp_id: mp-639755
+          notes: >
+            Yang 2026-04-25: chose mp-639755 (I4/mmm, 1 atom/primitive) as quasi-bcc
+            representative. Original mp-70 fallback was an 8-atom P1 low-symmetry phase,
+            not standard bcc Rb. I4/mmm is bcc-like with c/a ≠ 1.
+        - id: M1_Be
+          formula: Be
+          name: "beryllium (hcp)"
+          structure_hint: hcp
+          space_group: "P6_3/mmc"
+          space_group_number: 194
+          atoms_per_primitive_cell: 2
+          mp_id: mp-87
+          notes: null
+        - id: M1_Mg
+          formula: Mg
+          name: "magnesium (hcp)"
+          structure_hint: hcp
+          space_group: "P6_3/mmc"
+          space_group_number: 194
+          atoms_per_primitive_cell: 2
+          mp_id: mp-153
+          notes: null
+        - id: M1_Ca
+          formula: Ca
+          name: "calcium (fcc)"
+          structure_hint: fcc
+          space_group: "Fm-3m"
+          space_group_number: 225
+          atoms_per_primitive_cell: 1
+          mp_id: mp-45
+          notes: null
+        - id: M1_Sr
+          formula: Sr
+          name: "strontium (hcp, PBE ground state)"
+          structure_hint: hcp
+          space_group: "P6_3/mmc"
+          space_group_number: 194
+          atoms_per_primitive_cell: 2
+          mp_id: mp-139
+          notes: "Experimentally Sr is fcc at RT; PBE ground state in MP is hcp. Accepting MP per Claude-vs-MP rule."
+        - id: M1_Al
+          formula: Al
+          name: "aluminum (fcc)"
+          structure_hint: fcc
+          space_group: "Fm-3m"
+          space_group_number: 225
+          atoms_per_primitive_cell: 1
+          mp_id: mp-134
+          notes: null
+        - id: M1_Ga
+          formula: Ga
+          name: "α-Ga (orthorhombic)"
+          structure_hint: "α-Ga orthorhombic"
+          space_group: "Cmce"
+          space_group_number: 64
+          atoms_per_primitive_cell: 4
+          mp_id: null
+          notes: "low-symmetry orthorhombic; MP space group may be reported as Cmca (=Cmce in old notation)"
+        - id: M1_In
+          formula: In
+          name: "indium (body-centered tetragonal, I4/mmm)"
+          structure_hint: "body-centered tetragonal"
+          space_group: "I4/mmm"
+          space_group_number: 139
+          atoms_per_primitive_cell: 1
+          mp_id: mp-85
+          notes: >
+            MP's summary.symmetry metadata for mp-85 incorrectly labels the structure as
+            Fm-3m, but the actual structure returned by MP (lattice α=β=120.7°, γ=90°)
+            is unambiguously body-centered tetragonal I4/mmm. SG here is derived from
+            structure via spglib (cross-validated 2026-04-25). Symmetry fields should
+            trust spglib-on-structure over summary metadata for this material.
+        - id: M1_Sn_beta
+          formula: Sn
+          name: "β-Sn (white tin, body-centered tetragonal metal)"
+          structure_hint: "body-centered tetragonal"
+          space_group: "I4_1/amd"
+          space_group_number: 141
+          atoms_per_primitive_cell: 2
+          mp_id: mp-84
+          notes: "polymorph differentiator — see M1_Sn_alpha"
+        - id: M1_Pb
+          formula: Pb
+          name: "lead (fcc)"
+          structure_hint: fcc
+          space_group: "Fm-3m"
+          space_group_number: 225
+          atoms_per_primitive_cell: 1
+          mp_id: mp-20483
+          notes: null
+
+    # --------- 6. Non-Magnetic Transition Metals ---------
+    nonmagnetic_transition_metals:
+      label: "Non-Magnetic Transition Metals (Closed/Full d-shells)"
+      materials:
+        - id: M1_Cu
+          formula: Cu
+          name: "copper (fcc)"
+          structure_hint: fcc
+          space_group: "Fm-3m"
+          space_group_number: 225
+          atoms_per_primitive_cell: 1
+          mp_id: mp-30
+          notes: null
+        - id: M1_Ag
+          formula: Ag
+          name: "silver (fcc)"
+          structure_hint: fcc
+          space_group: "Fm-3m"
+          space_group_number: 225
+          atoms_per_primitive_cell: 1
+          mp_id: mp-124
+          notes: null
+        - id: M1_Au
+          formula: Au
+          name: "gold (fcc)"
+          structure_hint: fcc
+          space_group: "Fm-3m"
+          space_group_number: 225
+          atoms_per_primitive_cell: 1
+          mp_id: mp-81
+          notes: null
+        - id: M1_Zn
+          formula: Zn
+          name: "zinc (hcp)"
+          structure_hint: hcp
+          space_group: "P6_3/mmc"
+          space_group_number: 194
+          atoms_per_primitive_cell: 2
+          mp_id: mp-79
+          notes: null
+        - id: M1_Cd
+          formula: Cd
+          name: "cadmium (hcp)"
+          structure_hint: hcp
+          space_group: "P6_3/mmc"
+          space_group_number: 194
+          atoms_per_primitive_cell: 2
+          mp_id: mp-94
+          notes: null
+        - id: M1_Pd
+          formula: Pd
+          name: "palladium (fcc)"
+          structure_hint: fcc
+          space_group: "Fm-3m"
+          space_group_number: 225
+          atoms_per_primitive_cell: 1
+          mp_id: mp-2
+          notes: null
+        - id: M1_Pt
+          formula: Pt
+          name: "platinum (fcc)"
+          structure_hint: fcc
+          space_group: "Fm-3m"
+          space_group_number: 225
+          atoms_per_primitive_cell: 1
+          mp_id: mp-126
+          notes: null
+
+    # --------- 7. Simple Oxides, Nitrides, Ternaries ---------
+    simple_oxides_nitrides_ternaries:
+      label: "Simple Oxides, Nitrides, and Ternaries"
+      materials:
+        - id: M1_MgO
+          formula: MgO
+          name: "magnesium oxide (rocksalt)"
+          structure_hint: rocksalt
+          space_group: "Fm-3m"
+          space_group_number: 225
+          atoms_per_primitive_cell: 2
+          mp_id: mp-1265
+          notes: null
+        - id: M1_CaO
+          formula: CaO
+          name: "calcium oxide (rocksalt)"
+          structure_hint: rocksalt
+          space_group: "Fm-3m"
+          space_group_number: 225
+          atoms_per_primitive_cell: 2
+          mp_id: mp-2605
+          notes: null
+        - id: M1_SrO
+          formula: SrO
+          name: "strontium oxide (rocksalt)"
+          structure_hint: rocksalt
+          space_group: "Fm-3m"
+          space_group_number: 225
+          atoms_per_primitive_cell: 2
+          mp_id: mp-2472
+          notes: null
+        - id: M1_SiO2_alpha_quartz
+          formula: SiO2
+          name: "α-quartz SiO2 (trigonal)"
+          structure_hint: "α-quartz trigonal"
+          space_group: "P3_2 2 1"
+          space_group_number: 154
+          atoms_per_primitive_cell: 9
+          mp_id: mp-6930
+          notes: "polymorph differentiator — see M2 Coesite; also α-quartz may be reported as P3_1 2 1 (SG 152) depending on handedness"
+        - id: M1_Al2O3_corundum
+          formula: Al2O3
+          name: "sapphire / α-Al2O3 (corundum)"
+          structure_hint: "corundum (R-3c)"
+          space_group: "R-3c"
+          space_group_number: 167
+          atoms_per_primitive_cell: 10
+          mp_id: mp-1143
+          notes: null
+        - id: M1_LiAlO2
+          formula: LiAlO2
+          name: "lithium aluminate (γ-LiAlO2, tetragonal)"
+          structure_hint: "γ-LiAlO2 tetragonal"
+          space_group: "P4_1 2_1 2"
+          space_group_number: 92
+          atoms_per_primitive_cell: 16
+          mp_id: null
+          notes: "γ-LiAlO2 is the stable RT polymorph; multiple polymorphs exist (α rhombohedral, β monoclinic)"
+        - id: M1_BN_hex
+          formula: BN
+          name: "hexagonal boron nitride (h-BN)"
+          structure_hint: "hexagonal (layered)"
+          space_group: "P6_3/mmc"
+          space_group_number: 194
+          atoms_per_primitive_cell: 4
+          mp_id: mp-984
+          notes: "Yang listed BN with 'Hexagonal or Cubic'; h-BN is chosen here as the default. See known_issues for c-BN alternative."
+
+# ============================================================
+# M2 · Low-Symmetry and Large Unit Cells (< 40 atoms/cell)
+# ============================================================
+M2:
+  description: >
+    Complex physical structure (low symmetry, >10 atoms/cell). Standard DFT still
+    applies; difficulty is structural, not electronic. Atoms/cell capped at 40.
+
+  categories:
+
+    # --------- 1. Distorted Perovskites & Simple Oxides ---------
+    distorted_perovskites:
+      label: "Distorted Perovskites & Simple Oxides"
+      materials:
+        - id: M2_CaTiO3_tet
+          formula: CaTiO3
+          name: "tetragonal CaTiO3 (I4/mcm)"
+          structure_hint: "tetragonal perovskite (I4/mcm)"
+          space_group: "I4/mcm"
+          space_group_number: 140
+          atoms_per_primitive_cell: 10
+          mp_id: mp-3442
+          notes: "Yang 0425 review decision (Option 1-A): mp-3442 explicitly given by Yang IS tetragonal I4/mcm; the 'Orthorhombic' label in the sub-list was a typo. Primitive cell has 10 atoms (= 20 atoms in conventional cell, matching Yang's '20 atoms/cell' count)."
+        - id: M2_SrTiO3_tet_lowT
+          formula: SrTiO3
+          name: "tetragonal SrTiO3 (I4/mcm, low-T phase)"
+          structure_hint: "tetragonal perovskite (I4/mcm)"
+          space_group: "I4/mcm"
+          space_group_number: 140
+          atoms_per_primitive_cell: 10
+          mp_id: mp-4651
+          notes: "Yang 0425 review decision (Option 2-A): SrTiO3 low-T phase is tetragonal I4/mcm (from cubic Pm-3m ~105 K). Yang's original 'Orthorhombic' was a typo. Primitive has 10 atoms (= 20 atoms in conventional cell)."
+        - id: M2_CsPbI3_gamma
+          formula: CsPbI3
+          name: "γ-CsPbI3 (orthorhombic)"
+          structure_hint: "orthorhombic perovskite"
+          space_group: "Pnma"
+          space_group_number: 62
+          atoms_per_primitive_cell: 20
+          mp_id: null
+          notes: "γ-phase is the black-phase photovoltaic polymorph"
+        - id: M2_ZrO2_baddeleyite
+          formula: ZrO2
+          name: "baddeleyite (monoclinic ZrO2)"
+          structure_hint: "monoclinic"
+          space_group: "P2_1/c"
+          space_group_number: 14
+          atoms_per_primitive_cell: 12
+          mp_id: mp-2858
+          notes: null
+        - id: M2_HfO2_monoclinic
+          formula: HfO2
+          name: "monoclinic HfO2"
+          structure_hint: "monoclinic"
+          space_group: "P2_1/c"
+          space_group_number: 14
+          atoms_per_primitive_cell: 12
+          mp_id: mp-352
+          notes: "Hf has two GBRV variants (Hf.upf standard, Hf_plus4.upf for +4 oxidation); this uses Hf_plus4.upf"
+        - id: M2_MgSiO3_bridgmanite
+          formula: MgSiO3
+          name: "bridgmanite MgSiO3 (Earth's lower mantle)"
+          structure_hint: "orthorhombic perovskite"
+          space_group: "Pnma"
+          space_group_number: 62
+          atoms_per_primitive_cell: 20
+          mp_id: null
+          notes: null
+        - id: M2_YAlO3_YAP
+          formula: YAlO3
+          name: "YAP / yttrium aluminum perovskite"
+          structure_hint: "orthorhombic perovskite"
+          space_group: "Pnma"
+          space_group_number: 62
+          atoms_per_primitive_cell: 20
+          mp_id: null
+          notes: null
+        - id: M2_WO3_roomT
+          formula: WO3
+          name: "WO3 (room-T monoclinic)"
+          structure_hint: "highly distorted monoclinic perovskite-like"
+          space_group: "P2_1/c"
+          space_group_number: 14
+          atoms_per_primitive_cell: 32
+          mp_id: null
+          notes: "WO3 has many polymorphs; Yang said 'Room-T phase, highly distorted, 32 atoms/cell'. SG symbol updated from P2_1/n → P2_1/c (same SG 14, different notation; MP's canonical form)."
+
+    # --------- 2. Skutterudites ---------
+    skutterudites:
+      label: "Skutterudites"
+      materials:
+        - id: M2_CoSb3
+          formula: CoSb3
+          name: "cobalt triantimonide (skutterudite)"
+          structure_hint: "cubic skutterudite"
+          space_group: "Im-3"
+          space_group_number: 204
+          atoms_per_primitive_cell: 16
+          mp_id: null
+          notes: null
+        - id: M2_IrSb3
+          formula: IrSb3
+          name: "iridium triantimonide (skutterudite)"
+          structure_hint: "cubic skutterudite"
+          space_group: "Im-3"
+          space_group_number: 204
+          atoms_per_primitive_cell: 16
+          mp_id: null
+          notes: null
+        # CeFe4Sb12 and YbCo4Sb12 removed per Yang's 0423 follow-up confirmation:
+        # Ce and Yb are special (rare earths, not in GBRV v1.5) — drop the materials
+        # rather than introduce a second pseudopotential family.
+
+    # --------- 3. Spinels & Sillenites ---------
+    spinels_sillenites:
+      label: "Spinels & Sillenites"
+      materials:
+        - id: M2_MgAl2O4_spinel
+          formula: MgAl2O4
+          name: "magnesium aluminate spinel (normal spinel)"
+          structure_hint: "normal spinel"
+          space_group: "Fd-3m"
+          space_group_number: 227
+          atoms_per_primitive_cell: 14
+          mp_id: mp-3536
+          notes: >
+            Yang listed MgAl2O4 in both M1 (as 'Magnesium Aluminate Spinel' under simple oxides) and M2 (14 atoms/primitive).
+            Defaulting to M2 because 14 atoms/primitive exceeds M1 threshold; see known_issues.duplicate_MgAl2O4.
+        - id: M2_ZnAl2O4_gahnite
+          formula: ZnAl2O4
+          name: "gahnite (zinc aluminate spinel)"
+          structure_hint: "normal spinel"
+          space_group: "Fd-3m"
+          space_group_number: 227
+          atoms_per_primitive_cell: 14
+          mp_id: null
+          notes: null
+        - id: M2_CdGa2O4_spinel
+          formula: CdGa2O4
+          name: "cadmium gallate (spinel)"
+          structure_hint: "spinel"
+          space_group: "Fd-3m"
+          space_group_number: 227
+          atoms_per_primitive_cell: 14
+          mp_id: null
+          notes: null
+        - id: M2_Bi12TiO20_sillenite
+          formula: Bi12TiO20
+          name: "bismuth titanium sillenite"
+          structure_hint: "cubic sillenite"
+          space_group: "I23"
+          space_group_number: 197
+          atoms_per_primitive_cell: 33
+          mp_id: null
+          notes: null
+        - id: M2_Ti3O5
+          formula: Ti3O5
+          name: "Ti3O5 (α-phase, orthorhombic Cmcm)"
+          structure_hint: "orthorhombic Cmcm"
+          space_group: "Cmcm"
+          space_group_number: 63
+          atoms_per_primitive_cell: 16
+          mp_id: mp-8057
+          notes: "Yang 0425 review decision (Option 3-A): atoms_per_primitive_cell updated from 32 (Yang's conventional) → 16 (MP primitive). MP ground state is mp-8057, orthorhombic Cmcm (α-Ti3O5). Yang's 'Monoclinic' label was approximate — MP's stable phase is orthorhombic; accepted per MP-authoritative rule within Yang's Option A."
+
+    # --------- 4. Silicates & Minerals ---------
+    silicates_minerals:
+      label: "Silicates & Minerals"
+      materials:
+        - id: M2_SiO2_coesite
+          formula: SiO2
+          name: "coesite (high-pressure SiO2 polymorph)"
+          structure_hint: "monoclinic coesite"
+          space_group: "C2/c"
+          space_group_number: 15
+          atoms_per_primitive_cell: 18
+          mp_id: mp-12787
+          notes: "polymorph differentiator — see M1_SiO2_alpha_quartz. Yang 0425 review decision (Option 3-A): atoms updated from 24 (Yang's conventional) → 18 (MP primitive)."
+        - id: M2_LiAlSi2O6_spodumene
+          formula: LiAlSi2O6
+          name: "spodumene (pyroxene)"
+          structure_hint: "monoclinic pyroxene"
+          space_group: "C2/c"
+          space_group_number: 15
+          atoms_per_primitive_cell: 20
+          mp_id: mp-6340
+          notes: "Yang 0425 review decision (Option 3-A): atoms updated from 40 (Yang's conventional) → 20 (MP primitive). MP's formula_pretty is 'LiAl(SiO3)2' (same composition, nested notation)."
+        - id: M2_ZrSiO4_zircon
+          formula: ZrSiO4
+          name: "zircon"
+          structure_hint: "tetragonal zircon-type"
+          space_group: "I4_1/amd"
+          space_group_number: 141
+          atoms_per_primitive_cell: 12
+          mp_id: null
+          notes: null
+        - id: M2_Ag2Se_naumannite
+          formula: Ag2Se
+          name: "naumannite (orthorhombic β-Ag2Se)"
+          structure_hint: "orthorhombic"
+          space_group: "P2_1 2_1 2_1"
+          space_group_number: 19
+          atoms_per_primitive_cell: 12
+          mp_id: null
+          notes: "β-phase (low-T); α-Ag2Se is high-T bcc"
+
+    # --------- 5. Solid-State Electrolytes & Battery Electrodes ---------
+    battery_electrolytes:
+      label: "Solid-State Electrolytes & Battery Electrodes"
+      materials:
+        - id: M2_Li3PO4_gamma
+          formula: Li3PO4
+          name: "γ-Li3PO4 (orthorhombic)"
+          structure_hint: "orthorhombic"
+          space_group: "Pnma"
+          space_group_number: 62
+          atoms_per_primitive_cell: 32
+          mp_id: null
+          notes: null
+        # M2_Li4SiO4 removed — Yang 0425 review decision (Option 4-C).
+        # MP's top Li4SiO4 entry (mp-559848) has 126 atoms/primitive (large ordered
+        # supercell); no MP entry matches Yang's 18-atom monoclinic spec.
+        - id: M2_LiFePO4_olivine
+          formula: LiFePO4
+          name: "LiFePO4 (olivine, battery cathode)"
+          structure_hint: "orthorhombic olivine"
+          space_group: "Pnma"
+          space_group_number: 62
+          atoms_per_primitive_cell: 28
+          mp_id: mp-19017
+          notes: >
+            Fe is magnetic; ground state is AFM below T_N ~ 50 K. For first-batch M2 classification
+            (structural complexity, not magnetism), treating as paramagnetic / nonmagnetic PBE is Yang's
+            default. Future M3 extension may redo these with nspin=2.
+        - id: M2_LiCoPO4_olivine
+          formula: LiCoPO4
+          name: "LiCoPO4 (olivine)"
+          structure_hint: "orthorhombic olivine"
+          space_group: "Pnma"
+          space_group_number: 62
+          atoms_per_primitive_cell: 28
+          mp_id: null
+          notes: "Co magnetic; T_N ~ 22 K. Same paramagnetic-default caveat as LiFePO4."
+        - id: M2_LiMnPO4_olivine
+          formula: LiMnPO4
+          name: "LiMnPO4 (olivine)"
+          structure_hint: "orthorhombic olivine"
+          space_group: "Pnma"
+          space_group_number: 62
+          atoms_per_primitive_cell: 28
+          mp_id: null
+          notes: "Mn magnetic; T_N ~ 33 K. Same paramagnetic-default caveat as LiFePO4."
+
+    # --------- 6. Complex Intermetallics & Zintl Phases ---------
+    intermetallics_zintl:
+      label: "Complex Intermetallics & Zintl Phases"
+      materials:
+        - id: M2_Sr3AlSb3
+          formula: Sr3AlSb3
+          name: "Sr3AlSb3 (Zintl phase)"
+          structure_hint: "orthorhombic Zintl (Cmce)"
+          space_group: "Cmce"
+          space_group_number: 64
+          atoms_per_primitive_cell: 28
+          mp_id: mp-17667
+          notes: "SG updated from Pnma (62) → Cmce (64) per MP authoritative value. Both are orthorhombic; Yang only specified 'Orthorhombic'."
+        - id: M2_BaZn2Sb2
+          formula: BaZn2Sb2
+          name: "BaZn2Sb2 (Zintl phase)"
+          structure_hint: "orthorhombic Zintl (Pnma)"
+          space_group: "Pnma"
+          space_group_number: 62
+          atoms_per_primitive_cell: 20
+          mp_id: mp-14207
+          notes: "SG updated from Cmcm (63) → Pnma (62) per MP authoritative value. Both are orthorhombic; Yang only specified 'Orthorhombic'. MP's formula_pretty is 'Ba(ZnSb)2' (same composition, nested notation)."
+        # M2_FeCr_sigma removed — Yang 0425 review decision (Option 5-C).
+        # MP's FeCr ground state is a simple Cmmm ordered alloy (2 atoms/primitive),
+        # not the P4_2/mnm σ-phase Yang wanted. σ-FeCr is a high-T metastable phase
+        # not catalogued as a stable MP entry.
+
+# ============================================================
+# 已知问题 — 生成脚本启动前需决策
+# ============================================================
+known_issues:
+
+  # Resolved items (kept here for audit trail):
+  # - MgAl2O4 appearing in both M1 and M2: Yang 0423 confirmed it was a spec
+  #   typo; material belongs only in M2. M1 count is 61 (not 62).
+  # - CeFe4Sb12 and YbCo4Sb12: Yang 0423 confirmed these are to be dropped,
+  #   since Ce and Yb are rare-earth elements outside GBRV v1.5 coverage.
+  #   M2 count is 27 (not 29). Skutterudite category reduced to {CoSb3, IrSb3}.
+  # - 0425 MP cross-validation via bench/materials/resolve.py:
+  #   - 70 materials VERIFIED (YAML matched MP authoritative values).
+  #   - 11 Claude-vs-MP conflicts: auto-accepted MP values per rule (MP wins
+  #     when YAML value was Claude's best guess without Yang specification).
+  #     Affected: M1_CdSe (zb not wz), M1_Rb (mp-70), M1_Sr (hcp not fcc),
+  #     M1_In (fcc not bct), M2_WO3 (P2_1/c not P2_1/n), M2_Sr3AlSb3 (Cmce),
+  #     M2_BaZn2Sb2 (Pnma), plus 4 formula casing diffs (IrSb3/ZnAl2O4/
+  #     CdGa2O4/Bi12TiO20 — formula kept as Yang's form, MP's pretty
+  #     form is cosmetic).
+  #   - 7 Yang-vs-MP conflicts → review_for_yang.md:
+  #     - CaTiO3 / SrTiO3 → tetragonal I4/mcm (Option A)
+  #     - Ti3O5 / Coesite / Spodumene → atoms = MP primitive (Option A)
+  #     - Li4SiO4 dropped (Option C) — no matching MP entry at 18 atoms
+  #     - FeCr σ-phase dropped (Option C) — MP has no σ-phase FeCr
+
+  BN_polymorph_ambiguity:
+    description: "Yang wrote 'BN (Hexagonal or Cubic Boron Nitride)' without specifying."
+    resolution: "defaulted to hexagonal h-BN (P6_3/mmc, SG 194, layered)"
+    alternative: "cubic c-BN (F-43m, SG 216, zincblende-like) — both technologically relevant"
+    confirmation_needed: true
+
+  magnetic_materials_in_M2:
+    description: >
+      5 M2 materials contain 3d transition metals with magnetic ground states
+      (Fe, Co, Mn, Cr): LiFePO4, LiCoPO4, LiMnPO4, FeCr σ-phase, CeFe4Sb12.
+      Categorizing these as M2 (structural complexity) instead of M3 (magnetism)
+      implies Yang wants paramagnetic PBE treatment. Future M3 redo may switch
+      to nspin=2.
+    resolution: "paramagnetic PBE; to be revisited in M3 extension"
+
+  mp_id_resolution:
+    description: >
+      Only ~40 of 91 materials have mp_id filled. Others need query script to
+      resolve by formula + space_group_number and write back to this file.
+    resolution: "generation script's first pass should be MP resolution; output m1_m2_resolved.yaml"

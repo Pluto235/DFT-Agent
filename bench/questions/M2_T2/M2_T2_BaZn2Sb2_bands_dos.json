@@ -1,0 +1,544 @@
+{
+  "schema_version": "1.3",
+  "id": "M2_T2_BaZn2Sb2_bands_dos",
+  "difficulty": {
+    "material_tier": "M2",
+    "task_tier": "T2",
+    "overall_level": null
+  },
+  "material": {
+    "formula": "BaZn2Sb2",
+    "name": "BaZn2Sb2 (Zintl phase)",
+    "structure": "orthorhombic Zintl (Pnma)",
+    "space_group": "Pnma",
+    "space_group_number": 62,
+    "atoms_per_primitive_cell": 20,
+    "advisory_notes": null,
+    "reference_source": {
+      "database": "Materials Project",
+      "id": "mp-14207",
+      "url": "https://next-gen.materialsproject.org/materials/mp-14207"
+    },
+    "initial_structure": {
+      "source": "mp-14207",
+      "note": "Starting geometry provided to agent. Agent should treat it as an initial structure (relaxed or not is not stated).",
+      "lattice_type": "primitive",
+      "lattice_constants_angstrom": {
+        "a": 4.560054449,
+        "b": 10.679977283,
+        "c": 11.72249452
+      },
+      "lattice_angles_degree": {
+        "alpha": 90.0,
+        "beta": 90.0,
+        "gamma": 90.0
+      },
+      "atomic_positions_crystal": [
+        {
+          "element": "Ba",
+          "position": [
+            0.25,
+            0.245947,
+            0.822622
+          ]
+        },
+        {
+          "element": "Ba",
+          "position": [
+            0.75,
+            0.754053,
+            0.177378
+          ]
+        },
+        {
+          "element": "Ba",
+          "position": [
+            0.25,
+            0.745947,
+            0.677378
+          ]
+        },
+        {
+          "element": "Ba",
+          "position": [
+            0.75,
+            0.254053,
+            0.322622
+          ]
+        },
+        {
+          "element": "Zn",
+          "position": [
+            0.75,
+            0.901002,
+            0.449825
+          ]
+        },
+        {
+          "element": "Zn",
+          "position": [
+            0.25,
+            0.098998,
+            0.550175
+          ]
+        },
+        {
+          "element": "Zn",
+          "position": [
+            0.25,
+            0.598998,
+            0.949825
+          ]
+        },
+        {
+          "element": "Zn",
+          "position": [
+            0.75,
+            0.401002,
+            0.050175
+          ]
+        },
+        {
+          "element": "Zn",
+          "position": [
+            0.75,
+            0.449647,
+            0.619523
+          ]
+        },
+        {
+          "element": "Zn",
+          "position": [
+            0.25,
+            0.550353,
+            0.380477
+          ]
+        },
+        {
+          "element": "Zn",
+          "position": [
+            0.75,
+            0.949647,
+            0.880477
+          ]
+        },
+        {
+          "element": "Zn",
+          "position": [
+            0.25,
+            0.050353,
+            0.119523
+          ]
+        },
+        {
+          "element": "Sb",
+          "position": [
+            0.75,
+            0.149453,
+            0.038008
+          ]
+        },
+        {
+          "element": "Sb",
+          "position": [
+            0.25,
+            0.850547,
+            0.961992
+          ]
+        },
+        {
+          "element": "Sb",
+          "position": [
+            0.25,
+            0.350547,
+            0.538008
+          ]
+        },
+        {
+          "element": "Sb",
+          "position": [
+            0.75,
+            0.649453,
+            0.461992
+          ]
+        },
+        {
+          "element": "Sb",
+          "position": [
+            0.75,
+            0.022944,
+            0.660485
+          ]
+        },
+        {
+          "element": "Sb",
+          "position": [
+            0.25,
+            0.977056,
+            0.339515
+          ]
+        },
+        {
+          "element": "Sb",
+          "position": [
+            0.75,
+            0.522944,
+            0.839515
+          ]
+        },
+        {
+          "element": "Sb",
+          "position": [
+            0.25,
+            0.477056,
+            0.160485
+          ]
+        }
+      ]
+    },
+    "pseudopotential": {
+      "family": "GBRV_USPP_PBE_v1.5",
+      "relativistic": "scalar",
+      "files": {
+        "Ba": "Ba.upf",
+        "Zn": "Zn.upf",
+        "Sb": "Sb.upf"
+      }
+    }
+  },
+  "task": {
+    "type": "bands_dos",
+    "prompt": null,
+    "policy": {
+      "network_allowed": false
+    }
+  },
+  "evaluator": {
+    "type": "qe_bands_dos_combined",
+    "extract_fields": [
+      "band_gap_ev",
+      "gap_type",
+      "vbm_k_label",
+      "cbm_k_label",
+      "dos_e_fermi",
+      "dos_curve"
+    ],
+    "data_sources": {
+      "bands_out": "bands.out",
+      "bands_data": "bands.dat",
+      "dos_data": "dos.dat"
+    },
+    "extraction_method": "custom",
+    "extraction_config": {
+      "dos_energy_window_ev": [
+        -5,
+        5
+      ],
+      "k_label_source": "seekpath"
+    }
+  },
+  "ground_truth": {
+    "band_gap_ev": {
+      "value": 0.0,
+      "unit": "eV",
+      "tolerance": 0.1,
+      "rule": "graded_absolute"
+    },
+    "gap_type": {
+      "value": "metal",
+      "rule": "exact"
+    },
+    "vbm_k_label": {
+      "value": "metal",
+      "rule": "k_label_match",
+      "tolerance": 0.05
+    },
+    "cbm_k_label": {
+      "value": "metal",
+      "rule": "k_label_match",
+      "tolerance": 0.05
+    },
+    "dos_e_fermi": {
+      "value": 9.7573,
+      "unit": "eV",
+      "tolerance": 0.1,
+      "rule": "absolute"
+    },
+    "dos_curve": {
+      "value": {
+        "ref_file": "bench/questions/M2_T2/gt_data/M2_T2_BaZn2Sb2_bands_dos/dos_reference.dat"
+      },
+      "unit": "states/eV/fu",
+      "tolerance": 0.1,
+      "rule": "curve_f1"
+    }
+  },
+  "scoring": {
+    "aggregate": "all_fields_weighted",
+    "field_weights": {
+      "band_gap_ev": 0.4,
+      "gap_type": 0.15,
+      "vbm_k_label": 0.1,
+      "cbm_k_label": 0.1,
+      "dos_e_fermi": 0.05,
+      "dos_curve": 0.2
+    },
+    "pass_criterion": "all_fields_passed",
+    "partial_credit": true
+  },
+  "convergence_evidence": {
+    "scan_points": [
+      {
+        "key": "e30_d30",
+        "round": 1,
+        "ecutwfc_ry": 30.0,
+        "ecutrho_ry": 300.0,
+        "kmesh": [
+          8,
+          4,
+          4
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 162,
+        "step_walls_sec": {
+          "scf": 94.05856275558472,
+          "nscf": 31.96627116203308,
+          "bands_pw": 368.0787932872772,
+          "bands_pp": 81.22983026504517
+        },
+        "band_gap_ev": 0.0,
+        "dos_e_fermi": 9.7064,
+        "vbm_k_label": "metal",
+        "cbm_k_label": "metal",
+        "gap_type": "metal"
+      },
+      {
+        "key": "e40_d30",
+        "round": 1,
+        "ecutwfc_ry": 40.0,
+        "ecutrho_ry": 400.0,
+        "kmesh": [
+          8,
+          4,
+          4
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 162,
+        "step_walls_sec": {
+          "scf": 141.89384031295776,
+          "nscf": 48.69117188453674,
+          "bands_pw": 442.78161454200745,
+          "bands_pp": 114.06520795822144
+        },
+        "band_gap_ev": 0.0,
+        "dos_e_fermi": 9.7107,
+        "vbm_k_label": "metal",
+        "cbm_k_label": "metal",
+        "gap_type": "metal"
+      },
+      {
+        "key": "e50_d30",
+        "round": 1,
+        "ecutwfc_ry": 50.0,
+        "ecutrho_ry": 500.0,
+        "kmesh": [
+          8,
+          4,
+          4
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 162,
+        "step_walls_sec": {
+          "scf": 167.50597953796387,
+          "nscf": 54.79944038391113,
+          "bands_pw": 507.42218542099,
+          "bands_pp": 164.5556674003601
+        },
+        "band_gap_ev": 0.0,
+        "dos_e_fermi": 9.7102,
+        "vbm_k_label": "metal",
+        "cbm_k_label": "metal",
+        "gap_type": "metal"
+      },
+      {
+        "key": "e60_d30",
+        "round": 1,
+        "ecutwfc_ry": 60.0,
+        "ecutrho_ry": 600.0,
+        "kmesh": [
+          8,
+          4,
+          4
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 162,
+        "step_walls_sec": {
+          "scf": 191.4005687236786,
+          "nscf": 65.31410884857178,
+          "bands_pw": 586.4481956958771,
+          "bands_pp": 209.5281958580017
+        },
+        "band_gap_ev": 0.0,
+        "dos_e_fermi": 9.71,
+        "vbm_k_label": "metal",
+        "cbm_k_label": "metal",
+        "gap_type": "metal"
+      },
+      {
+        "key": "e80_d30",
+        "round": 1,
+        "ecutwfc_ry": 80.0,
+        "ecutrho_ry": 800.0,
+        "kmesh": [
+          8,
+          4,
+          4
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 162,
+        "step_walls_sec": {
+          "scf": 287.34152269363403,
+          "nscf": 72.52310729026794,
+          "bands_pw": 746.8822116851807,
+          "bands_pp": 339.64715600013733
+        },
+        "band_gap_ev": 0.0,
+        "dos_e_fermi": 9.71,
+        "vbm_k_label": "metal",
+        "cbm_k_label": "metal",
+        "gap_type": "metal"
+      },
+      {
+        "key": "e80_d20",
+        "round": 2,
+        "ecutwfc_ry": 80.0,
+        "ecutrho_ry": 800.0,
+        "kmesh": [
+          4,
+          2,
+          2
+        ],
+        "kmesh_density": 20.0,
+        "nbnd": 162,
+        "step_walls_sec": {
+          "scf": 95.95203495025635,
+          "nscf": 27.906083822250366,
+          "bands_pw": 728.8531894683838,
+          "bands_pp": 325.4487714767456
+        },
+        "band_gap_ev": 0.0,
+        "dos_e_fermi": 9.6735,
+        "vbm_k_label": "metal",
+        "cbm_k_label": "metal",
+        "gap_type": "metal"
+      },
+      {
+        "key": "e80_d40",
+        "round": 2,
+        "ecutwfc_ry": 80.0,
+        "ecutrho_ry": 800.0,
+        "kmesh": [
+          10,
+          4,
+          4
+        ],
+        "kmesh_density": 40.0,
+        "nbnd": 162,
+        "step_walls_sec": {
+          "scf": 317.87772393226624,
+          "nscf": 98.86953377723694,
+          "bands_pw": 695.1426496505737,
+          "bands_pp": 321.51415514945984
+        },
+        "band_gap_ev": 0.0,
+        "dos_e_fermi": 9.7099,
+        "vbm_k_label": "metal",
+        "cbm_k_label": "metal",
+        "gap_type": "metal"
+      },
+      {
+        "key": "e80_d50",
+        "round": 2,
+        "ecutwfc_ry": 80.0,
+        "ecutrho_ry": 800.0,
+        "kmesh": [
+          12,
+          6,
+          4
+        ],
+        "kmesh_density": 50.0,
+        "nbnd": 162,
+        "step_walls_sec": {
+          "scf": 518.8597061634064,
+          "nscf": 132.6635856628418,
+          "bands_pw": 498.3547947406769,
+          "bands_pp": 329.7905354499817
+        },
+        "band_gap_ev": 0.0,
+        "dos_e_fermi": 9.7076,
+        "vbm_k_label": "metal",
+        "cbm_k_label": "metal",
+        "gap_type": "metal"
+      }
+    ],
+    "classification": {
+      "classification": "converged",
+      "round1_ecutwfc": {
+        "delta_band_gap_ev": 0.0,
+        "delta_e_fermi_ev": 0.0,
+        "last_two_keys": [
+          "e60_d30",
+          "e80_d30"
+        ],
+        "scan_keys": [
+          "e30_d30",
+          "e40_d30",
+          "e50_d30",
+          "e60_d30",
+          "e80_d30"
+        ]
+      },
+      "round2_kmesh": {
+        "delta_band_gap_ev": 0.0,
+        "delta_e_fermi_ev": 0.0022999999999999687,
+        "last_two_keys": [
+          "e80_d40",
+          "e80_d50"
+        ],
+        "scan_keys": [
+          "e80_d20",
+          "e80_d40",
+          "e80_d50"
+        ]
+      },
+      "thresholds": {
+        "band_gap_thr_ev": 0.02,
+        "e_fermi_thr_ev": 0.02,
+        "marginal_factor": 2.0
+      },
+      "reason": "all 4 deltas within converged thresholds"
+    },
+    "wall_time_sec": 8833.090902328491,
+    "canonical_point_key": "e80_d50",
+    "canonical_kmesh": [
+      12,
+      6,
+      4
+    ],
+    "dos_params": {
+      "sigma_ev": 0.02,
+      "de_ev": 0.01
+    }
+  },
+  "metadata": {
+    "author": "weilin",
+    "generated_at": "2026-04-24",
+    "reviewer": null,
+    "gt_qe_version": "7.5CN-GPU",
+    "gt_machine": null,
+    "gt_wall_time_sec": 8833.090902328491,
+    "gt_quality": "self_run_converged",
+    "gt_switched_at": "2026-04-30",
+    "notes": "bench schema v1.2. T2 k-path derived by agent via seekpath; GT k-labels derived by same seekpath on the initial structure and then matched to MP VBM/CBM frac_coords (B1: nearest, threshold 0.05, else OFF_PATH). DOS reference curve downloaded from MP (C1: missing → field dropped, weights renormalized).; v1.3 T2 GT switched MP→self-run 2026-04-30 (D policy extension); see todo/archive/t2-gt-full-replacement.md"
+  }
+}

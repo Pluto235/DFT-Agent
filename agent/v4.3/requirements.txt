@@ -1,5 +1,0 @@
-# Bench does NOT install these — see agents-api.md §6.
-# Listed here purely for human review and local dev.
-anthropic>=0.40
-openai>=2.0
-pyyaml

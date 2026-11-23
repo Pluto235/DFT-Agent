@@ -1,0 +1,527 @@
+{
+  "schema_version": "1.3",
+  "id": "M2_T2_SiO2_coesite_bands_dos",
+  "difficulty": {
+    "material_tier": "M2",
+    "task_tier": "T2",
+    "overall_level": null
+  },
+  "material": {
+    "formula": "SiO2",
+    "name": "coesite (high-pressure SiO2 polymorph)",
+    "structure": "monoclinic coesite",
+    "space_group": "C2/c",
+    "space_group_number": 15,
+    "atoms_per_primitive_cell": 18,
+    "advisory_notes": null,
+    "reference_source": {
+      "database": "Materials Project",
+      "id": "mp-12787",
+      "url": "https://next-gen.materialsproject.org/materials/mp-12787"
+    },
+    "initial_structure": {
+      "source": "mp-12787",
+      "note": "Starting geometry provided to agent. Agent should treat it as an initial structure (relaxed or not is not stated).",
+      "lattice_type": "primitive",
+      "lattice_constants_angstrom": {
+        "a": 7.485849211326128,
+        "b": 7.485849175750201,
+        "c": 8.926198830578654
+      },
+      "lattice_angles_degree": {
+        "alpha": 53.7717163214479,
+        "beta": 126.22828357437302,
+        "gamma": 140.56597805765125
+      },
+      "atomic_positions_crystal": [
+        {
+          "element": "Si",
+          "position": [
+            0.090865,
+            0.424058,
+            0.345717
+          ]
+        },
+        {
+          "element": "Si",
+          "position": [
+            0.424058,
+            0.090865,
+            0.154283
+          ]
+        },
+        {
+          "element": "Si",
+          "position": [
+            0.909135,
+            0.575942,
+            0.654283
+          ]
+        },
+        {
+          "element": "Si",
+          "position": [
+            0.575942,
+            0.909135,
+            0.845717
+          ]
+        },
+        {
+          "element": "Si",
+          "position": [
+            0.973879,
+            0.973879,
+            0.75
+          ]
+        },
+        {
+          "element": "Si",
+          "position": [
+            0.026121,
+            0.026121,
+            0.25
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.845637,
+            0.713778,
+            0.689631
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.713778,
+            0.845637,
+            0.810369
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.154363,
+            0.286222,
+            0.310369
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.286222,
+            0.154363,
+            0.189631
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.062719,
+            0.272123,
+            0.567492
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.272123,
+            0.062719,
+            0.932508
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.632837,
+            0.214314,
+            0.687767
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.214314,
+            0.632837,
+            0.812233
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.367163,
+            0.785686,
+            0.312233
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.785686,
+            0.367163,
+            0.187767
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.727877,
+            0.937281,
+            0.067492
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.937281,
+            0.727877,
+            0.432508
+          ]
+        }
+      ]
+    },
+    "pseudopotential": {
+      "family": "GBRV_USPP_PBE_v1.5",
+      "relativistic": "scalar",
+      "files": {
+        "Si": "Si.upf",
+        "O": "O.upf"
+      }
+    }
+  },
+  "task": {
+    "type": "bands_dos",
+    "prompt": null,
+    "policy": {
+      "network_allowed": false
+    }
+  },
+  "evaluator": {
+    "type": "qe_bands_dos_combined",
+    "extract_fields": [
+      "band_gap_ev",
+      "gap_type",
+      "vbm_k_label",
+      "cbm_k_label",
+      "dos_e_fermi",
+      "dos_curve"
+    ],
+    "data_sources": {
+      "bands_out": "bands.out",
+      "bands_data": "bands.dat",
+      "dos_data": "dos.dat"
+    },
+    "extraction_method": "custom",
+    "extraction_config": {
+      "dos_energy_window_ev": [
+        -5,
+        5
+      ],
+      "k_label_source": "seekpath"
+    }
+  },
+  "ground_truth": {
+    "band_gap_ev": {
+      "value": 5.234,
+      "unit": "eV",
+      "tolerance": 0.1,
+      "rule": "graded_absolute"
+    },
+    "gap_type": {
+      "value": "indirect",
+      "rule": "exact"
+    },
+    "vbm_k_label": {
+      "value": "C_2",
+      "rule": "k_label_match",
+      "tolerance": 0.05
+    },
+    "cbm_k_label": {
+      "value": "GAMMA",
+      "rule": "k_label_match",
+      "tolerance": 0.05
+    },
+    "dos_e_fermi": {
+      "value": 1.7686,
+      "unit": "eV",
+      "tolerance": 0.1,
+      "rule": "absolute"
+    },
+    "dos_curve": {
+      "value": {
+        "ref_file": "bench/questions/M2_T2/gt_data/M2_T2_SiO2_coesite_bands_dos/dos_reference.dat"
+      },
+      "unit": "states/eV/fu",
+      "tolerance": 0.1,
+      "rule": "curve_f1"
+    }
+  },
+  "scoring": {
+    "aggregate": "all_fields_weighted",
+    "field_weights": {
+      "band_gap_ev": 0.4,
+      "gap_type": 0.15,
+      "vbm_k_label": 0.1,
+      "cbm_k_label": 0.1,
+      "dos_e_fermi": 0.05,
+      "dos_curve": 0.2
+    },
+    "pass_criterion": "all_fields_passed",
+    "partial_credit": true
+  },
+  "convergence_evidence": {
+    "scan_points": [
+      {
+        "key": "e30_d30",
+        "round": 1,
+        "ecutwfc_ry": 30.0,
+        "ecutrho_ry": 300.0,
+        "kmesh": [
+          8,
+          8,
+          4
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 72,
+        "step_walls_sec": {
+          "scf": 52.0913519859314,
+          "nscf": 51.535788774490356,
+          "bands_pw": 134.14933896064758,
+          "bands_pp": 12.830715417861938
+        },
+        "band_gap_ev": 5.224,
+        "dos_e_fermi": 1.7666,
+        "vbm_k_label": "C_4",
+        "cbm_k_label": "GAMMA",
+        "gap_type": "indirect"
+      },
+      {
+        "key": "e40_d30",
+        "round": 1,
+        "ecutwfc_ry": 40.0,
+        "ecutrho_ry": 400.0,
+        "kmesh": [
+          8,
+          8,
+          4
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 72,
+        "step_walls_sec": {
+          "scf": 58.395522356033325,
+          "nscf": 51.59852981567383,
+          "bands_pw": 147.988431930542,
+          "bands_pp": 18.19280195236206
+        },
+        "band_gap_ev": 5.235799999999999,
+        "dos_e_fermi": 1.7673,
+        "vbm_k_label": "C_2",
+        "cbm_k_label": "GAMMA",
+        "gap_type": "indirect"
+      },
+      {
+        "key": "e50_d30",
+        "round": 1,
+        "ecutwfc_ry": 50.0,
+        "ecutrho_ry": 500.0,
+        "kmesh": [
+          8,
+          8,
+          4
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 72,
+        "step_walls_sec": {
+          "scf": 63.9031548500061,
+          "nscf": 63.10145807266235,
+          "bands_pw": 159.90969610214233,
+          "bands_pp": 24.701963424682617
+        },
+        "band_gap_ev": 5.2359,
+        "dos_e_fermi": 1.7667,
+        "vbm_k_label": "OFF_PATH",
+        "cbm_k_label": "GAMMA",
+        "gap_type": "indirect"
+      },
+      {
+        "key": "e60_d30",
+        "round": 1,
+        "ecutwfc_ry": 60.0,
+        "ecutrho_ry": 600.0,
+        "kmesh": [
+          8,
+          8,
+          4
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 72,
+        "step_walls_sec": {
+          "scf": 65.70902943611145,
+          "nscf": 69.26385641098022,
+          "bands_pw": 178.91433000564575,
+          "bands_pp": 32.16193628311157
+        },
+        "band_gap_ev": 5.2360999999999995,
+        "dos_e_fermi": 1.7663,
+        "vbm_k_label": "C_2",
+        "cbm_k_label": "GAMMA",
+        "gap_type": "indirect"
+      },
+      {
+        "key": "e80_d30",
+        "round": 1,
+        "ecutwfc_ry": 80.0,
+        "ecutrho_ry": 800.0,
+        "kmesh": [
+          8,
+          8,
+          4
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 72,
+        "step_walls_sec": {
+          "scf": 81.02990436553955,
+          "nscf": 78.09179043769836,
+          "bands_pw": 203.2699112892151,
+          "bands_pp": 48.71274185180664
+        },
+        "band_gap_ev": 5.2363,
+        "dos_e_fermi": 1.7662,
+        "vbm_k_label": "C_2",
+        "cbm_k_label": "GAMMA",
+        "gap_type": "indirect"
+      },
+      {
+        "key": "e80_d20",
+        "round": 2,
+        "ecutwfc_ry": 80.0,
+        "ecutrho_ry": 800.0,
+        "kmesh": [
+          4,
+          4,
+          4
+        ],
+        "kmesh_density": 20.0,
+        "nbnd": 72,
+        "step_walls_sec": {
+          "scf": 31.110682725906372,
+          "nscf": 24.74772024154663,
+          "bands_pw": 207.69803762435913,
+          "bands_pp": 54.33992052078247
+        },
+        "band_gap_ev": 5.269900000000001,
+        "dos_e_fermi": 1.7326,
+        "vbm_k_label": "OFF_PATH",
+        "cbm_k_label": "GAMMA",
+        "gap_type": "indirect"
+      },
+      {
+        "key": "e80_d40",
+        "round": 2,
+        "ecutwfc_ry": 80.0,
+        "ecutrho_ry": 800.0,
+        "kmesh": [
+          10,
+          10,
+          6
+        ],
+        "kmesh_density": 40.0,
+        "nbnd": 72,
+        "step_walls_sec": {
+          "scf": 175.42494201660156,
+          "nscf": 182.66365265846252,
+          "bands_pw": 209.91840028762817,
+          "bands_pp": 48.24011278152466
+        },
+        "band_gap_ev": 5.2397,
+        "dos_e_fermi": 1.7628,
+        "vbm_k_label": "OFF_PATH",
+        "cbm_k_label": "GAMMA",
+        "gap_type": "indirect"
+      },
+      {
+        "key": "e80_d50",
+        "round": 2,
+        "ecutwfc_ry": 80.0,
+        "ecutrho_ry": 800.0,
+        "kmesh": [
+          12,
+          12,
+          8
+        ],
+        "kmesh_density": 50.0,
+        "nbnd": 72,
+        "step_walls_sec": {
+          "scf": 318.81730365753174,
+          "nscf": 347.7771029472351,
+          "bands_pw": 211.90072536468506,
+          "bands_pp": 48.79279160499573
+        },
+        "band_gap_ev": 5.234,
+        "dos_e_fermi": 1.7686,
+        "vbm_k_label": "C_2",
+        "cbm_k_label": "GAMMA",
+        "gap_type": "indirect"
+      }
+    ],
+    "classification": {
+      "classification": "converged",
+      "round1_ecutwfc": {
+        "delta_band_gap_ev": 0.00020000000000042206,
+        "delta_e_fermi_ev": 9.999999999998899e-05,
+        "last_two_keys": [
+          "e60_d30",
+          "e80_d30"
+        ],
+        "scan_keys": [
+          "e30_d30",
+          "e40_d30",
+          "e50_d30",
+          "e60_d30",
+          "e80_d30"
+        ]
+      },
+      "round2_kmesh": {
+        "delta_band_gap_ev": 0.005700000000000038,
+        "delta_e_fermi_ev": 0.005800000000000027,
+        "last_two_keys": [
+          "e80_d40",
+          "e80_d50"
+        ],
+        "scan_keys": [
+          "e80_d20",
+          "e80_d40",
+          "e80_d50"
+        ]
+      },
+      "thresholds": {
+        "band_gap_thr_ev": 0.02,
+        "e_fermi_thr_ev": 0.02,
+        "marginal_factor": 2.0
+      },
+      "reason": "all 4 deltas within converged thresholds"
+    },
+    "wall_time_sec": 3467.0616669654846,
+    "canonical_point_key": "e80_d50",
+    "canonical_kmesh": [
+      12,
+      12,
+      8
+    ],
+    "dos_params": {
+      "sigma_ev": 0.02,
+      "de_ev": 0.01
+    }
+  },
+  "metadata": {
+    "author": "weilin",
+    "generated_at": "2026-04-24",
+    "reviewer": null,
+    "gt_qe_version": "7.5CN-GPU",
+    "gt_machine": null,
+    "gt_wall_time_sec": 3467.0616669654846,
+    "gt_quality": "self_run_converged",
+    "gt_switched_at": "2026-04-30",
+    "notes": "bench schema v1.2. T2 k-path derived by agent via seekpath; GT k-labels derived by same seekpath on the initial structure and then matched to MP VBM/CBM frac_coords (B1: nearest, threshold 0.05, else OFF_PATH). DOS reference curve downloaded from MP (C1: missing → field dropped, weights renormalized).; v1.3 T2 GT switched MP→self-run 2026-04-30 (D policy extension); see todo/archive/t2-gt-full-replacement.md"
+  }
+}

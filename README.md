@@ -1,7 +1,8 @@
 # DFT-Agent Bench
 
 Evaluate your own solver on Quantum ESPRESSO (QE) workflows. This public edition
-contains **116 tasks for 58 M1 materials**. The harness renders each prompt,
+includes **245 stable M1/M2 tasks** and **30 exploratory M3 tasks**. Another
+41 task definitions are retained for diagnostics. The harness renders each prompt,
 scores properties extracted from the solver's QE outputs, and checks execution
 evidence before assigning the final score.
 
@@ -16,23 +17,26 @@ numerical difficulty score.
 
 | Material tier | T1 · Variable-cell relaxation | T2 · Bands + DOS | T3 · Equation of state | T4 · Elastic tensor |
 | --- | ---: | ---: | ---: | ---: |
-| **M1** · Simple elemental and binary crystals (e.g., Si, GaAs) | [58](bench/questions/M1_T1/) | [58](bench/questions/M1_T2/) | — | — |
-| **M2** · Larger or lower-symmetry cells (e.g., perovskites and skutterudites) | — | — | — | — |
-| **M3** · Magnetic transition-metal systems requiring spin polarization | — | — | — | — |
+| **M1** · Simple elemental and binary crystals | [52 / 58](bench/questions/M1_T1/) | [43 / 58](bench/questions/M1_T2/) | [52 / 52](bench/questions/M1_T3/) | [45 / 52](bench/questions/M1_T4/) |
+| **M2** · Larger or lower-symmetry cells | [25 / 28](bench/questions/M2_T1/) | [22 / 28](bench/questions/M2_T2/) | [4 / 5](bench/questions/M2_T3/) | [2 / 5](bench/questions/M2_T4/) |
+| **M3** · Magnetic transition-metal systems | [15 exploratory](bench/questions/M3_T1/) | [15 exploratory](bench/questions/M3_T2/) | — | — |
 | **M4** · Strongly correlated systems | — | — | — | — |
 
-Counts refer to task files in **this public edition**. A dash means the checkout
-contains no tasks in that cell. T1 relaxes the cell and atomic positions. T2
+M1/M2 entries show **stable tasks / task files**. A dash means no task files
+in this release. The [task manifest](bench/task_manifest.tsv) marks every ID
+as stable, exploratory or held out and records its frozen-slice membership.
+
+T1 relaxes the cell and atomic positions. T2
 computes the band structure and density of states. T3 fits an energy–volume
 curve to obtain equilibrium volume and bulk modulus. T4 uses finite strains and
 their stresses to recover the elastic stiffness tensor.
 
 ## Start with the benchmark
 
-From the repository root, list the task IDs with Python 3.10+:
+From the repository root, list the standard evaluation set with Python 3.10+:
 
 ```bash
-python3 bench/harness/run.py --list-tasks
+python3 bench/harness/run.py --list-tasks stable
 ```
 
 - **Explore a task.** Inspect the [silicon relaxation task](bench/questions/M1_T1/M1_T1_Si_vc_relax.json) for its input structure, reference values and scoring tolerances. During evaluation, pass only the rendered prompt and prepared working directory to the solver.
@@ -41,22 +45,17 @@ python3 bench/harness/run.py --list-tasks
 
 ## Public edition and paper scope
 
-| Scope | Tasks and materials | Solver coverage |
-| --- | --- | --- |
-| This checkout | 58 M1 materials, each with one variable-cell relaxation (T1) and one bands + DOS workflow (T2). | Bring your own solver or use the included v1 or v4.3 reference implementation. |
-| Paper benchmark | 200+ tasks across multiple material tiers, also covering equations of state and elastic tensors. | The paper compares near-bare ReAct v1 with the bundled v5.1 scaffold on two models. |
-| Paper's frozen analysis | A fixed 100-task diagnostic slice. The paper links a review artifact containing the slice, prompts, scorer and solver revisions. | Use the linked artifact to identify the revisions for that analysis. |
+The original [116-task practice release](https://github.com/Pluto235/DFT-Agent/tree/5763997) covered M1/T1 and M1/T2. This release adds 200 task definitions from the [collaborators’ benchmark snapshot](https://github.com/wanweilin/dft-agent-bench/tree/821429331ddfbfbbc43c829797047d7b0c8965d2/questions). Of the 316 IDs, 245 form the paper's stable M1/M2 set, 30 are exploratory M3 tasks, and 41 have `metadata.is_stable=false`. Select a set explicitly when reporting aggregate scores. Include the repository commit, task IDs, solver, model, budget, repeats and treatment of failures.
 
-Report results for this checkout as **public M1 T1/T2**, with the Git commit,
-evaluated task IDs, solver/model, budget and repeat count. The paper's aggregate
-scores use different evaluation scopes. Cite [DFT-Agent Bench: Scaffold Effects
-and Execution Provenance in Autonomous DFT](https://arxiv.org/abs/2611.10629).
+## Reference agents and paper results
 
-## Reference agents
+The two [reference solvers](agent/README.md) are the paper's **v1 near-bare ReAct** baseline and **v5.1 engineered scaffold**. Both come from the paper's [frozen review artifact](https://anonymous.4open.science/r/231e31re91287h/README.md).
 
-[v1](agent/v1/) is the baseline solver. [v4.3](agent/v4.3/) adds planner,
-executor and verifier roles. Their READMEs cover dependencies and provider
-configuration. The v5.1 scaffold used in the paper is outside this edition.
+| Fixed diagnostic slice | Paired tasks | v1 mean | v5.1 mean | Paired difference (95% CI) |
+| --- | ---: | ---: | ---: | ---: |
+| `deepseek-v4-pro`, retrieval disabled | 100 | 0.706 | 0.876 | +0.170 [0.108, 0.234] |
+
+Scores are provenance-gated; failed runs count as zero. The 100 IDs span 58 stable, 30 exploratory and 12 held-out tasks in this checkout. The table reproduces the archived scores on that diagnostic slice. See the [per-task scores](results/frozen_matched_scores.csv), [reproduction command and model-specific results](results/README.md), and [paper](https://arxiv.org/abs/2611.10629).
 
 ## License
 

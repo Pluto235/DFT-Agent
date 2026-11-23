@@ -1,0 +1,24 @@
+For {formula} ({structure_type}, space group {space_group}, {atoms_per_primitive_cell} atoms per primitive cell), compute the **equation of state (EOS)** by Birch–Murnaghan 3rd-order (BM3) fit. The initial structure is the equilibrium configuration from a prior vc-relax; use it as your V0 reference.
+
+Generate appropriate volume points by isotropically scaling the equilibrium cell volume.
+
+For each volume, run a **fixed-cell ionic relaxation** with `calculation='relax'` (ions move, cell fixed). Use `forc_conv_thr ≤ 1e-4 Ry/Bohr` and `etot_conv_thr ≤ 1e-5 Ry`.
+
+Use the BM3 equation of state:
+
+   E(V) = E0 + (9·V0·B0/16) · [ (η-1)³·B0' + (η-1)²·(6 - 4η) ],   η = (V0/V)^(2/3)
+
+Report the three fit parameters as numbers.
+
+Pick adequate `ecutwfc`, `k-mesh`, and other settings. Use the same numerical settings across all volumes.
+
+Your `task_outputs` MUST include this key (path is relative to your workdir):
+- `eos_points_csv`: a CSV file with header `ratio,volume_ang3,energy_ry,pressure_kbar`, one row per volume point, values parsed from each pw.out.
+
+The harness re-fits BM3 from `eos_points_csv` and computes V0 / B0 / B0' itself; you do not need to (and should NOT) put these scalars into `task_outputs` (its values are file paths only — non-string values will be filtered out by the harness audit). Reporting your own fit values in the transcript / notes is fine but not required for scoring.
+
+{initial_structure_block}
+
+{pseudopotential_block}{advisory_notes_block}
+
+Execution hint: each volume point is a fixed-cell relax (typically 5–20 SCF iterations × a few ionic steps); a single point ~5–30 min depending on system size. Sequential or parallel is fine — just make sure all points use **identical pw.x parameters**. Prefer one long batch wait (e.g. `bash -c 'sleep 1800 && ls *.out'`) over many short polls.

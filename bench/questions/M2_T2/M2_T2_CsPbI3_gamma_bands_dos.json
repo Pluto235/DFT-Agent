@@ -1,0 +1,302 @@
+{
+  "schema_version": "1.3",
+  "id": "M2_T2_CsPbI3_gamma_bands_dos",
+  "difficulty": {
+    "material_tier": "M2",
+    "task_tier": "T2",
+    "overall_level": null
+  },
+  "material": {
+    "formula": "CsPbI3",
+    "name": "γ-CsPbI3 (orthorhombic)",
+    "structure": "orthorhombic perovskite",
+    "space_group": "Pnma",
+    "space_group_number": 62,
+    "atoms_per_primitive_cell": 20,
+    "advisory_notes": null,
+    "reference_source": {
+      "database": "Materials Project",
+      "id": "mp-540839",
+      "url": "https://next-gen.materialsproject.org/materials/mp-540839"
+    },
+    "initial_structure": {
+      "source": "mp-540839",
+      "note": "Starting geometry provided to agent. Agent should treat it as an initial structure (relaxed or not is not stated).",
+      "lattice_type": "primitive",
+      "lattice_constants_angstrom": {
+        "a": 4.847,
+        "b": 10.65,
+        "c": 18.031
+      },
+      "lattice_angles_degree": {
+        "alpha": 90.0,
+        "beta": 90.0,
+        "gamma": 90.0
+      },
+      "atomic_positions_crystal": [
+        {
+          "element": "Cs",
+          "position": [
+            0.75,
+            0.081276,
+            0.67212
+          ]
+        },
+        {
+          "element": "Cs",
+          "position": [
+            0.25,
+            0.918724,
+            0.32788
+          ]
+        },
+        {
+          "element": "Cs",
+          "position": [
+            0.75,
+            0.581276,
+            0.82788
+          ]
+        },
+        {
+          "element": "Cs",
+          "position": [
+            0.25,
+            0.418724,
+            0.17212
+          ]
+        },
+        {
+          "element": "Pb",
+          "position": [
+            0.25,
+            0.161849,
+            0.939217
+          ]
+        },
+        {
+          "element": "Pb",
+          "position": [
+            0.75,
+            0.838151,
+            0.060783
+          ]
+        },
+        {
+          "element": "Pb",
+          "position": [
+            0.25,
+            0.661849,
+            0.560783
+          ]
+        },
+        {
+          "element": "Pb",
+          "position": [
+            0.75,
+            0.338151,
+            0.439217
+          ]
+        },
+        {
+          "element": "I",
+          "position": [
+            0.75,
+            0.337211,
+            0.002045
+          ]
+        },
+        {
+          "element": "I",
+          "position": [
+            0.25,
+            0.662789,
+            0.997955
+          ]
+        },
+        {
+          "element": "I",
+          "position": [
+            0.75,
+            0.837211,
+            0.497955
+          ]
+        },
+        {
+          "element": "I",
+          "position": [
+            0.25,
+            0.162789,
+            0.502045
+          ]
+        },
+        {
+          "element": "I",
+          "position": [
+            0.25,
+            0.029272,
+            0.112308
+          ]
+        },
+        {
+          "element": "I",
+          "position": [
+            0.75,
+            0.970728,
+            0.887692
+          ]
+        },
+        {
+          "element": "I",
+          "position": [
+            0.25,
+            0.529272,
+            0.387692
+          ]
+        },
+        {
+          "element": "I",
+          "position": [
+            0.75,
+            0.470728,
+            0.612308
+          ]
+        },
+        {
+          "element": "I",
+          "position": [
+            0.25,
+            0.296317,
+            0.787306
+          ]
+        },
+        {
+          "element": "I",
+          "position": [
+            0.75,
+            0.703683,
+            0.212694
+          ]
+        },
+        {
+          "element": "I",
+          "position": [
+            0.25,
+            0.796317,
+            0.712694
+          ]
+        },
+        {
+          "element": "I",
+          "position": [
+            0.75,
+            0.203683,
+            0.287306
+          ]
+        }
+      ]
+    },
+    "pseudopotential": {
+      "family": "GBRV_USPP_PBE_v1.5",
+      "relativistic": "scalar",
+      "files": {
+        "Cs": "Cs.upf",
+        "Pb": "Pb.upf",
+        "I": "I.upf"
+      }
+    }
+  },
+  "task": {
+    "type": "bands_dos",
+    "prompt": null,
+    "policy": {
+      "network_allowed": false
+    }
+  },
+  "evaluator": {
+    "type": "qe_bands_dos_combined",
+    "extract_fields": [
+      "band_gap_ev",
+      "gap_type",
+      "vbm_k_label",
+      "cbm_k_label",
+      "dos_e_fermi",
+      "dos_curve"
+    ],
+    "data_sources": {
+      "bands_out": "bands.out",
+      "bands_data": "bands.dat",
+      "dos_data": "dos.dat"
+    },
+    "extraction_method": "custom",
+    "extraction_config": {
+      "dos_energy_window_ev": [
+        -5,
+        5
+      ],
+      "k_label_source": "seekpath"
+    }
+  },
+  "ground_truth": {
+    "band_gap_ev": {
+      "value": 2.5181,
+      "unit": "eV",
+      "tolerance": 0.1,
+      "rule": "graded_absolute"
+    },
+    "gap_type": {
+      "value": "indirect",
+      "rule": "exact"
+    },
+    "vbm_k_label": {
+      "value": "(0.200, 0.000, 0.000)",
+      "rule": "k_label_match",
+      "tolerance": 0.05
+    },
+    "cbm_k_label": {
+      "value": "T",
+      "rule": "k_label_match",
+      "tolerance": 0.05
+    },
+    "dos_e_fermi": {
+      "value": 2.7046,
+      "unit": "eV",
+      "tolerance": 0.1,
+      "rule": "absolute"
+    },
+    "dos_curve": {
+      "value": {
+        "ref_file": "bench/questions/M2_T2/gt_data/M2_T2_CsPbI3_gamma_bands_dos/dos_reference.dat"
+      },
+      "unit": "states/eV/fu",
+      "tolerance": 0.1,
+      "rule": "curve_f1"
+    }
+  },
+  "scoring": {
+    "aggregate": "all_fields_weighted",
+    "field_weights": {
+      "band_gap_ev": 0.4,
+      "gap_type": 0.15,
+      "vbm_k_label": 0.1,
+      "cbm_k_label": 0.1,
+      "dos_e_fermi": 0.05,
+      "dos_curve": 0.2
+    },
+    "pass_criterion": "all_fields_passed",
+    "partial_credit": true
+  },
+  "convergence_evidence": null,
+  "metadata": {
+    "author": "weilin",
+    "generated_at": "2026-04-24",
+    "reviewer": null,
+    "gt_qe_version": null,
+    "gt_machine": null,
+    "gt_wall_time_sec": null,
+    "gt_quality": "self_run_failed_kept_mp",
+    "gt_switched_at": "2026-04-30",
+    "notes": "bench schema v1.2. T2 k-path derived by agent via seekpath; GT k-labels derived by same seekpath on the initial structure and then matched to MP VBM/CBM frac_coords (B1: nearest, threshold 0.05, else OFF_PATH). DOS reference curve downloaded from MP (C1: missing → field dropped, weights renormalized).; T2 self-run FAILED 2026-04-30 (D policy investigation); see https://github.com/wanweilin/dft-gt-issue-cases (if material listed); bench keeps MP GT until QE setup is debugged.",
+    "is_stable": false
+  }
+}

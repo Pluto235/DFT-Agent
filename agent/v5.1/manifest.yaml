@@ -1,0 +1,52 @@
+# dft-agent-bench external agent manifest
+# Contract: benchmark external-agent API
+#
+# Bench validates this with Pydantic on register; missing/wrong-typed
+# required fields → 422 before smoke runs.
+
+# --- required ---
+id: dft-agent-v5
+name: "DFT-Agent v5"
+description: >
+  Multi-layer DFT solver with claude-agent-sdk architecture.
+  Dual-mode entry: Claude models route through SDK with MCP-based structured
+  tools (write_qe_input / run_pw / read_qe_output / parse_structure / verify_run),
+  a dedicated SCF Convergence Sub-Agent, Magentic-One-style progress ledger
+  with 7 stuck signals, program-level verifier (T1+T2 physical sanity), and
+  experience retrieval from past successful runs. Non-Claude models fall back
+  to the v4 hand-rolled tool-use loop.
+  Reuses v4 stable utilities: qe_tools.py (28 helpers), bash_guard,
+  qe_input_lint, multi-provider routing.
+entrypoint: solve.py
+
+# --- optional but recommended ---
+version: "0.5.0"
+
+# extra args bench transparently appends to every solver subprocess invocation
+default_args: ["--model", "claude-sonnet-4-6"]
+
+# bench will not dispatch task types outside this list
+supported_task_types: [vc_relax, bands_dos]
+
+python_requires: ">=3.10"
+
+# review-only — bench does NOT pip install (audit blocks network)
+declared_deps:
+  - "anthropic>=0.40"
+  - "claude-agent-sdk>=0.1.80"
+  - "sentence-transformers>=2.7"
+  - "onnxruntime>=1.17"
+  - "pymatgen>=2024.0"
+  - "ase>=3.22"
+  - "pyyaml"
+
+# smoke = registration verification: bench runs these tasks
+# pass_threshold: at least one task total_score >= threshold → register passes
+# We use cheap haiku for smoke ($0.02-0.05/task); leaderboard runs use the
+# default_args model (sonnet-4-6).
+smoke:
+  task_ids:
+    - M1_T1_Si_vc_relax
+  model: claude-haiku-4-5-20251001
+  pass_threshold: 0.5
+  timeout_per_task_sec: 1800

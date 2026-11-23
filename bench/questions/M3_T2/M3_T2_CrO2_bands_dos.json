@@ -1,0 +1,434 @@
+{
+  "schema_version": "1.2",
+  "id": "M3_T2_CrO2_bands_dos",
+  "difficulty": "M3",
+  "material": {
+    "formula": "CrO2",
+    "name": "CrO₂",
+    "structure": "rutile",
+    "space_group": "P4_2/mnm",
+    "space_group_number": 136,
+    "atoms_per_primitive_cell": 6,
+    "advisory_notes": null,
+    "reference_source": "rutile CrO₂ (Materials Project)",
+    "initial_structure": {
+      "source": "Materials Project (mp-19177)",
+      "note": "MP VASP+PAW PBE primitive cell (M3 自跑前的初始结构)",
+      "lattice_type": "Tetragonal",
+      "lattice_constants_angstrom": {
+        "a": 2.91388854,
+        "b": 4.409191770168261,
+        "c": 4.409191770168261
+      },
+      "lattice_angles_degree": {
+        "alpha": 90.00100110566376,
+        "beta": 90.0,
+        "gamma": 90.0
+      },
+      "atomic_positions_crystal": [
+        {
+          "element": "Cr",
+          "position": [
+            0.500001,
+            0.500001,
+            0.500001
+          ]
+        },
+        {
+          "element": "Cr",
+          "position": [
+            -0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            -0.0,
+            0.69725751,
+            0.69725751
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.500001,
+            0.80277488,
+            0.19722412
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.0,
+            0.30274349,
+            0.30274349
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.500001,
+            0.19722412,
+            0.80277488
+          ]
+        }
+      ]
+    },
+    "pseudopotential": {
+      "family": "GBRV_USPP_PBE_v1.5",
+      "relativistic": "scalar",
+      "files": {
+        "Cr": "Cr.upf",
+        "O": "O.upf"
+      }
+    },
+    "magnetic_metadata": {
+      "nspin": 2,
+      "magnetic_order": "FM",
+      "main_magnetic_element": "Cr",
+      "starting_magnetization": {
+        "Cr": 0.5,
+        "O": 0.0
+      },
+      "collinear": "Yes",
+      "expected_is_metal": true
+    }
+  },
+  "task": {
+    "type": "bands_dos",
+    "prompt": null,
+    "policy": {
+      "network_allowed": false
+    }
+  },
+  "evaluator": {
+    "type": "qe_bands_dos_combined",
+    "extract_fields": [
+      "band_gap_ev",
+      "gap_type",
+      "vbm_k_label",
+      "cbm_k_label",
+      "dos_e_fermi",
+      "dos_curve"
+    ],
+    "data_sources": {
+      "bands_out": "bands.out",
+      "bands_data": "bands.dat",
+      "dos_data": "dos.dat"
+    },
+    "extraction_method": "custom",
+    "extraction_config": {
+      "dos_energy_window_ev": [
+        -5,
+        5
+      ],
+      "k_label_source": "seekpath"
+    }
+  },
+  "ground_truth": {
+    "band_gap_ev": {
+      "value": 0.0,
+      "unit": "eV",
+      "tolerance": 0.1,
+      "rule": "graded_absolute"
+    },
+    "gap_type": {
+      "value": "metal",
+      "rule": "exact"
+    },
+    "vbm_k_label": {
+      "value": "metal",
+      "rule": "k_label_match",
+      "tolerance": 0.05
+    },
+    "cbm_k_label": {
+      "value": "metal",
+      "rule": "k_label_match",
+      "tolerance": 0.05
+    },
+    "dos_e_fermi": {
+      "value": 10.5269,
+      "unit": "eV",
+      "tolerance": 0.1,
+      "rule": "absolute"
+    },
+    "dos_curve": {
+      "value": {
+        "ref_file": "bench/questions/M3_T2/gt_data/M3_T2_CrO2_bands_dos/dos_reference.dat"
+      },
+      "unit": "states/eV/fu",
+      "tolerance": 0.1,
+      "rule": "curve_f1"
+    }
+  },
+  "scoring": {
+    "aggregate": "all_fields_weighted",
+    "field_weights": {
+      "band_gap_ev": 0.4,
+      "gap_type": 0.15,
+      "vbm_k_label": 0.1,
+      "cbm_k_label": 0.1,
+      "dos_e_fermi": 0.05,
+      "dos_curve": 0.2
+    },
+    "pass_criterion": "all_fields_passed",
+    "partial_credit": true
+  },
+  "convergence_evidence": {
+    "scan_points": [
+      {
+        "key": "e30_d30",
+        "round": 1,
+        "ecutwfc_ry": 30.0,
+        "ecutrho_ry": 300.0,
+        "kmesh": [
+          10,
+          8,
+          8
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 52,
+        "step_walls_sec": {
+          "scf": 56.488598346710205,
+          "nscf": 33.407896995544434,
+          "bands_pw": 1656.797482252121,
+          "bands_pp": 4.273729562759399
+        },
+        "band_gap_ev": 0.0,
+        "dos_e_fermi": 10.5248,
+        "vbm_k_label": "metal",
+        "cbm_k_label": "metal",
+        "gap_type": "metal"
+      },
+      {
+        "key": "e40_d30",
+        "round": 1,
+        "ecutwfc_ry": 40.0,
+        "ecutrho_ry": 400.0,
+        "kmesh": [
+          10,
+          8,
+          8
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 52,
+        "step_walls_sec": {
+          "scf": 61.91239333152771,
+          "nscf": 36.4443781375885,
+          "bands_pw": 1771.2579462528229,
+          "bands_pp": 4.923406362533569
+        },
+        "band_gap_ev": 0.0,
+        "dos_e_fermi": 10.531,
+        "vbm_k_label": "metal",
+        "cbm_k_label": "metal",
+        "gap_type": "metal"
+      },
+      {
+        "key": "e50_d30",
+        "round": 1,
+        "ecutwfc_ry": 50.0,
+        "ecutrho_ry": 500.0,
+        "kmesh": [
+          10,
+          8,
+          8
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 52,
+        "step_walls_sec": {
+          "scf": 62.90386199951172,
+          "nscf": 36.218191385269165,
+          "bands_pw": 1773.6451449394226,
+          "bands_pp": 6.024962902069092
+        },
+        "band_gap_ev": 0.0,
+        "dos_e_fermi": 10.5286,
+        "vbm_k_label": "metal",
+        "cbm_k_label": "metal",
+        "gap_type": "metal"
+      },
+      {
+        "key": "e60_d30",
+        "round": 1,
+        "ecutwfc_ry": 60.0,
+        "ecutrho_ry": 600.0,
+        "kmesh": [
+          10,
+          8,
+          8
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 52,
+        "step_walls_sec": {
+          "scf": 63.997894525527954,
+          "nscf": 37.113624811172485,
+          "bands_pw": 1782.076449394226,
+          "bands_pp": 7.073752403259277
+        },
+        "band_gap_ev": 0.0,
+        "dos_e_fermi": 10.5283,
+        "vbm_k_label": "metal",
+        "cbm_k_label": "metal",
+        "gap_type": "metal"
+      },
+      {
+        "key": "e80_d30",
+        "round": 1,
+        "ecutwfc_ry": 80.0,
+        "ecutrho_ry": 800.0,
+        "kmesh": [
+          10,
+          8,
+          8
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 52,
+        "step_walls_sec": {
+          "scf": 69.00815486907959,
+          "nscf": 39.11493420600891,
+          "bands_pw": 1670.7054517269135,
+          "bands_pp": 9.33211874961853
+        },
+        "band_gap_ev": 0.0,
+        "dos_e_fermi": 10.528,
+        "vbm_k_label": "metal",
+        "cbm_k_label": "metal",
+        "gap_type": "metal"
+      },
+      {
+        "key": "e80_d20",
+        "round": 2,
+        "ecutwfc_ry": 80.0,
+        "ecutrho_ry": 800.0,
+        "kmesh": [
+          8,
+          4,
+          4
+        ],
+        "kmesh_density": 20.0,
+        "nbnd": 52,
+        "step_walls_sec": {
+          "scf": 18.48745584487915,
+          "nscf": 11.228464126586914,
+          "bands_pw": 1560.767326116562,
+          "bands_pp": 9.277279615402222
+        },
+        "band_gap_ev": 0.0,
+        "dos_e_fermi": 10.5395,
+        "vbm_k_label": "metal",
+        "cbm_k_label": "metal",
+        "gap_type": "metal"
+      },
+      {
+        "key": "e80_d40",
+        "round": 2,
+        "ecutwfc_ry": 80.0,
+        "ecutrho_ry": 800.0,
+        "kmesh": [
+          14,
+          10,
+          10
+        ],
+        "kmesh_density": 40.0,
+        "nbnd": 52,
+        "step_walls_sec": {
+          "scf": 127.63134050369263,
+          "nscf": 75.11659932136536,
+          "bands_pw": 1726.4411082267761,
+          "bands_pp": 9.076309204101562
+        },
+        "band_gap_ev": 0.0,
+        "dos_e_fermi": 10.5268,
+        "vbm_k_label": "metal",
+        "cbm_k_label": "metal",
+        "gap_type": "metal"
+      },
+      {
+        "key": "e80_d50",
+        "round": 2,
+        "ecutwfc_ry": 80.0,
+        "ecutrho_ry": 800.0,
+        "kmesh": [
+          18,
+          12,
+          12
+        ],
+        "kmesh_density": 50.0,
+        "nbnd": 52,
+        "step_walls_sec": {
+          "scf": 223.46760368347168,
+          "nscf": 125.23699593544006,
+          "bands_pw": 1738.1778807640076,
+          "bands_pp": 9.276758909225464
+        },
+        "band_gap_ev": 0.0,
+        "dos_e_fermi": 10.5269,
+        "vbm_k_label": "metal",
+        "cbm_k_label": "metal",
+        "gap_type": "metal"
+      }
+    ],
+    "classification": {
+      "classification": "converged",
+      "round1_ecutwfc": {
+        "delta_band_gap_ev": 0.0,
+        "delta_e_fermi_ev": 0.0002999999999993008,
+        "last_two_keys": [
+          "e60_d30",
+          "e80_d30"
+        ],
+        "scan_keys": [
+          "e30_d30",
+          "e40_d30",
+          "e50_d30",
+          "e60_d30",
+          "e80_d30"
+        ]
+      },
+      "round2_kmesh": {
+        "delta_band_gap_ev": 0.0,
+        "delta_e_fermi_ev": 9.999999999976694e-05,
+        "last_two_keys": [
+          "e80_d40",
+          "e80_d50"
+        ],
+        "scan_keys": [
+          "e80_d20",
+          "e80_d40",
+          "e80_d50"
+        ]
+      },
+      "thresholds": {
+        "band_gap_thr_ev": 0.02,
+        "e_fermi_thr_ev": 0.02,
+        "marginal_factor": 2.0
+      },
+      "reason": "all 4 deltas within converged thresholds"
+    },
+    "wall_time_sec": 14822.376497745514,
+    "canonical_point_key": "e80_d50",
+    "canonical_kmesh": [
+      18,
+      12,
+      12
+    ],
+    "dos_params": {
+      "sigma_ev": 0.02,
+      "de_ev": 0.01
+    }
+  },
+  "metadata": {
+    "author": "weilin",
+    "generated_at": "2026-05-13",
+    "reviewer": null,
+    "gt_qe_version": "7.5CN-GPU",
+    "gt_machine": null,
+    "gt_wall_time_sec": null,
+    "gt_quality": "self_run_converged",
+    "gt_switched_at": null,
+    "notes": "M3 bands+DOS 题目（FM only v1）；ground_truth 待 t2 pipeline 跑完回填."
+  }
+}

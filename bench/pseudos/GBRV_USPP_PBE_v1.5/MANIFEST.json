@@ -3,7 +3,7 @@
   "version": "v1.5",
   "functional": "PBE",
   "relativistic": "scalar",
-  "source_url": "http://www.physics.rutgers.edu/gbrv/all_pbe_UPF_v1.5.tar.gz",
+  "source_url": "https://www.physics.rutgers.edu/gbrv/all_pbe_UPF_v1.5.tar.gz",
   "source_website": "https://www.physics.rutgers.edu/gbrv/",
   "tarball_sha256": "4ebfeaa4c9d916c1ac2da6e89ec888fdffce096714f1956db01fea5ec9c9e4f0",
   "citation": "K.F. Garrity, J.W. Bennett, K.M. Rabe, D. Vanderbilt, Comput. Mater. Sci. 81, 446 (2014). DOI: 10.1016/j.commatsci.2013.08.053",
@@ -706,24 +706,6 @@
       "minor_version": "1",
       "size_bytes": 605013,
       "sha256": "56e4e097a6b5a74149ba3b3bb75c03f2b022b509f53767143653dcd7b079e97d"
-    },
-    {
-      "element": "Fe1",
-      "is_plus4": false,
-      "original_name": "fe_pbe_v1.5.uspp.F.UPF",
-      "canonical_name": "Fe1.upf",
-      "minor_version": "1.5",
-      "size_bytes": 605112,
-      "sha256": "6c132e6e7ac1c42df5cb6a13d0c99bb7af5bf3d6e2349f5658f0c22abfe3911a"
-    },
-    {
-      "element": "Fe2",
-      "is_plus4": false,
-      "original_name": "fe_pbe_v1.5.uspp.F.UPF",
-      "canonical_name": "Fe2.upf",
-      "minor_version": "1.5",
-      "size_bytes": 605112,
-      "sha256": "6c132e6e7ac1c42df5cb6a13d0c99bb7af5bf3d6e2349f5658f0c22abfe3911a"
     }
   ]
 }

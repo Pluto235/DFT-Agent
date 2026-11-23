@@ -1,0 +1,512 @@
+{
+  "schema_version": "1.3",
+  "id": "M2_T2_LiAlO2_bands_dos",
+  "difficulty": {
+    "material_tier": "M2",
+    "task_tier": "T2",
+    "overall_level": null
+  },
+  "material": {
+    "formula": "LiAlO2",
+    "name": "lithium aluminate (γ-LiAlO2, tetragonal)",
+    "structure": "γ-LiAlO2 tetragonal",
+    "space_group": "P4_12_12",
+    "space_group_number": 92,
+    "atoms_per_primitive_cell": 16,
+    "advisory_notes": null,
+    "reference_source": {
+      "database": "Materials Project",
+      "id": "mp-3427",
+      "url": "https://next-gen.materialsproject.org/materials/mp-3427"
+    },
+    "initial_structure": {
+      "source": "mp-3427",
+      "note": "Starting geometry provided to agent. Agent should treat it as an initial structure (relaxed or not is not stated).",
+      "lattice_type": "primitive",
+      "lattice_constants_angstrom": {
+        "a": 5.226103995,
+        "b": 5.226103995,
+        "c": 6.303019019
+      },
+      "lattice_angles_degree": {
+        "alpha": 90.0,
+        "beta": 90.0,
+        "gamma": 90.0
+      },
+      "atomic_positions_crystal": [
+        {
+          "element": "Li",
+          "position": [
+            0.686534,
+            0.313466,
+            0.25
+          ]
+        },
+        {
+          "element": "Li",
+          "position": [
+            0.186534,
+            0.186534,
+            0.5
+          ]
+        },
+        {
+          "element": "Li",
+          "position": [
+            0.313466,
+            0.686534,
+            0.75
+          ]
+        },
+        {
+          "element": "Li",
+          "position": [
+            0.813466,
+            0.813466,
+            0.0
+          ]
+        },
+        {
+          "element": "Al",
+          "position": [
+            0.824958,
+            0.824958,
+            0.5
+          ]
+        },
+        {
+          "element": "Al",
+          "position": [
+            0.675042,
+            0.324958,
+            0.75
+          ]
+        },
+        {
+          "element": "Al",
+          "position": [
+            0.324958,
+            0.675042,
+            0.25
+          ]
+        },
+        {
+          "element": "Al",
+          "position": [
+            0.175042,
+            0.175042,
+            0.0
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.292222,
+            0.334898,
+            0.228693
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.165102,
+            0.792222,
+            0.478693
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.792222,
+            0.165102,
+            0.521307
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.834898,
+            0.207778,
+            0.978693
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.207778,
+            0.834898,
+            0.021307
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.665102,
+            0.707778,
+            0.271307
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.334898,
+            0.292222,
+            0.771307
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.707778,
+            0.665102,
+            0.728693
+          ]
+        }
+      ]
+    },
+    "pseudopotential": {
+      "family": "GBRV_USPP_PBE_v1.5",
+      "relativistic": "scalar",
+      "files": {
+        "Li": "Li.upf",
+        "Al": "Al.upf",
+        "O": "O.upf"
+      }
+    }
+  },
+  "task": {
+    "type": "bands_dos",
+    "prompt": null,
+    "policy": {
+      "network_allowed": false
+    }
+  },
+  "evaluator": {
+    "type": "qe_bands_dos_combined",
+    "extract_fields": [
+      "band_gap_ev",
+      "gap_type",
+      "vbm_k_label",
+      "cbm_k_label",
+      "dos_e_fermi",
+      "dos_curve"
+    ],
+    "data_sources": {
+      "bands_out": "bands.out",
+      "bands_data": "bands.dat",
+      "dos_data": "dos.dat"
+    },
+    "extraction_method": "custom",
+    "extraction_config": {
+      "dos_energy_window_ev": [
+        -5,
+        5
+      ],
+      "k_label_source": "seekpath"
+    }
+  },
+  "ground_truth": {
+    "band_gap_ev": {
+      "value": 4.6236,
+      "unit": "eV",
+      "tolerance": 0.1,
+      "rule": "graded_absolute"
+    },
+    "gap_type": {
+      "value": "direct",
+      "rule": "exact"
+    },
+    "vbm_k_label": {
+      "value": "GAMMA",
+      "rule": "k_label_match",
+      "tolerance": 0.05
+    },
+    "cbm_k_label": {
+      "value": "GAMMA",
+      "rule": "k_label_match",
+      "tolerance": 0.05
+    },
+    "dos_e_fermi": {
+      "value": 3.0405,
+      "unit": "eV",
+      "tolerance": 0.1,
+      "rule": "absolute"
+    },
+    "dos_curve": {
+      "value": {
+        "ref_file": "bench/questions/M2_T2/gt_data/M2_T2_LiAlO2_bands_dos/dos_reference.dat"
+      },
+      "unit": "states/eV/fu",
+      "tolerance": 0.1,
+      "rule": "curve_f1"
+    }
+  },
+  "scoring": {
+    "aggregate": "all_fields_weighted",
+    "field_weights": {
+      "band_gap_ev": 0.4,
+      "gap_type": 0.15,
+      "vbm_k_label": 0.1,
+      "cbm_k_label": 0.1,
+      "dos_e_fermi": 0.05,
+      "dos_curve": 0.2
+    },
+    "pass_criterion": "all_fields_passed",
+    "partial_credit": true
+  },
+  "convergence_evidence": {
+    "scan_points": [
+      {
+        "key": "e30_d30",
+        "round": 1,
+        "ecutwfc_ry": 30.0,
+        "ecutrho_ry": 300.0,
+        "kmesh": [
+          6,
+          6,
+          6
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 69,
+        "step_walls_sec": {
+          "scf": 0.0,
+          "nscf": 0.0,
+          "bands_pw": 0.0,
+          "bands_pp": 0.0
+        },
+        "band_gap_ev": 4.610100000000001,
+        "dos_e_fermi": 3.0414,
+        "vbm_k_label": "GAMMA",
+        "cbm_k_label": "GAMMA",
+        "gap_type": "direct"
+      },
+      {
+        "key": "e40_d30",
+        "round": 1,
+        "ecutwfc_ry": 40.0,
+        "ecutrho_ry": 400.0,
+        "kmesh": [
+          6,
+          6,
+          6
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 69,
+        "step_walls_sec": {
+          "scf": 0.0,
+          "nscf": 0.0,
+          "bands_pw": 0.0,
+          "bands_pp": 0.0
+        },
+        "band_gap_ev": 4.623,
+        "dos_e_fermi": 3.0412,
+        "vbm_k_label": "GAMMA",
+        "cbm_k_label": "GAMMA",
+        "gap_type": "direct"
+      },
+      {
+        "key": "e50_d30",
+        "round": 1,
+        "ecutwfc_ry": 50.0,
+        "ecutrho_ry": 500.0,
+        "kmesh": [
+          6,
+          6,
+          6
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 69,
+        "step_walls_sec": {
+          "scf": 0.0,
+          "nscf": 0.0,
+          "bands_pw": 0.0,
+          "bands_pp": 0.0
+        },
+        "band_gap_ev": 4.6235,
+        "dos_e_fermi": 3.0408,
+        "vbm_k_label": "GAMMA",
+        "cbm_k_label": "GAMMA",
+        "gap_type": "direct"
+      },
+      {
+        "key": "e60_d30",
+        "round": 1,
+        "ecutwfc_ry": 60.0,
+        "ecutrho_ry": 600.0,
+        "kmesh": [
+          6,
+          6,
+          6
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 69,
+        "step_walls_sec": {
+          "scf": 0.0,
+          "nscf": 0.0,
+          "bands_pw": 0.0,
+          "bands_pp": 0.0
+        },
+        "band_gap_ev": 4.6236,
+        "dos_e_fermi": 3.0405,
+        "vbm_k_label": "GAMMA",
+        "cbm_k_label": "GAMMA",
+        "gap_type": "direct"
+      },
+      {
+        "key": "e80_d30",
+        "round": 1,
+        "ecutwfc_ry": 80.0,
+        "ecutrho_ry": 800.0,
+        "kmesh": [
+          6,
+          6,
+          6
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 69,
+        "step_walls_sec": {
+          "scf": 0.0,
+          "nscf": 0.0,
+          "bands_pw": 0.0,
+          "bands_pp": 0.0
+        },
+        "band_gap_ev": 4.6236999999999995,
+        "dos_e_fermi": 3.0404,
+        "vbm_k_label": "GAMMA",
+        "cbm_k_label": "GAMMA",
+        "gap_type": "direct"
+      },
+      {
+        "key": "e80_d20",
+        "round": 2,
+        "ecutwfc_ry": 80.0,
+        "ecutrho_ry": 800.0,
+        "kmesh": [
+          4,
+          4,
+          4
+        ],
+        "kmesh_density": 20.0,
+        "nbnd": 69,
+        "step_walls_sec": {
+          "scf": 0.0,
+          "nscf": 0.0,
+          "bands_pw": 0.0,
+          "bands_pp": 0.0
+        },
+        "band_gap_ev": 4.6236,
+        "dos_e_fermi": 3.0405,
+        "vbm_k_label": "GAMMA",
+        "cbm_k_label": "GAMMA",
+        "gap_type": "direct"
+      },
+      {
+        "key": "e80_d40",
+        "round": 2,
+        "ecutwfc_ry": 80.0,
+        "ecutrho_ry": 800.0,
+        "kmesh": [
+          8,
+          8,
+          6
+        ],
+        "kmesh_density": 40.0,
+        "nbnd": 69,
+        "step_walls_sec": {
+          "scf": 0.0,
+          "nscf": 0.0,
+          "bands_pw": 0.0,
+          "bands_pp": 0.0
+        },
+        "band_gap_ev": 4.6236,
+        "dos_e_fermi": 3.0405,
+        "vbm_k_label": "GAMMA",
+        "cbm_k_label": "GAMMA",
+        "gap_type": "direct"
+      },
+      {
+        "key": "e80_d50",
+        "round": 2,
+        "ecutwfc_ry": 80.0,
+        "ecutrho_ry": 800.0,
+        "kmesh": [
+          10,
+          10,
+          8
+        ],
+        "kmesh_density": 50.0,
+        "nbnd": 69,
+        "step_walls_sec": {
+          "scf": 0.0,
+          "nscf": 0.0,
+          "bands_pw": 0.0,
+          "bands_pp": 0.0
+        },
+        "band_gap_ev": 4.6236,
+        "dos_e_fermi": 3.0404,
+        "vbm_k_label": "GAMMA",
+        "cbm_k_label": "GAMMA",
+        "gap_type": "direct"
+      }
+    ],
+    "classification": {
+      "classification": "converged",
+      "round1_ecutwfc": {
+        "delta_band_gap_ev": 9.999999999976694e-05,
+        "delta_e_fermi_ev": 0.00010000000000021103,
+        "last_two_keys": [
+          "e60_d30",
+          "e80_d30"
+        ],
+        "scan_keys": [
+          "e30_d30",
+          "e40_d30",
+          "e50_d30",
+          "e60_d30",
+          "e80_d30"
+        ]
+      },
+      "round2_kmesh": {
+        "delta_band_gap_ev": 0.0,
+        "delta_e_fermi_ev": 0.00010000000000021103,
+        "last_two_keys": [
+          "e80_d40",
+          "e80_d50"
+        ],
+        "scan_keys": [
+          "e80_d20",
+          "e80_d40",
+          "e80_d50"
+        ]
+      },
+      "thresholds": {
+        "band_gap_thr_ev": 0.02,
+        "e_fermi_thr_ev": 0.02,
+        "marginal_factor": 2.0
+      },
+      "reason": "all 4 deltas within converged thresholds"
+    },
+    "wall_time_sec": 0.0,
+    "canonical_point_key": "e80_d50",
+    "canonical_kmesh": [
+      10,
+      10,
+      8
+    ],
+    "dos_params": {
+      "sigma_ev": 0.02,
+      "de_ev": 0.01
+    }
+  },
+  "metadata": {
+    "author": "weilin",
+    "generated_at": "2026-04-24",
+    "reviewer": null,
+    "gt_qe_version": "7.5CN-GPU",
+    "gt_machine": null,
+    "gt_wall_time_sec": null,
+    "gt_quality": "self_run_converged",
+    "gt_switched_at": "2026-04-30",
+    "notes": "bench schema v1.2. T2 k-path derived by agent via seekpath; GT k-labels derived by same seekpath on the initial structure and then matched to MP VBM/CBM frac_coords (B1: nearest, threshold 0.05, else OFF_PATH). DOS reference curve downloaded from MP (C1: missing → field dropped, weights renormalized).; v1.3 T2 GT switched MP→self-run 2026-04-30 (D policy extension); see todo/archive/t2-gt-full-replacement.md"
+  }
+}

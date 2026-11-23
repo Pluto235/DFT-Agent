@@ -1,0 +1,479 @@
+{
+  "schema_version": "1.3",
+  "id": "M2_T2_Ag2Se_naumannite_bands_dos",
+  "difficulty": {
+    "material_tier": "M2",
+    "task_tier": "T2",
+    "overall_level": null
+  },
+  "material": {
+    "formula": "Ag2Se",
+    "name": "naumannite (orthorhombic β-Ag2Se)",
+    "structure": "orthorhombic",
+    "space_group": "P2_12_12_1",
+    "space_group_number": 19,
+    "atoms_per_primitive_cell": 12,
+    "advisory_notes": null,
+    "reference_source": {
+      "database": "Materials Project",
+      "id": "mp-2047939",
+      "url": "https://next-gen.materialsproject.org/materials/mp-2047939"
+    },
+    "initial_structure": {
+      "source": "mp-2047939",
+      "note": "Starting geometry provided to agent. Agent should treat it as an initial structure (relaxed or not is not stated).",
+      "lattice_type": "primitive",
+      "lattice_constants_angstrom": {
+        "a": 5.295933041,
+        "b": 6.807742759,
+        "c": 6.930725156
+      },
+      "lattice_angles_degree": {
+        "alpha": 90.0,
+        "beta": 90.0,
+        "gamma": 90.0
+      },
+      "atomic_positions_crystal": [
+        {
+          "element": "Ag",
+          "position": [
+            0.11784,
+            0.287181,
+            0.415834
+          ]
+        },
+        {
+          "element": "Ag",
+          "position": [
+            0.397447,
+            0.90719,
+            0.303402
+          ]
+        },
+        {
+          "element": "Ag",
+          "position": [
+            0.602553,
+            0.40719,
+            0.196598
+          ]
+        },
+        {
+          "element": "Ag",
+          "position": [
+            0.88216,
+            0.787181,
+            0.084166
+          ]
+        },
+        {
+          "element": "Ag",
+          "position": [
+            0.61784,
+            0.212819,
+            0.584166
+          ]
+        },
+        {
+          "element": "Ag",
+          "position": [
+            0.897447,
+            0.59281,
+            0.696598
+          ]
+        },
+        {
+          "element": "Ag",
+          "position": [
+            0.102553,
+            0.09281,
+            0.803402
+          ]
+        },
+        {
+          "element": "Ag",
+          "position": [
+            0.38216,
+            0.712819,
+            0.915834
+          ]
+        },
+        {
+          "element": "Se",
+          "position": [
+            0.570206,
+            0.066773,
+            0.964723
+          ]
+        },
+        {
+          "element": "Se",
+          "position": [
+            0.429794,
+            0.566773,
+            0.535277
+          ]
+        },
+        {
+          "element": "Se",
+          "position": [
+            0.070206,
+            0.433227,
+            0.035277
+          ]
+        },
+        {
+          "element": "Se",
+          "position": [
+            0.929794,
+            0.933227,
+            0.464723
+          ]
+        }
+      ]
+    },
+    "pseudopotential": {
+      "family": "GBRV_USPP_PBE_v1.5",
+      "relativistic": "scalar",
+      "files": {
+        "Ag": "Ag.upf",
+        "Se": "Se.upf"
+      }
+    }
+  },
+  "task": {
+    "type": "bands_dos",
+    "prompt": null,
+    "policy": {
+      "network_allowed": false
+    }
+  },
+  "evaluator": {
+    "type": "qe_bands_dos_combined",
+    "extract_fields": [
+      "band_gap_ev",
+      "gap_type",
+      "vbm_k_label",
+      "cbm_k_label",
+      "dos_e_fermi",
+      "dos_curve"
+    ],
+    "data_sources": {
+      "bands_out": "bands.out",
+      "bands_data": "bands.dat",
+      "dos_data": "dos.dat"
+    },
+    "extraction_method": "custom",
+    "extraction_config": {
+      "dos_energy_window_ev": [
+        -5,
+        5
+      ],
+      "k_label_source": "seekpath"
+    }
+  },
+  "ground_truth": {
+    "band_gap_ev": {
+      "value": 0.0,
+      "unit": "eV",
+      "tolerance": 0.1,
+      "rule": "graded_absolute"
+    },
+    "gap_type": {
+      "value": "metal",
+      "rule": "exact"
+    },
+    "vbm_k_label": {
+      "value": "metal",
+      "rule": "k_label_match",
+      "tolerance": 0.05
+    },
+    "cbm_k_label": {
+      "value": "metal",
+      "rule": "k_label_match",
+      "tolerance": 0.05
+    },
+    "dos_e_fermi": {
+      "value": 11.3196,
+      "unit": "eV",
+      "tolerance": 0.1,
+      "rule": "absolute"
+    },
+    "dos_curve": {
+      "value": {
+        "ref_file": "bench/questions/M2_T2/gt_data/M2_T2_Ag2Se_naumannite_bands_dos/dos_reference.dat"
+      },
+      "unit": "states/eV/fu",
+      "tolerance": 0.1,
+      "rule": "curve_f1"
+    }
+  },
+  "scoring": {
+    "aggregate": "all_fields_weighted",
+    "field_weights": {
+      "band_gap_ev": 0.4,
+      "gap_type": 0.15,
+      "vbm_k_label": 0.1,
+      "cbm_k_label": 0.1,
+      "dos_e_fermi": 0.05,
+      "dos_curve": 0.2
+    },
+    "pass_criterion": "all_fields_passed",
+    "partial_credit": true
+  },
+  "convergence_evidence": {
+    "scan_points": [
+      {
+        "key": "e30_d30",
+        "round": 1,
+        "ecutwfc_ry": 30.0,
+        "ecutrho_ry": 300.0,
+        "kmesh": [
+          6,
+          4,
+          4
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 132,
+        "step_walls_sec": {
+          "scf": 0.0,
+          "nscf": 0.0,
+          "bands_pw": 0.0,
+          "bands_pp": 0.0
+        },
+        "band_gap_ev": 0.0,
+        "dos_e_fermi": 11.2917,
+        "vbm_k_label": "metal",
+        "cbm_k_label": "metal",
+        "gap_type": "metal"
+      },
+      {
+        "key": "e40_d30",
+        "round": 1,
+        "ecutwfc_ry": 40.0,
+        "ecutrho_ry": 400.0,
+        "kmesh": [
+          6,
+          4,
+          4
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 132,
+        "step_walls_sec": {
+          "scf": 0.0,
+          "nscf": 0.0,
+          "bands_pw": 0.0,
+          "bands_pp": 0.0
+        },
+        "band_gap_ev": 0.0,
+        "dos_e_fermi": 11.2924,
+        "vbm_k_label": "metal",
+        "cbm_k_label": "metal",
+        "gap_type": "metal"
+      },
+      {
+        "key": "e50_d30",
+        "round": 1,
+        "ecutwfc_ry": 50.0,
+        "ecutrho_ry": 500.0,
+        "kmesh": [
+          6,
+          4,
+          4
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 132,
+        "step_walls_sec": {
+          "scf": 0.0,
+          "nscf": 0.0,
+          "bands_pw": 0.0,
+          "bands_pp": 0.0
+        },
+        "band_gap_ev": 0.0,
+        "dos_e_fermi": 11.2923,
+        "vbm_k_label": "metal",
+        "cbm_k_label": "metal",
+        "gap_type": "metal"
+      },
+      {
+        "key": "e60_d30",
+        "round": 1,
+        "ecutwfc_ry": 60.0,
+        "ecutrho_ry": 600.0,
+        "kmesh": [
+          6,
+          4,
+          4
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 132,
+        "step_walls_sec": {
+          "scf": 0.0,
+          "nscf": 0.0,
+          "bands_pw": 0.0,
+          "bands_pp": 0.0
+        },
+        "band_gap_ev": 0.0,
+        "dos_e_fermi": 11.2919,
+        "vbm_k_label": "metal",
+        "cbm_k_label": "metal",
+        "gap_type": "metal"
+      },
+      {
+        "key": "e80_d30",
+        "round": 1,
+        "ecutwfc_ry": 80.0,
+        "ecutrho_ry": 800.0,
+        "kmesh": [
+          6,
+          4,
+          4
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 132,
+        "step_walls_sec": {
+          "scf": 0.0,
+          "nscf": 0.0,
+          "bands_pw": 0.0,
+          "bands_pp": 0.0
+        },
+        "band_gap_ev": 0.0,
+        "dos_e_fermi": 11.2911,
+        "vbm_k_label": "metal",
+        "cbm_k_label": "metal",
+        "gap_type": "metal"
+      },
+      {
+        "key": "e80_d20",
+        "round": 2,
+        "ecutwfc_ry": 80.0,
+        "ecutrho_ry": 800.0,
+        "kmesh": [
+          4,
+          4,
+          4
+        ],
+        "kmesh_density": 20.0,
+        "nbnd": 132,
+        "step_walls_sec": {
+          "scf": 0.0,
+          "nscf": 0.0,
+          "bands_pw": 0.0,
+          "bands_pp": 0.0
+        },
+        "band_gap_ev": 0.0,
+        "dos_e_fermi": 11.2707,
+        "vbm_k_label": "metal",
+        "cbm_k_label": "metal",
+        "gap_type": "metal"
+      },
+      {
+        "key": "e80_d40",
+        "round": 2,
+        "ecutwfc_ry": 80.0,
+        "ecutrho_ry": 800.0,
+        "kmesh": [
+          8,
+          6,
+          6
+        ],
+        "kmesh_density": 40.0,
+        "nbnd": 132,
+        "step_walls_sec": {
+          "scf": 103.60042929649353,
+          "nscf": 217.4214346408844,
+          "bands_pw": 1194.9707102775574,
+          "bands_pp": 85.72880578041077
+        },
+        "band_gap_ev": 0.0,
+        "dos_e_fermi": 11.2808,
+        "vbm_k_label": "metal",
+        "cbm_k_label": "metal",
+        "gap_type": "metal"
+      },
+      {
+        "key": "e80_d50",
+        "round": 2,
+        "ecutwfc_ry": 80.0,
+        "ecutrho_ry": 800.0,
+        "kmesh": [
+          10,
+          8,
+          8
+        ],
+        "kmesh_density": 50.0,
+        "nbnd": 132,
+        "step_walls_sec": {
+          "scf": 426.31759881973267,
+          "nscf": 402.35614562034607,
+          "bands_pw": 598.9964261054993,
+          "bands_pp": 83.16541886329651
+        },
+        "band_gap_ev": 0.0,
+        "dos_e_fermi": 11.2849,
+        "vbm_k_label": "metal",
+        "cbm_k_label": "metal",
+        "gap_type": "metal"
+      }
+    ],
+    "classification": {
+      "classification": "converged",
+      "round1_ecutwfc": {
+        "delta_band_gap_ev": 0.0,
+        "delta_e_fermi_ev": 0.0007999999999999119,
+        "last_two_keys": [
+          "e60_d30",
+          "e80_d30"
+        ],
+        "scan_keys": [
+          "e30_d30",
+          "e40_d30",
+          "e50_d30",
+          "e60_d30",
+          "e80_d30"
+        ]
+      },
+      "round2_kmesh": {
+        "delta_band_gap_ev": 0.0,
+        "delta_e_fermi_ev": 0.004100000000001103,
+        "last_two_keys": [
+          "e80_d40",
+          "e80_d50"
+        ],
+        "scan_keys": [
+          "e80_d20",
+          "e80_d40",
+          "e80_d50"
+        ]
+      },
+      "thresholds": {
+        "band_gap_thr_ev": 0.02,
+        "e_fermi_thr_ev": 0.02,
+        "marginal_factor": 2.0
+      },
+      "reason": "all 4 deltas within converged thresholds"
+    },
+    "wall_time_sec": 3121.9879982471466,
+    "canonical_point_key": "e80_d50",
+    "canonical_kmesh": [
+      10,
+      8,
+      8
+    ],
+    "dos_params": {
+      "sigma_ev": 0.02,
+      "de_ev": 0.01
+    }
+  },
+  "metadata": {
+    "author": "weilin",
+    "generated_at": "2026-04-24",
+    "reviewer": null,
+    "gt_qe_version": "7.5CN-GPU",
+    "gt_machine": null,
+    "gt_wall_time_sec": 3121.9879982471466,
+    "gt_quality": "self_run_converged",
+    "gt_switched_at": "2026-04-30",
+    "notes": "bench schema v1.2. T2 k-path derived by agent via seekpath; GT k-labels derived by same seekpath on the initial structure and then matched to MP VBM/CBM frac_coords (B1: nearest, threshold 0.05, else OFF_PATH). DOS reference curve downloaded from MP (C1: missing → field dropped, weights renormalized).; v1.3 T2 GT switched MP→self-run 2026-04-30 (D policy extension); see todo/archive/t2-gt-full-replacement.md; v1.3 schema gap fix 2026-04-30: dos_curve field added (was missing in v1.2; weights → Si T2 template 6-field); see todo/archive/schema-gap-dos-curve-3-questions.md"
+  }
+}

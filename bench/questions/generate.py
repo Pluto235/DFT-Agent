@@ -1,19 +1,22 @@
 #!/usr/bin/env python3
-"""Batch-generate 116 M1 question JSON files from m1_resolved.yaml.
+"""Batch-generate 172 题目 JSON from m1_m2_resolved.yaml + MP electronic structure.
 
 Pure-script, no LLM. Each field derived mechanically from:
-- YAML (bench/materials/m1_resolved.yaml)
+- YAML (bench/materials/m1_m2_resolved.yaml)
 - Materials Project API (only for T2 electronic structure / DOS)
 - pymatgen SpacegroupAnalyzer (for point_group / crystal_system)
 - seekpath (for VBM/CBM k-label mapping)
 - filesystem (pseudo .upf lookup)
 
+决策来源：bench/materials/review_for_yang_round3.md
+  A=A2, B=B1, C=C1, D=D2
+
 用法：
     MP_API_KEY=xxx python bench/questions/generate.py [--limit N] [--task {T1,T2}]
 
 输出：
-- bench/questions/M1_T{1,2}/<id>.json
-- bench/questions/M1_T2/gt_data/<id>/dos_reference.dat
+- bench/questions/M{1,2}_T{1,2}/<id>.json
+- bench/questions/M{1,2}_T2/gt_data/<id>/dos_reference.dat
 - bench/questions/generation_errors.log
 - bench/questions/generation_summary.md
 
@@ -21,7 +24,7 @@ Pure-script, no LLM. Each field derived mechanically from:
 本脚本对 T2 insulator/semi 仍用 MP 的 efermi 作 dos_curve 参考帧。但 evaluator
 现在对 insulator 要求 GT 用 VBM 作参考。所以本脚本跑完后必须再跑一次：
     python tools/migrate_dos_efermi_to_vbm.py
-把 33 道 insulator 的 dos_reference.dat 和 ground_truth.dos_e_fermi.value 都
+把 53 道 insulator 的 dos_reference.dat 和 ground_truth.dos_e_fermi.value 都
 换成 VBM-based（金属不动）。否则 insulator dos_curve F1 会被 EF convention 漂移污染。
 """
 from __future__ import annotations
@@ -86,7 +89,7 @@ T2_INITIAL_STRUCT_NOTE = (
 T1_METADATA_NOTES = (
     "bench schema v1.2. P1: GT = initial_structure (MP VASP+PAW PBE lattice) + wide tolerance "
     "(D2: 1% relative / 1° absolute) absorbing QE+GBRV-USPP vs VASP+PAW methodology difference. "
-    "P2 may self-run QE to replace GT."
+    "P2 may self-run QE to replace GT; see review_for_yang_round3.md."
 )
 T2_METADATA_NOTES = (
     "bench schema v1.2. T2 k-path derived by agent via seekpath; GT k-labels derived by same seekpath "
@@ -100,7 +103,7 @@ T2_METADATA_NOTES = (
 HERE = Path(__file__).resolve().parent        # bench/questions/
 BENCH_ROOT = HERE.parent                        # bench/
 REPO_ROOT = BENCH_ROOT.parent                   # workspace/
-RESOLVED_YAML = BENCH_ROOT / "materials" / "m1_resolved.yaml"
+RESOLVED_YAML = BENCH_ROOT / "materials" / "m1_m2_resolved.yaml"
 PSEUDO_DIR = BENCH_ROOT / "pseudos" / PSEUDO_FAMILY
 ERROR_LOG = HERE / "generation_errors.log"
 SUMMARY = HERE / "generation_summary.md"
@@ -115,15 +118,16 @@ def round_float(x: float, ndigits: int) -> float:
 
 
 def load_resolved_yaml() -> list[dict[str, Any]]:
-    """Flatten the resolved YAML into 58 M1 material dictionaries."""
+    """展平 resolved YAML，返回 86 个材料 dict（包含 tier_category 等便捷字段）"""
     doc = yaml.safe_load(RESOLVED_YAML.read_text(encoding="utf-8"))
     materials: list[dict[str, Any]] = []
-    tier = doc.get("M1", {})
-    for cat_key, cat in (tier.get("categories") or {}).items():
-        for material in cat.get("materials", []):
-            material["_tier"] = "M1"
-            material["_category"] = cat_key
-            materials.append(material)
+    for tier_key in ("M1", "M2"):
+        tier = doc.get(tier_key, {})
+        for cat_key, cat in (tier.get("categories") or {}).items():
+            for m in cat.get("materials", []):
+                m["_tier"] = tier_key
+                m["_category"] = cat_key
+                materials.append(m)
     return materials
 
 
@@ -155,9 +159,9 @@ def pseudopotential_files_from_formula(formula: str) -> dict[str, str]:
 
 
 def material_id_split(yaml_id: str) -> tuple[str, str]:
-    """Split an identifier such as ``M1_Si`` into tier and material name."""
+    """'M1_Si' → ('M1', 'Si');  'M2_CaTiO3_tet' → ('M2', 'CaTiO3_tet')"""
     parts = yaml_id.split("_", 1)
-    if len(parts) != 2 or parts[0] != "M1":
+    if len(parts) != 2 or parts[0] not in ("M1", "M2"):
         raise ValueError(f"bad YAML id: {yaml_id}")
     return parts[0], parts[1]
 

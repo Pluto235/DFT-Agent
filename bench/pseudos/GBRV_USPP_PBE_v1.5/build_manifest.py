@@ -104,7 +104,7 @@ def main() -> None:
         "version": "v1.5",
         "functional": "PBE",
         "relativistic": "scalar",
-        "source_url": "http://www.physics.rutgers.edu/gbrv/all_pbe_UPF_v1.5.tar.gz",
+        "source_url": "https://www.physics.rutgers.edu/gbrv/all_pbe_UPF_v1.5.tar.gz",
         "source_website": "https://www.physics.rutgers.edu/gbrv/",
         "tarball_sha256": "4ebfeaa4c9d916c1ac2da6e89ec888fdffce096714f1956db01fea5ec9c9e4f0",
         "citation": (

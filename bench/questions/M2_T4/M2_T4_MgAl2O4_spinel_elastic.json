@@ -1,0 +1,363 @@
+{
+  "schema_version": "1.3",
+  "id": "M2_T4_MgAl2O4_spinel_elastic",
+  "difficulty": {
+    "material_tier": "M2",
+    "task_tier": "T4",
+    "overall_level": null
+  },
+  "material": {
+    "formula": "MgAl2O4",
+    "name": "magnesium aluminate spinel (normal spinel)",
+    "structure": "normal spinel",
+    "space_group": "Fd-3m",
+    "space_group_number": 227,
+    "atoms_per_primitive_cell": 14,
+    "advisory_notes": null,
+    "reference_source": {
+      "database": "Materials Project",
+      "id": "mp-3536",
+      "url": "https://next-gen.materialsproject.org/materials/mp-3536"
+    },
+    "initial_structure": {
+      "source": "M2_T1_MgAl2O4_spinel_vc_relax canonical GT (T1 vc-relax final structure)",
+      "note": "T1 弛豫后的最终结构。T3/T4 不再走 vc-relax；在此结构基础上做体积扫描 (T3) / 应变扫描 (T4)，每点 fixed cell + ionic relax。",
+      "lattice_type": "primitive",
+      "lattice_constants_angstrom": {
+        "a": 5.781725566962869,
+        "b": 5.781725305897311,
+        "c": 5.781725461
+      },
+      "lattice_angles_degree": {
+        "alpha": 59.99999910686946,
+        "beta": 60.000000600537625,
+        "gamma": 59.9999970441662
+      },
+      "atomic_positions_crystal": [
+        {
+          "element": "Mg",
+          "position": [
+            0.2500004238,
+            0.2500001704,
+            0.2499997029
+          ]
+        },
+        {
+          "element": "Mg",
+          "position": [
+            0.9999995762,
+            0.9999998296,
+            2.971e-07
+          ]
+        },
+        {
+          "element": "Al",
+          "position": [
+            0.125,
+            0.625,
+            0.625
+          ]
+        },
+        {
+          "element": "Al",
+          "position": [
+            0.625,
+            0.625,
+            0.625
+          ]
+        },
+        {
+          "element": "Al",
+          "position": [
+            0.625,
+            0.125,
+            0.625
+          ]
+        },
+        {
+          "element": "Al",
+          "position": [
+            0.625,
+            0.625,
+            0.125
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.8615277324,
+            0.8615276298,
+            0.8615272899
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.834583409,
+            0.3884722974,
+            0.3884726468
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.3884722676,
+            0.3884723702,
+            0.8345836521
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.3884721864,
+            0.8345834477,
+            0.388472683
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.8615277324,
+            0.8615276298,
+            0.4154163479
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.8615278136,
+            0.4154165523,
+            0.861527317
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.3884722676,
+            0.3884723702,
+            0.3884727101
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.415416591,
+            0.8615277026,
+            0.8615273532
+          ]
+        }
+      ],
+      "cell_vectors_angstrom": [
+        [
+          5.007120254,
+          6.13e-07,
+          2.890862988
+        ],
+        [
+          1.669040663,
+          4.720758482,
+          2.890862988
+        ],
+        [
+          0.0,
+          0.0,
+          5.781725976
+        ]
+      ]
+    },
+    "pseudopotential": {
+      "family": "GBRV_USPP_PBE_v1.5",
+      "relativistic": "scalar",
+      "files": {
+        "Mg": "Mg.upf",
+        "Al": "Al.upf",
+        "O": "O.upf"
+      }
+    }
+  },
+  "task": {
+    "type": "elastic_stiffness",
+    "prompt": null,
+    "policy": {
+      "network_allowed": false
+    }
+  },
+  "evaluator": {
+    "type": "qe_elastic_stress_fit",
+    "extract_fields": [
+      "elastic_tensor_cij_gpa",
+      "bulk_modulus_vrh_gpa",
+      "shear_modulus_vrh_gpa",
+      "young_modulus_vrh_gpa",
+      "poisson_ratio_vrh",
+      "stress_rmse_gpa"
+    ],
+    "data_sources": {
+      "stress_strain_csv": "stress_strain.csv",
+      "elastic_tensor_json": "elastic_tensor.json"
+    },
+    "extraction_method": "custom",
+    "extraction_config": {
+      "strain_convention": "voigt_engineering_shear",
+      "stress_unit": "GPa",
+      "strain_modes": [
+        "e1",
+        "e2",
+        "e3",
+        "e4",
+        "e5",
+        "e6"
+      ],
+      "strain_amplitudes": [
+        -0.01,
+        -0.005,
+        0.005,
+        0.01
+      ],
+      "fit_method": "least_squares_stress_strain",
+      "symmetrize_cij": true,
+      "born_stability_check": true
+    }
+  },
+  "ground_truth": {
+    "elastic_tensor_cij_gpa": {
+      "value": [
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ],
+      "unit": "GPa",
+      "tolerance": 0.12,
+      "rule": "elastic_symmetry_reduced"
+    },
+    "bulk_modulus_vrh_gpa": {
+      "value": null,
+      "unit": "GPa",
+      "tolerance": 0.1,
+      "rule": "graded_relative"
+    },
+    "shear_modulus_vrh_gpa": {
+      "value": null,
+      "unit": "GPa",
+      "tolerance": 0.08,
+      "rule": "graded_relative"
+    }
+  },
+  "scoring": {
+    "aggregate": "all_fields_weighted",
+    "field_weights": {
+      "elastic_tensor_cij_gpa": 0.625,
+      "bulk_modulus_vrh_gpa": 0.1875,
+      "shear_modulus_vrh_gpa": 0.1875
+    },
+    "pass_criterion": "all_fields_passed",
+    "partial_credit": true
+  },
+  "convergence_evidence": {
+    "methodology": "T4 弹性刚度: 6 Voigt strain modes × 4 amplitudes (±0.5%, ±1.0%) = 24 个 strained cell，每点 fixed-cell ionic relax，lstsq fit σ=C·ε → Cij (symmetrize)，VRH 平均 → K/G/E/ν。",
+    "source_structure": {
+      "task_id": "M2_T1_MgAl2O4_spinel_vc_relax",
+      "kind": "T1 canonical 弛豫结构 (zero-strain reference)"
+    },
+    "strain_grid": {
+      "modes": [
+        "e1",
+        "e2",
+        "e3",
+        "e4",
+        "e5",
+        "e6"
+      ],
+      "amplitudes": [
+        -0.01,
+        -0.005,
+        0.005,
+        0.01
+      ],
+      "voigt_convention": "engineering_shear (γ = 2 × ε_tensor off-diag)",
+      "deformation_gradient": "F = I + ε_tensor (symmetric)"
+    },
+    "calculation_protocol": {
+      "cell_fixed_each_point": true,
+      "internal_positions_relaxed": true,
+      "fit_method": "least_squares_stress_strain",
+      "tensor_symmetrized": true,
+      "born_stability_check": true,
+      "failure_policy": "any-point fail = whole material fail (D7)"
+    },
+    "converged_params": {
+      "ecutwfc_ry": 80.0,
+      "ecutrho_ry": 800.0,
+      "kmesh": [
+        12,
+        12,
+        12
+      ],
+      "kmesh_density_pts_per_inv_angstrom": 50.0,
+      "occupations": null
+    },
+    "fit_quality": {
+      "stress_rmse_gpa": null,
+      "max_cij_asymmetry_percent": null,
+      "all_eigenvalues_positive": null,
+      "classification": null
+    },
+    "raw_outputs_dir": "pipeline/tools/gt_selfrun/elastic/workdir/M2_T4_MgAl2O4_spinel_elastic"
+  },
+  "metadata": {
+    "author": "weilin",
+    "generated_at": "2026-05-22",
+    "reviewer": null,
+    "gt_qe_version": null,
+    "gt_machine": null,
+    "gt_wall_time_sec": null,
+    "gt_quality": null,
+    "notes": "T4 elastic stiffness pilot question (M1 7 mat pilot, design D1). Ground truth values 全部 null，待 P6 elastic pipeline 跑完 promote 填入。设计 doc: notes/2026-05-20-t3-t4-pipeline-design.html",
+    "is_stable": false
+  }
+}

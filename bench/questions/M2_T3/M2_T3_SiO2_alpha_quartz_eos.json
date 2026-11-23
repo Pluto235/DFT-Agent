@@ -1,0 +1,297 @@
+{
+  "schema_version": "1.3",
+  "id": "M2_T3_SiO2_alpha_quartz_eos",
+  "difficulty": {
+    "material_tier": "M2",
+    "task_tier": "T3",
+    "overall_level": null
+  },
+  "material": {
+    "formula": "SiO2",
+    "name": "α-quartz SiO2 (trigonal)",
+    "structure": "α-quartz trigonal",
+    "space_group": "P3_221",
+    "space_group_number": 154,
+    "atoms_per_primitive_cell": 9,
+    "advisory_notes": null,
+    "reference_source": {
+      "database": "Materials Project",
+      "id": "mp-6930",
+      "url": "https://next-gen.materialsproject.org/materials/mp-6930"
+    },
+    "initial_structure": {
+      "source": "M1_T1_SiO2_alpha_quartz_vc_relax canonical GT (T1 vc-relax final structure)",
+      "note": "T1 弛豫后的最终结构。T3/T4 不再走 vc-relax；在此结构基础上做体积扫描 (T3) / 应变扫描 (T4)，每点 fixed cell + ionic relax。",
+      "lattice_type": "primitive",
+      "lattice_constants_angstrom": {
+        "a": 5.020302563,
+        "b": 5.020302562540311,
+        "c": 5.508400093
+      },
+      "lattice_angles_degree": {
+        "alpha": 90.0,
+        "beta": 90.0,
+        "gamma": 119.99999999643978
+      },
+      "atomic_positions_crystal": [
+        {
+          "element": "Si",
+          "position": [
+            0.0,
+            0.4762918746,
+            0.333333
+          ]
+        },
+        {
+          "element": "Si",
+          "position": [
+            0.5237081254,
+            0.5237081254,
+            0.0
+          ]
+        },
+        {
+          "element": "Si",
+          "position": [
+            0.4762918746,
+            -0.0,
+            0.666667
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.1581737718,
+            0.7437513654,
+            0.5391835001
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.5855765937,
+            0.8418262282,
+            0.8725165001
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.2562486346,
+            0.4144234063,
+            0.2058495001
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.4144234063,
+            0.2562486346,
+            0.7941504999
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.8418262282,
+            0.5855765937,
+            0.1274834999
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.7437513654,
+            0.1581737718,
+            0.4608164999
+          ]
+        }
+      ],
+      "cell_vectors_angstrom": [
+        [
+          5.020301267,
+          0.0,
+          0.0
+        ],
+        [
+          -2.510150633,
+          4.347708432,
+          -0.0
+        ],
+        [
+          0.0,
+          0.0,
+          5.508402501
+        ]
+      ]
+    },
+    "pseudopotential": {
+      "family": "GBRV_USPP_PBE_v1.5",
+      "relativistic": "scalar",
+      "files": {
+        "Si": "Si.upf",
+        "O": "O.upf"
+      }
+    }
+  },
+  "task": {
+    "type": "eos",
+    "prompt": null,
+    "policy": {
+      "network_allowed": false
+    }
+  },
+  "evaluator": {
+    "type": "qe_eos_bm3",
+    "extract_fields": [
+      "v0_ang3_cell",
+      "b0_gpa",
+      "b0_prime",
+      "fit_rms_mev_per_atom"
+    ],
+    "data_sources": {
+      "eos_points_csv": "eos_points.csv",
+      "fit_json": "fit.json"
+    },
+    "extraction_method": "custom",
+    "extraction_config": {
+      "fit_model": "birch_murnaghan_3rd_order",
+      "volume_ratio_grid": [
+        0.94,
+        0.96,
+        0.98,
+        1.0,
+        1.02,
+        1.04,
+        1.06
+      ],
+      "curve_energy_unit": "meV/atom",
+      "curve_compare_axis": "volume_ratio",
+      "curve_score_rule": "rmse_after_energy_zero_alignment"
+    }
+  },
+  "ground_truth": {
+    "v0_ang3_cell": {
+      "value": 120.53656571157909,
+      "unit": "angstrom^3/cell",
+      "tolerance": 0.01,
+      "rule": "graded_relative"
+    },
+    "b0_gpa": {
+      "value": 32.130254769905974,
+      "unit": "GPa",
+      "tolerance": 0.1,
+      "rule": "graded_relative"
+    },
+    "b0_prime": {
+      "value": 5.1712802997927625,
+      "unit": "dimensionless",
+      "tolerance": 0.75,
+      "rule": "absolute"
+    }
+  },
+  "scoring": {
+    "aggregate": "all_fields_weighted",
+    "field_weights": {
+      "v0_ang3_cell": 0.42,
+      "b0_gpa": 0.48,
+      "b0_prime": 0.1
+    },
+    "pass_criterion": "all_fields_passed",
+    "partial_credit": true
+  },
+  "convergence_evidence": {
+    "methodology": "T3 EOS: 七体积点 [0.94..1.06] × V0 同比缩放 a/b/c (保 shape)，每点 fixed-cell ionic relax (calculation='relax', cell_dofree='none')，BM3 fit total energy(volume) → V0/B0/B0'。",
+    "source_structure": {
+      "task_id": "M1_T1_SiO2_alpha_quartz_vc_relax",
+      "kind": "T1 canonical 弛豫结构"
+    },
+    "volume_grid": [
+      0.94,
+      0.96,
+      0.98,
+      1.0,
+      1.02,
+      1.04,
+      1.06
+    ],
+    "calculation_protocol": {
+      "cell_shape": "isotropic scaling a/b/c (V^(1/3))，保持 cell shape",
+      "cell_fixed_each_point": true,
+      "internal_positions_relaxed": true,
+      "fit_model": "BM3 (3rd-order Birch-Murnaghan)",
+      "failure_policy": "any-point fail = whole material fail (D7)"
+    },
+    "converged_params": {
+      "ecutwfc_ry": 80.0,
+      "ecutrho_ry": 800.0,
+      "kmesh": [
+        12,
+        12,
+        10
+      ],
+      "kmesh_density_pts_per_inv_angstrom": 50.0,
+      "occupations": null
+    },
+    "per_volume_points": [
+      {
+        "ratio": 0.94,
+        "volume_ang3": 113.016984,
+        "energy_ry": -223.56003449,
+        "pressure_kbar": 24.15
+      },
+      {
+        "ratio": 0.96,
+        "volume_ang3": 115.4216,
+        "energy_ry": -223.56223712,
+        "pressure_kbar": 15.18
+      },
+      {
+        "ratio": 0.98,
+        "volume_ang3": 117.826217,
+        "energy_ry": -223.56350857,
+        "pressure_kbar": 6.13
+      },
+      {
+        "ratio": 1.0,
+        "volume_ang3": 120.230834,
+        "energy_ry": -223.56397876,
+        "pressure_kbar": -0.15
+      },
+      {
+        "ratio": 1.02,
+        "volume_ang3": 122.63545,
+        "energy_ry": -223.56372013,
+        "pressure_kbar": -6.48
+      },
+      {
+        "ratio": 1.04,
+        "volume_ang3": 125.040067,
+        "energy_ry": -223.56283579,
+        "pressure_kbar": -12.41
+      },
+      {
+        "ratio": 1.06,
+        "volume_ang3": 127.444684,
+        "energy_ry": -223.56137973,
+        "pressure_kbar": -18.33
+      }
+    ],
+    "fit_quality": {
+      "fit_rms_mev_per_atom": 0.0038224029175501664,
+      "v0_fit_within_scan_range": true,
+      "classification": "converged"
+    },
+    "raw_outputs_dir": "pipeline/tools/gt_selfrun/eos/workdir/M1_T3_SiO2_alpha_quartz_eos"
+  },
+  "metadata": {
+    "author": "weilin",
+    "generated_at": "2026-05-21",
+    "reviewer": null,
+    "gt_qe_version": "QE 7.5",
+    "gt_machine": "V100 rental (CSTNET)",
+    "gt_wall_time_sec": null,
+    "gt_quality": "converged",
+    "notes": "T3 EOS pilot question (M1 7 mat pilot, design D1). Ground truth values 全部 null，待 P5 EOS pipeline 跑完 promote 填入。设计 doc: notes/2026-05-20-t3-t4-pipeline-design.html Promoted 2026-06-03T13:11:33.454531+00:00: V0=120.5366 Å³, B0=32.13 GPa, B0'=5.171, fit_rms=0.004 meV/atom."
+  }
+}

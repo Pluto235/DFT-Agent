@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Verify bench/materials/m1.yaml against Materials Project.
+"""Verify bench/materials/m1_m2.yaml against Materials Project.
 
 目的
 ----
-`m1.yaml` 中的字段需要通过权威数据源校验。本脚本对每个材料：
+`m1_m2.yaml` 由 LLM 从领域知识召回生成，字段并未经过权威数据源校验。
+本脚本对每个材料：
 
 1. 若 yaml.mp_id 有值：直接以该 mp_id 从 MP 拉 summary + primitive structure
 2. 若 mp_id 为空：按 formula + space_group_number 在 MP 搜索候选，
@@ -11,17 +12,17 @@
 3. 交叉校验 YAML 与 MP 的 space_group_number / space_group symbol /
    atoms_per_primitive_cell / formula；有冲突则记入 conflict_report.md
 4. 将 MP 的权威值（含 primitive lattice + atomic positions）写入
-   m1_resolved.yaml，**不静默覆盖** —— 有冲突的字段标注
+   m1_m2_resolved.yaml，**不静默覆盖** —— 有冲突的字段标注
    review_flags，保留 YAML 原值便于人工复核
 
 输入
 ----
-- bench/materials/m1.yaml
+- bench/materials/m1_m2.yaml
 - 环境变量 MP_API_KEY（或命令行 --api-key）
 
 输出
 ----
-- bench/materials/m1_resolved.yaml
+- bench/materials/m1_m2_resolved.yaml
 - bench/materials/conflict_report.md
 - bench/materials/resolve.log
 
@@ -52,8 +53,8 @@ except ImportError as e:
     sys.exit(1)
 
 HERE = Path(__file__).resolve().parent
-DEFAULT_INPUT = HERE / "m1.yaml"
-DEFAULT_OUTPUT = HERE / "m1_resolved.yaml"
+DEFAULT_INPUT = HERE / "m1_m2.yaml"
+DEFAULT_OUTPUT = HERE / "m1_m2_resolved.yaml"
 DEFAULT_REPORT = HERE / "conflict_report.md"
 DEFAULT_LOG = HERE / "resolve.log"
 
@@ -487,7 +488,7 @@ def write_resolved_yaml(records: list[MaterialRecord], yaml_data: dict, path: Pa
         "generated_at": yaml_data.get("generated_at"),
         "generated_by": yaml_data.get("generated_by"),
         "resolved_at": time.strftime("%Y-%m-%d"),
-        "source_yaml": "m1.yaml",
+        "source_yaml": "m1_m2.yaml",
         "source_document": yaml_data.get("source_document"),
         "first_batch_plan": yaml_data.get("first_batch_plan"),
         "resolution_summary": {
@@ -499,7 +500,7 @@ def write_resolved_yaml(records: list[MaterialRecord], yaml_data: dict, path: Pa
     }
 
     # Re-pack by tier/category, overwriting fields with MP-authoritative values
-    for tier in ("M1",):
+    for tier in ("M1", "M2"):
         out[tier] = {
             "description": yaml_data[tier].get("description"),
             "categories": {},
@@ -582,7 +583,7 @@ def write_conflict_report(records: list[MaterialRecord], path: Path) -> None:
         "",
         f"Generated: {time.strftime('%Y-%m-%d %H:%M')}",
         "",
-        "Cross-checked `bench/materials/m1.yaml` against Materials Project.",
+        "Cross-checked `bench/materials/m1_m2.yaml` against Materials Project.",
         "Conflicts below require human triage before question generation runs.",
         "",
         "## Summary",
@@ -716,7 +717,7 @@ def main():
             )
 
     all_entries = []
-    for tier in ("M1",):
+    for tier in ("M1", "M2"):
         for cat in yaml_data[tier]["categories"].values():
             for m in cat["materials"]:
                 all_entries.append(m)

@@ -1,0 +1,974 @@
+library_version: GBRV_USPP_PBE_v1.5
+pseudo_path: repos/dft-agent-bench/pseudos/GBRV_USPP_PBE_v1.5
+generated_at: '2026-05-07'
+generated_by: weilin (worker-0 onboarding)
+source_yaml: user_input/yang.xlsx + user_input/2026-05-07_yang.md
+source_document: 杨博 0507 飞书 'M3+M4材料***' 文档末尾 + xlsx 附件 ('新版M3材料-杨进-已确认')
+batch_plan:
+  total_materials_in_yang_list: 17
+  runnable_materials: 15
+  skipped_materials: 2
+  tasks:
+  - T1_vc_relax
+  - T2_bands_dos
+  total_questions: 30
+  gt_strategy: self_run_PBE_nspin2 (PBE-only, nspin=2, no Hubbard +U)
+M3:
+  description: Magnetic materials (杨博 0507 已确认, 17 道 / 15 runnable). GT 自跑路径：PBE + nspin=2 + starting_magnetization (per yang.xlsx
+    给的磁序). M3 不开 Hubbard +U（保持 PBE-only / 与 m1/m2 一致 / 避免泄露 DFT 知识考点）. AFM materials (Cr_bcc, CuO) 在 primitive cell 不能严格做
+    AFM, 本第一版按 single-direction starting_mag (collinear FM-like approximation), 待杨博 confirm 是否需要构造 magnetic supercell.
+  materials:
+  - id: M3_Fe_bcc
+    formula: Fe
+    name: Fe, bcc
+    structure_hint: bcc
+    space_group: Im-3m
+    space_group_number: 229
+    atoms_per_primitive_cell: 2
+    mp_id: mp-13
+    yang_metadata:
+      main_magnetic_element: Fe
+      magnetic_order: FM
+      collinear: 'Yes'
+      notes: elemental bcc Fe (Materials Project)
+    mp_metadata:
+      ordering: FM
+      is_stable: true
+      energy_above_hull: 0.0
+      nsites_in_mp_primitive: 2
+      mp_side_space_group_symbol: Im-3m
+      mp_side_space_group_number: 229
+      mp_side_point_group: mmm
+      mp_side_crystal_system: Cubic
+    resolution_status: VERIFIED
+    initial_structure_from_mp:
+      lattice_a: 2.477813028804854
+      lattice_b: 2.477809133849768
+      lattice_c: 4.054295207189474
+      alpha: 90.00003845025343
+      beta: 90.00031950636807
+      gamma: 109.469836683298
+      sites:
+      - element: Fe
+        position:
+        - 0.50000002
+        - 0.50000008
+        - 0.49999999
+      - element: Fe
+        position:
+        - 0.99999998
+        - 0.99999992
+        - 1.0e-08
+  - id: M3_Ni_fcc
+    formula: Ni
+    name: Ni, fcc
+    structure_hint: fcc
+    space_group: Fm-3m
+    space_group_number: 225
+    atoms_per_primitive_cell: 4
+    mp_id: mp-23
+    yang_metadata:
+      main_magnetic_element: Ni
+      magnetic_order: FM
+      collinear: 'Yes'
+      notes: elemental fcc Ni (conventional 4-atom cell, 杨博 5/19 review 替换 nat=1 primitive 以支持 AFM 探针)
+    mp_metadata:
+      ordering: FM
+      is_stable: true
+      energy_above_hull: 0.0
+      nsites_in_mp_primitive: 1
+      mp_side_space_group_symbol: Fm-3m
+      mp_side_space_group_number: 225
+      mp_side_point_group: m-3m
+      mp_side_crystal_system: Cubic
+    resolution_status: VERIFIED
+    initial_structure_from_mp:
+      lattice_a: 3.4751458659480114
+      lattice_b: 3.4751458659480114
+      lattice_c: 3.4751458659480114
+      alpha: 90.0
+      beta: 90.0
+      gamma: 90.0
+      sites:
+      - element: Ni
+        position:
+        - 0.0
+        - 0.0
+        - 0.0
+      - element: Ni
+        position:
+        - 0.0
+        - 0.5
+        - 0.5
+      - element: Ni
+        position:
+        - 0.5
+        - 0.0
+        - 0.5
+      - element: Ni
+        position:
+        - 0.5
+        - 0.5
+        - 0.0
+  - id: M3_Co_hcp
+    formula: Co
+    name: Co, hcp
+    structure_hint: hcp
+    space_group: P6_3/mmc
+    space_group_number: 194
+    atoms_per_primitive_cell: 2
+    mp_id: mp-54
+    yang_metadata:
+      main_magnetic_element: Co
+      magnetic_order: FM
+      collinear: 'Yes'
+      notes: elemental hcp Co (Materials Project)
+    mp_metadata:
+      ordering: FM
+      is_stable: false
+      energy_above_hull: 0.025098924999999002
+      nsites_in_mp_primitive: 2
+      mp_side_space_group_symbol: P6_3/mmc
+      mp_side_space_group_number: 194
+      mp_side_point_group: 6/mmm
+      mp_side_crystal_system: Hexagonal
+    resolution_status: VERIFIED
+    initial_structure_from_mp:
+      lattice_a: 2.47199984
+      lattice_b: 2.471999966405412
+      lattice_c: 4.02114408
+      alpha: 90.0
+      beta: 90.0
+      gamma: 119.99998442728915
+      sites:
+      - element: Co
+        position:
+        - 0.333333
+        - 0.666667
+        - 0.25
+      - element: Co
+        position:
+        - 0.666667
+        - 0.333333
+        - 0.75
+  - id: M3_NiO
+    formula: NiO
+    name: NiO
+    structure_hint: rocksalt
+    space_group: Fm-3m
+    space_group_number: 225
+    atoms_per_primitive_cell: 2
+    mp_id: mp-19009
+    yang_metadata:
+      main_magnetic_element: Ni
+      magnetic_order: FM
+      collinear: 'Yes'
+      notes: rocksalt NiO (Materials Project)
+    mp_metadata:
+      ordering: FM
+      is_stable: true
+      energy_above_hull: 0.0
+      nsites_in_mp_primitive: 2
+      mp_side_space_group_symbol: Fm-3m
+      mp_side_space_group_number: 225
+      mp_side_point_group: m-3m
+      mp_side_crystal_system: Cubic
+    resolution_status: VERIFIED
+    initial_structure_from_mp:
+      lattice_a: 2.9601883503857622
+      lattice_b: 2.9601871416285945
+      lattice_c: 2.96018743
+      alpha: 59.999996889233124
+      beta: 60.00001039694371
+      gamma: 60.000000186924105
+      sites:
+      - element: Ni
+        position:
+        - 0.0
+        - -0.0
+        - -0.0
+      - element: O
+        position:
+        - 0.5
+        - 0.5
+        - 0.500001
+  - id: M3_Cr_bcc
+    formula: Cr
+    name: Cr, bcc
+    structure_hint: bcc
+    space_group: Im-3m
+    space_group_number: 229
+    atoms_per_primitive_cell: 2
+    mp_id: mp-90
+    yang_metadata:
+      main_magnetic_element: Cr
+      magnetic_order: AFM
+      collinear: Often approximated collinearly
+      notes: elemental bcc Cr (Materials Project)
+    mp_metadata:
+      ordering: AFM
+      is_stable: true
+      energy_above_hull: 0.0
+      nsites_in_mp_primitive: 2
+      mp_side_space_group_symbol: Im-3m
+      mp_side_space_group_number: 229
+      mp_side_point_group: m-3m
+      mp_side_crystal_system: Cubic
+    resolution_status: VERIFIED
+    initial_structure_from_mp:
+      lattice_a: 2.96889915140125
+      lattice_b: 2.9688993423008085
+      lattice_c: 2.9688995716460274
+      alpha: 90.0015093557201
+      beta: 89.99831571270103
+      gamma: 89.99833464485413
+      sites:
+      - element: Cr
+        position:
+        - 0.49999995
+        - 0.49999995
+        - 0.50000001
+      - element: Cr
+        position:
+        - 5.0e-08
+        - 5.0e-08
+        - -1.0e-08
+  - id: M3_Fe3O4_magnetite
+    formula: Fe3O4
+    name: Fe₃O₄, magnetite
+    structure_hint: spinel
+    space_group: Fd-3m
+    space_group_number: 227
+    atoms_per_primitive_cell: 14
+    mp_id: mp-19306
+    yang_metadata:
+      main_magnetic_element: Fe
+      magnetic_order: FM
+      collinear: Often treated collinearly
+      notes: spinel Fe₃O₄ (Materials Project)
+    mp_metadata:
+      ordering: FM
+      is_stable: false
+      energy_above_hull: 0.013059251428572002
+      nsites_in_mp_primitive: 14
+      mp_side_space_group_symbol: Fd-3m
+      mp_side_space_group_number: 227
+      mp_side_point_group: m-3m
+      mp_side_crystal_system: Cubic
+    resolution_status: VERIFIED
+    initial_structure_from_mp:
+      lattice_a: 5.971798531799201
+      lattice_b: 5.97028596864065
+      lattice_c: 5.970067603662706
+      alpha: 60.01949761121378
+      beta: 59.99471753942276
+      gamma: 59.990501183689
+      sites:
+      - element: Fe
+        position:
+        - 0.87486095
+        - 0.87520887
+        - 0.87514198
+      - element: Fe
+        position:
+        - 3.8580000000000013e-05
+        - 0.5000237200000001
+        - 0.499869099999999
+      - element: Fe
+        position:
+        - 0.49975642000000003
+        - 0.5002753600000001
+        - 0.50007724
+      - element: Fe
+        position:
+        - 0.12485791
+        - 0.12520719
+        - 0.12513777
+      - element: Fe
+        position:
+        - 0.49994434
+        - 8.791000000000004e-05
+        - 0.500238699999999
+      - element: Fe
+        position:
+        - 0.50012994
+        - 0.49994507
+        - 0.99995687
+      - element: O
+        position:
+        - 0.743663899999999
+        - 0.74325511
+        - 0.26918542
+      - element: O
+        position:
+        - 0.73084474
+        - 0.25610164
+        - 0.25633043
+      - element: O
+        position:
+        - 0.25678137
+        - 0.25611405
+        - 0.25624534
+      - element: O
+        position:
+        - 0.26904047000000003
+        - 0.74363617
+        - 0.74363374
+      - element: O
+        position:
+        - 0.25623964
+        - 0.73108131
+        - 0.25626586
+      - element: O
+        position:
+        - 0.74374174
+        - 0.74358169
+        - 0.74374672
+      - element: O
+        position:
+        - 0.25635678
+        - 0.25630637
+        - 0.73097179
+      - element: O
+        position:
+        - 0.74374521
+        - 0.26917553
+        - 0.7431980300000001
+  - id: M3_CrO2
+    formula: CrO2
+    name: CrO₂
+    structure_hint: rutile
+    space_group: P4_2/mnm
+    space_group_number: 136
+    atoms_per_primitive_cell: 6
+    mp_id: mp-19177
+    yang_metadata:
+      main_magnetic_element: Cr
+      magnetic_order: FM
+      collinear: 'Yes'
+      notes: rutile CrO₂ (Materials Project)
+    mp_metadata:
+      ordering: FM
+      is_stable: true
+      energy_above_hull: 0.0
+      nsites_in_mp_primitive: 6
+      mp_side_space_group_symbol: P4_2/mnm
+      mp_side_space_group_number: 136
+      mp_side_point_group: 4/mmm
+      mp_side_crystal_system: Tetragonal
+    resolution_status: VERIFIED
+    initial_structure_from_mp:
+      lattice_a: 2.91388854
+      lattice_b: 4.409191770168261
+      lattice_c: 4.409191770168261
+      alpha: 90.00100110566376
+      beta: 90.0
+      gamma: 90.0
+      sites:
+      - element: Cr
+        position:
+        - 0.500001
+        - 0.500001
+        - 0.500001
+      - element: Cr
+        position:
+        - -0.0
+        - 0.0
+        - 0.0
+      - element: O
+        position:
+        - -0.0
+        - 0.69725751
+        - 0.69725751
+      - element: O
+        position:
+        - 0.500001
+        - 0.80277488
+        - 0.19722412
+      - element: O
+        position:
+        - 0.0
+        - 0.30274349
+        - 0.30274349
+      - element: O
+        position:
+        - 0.500001
+        - 0.19722412
+        - 0.80277488
+  - id: M3_MnF2
+    formula: MnF2
+    name: MnF₂
+    structure_hint: rutile
+    space_group: P4_2/mnm
+    space_group_number: 136
+    atoms_per_primitive_cell: 6
+    mp_id: mp-560902
+    yang_metadata:
+      main_magnetic_element: Mn
+      magnetic_order: FM
+      collinear: 'Yes'
+      notes: rutile MnF₂ (Materials Project)
+    mp_metadata:
+      ordering: FM
+      is_stable: false
+      energy_above_hull: 0.00021855750000100002
+      nsites_in_mp_primitive: 6
+      mp_side_space_group_symbol: P4_2/mnm
+      mp_side_space_group_number: 136
+      mp_side_point_group: 4/mmm
+      mp_side_crystal_system: Tetragonal
+    resolution_status: VERIFIED
+    initial_structure_from_mp:
+      lattice_a: 3.31042523
+      lattice_b: 4.87305925
+      lattice_c: 4.87305925
+      alpha: 90.0
+      beta: 90.0
+      gamma: 90.0
+      sites:
+      - element: Mn
+        position:
+        - 0.5
+        - 0.5
+        - 0.5
+      - element: Mn
+        position:
+        - 0.0
+        - 0.0
+        - -0.0
+      - element: F
+        position:
+        - -0.0
+        - 0.69516878
+        - 0.69516878
+      - element: F
+        position:
+        - 0.5
+        - 0.8048312200000001
+        - 0.19516878000000001
+      - element: F
+        position:
+        - 0.0
+        - 0.30483122
+        - 0.30483122
+      - element: F
+        position:
+        - 0.5
+        - 0.19516878000000001
+        - 0.8048312200000001
+  - id: M3_Fe2O3_hematite
+    formula: Fe2O3
+    name: α-Fe₂O₃, hematite
+    structure_hint: corundum
+    space_group: R-3c
+    space_group_number: 167
+    atoms_per_primitive_cell: 10
+    mp_id: mp-19770
+    yang_metadata:
+      main_magnetic_element: Fe
+      magnetic_order: FM
+      collinear: Usually collinear approximation
+      notes: corundum hematite (Materials Project)
+    mp_metadata:
+      ordering: FM
+      is_stable: true
+      energy_above_hull: 0.0
+      nsites_in_mp_primitive: 10
+      mp_side_space_group_symbol: R-3c
+      mp_side_space_group_number: 167
+      mp_side_point_group: -3m
+      mp_side_crystal_system: Trigonal
+    resolution_status: VERIFIED
+    initial_structure_from_mp:
+      lattice_a: 5.0918936441581
+      lattice_b: 5.452029995907517
+      lattice_c: 5.091910452974928
+      alpha: 62.16260543536898
+      beta: 119.98513390956244
+      gamma: 117.83716377417755
+      sites:
+      - element: Fe
+        position:
+        - 0.35471223
+        - 0.06434118
+        - 0.64519388
+      - element: Fe
+        position:
+        - 0.14519072
+        - 0.43565251
+        - 0.85471358
+      - element: Fe
+        position:
+        - 0.64528296
+        - 0.93565173
+        - 0.35480774
+      - element: Fe
+        position:
+        - 0.85480256
+        - 0.56433974
+        - 0.14528604
+      - element: O
+        position:
+        - 0.55535593
+        - 0.75000405
+        - 0.055351990000000004
+      - element: O
+        position:
+        - 0.24997731
+        - 0.74996658
+        - 0.44458318
+      - element: O
+        position:
+        - 0.05541939
+        - 0.24997195
+        - 0.25001683
+      - element: O
+        position:
+        - 0.7500203400000001
+        - 0.25003518
+        - 0.55541461
+      - element: O
+        position:
+        - 0.44465124
+        - 0.2500032
+        - 0.9446496400000001
+      - element: O
+        position:
+        - 0.94458732
+        - 0.75003389
+        - 0.7499815
+  - id: M3_FeO
+    formula: FeO
+    name: FeO
+    structure_hint: rocksalt
+    space_group: Fm-3m
+    space_group_number: 225
+    atoms_per_primitive_cell: 4
+    mp_id: mp-18905
+    yang_metadata:
+      main_magnetic_element: Fe
+      magnetic_order: FM
+      collinear: 'Yes'
+      notes: rocksalt FeO (Materials Project)
+    mp_metadata:
+      ordering: FM
+      is_stable: false
+      energy_above_hull: 0.410174744999999
+      nsites_in_mp_primitive: 4
+      mp_side_space_group_symbol: Fm-3m
+      mp_side_space_group_number: 225
+      mp_side_point_group: 4/mmm
+      mp_side_crystal_system: Cubic
+    resolution_status: VERIFIED
+    initial_structure_from_mp:
+      lattice_a: 4.25832565
+      lattice_b: 3.0154423868231532
+      lattice_c: 4.26447953
+      alpha: 45.0
+      beta: 90.0
+      gamma: 90.0
+      sites:
+      - element: Fe
+        position:
+        - 0.0
+        - -0.0
+        - -0.0
+      - element: Fe
+        position:
+        - 0.5
+        - 0.0
+        - 0.5
+      - element: O
+        position:
+        - 0.5
+        - -0.0
+        - 0.0
+      - element: O
+        position:
+        - 0.0
+        - 0.0
+        - 0.5
+  - id: M3_CoO
+    formula: CoO
+    name: CoO
+    structure_hint: rocksalt
+    space_group: R-3m
+    space_group_number: 166
+    atoms_per_primitive_cell: 4
+    mp_id: mp-19079
+    yang_metadata:
+      main_magnetic_element: Co
+      magnetic_order: FM
+      collinear: 'Yes'
+      notes: rocksalt CoO; verify exact polymorph/magnetic entry (Materials Project)
+    mp_metadata:
+      ordering: FM
+      is_stable: false
+      energy_above_hull: 0.036914996250001005
+      nsites_in_mp_primitive: 4
+      mp_side_space_group_symbol: Fm-3m
+      mp_side_space_group_number: 225
+      mp_side_point_group: -3m
+      mp_side_crystal_system: Cubic
+    resolution_status: VERIFIED
+    initial_structure_from_mp:
+      lattice_a: 3.010939025542891
+      lattice_b: 5.180240546058864
+      lattice_c: 3.0109390249089008
+      alpha: 106.89493844887733
+      beta: 119.99999718655998
+      gamma: 73.10505448105773
+      sites:
+      - element: Co
+        position:
+        - -0.0
+        - -0.0
+        - -0.0
+      - element: Co
+        position:
+        - 0.5
+        - 0.5
+        - 0.5
+      - element: O
+        position:
+        - 0.25
+        - 0.249999
+        - 0.75
+      - element: O
+        position:
+        - 0.75
+        - 0.750000999999999
+        - 0.25
+  - id: M3_MnO
+    formula: MnO
+    name: MnO
+    structure_hint: rocksalt
+    space_group: Fm-3m
+    space_group_number: 225
+    atoms_per_primitive_cell: 4
+    mp_id: mp-19006
+    yang_metadata:
+      main_magnetic_element: Mn
+      magnetic_order: FM
+      collinear: 'Yes'
+      notes: rocksalt MnO (Materials Project)
+    mp_metadata:
+      ordering: FM
+      is_stable: false
+      energy_above_hull: 0.05336856250000101
+      nsites_in_mp_primitive: 4
+      mp_side_space_group_symbol: Fm-3m
+      mp_side_space_group_number: 225
+      mp_side_point_group: -3m
+      mp_side_crystal_system: Cubic
+    resolution_status: VERIFIED
+    initial_structure_from_mp:
+      lattice_a: 3.1447886221365287
+      lattice_b: 3.145116351626362
+      lattice_c: 5.447643575720253
+      alpha: 89.99985750500095
+      beta: 73.23282567796564
+      gamma: 59.99649103883708
+      sites:
+      - element: Mn
+        position:
+        - -0.0
+        - 0.0
+        - 0.0
+      - element: Mn
+        position:
+        - -0.0
+        - 0.5
+        - 0.5
+      - element: O
+        position:
+        - 0.499998999999999
+        - 0.750000999999999
+        - 0.250001
+      - element: O
+        position:
+        - 0.500001
+        - 0.249999
+        - 0.749999
+  - id: M3_Cr2O3
+    formula: Cr2O3
+    name: Cr₂O₃
+    structure_hint: corundum
+    space_group: R-3c
+    space_group_number: 167
+    atoms_per_primitive_cell: 10
+    mp_id: mp-19399
+    yang_metadata:
+      main_magnetic_element: Cr
+      magnetic_order: FM
+      collinear: 'Yes'
+      notes: corundum Cr₂O₃ (Materials Project)
+    mp_metadata:
+      ordering: FM
+      is_stable: true
+      energy_above_hull: 0.0
+      nsites_in_mp_primitive: 10
+      mp_side_space_group_symbol: R-3c
+      mp_side_space_group_number: 167
+      mp_side_point_group: -3m
+      mp_side_crystal_system: Trigonal
+    resolution_status: VERIFIED
+    initial_structure_from_mp:
+      lattice_a: 5.3513754511552944
+      lattice_b: 5.351375178540753
+      lattice_c: 5.351362643672136
+      alpha: 55.74690511707356
+      beta: 55.74691520065691
+      gamma: 55.74667374080043
+      sites:
+      - element: Cr
+        position:
+        - 0.8498564200000001
+        - 0.8498561
+        - 0.84985664
+      - element: Cr
+        position:
+        - 0.6501439
+        - 0.65014323
+        - 0.65014446
+      - element: Cr
+        position:
+        - 0.1501431
+        - 0.15014369
+        - 0.15014429
+      - element: Cr
+        position:
+        - 0.34985583000000003
+        - 0.34985636000000003
+        - 0.34985649
+      - element: O
+        position:
+        - 0.05169148
+        - 0.74999902
+        - 0.44830795
+      - element: O
+        position:
+        - 0.749997999999999
+        - 0.44830991000000003
+        - 0.05169236
+      - element: O
+        position:
+        - 0.44830717000000003
+        - 0.05169318
+        - 0.74999885
+      - element: O
+        position:
+        - 0.94830967
+        - 0.25000027
+        - 0.5516917100000001
+      - element: O
+        position:
+        - 0.5516930800000001
+        - 0.94830703
+        - 0.25000095
+      - element: O
+        position:
+        - 0.25000135
+        - 0.55169121
+        - 0.94830731
+  - id: M3_LaMnO3
+    formula: LaMnO3
+    name: LaMnO₃
+    structure_hint: perovskite
+    space_group: P2_1/c
+    space_group_number: 14
+    atoms_per_primitive_cell: 20
+    mp_id: mp-17554
+    yang_metadata:
+      main_magnetic_element: Mn
+      magnetic_order: FM
+      collinear: 'Yes'
+      notes: perovskite manganite (Materials Project)
+    mp_metadata:
+      ordering: FM
+      is_stable: false
+      energy_above_hull: 0.125533495023809
+      nsites_in_mp_primitive: 20
+      mp_side_space_group_symbol: Pnma
+      mp_side_space_group_number: 62
+      mp_side_point_group: mmm
+      mp_side_crystal_system: Orthorhombic
+    resolution_status: VERIFIED
+    initial_structure_from_mp:
+      lattice_a: 5.8714300000068125
+      lattice_b: 7.777420048382689
+      lattice_c: 5.585996149126134
+      alpha: 90.10098824572447
+      beta: 89.99992000672812
+      gamma: 89.99984829797658
+      sites:
+      - element: La
+        position:
+        - 0.057612
+        - 0.250224
+        - 0.988846
+      - element: La
+        position:
+        - 0.942407
+        - 0.749755
+        - 0.011176
+      - element: La
+        position:
+        - 0.557619
+        - 0.249774
+        - 0.511147999999999
+      - element: La
+        position:
+        - 0.442420999999999
+        - 0.750215
+        - 0.488826
+      - element: Mn
+        position:
+        - 0.999962999999999
+        - 0.999970999999999
+        - 0.499965
+      - element: Mn
+        position:
+        - 7.0e-06
+        - 0.500024
+        - 0.500066999999999
+      - element: Mn
+        position:
+        - 0.49998000000000004
+        - 0.500055
+        - 0.9999579999999991
+      - element: Mn
+        position:
+        - 0.499955999999999
+        - 0.999977999999999
+        - 5.1e-05
+      - element: O
+        position:
+        - 0.478985999999999
+        - 0.248695
+        - 0.086781
+      - element: O
+        position:
+        - 0.521021
+        - 0.751301
+        - 0.913187
+      - element: O
+        position:
+        - 0.978985
+        - 0.25131000000000003
+        - 0.413217
+      - element: O
+        position:
+        - 0.021022
+        - 0.748702
+        - 0.586812999999999
+      - element: O
+        position:
+        - 0.310037
+        - 0.044122999999999
+        - 0.7190200000000001
+      - element: O
+        position:
+        - 0.68886
+        - 0.54425
+        - 0.279636
+      - element: O
+        position:
+        - 0.69001
+        - 0.955828
+        - 0.281041
+      - element: O
+        position:
+        - 0.311097
+        - 0.455796
+        - 0.720308
+      - element: O
+        position:
+        - 0.809995999999999
+        - 0.45588000000000006
+        - 0.781034999999999
+      - element: O
+        position:
+        - 0.188902
+        - 0.955749
+        - 0.220288999999999
+      - element: O
+        position:
+        - 0.189975
+        - 0.544173999999999
+        - 0.219019
+      - element: O
+        position:
+        - 0.811144
+        - 0.044198
+        - 0.779617
+  - id: M3_CuO
+    formula: CuO
+    name: CuO
+    structure_hint: monoclinic
+    space_group: C2/c
+    space_group_number: 15
+    atoms_per_primitive_cell: 4
+    mp_id: mp-1692
+    yang_metadata:
+      main_magnetic_element: Cu
+      magnetic_order: AFM
+      collinear: 'Yes'
+      notes: monoclinic CuO (Materials Project)
+    mp_metadata:
+      ordering: AFM
+      is_stable: true
+      energy_above_hull: 0.0
+      nsites_in_mp_primitive: 4
+      mp_side_space_group_symbol: P4_2/mmc
+      mp_side_space_group_number: 131
+      mp_side_point_group: 4/mmm
+      mp_side_crystal_system: Tetragonal
+    resolution_status: VERIFIED
+    initial_structure_from_mp:
+      lattice_a: 2.879500963946578
+      lattice_b: 2.879544582384552
+      lattice_c: 5.176397490790502
+      alpha: 89.80651161801521
+      beta: 89.80634916327074
+      gamma: 89.22252537948611
+      sites:
+      - element: Cu
+        position:
+        - 0.98662329
+        - 0.48642685
+        - 0.5079543400000001
+      - element: Cu
+        position:
+        - 0.486418199999999
+        - 0.9866269
+        - 0.00795369
+      - element: O
+        position:
+        - 0.48819932
+        - 0.48475507
+        - 0.25806724000000003
+      - element: O
+        position:
+        - 0.4847592
+        - 0.48819217000000004
+        - 0.75802473
+skipped:
+  description: 缺 GBRV 赝势的材料；杨博 0507 'no pseudo, 不算' 决策已 ack
+  materials:
+  - id: M3_EuO
+    formula: EuO
+    mp_id: mp-21394
+    reason: GBRV_USPP_PBE_v1.5 缺该元素赝势（杨博 0507 xlsx 标红 — 'no pseudo, skip'）
+    yang_metadata:
+      main_magnetic_element: Eu
+      magnetic_order: FM
+      notes: Eu 4f moments (Materials Project)
+  - id: M3_GdN
+    formula: GdN
+    mp_id: mp-940
+    reason: GBRV_USPP_PBE_v1.5 缺该元素赝势（杨博 0507 xlsx 标红 — 'no pseudo, skip'）
+    yang_metadata:
+      main_magnetic_element: Gd
+      magnetic_order: FM
+      notes: rocksalt GdN (Materials Project)

@@ -1,0 +1,605 @@
+{
+  "schema_version": "1.3",
+  "id": "M2_T1_Ti3O5_vc_relax",
+  "difficulty": {
+    "material_tier": "M2",
+    "task_tier": "T1",
+    "overall_level": null
+  },
+  "material": {
+    "formula": "Ti3O5",
+    "name": "Ti3O5 (α-phase, orthorhombic Cmcm)",
+    "structure": "orthorhombic Cmcm",
+    "space_group": "Cmcm",
+    "space_group_number": 63,
+    "atoms_per_primitive_cell": 16,
+    "advisory_notes": null,
+    "reference_source": {
+      "database": "Materials Project",
+      "id": "mp-8057",
+      "url": "https://next-gen.materialsproject.org/materials/mp-8057"
+    },
+    "initial_structure": {
+      "source": "mp-8057",
+      "note": "MP primitive cell (VASP+PAW PBE geometry), provided as initial structure. Agent should run QE vc-relax on this.",
+      "lattice_type": "primitive",
+      "lattice_constants_angstrom": {
+        "a": 5.263,
+        "b": 5.263,
+        "c": 10.012
+      },
+      "lattice_angles_degree": {
+        "alpha": 90.0,
+        "beta": 90.0,
+        "gamma": 138.012
+      },
+      "atomic_positions_crystal": [
+        {
+          "element": "Ti",
+          "position": [
+            0.699412,
+            0.300588,
+            0.25
+          ]
+        },
+        {
+          "element": "Ti",
+          "position": [
+            0.300588,
+            0.699412,
+            0.75
+          ]
+        },
+        {
+          "element": "Ti",
+          "position": [
+            0.369847,
+            0.630153,
+            0.058092
+          ]
+        },
+        {
+          "element": "Ti",
+          "position": [
+            0.630153,
+            0.369847,
+            0.941908
+          ]
+        },
+        {
+          "element": "Ti",
+          "position": [
+            0.630153,
+            0.369847,
+            0.558092
+          ]
+        },
+        {
+          "element": "Ti",
+          "position": [
+            0.369847,
+            0.630153,
+            0.441908
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.729128,
+            0.270872,
+            0.75
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.270872,
+            0.729128,
+            0.25
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.44794,
+            0.55206,
+            0.877412
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.55206,
+            0.44794,
+            0.122588
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.55206,
+            0.44794,
+            0.377412
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.44794,
+            0.55206,
+            0.622588
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.81729,
+            0.18271,
+            0.432238
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.18271,
+            0.81729,
+            0.567762
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.18271,
+            0.81729,
+            0.932238
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.81729,
+            0.18271,
+            0.067762
+          ]
+        }
+      ]
+    },
+    "pseudopotential": {
+      "family": "GBRV_USPP_PBE_v1.5",
+      "relativistic": "scalar",
+      "files": {
+        "Ti": "Ti.upf",
+        "O": "O.upf"
+      }
+    }
+  },
+  "task": {
+    "type": "vc_relax",
+    "prompt": null,
+    "policy": {
+      "network_allowed": false
+    }
+  },
+  "evaluator": {
+    "type": "qe_vc_relax_output",
+    "extract_fields": [
+      "a",
+      "b",
+      "c",
+      "alpha",
+      "beta",
+      "gamma",
+      "space_group_number",
+      "point_group",
+      "crystal_system"
+    ],
+    "data_sources": {
+      "primary": "relax.out"
+    },
+    "extraction_method": "pymatgen_spacegroup_analyzer",
+    "extraction_config": {
+      "symprec": 0.001,
+      "angle_tolerance": 5
+    }
+  },
+  "ground_truth": {
+    "a": {
+      "value": 5.3098947428065655,
+      "unit": "angstrom",
+      "tolerance": 0.01,
+      "rule": "relative"
+    },
+    "b": {
+      "value": 5.309894741791934,
+      "unit": "angstrom",
+      "tolerance": 0.01,
+      "rule": "relative"
+    },
+    "c": {
+      "value": 9.977131705,
+      "unit": "angstrom",
+      "tolerance": 0.01,
+      "rule": "relative"
+    },
+    "alpha": {
+      "value": 90.0,
+      "unit": "degree",
+      "tolerance": 1.0,
+      "rule": "absolute"
+    },
+    "beta": {
+      "value": 90.0,
+      "unit": "degree",
+      "tolerance": 1.0,
+      "rule": "absolute"
+    },
+    "gamma": {
+      "value": 138.3785187588222,
+      "unit": "degree",
+      "tolerance": 1.0,
+      "rule": "absolute"
+    },
+    "space_group_number": {
+      "value": 63,
+      "rule": "exact"
+    },
+    "point_group": {
+      "value": "mmm",
+      "rule": "exact"
+    },
+    "crystal_system": {
+      "value": "orthorhombic",
+      "rule": "exact"
+    }
+  },
+  "final_structure": {
+    "source": "bench/workdir/M2_T1_Ti3O5_vc_relax/e80_d30/relax.out",
+    "cell_angstrom": [
+      [
+        5.30977239,
+        -0.016912598,
+        0.0
+      ],
+      [
+        -3.957988018,
+        3.539533832,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        9.977085481
+      ]
+    ],
+    "atomic_positions_crystal": [
+      [
+        "Ti",
+        0.6974294264,
+        0.3025705739,
+        0.25
+      ],
+      [
+        "Ti",
+        0.3025705736,
+        0.6974294261,
+        0.75
+      ],
+      [
+        "Ti",
+        0.3707334513,
+        0.6292665488,
+        0.0557139406
+      ],
+      [
+        "Ti",
+        0.6292665487,
+        0.3707334512,
+        0.9442860594
+      ],
+      [
+        "Ti",
+        0.6292665487,
+        0.3707334512,
+        0.5557139406
+      ],
+      [
+        "Ti",
+        0.3707334513,
+        0.6292665488,
+        0.4442860594
+      ],
+      [
+        "O",
+        0.7384772558,
+        0.2615227435,
+        0.75
+      ],
+      [
+        "O",
+        0.2615227442,
+        0.7384772565,
+        0.25
+      ],
+      [
+        "O",
+        0.4506620591,
+        0.54933794,
+        0.8750303168
+      ],
+      [
+        "O",
+        0.5493379409,
+        0.45066206,
+        0.1249696832
+      ],
+      [
+        "O",
+        0.5493379409,
+        0.45066206,
+        0.3750303168
+      ],
+      [
+        "O",
+        0.4506620591,
+        0.54933794,
+        0.6249696832
+      ],
+      [
+        "O",
+        0.8191633076,
+        0.1808366927,
+        0.4328789942
+      ],
+      [
+        "O",
+        0.1808366924,
+        0.8191633073,
+        0.5671210058
+      ],
+      [
+        "O",
+        0.1808366924,
+        0.8191633073,
+        0.9328789942
+      ],
+      [
+        "O",
+        0.8191633076,
+        0.1808366927,
+        0.0671210058
+      ]
+    ]
+  },
+  "scoring": {
+    "aggregate": "all_fields_weighted",
+    "field_weights": {
+      "a": 0.2,
+      "b": 0.2,
+      "c": 0.2,
+      "alpha": 0.05,
+      "beta": 0.05,
+      "gamma": 0.05,
+      "space_group_number": 0.25
+    },
+    "pass_criterion": "all_fields_passed",
+    "partial_credit": true
+  },
+  "convergence_evidence": {
+    "methodology": "Two-round convergence scan: Round 1 fixes kmesh density at 30 and scans ecutwfc in {30,40,50,60,80}; Round 2 fixes ecutwfc at 80 and scans kmesh density in {20,30,40,50}. Convergence criteria: ΔE < 0.05 meV/atom and ΔP < 0.5 kbar.",
+    "ecutwfc_scan": {
+      "values_ry": [
+        30.0,
+        40.0,
+        50.0,
+        60.0,
+        80.0,
+        100.0,
+        120.0,
+        150.0
+      ],
+      "kmesh_fixed": [
+        10,
+        10,
+        4
+      ],
+      "delta_E_meV_per_atom": [
+        105.04294838826873,
+        14.32249192844683,
+        11.080731485896786,
+        7.637759850888087,
+        4.8532782464429856,
+        1.9136237132064842,
+        1.3257302223219545,
+        0.0
+      ],
+      "delta_P_kbar": [
+        16.17,
+        0.19999999999999998,
+        0.18,
+        0.15,
+        0.16,
+        0.12000000000000001,
+        0.030000000000000002,
+        0.0
+      ],
+      "lattice_per_point": [
+        {
+          "a_angstrom": 5.216128,
+          "b_angstrom": 5.216128,
+          "c_angstrom": 9.835176,
+          "alpha_degree": 90.0,
+          "beta_degree": 90.0,
+          "gamma_degree": 137.7868,
+          "space_group_number": 63
+        },
+        {
+          "a_angstrom": 5.309913,
+          "b_angstrom": 5.309913,
+          "c_angstrom": 9.981766,
+          "alpha_degree": 90.0,
+          "beta_degree": 90.0,
+          "gamma_degree": 138.3594,
+          "space_group_number": 63
+        },
+        {
+          "a_angstrom": 5.309118,
+          "b_angstrom": 5.309118,
+          "c_angstrom": 9.975552,
+          "alpha_degree": 90.0,
+          "beta_degree": 90.0,
+          "gamma_degree": 138.3689,
+          "space_group_number": 63
+        },
+        {
+          "a_angstrom": 5.310359,
+          "b_angstrom": 5.310359,
+          "c_angstrom": 9.980586,
+          "alpha_degree": 90.0,
+          "beta_degree": 90.0,
+          "gamma_degree": 138.3761,
+          "space_group_number": 63
+        },
+        {
+          "a_angstrom": 5.309799,
+          "b_angstrom": 5.309799,
+          "c_angstrom": 9.977085,
+          "alpha_degree": 90.0,
+          "beta_degree": 90.0,
+          "gamma_degree": 138.377,
+          "space_group_number": 63
+        },
+        {
+          "a_angstrom": 5.310826,
+          "b_angstrom": 5.310826,
+          "c_angstrom": 9.981508,
+          "alpha_degree": 90.0,
+          "beta_degree": 90.0,
+          "gamma_degree": 138.3809,
+          "space_group_number": 63
+        },
+        {
+          "a_angstrom": 5.310132,
+          "b_angstrom": 5.310132,
+          "c_angstrom": 9.982724,
+          "alpha_degree": 90.0,
+          "beta_degree": 90.0,
+          "gamma_degree": 138.3731,
+          "space_group_number": 63
+        },
+        {
+          "a_angstrom": 5.310213,
+          "b_angstrom": 5.310213,
+          "c_angstrom": 9.98369,
+          "alpha_degree": 90.0,
+          "beta_degree": 90.0,
+          "gamma_degree": 138.3722,
+          "space_group_number": 63
+        }
+      ]
+    },
+    "kmesh_scan": {
+      "values": [
+        [
+          6,
+          6,
+          2
+        ],
+        [
+          10,
+          10,
+          4
+        ],
+        [
+          12,
+          12,
+          4
+        ],
+        [
+          14,
+          14,
+          6
+        ]
+      ],
+      "ecutwfc_fixed_ry": 80.0,
+      "delta_E_meV_per_atom": [
+        0.3927453354416652,
+        0.008699139998883084,
+        0.0016156761653473523,
+        0.0
+      ],
+      "delta_P_kbar": [
+        0.030000000000000013,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "lattice_per_point": [
+        {
+          "a_angstrom": 5.311639,
+          "b_angstrom": 5.311639,
+          "c_angstrom": 9.987256,
+          "alpha_degree": 90.0,
+          "beta_degree": 90.0,
+          "gamma_degree": 138.4376,
+          "space_group_number": 63
+        },
+        {
+          "a_angstrom": 5.309799,
+          "b_angstrom": 5.309799,
+          "c_angstrom": 9.977085,
+          "alpha_degree": 90.0,
+          "beta_degree": 90.0,
+          "gamma_degree": 138.377,
+          "space_group_number": 63
+        },
+        {
+          "a_angstrom": 5.309893,
+          "b_angstrom": 5.309893,
+          "c_angstrom": 9.97716,
+          "alpha_degree": 90.0,
+          "beta_degree": 90.0,
+          "gamma_degree": 138.3786,
+          "space_group_number": 63
+        },
+        {
+          "a_angstrom": 5.309895,
+          "b_angstrom": 5.309895,
+          "c_angstrom": 9.977132,
+          "alpha_degree": 90.0,
+          "beta_degree": 90.0,
+          "gamma_degree": 138.3785,
+          "space_group_number": 63
+        }
+      ]
+    },
+    "converged_params": {
+      "ecutwfc_ry": 80.0,
+      "ecutrho_ry": 800.0,
+      "kmesh": [
+        14,
+        14,
+        6
+      ],
+      "kmesh_density_pts_per_inv_angstrom": 50.0
+    },
+    "convergence_threshold": {
+      "delta_E_meV_per_atom": 0.5,
+      "delta_P_kbar": 0.5,
+      "delta_l_relative_converged": 0.01,
+      "delta_l_relative_marginal": 0.02,
+      "criterion": "geometry-relative (Plan B, 杨博 0427)"
+    },
+    "raw_outputs_dir": "bench/gt_selfrun/workdir/M2_T1_Ti3O5_vc_relax"
+  },
+  "metadata": {
+    "author": "weilin",
+    "generated_at": "2026-04-24",
+    "reviewer": null,
+    "gt_qe_version": "7.5CN-GPU",
+    "gt_machine": null,
+    "gt_wall_time_sec": 24393.523406267166,
+    "gt_quality": "self_run_converged",
+    "gt_switched_at": "2026-04-29",
+    "notes": "bench schema v1.2. P1: GT = initial_structure (MP VASP+PAW PBE lattice) + wide tolerance (D2: 1% relative / 1° absolute) absorbing QE+GBRV-USPP vs VASP+PAW methodology difference. P2 may self-run QE to replace GT; see review_for_yang_round3.md.; v1.3 GT switched MP→self-run 2026-04-29 (D policy); see todo/bench/t1-gt-full-replacement.md"
+  }
+}

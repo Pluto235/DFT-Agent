@@ -1,0 +1,36 @@
+For {formula} ({structure_type}, space group {space_group}, {atoms_per_primitive_cell} atoms per primitive cell), compute the **elastic stiffness tensor Cij (6×6, Voigt notation)** by stress–strain fitting. The initial structure is the equilibrium configuration from a prior vc-relax; use it as your unstrained reference cell.
+
+Apply Voigt strain modes × amplitudes to generate adequate strained configurations.
+
+For each strained configuration, run a **fixed-cell ionic relaxation** with `calculation='relax'`, `tstress=.true.`, `tprnfor=.true.`. Use `forc_conv_thr ≤ 1e-4 Ry/Bohr` and `etot_conv_thr ≤ 1e-5 Ry`.
+
+Extract the final stress–strain data for each configuration, and fit Cij: `σ_i(k) = Σ_j C_ij · ε_j(k)`. Use the standard sign convention — positive σ = tension; QE prints stress with the opposite (compression-positive) sign, so negate it accordingly. A correct stiffness tensor for a stable crystal is positive-definite (all eigenvalues > 0); a negative-definite result means the sign was not flipped.
+
+Fully exploit the crystal symmetry of the structure in your calculations.
+
+Compute the Voigt–Reuss–Hill (VRH) averaged bulk modulus and shear modulus.
+
+Pick adequate `ecutwfc`, `k-mesh`, and other settings. Use the same numerical settings across all configurations.
+
+Your `task_outputs` MUST include this key (path is relative to your workdir):
+- `stress_strain_csv`: a CSV with header
+  `mode,amplitude,sigma_1_gpa,sigma_2_gpa,sigma_3_gpa,sigma_4_gpa,sigma_5_gpa,sigma_6_gpa`
+  one row per strained configuration, parsed from each pw.out's final stress tensor.
+
+  The `mode` column **must take values from {`e1`, `e2`, `e3`, `e4`, `e5`, `e6`}**
+  (the Voigt labels) — not bare integers `1..6`. The `amplitude` column is the
+  signed strain value, e.g. `-0.01`. Example row:
+  `e1,-0.01,-1.857,-0.433,-0.532,-0.000,-0.000,0.127`
+
+The harness re-fits the 6×6 Cij from `stress_strain_csv` itself and computes
+VRH-averaged K_H / G_H independently; you do not need to (and should NOT) put
+the Cij matrix or K_VRH / G_VRH scalars into `task_outputs` (its values are
+file paths only — non-string values will be filtered out by the harness audit).
+Reporting your own fit values in the transcript / notes is fine but not
+required for scoring.
+
+{initial_structure_block}
+
+{pseudopotential_block}{advisory_notes_block}
+
+Execution hint: each strain point is a fixed-cell ionic relax (~5–60 min depending on system size; heavy-atom oxides can take 1–3 h per point). Prefer parallel scheduling across GPUs if available. **Use identical pw.x input parameters across all strain points** — consistency in `ecutwfc / kmesh / mixing / smearing` dominates Cij accuracy.

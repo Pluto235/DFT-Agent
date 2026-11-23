@@ -233,7 +233,6 @@ class LLMClient:
 
     def _init_client(self) -> Any:
         cfg = self.config
-        self._oauth_auth = False  # True 当用 OAuth bearer(非裸 api_key)认证 anthropic
         # 两类 SDK 共用的 key 解析:yaml api_key 优先,key_env env 其次。
         api_key = cfg.api_key or (os.environ.get(cfg.key_env) if cfg.key_env else None)
 
@@ -251,7 +250,6 @@ class LLMClient:
                          or os.environ.get("CLAUDE_CODE_OAUTH_TOKEN"))
                 if oauth:
                     kwargs["auth_token"] = oauth
-                    self._oauth_auth = True
             return anthropic.Anthropic(**kwargs)
 
         if cfg.type == "openai_compat":
@@ -300,23 +298,10 @@ class LLMClient:
     def _call_anthropic(self, messages, system, tools, max_output_tokens):
         anth_msgs = _openai_to_anthropic_messages(messages)
         anth_tools = _tools_to_anthropic(tools)
-        sys_param: Any = system
-        if getattr(self, "_oauth_auth", False):
-            # OAuth(Claude Code 订阅)token 要求 system 首块为 Claude Code 身份,否则
-            # premium 模型(sonnet/opus)返回伪装的 429 rate_limit_error(haiku 不卡)。
-            # 实测 2026-06-10:缺身份 → 整批 opus run 第一次 call 即 429 全废。
-            cc = {"type": "text",
-                  "text": "You are Claude Code, Anthropic's official CLI for Claude."}
-            if isinstance(system, str):
-                sys_param = [cc] + ([{"type": "text", "text": system}] if system else [])
-            elif isinstance(system, list):
-                sys_param = [cc] + system
-            else:
-                sys_param = [cc]
         resp = self.client.messages.create(
             model=self.model,
             max_tokens=max_output_tokens,
-            system=sys_param,
+            system=system,
             tools=anth_tools,
             messages=anth_msgs,
         )

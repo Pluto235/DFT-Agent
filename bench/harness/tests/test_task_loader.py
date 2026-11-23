@@ -142,3 +142,46 @@ def test_cli_lists_only_loadable_tasks_without_setup(tmp_path):
     )
     assert output.splitlines() == expected
     assert not list(tmp_path.iterdir())
+
+
+@pytest.mark.parametrize(("subset", "count"), [
+    ("stable", 245), ("exploratory", 30), ("held_out", 41), ("frozen", 100),
+])
+def test_release_subset(subset, count):
+    ids = subprocess.check_output(
+        [sys.executable, str(BENCH_ROOT / "harness/run.py"), "--list-tasks", subset],
+        text=True,
+    ).splitlines()
+    assert len(set(ids)) == len(ids) == count
+    if subset == "frozen":
+        import csv
+        with (BENCH_ROOT.parent / "results/frozen_matched_scores.csv").open() as scores:
+            assert set(ids) == {row["task_id"] for row in csv.DictReader(scores)}
+    else:
+        for task_id in ids:
+            task = load_task(BENCH_ROOT, task_id)
+            assert (task["metadata"].get("is_stable") is False) == (subset == "held_out")
+            assert task_id.startswith("M3_") == (subset == "exploratory")
+
+
+def test_release_has_inputs_for_each_scored_task():
+    pseudos = BENCH_ROOT / "pseudos/GBRV_USPP_PBE_v1.5/MANIFEST.json"
+    filenames = {entry["canonical_name"] for entry in json.loads(pseudos.read_text())["files"]}
+    for path in (BENCH_ROOT / "questions").glob("M*_T*/*.json"):
+        task = load_task(BENCH_ROOT, path.stem)
+        assert task["id"] == path.stem
+        assert path.parent.name == "_".join(task["id"].split("_")[:2])
+        if isinstance(task["difficulty"], dict):
+            assert path.parent.name == "_".join(task["difficulty"][k] for k in ("material_tier", "task_tier"))
+        else:
+            assert task["schema_version"] == "1.2" and task["difficulty"] == "M3"
+        assert render_prompt(BENCH_ROOT, task).strip()
+        assert set(task["material"]["pseudopotential"]["files"].values()) <= filenames
+        if task["metadata"].get("is_stable") is False:
+            continue
+        for field, weight in task["scoring"]["field_weights"].items():
+            if weight:
+                value = task["ground_truth"][field]["value"]
+                assert value is not None, (path.stem, field)
+                if isinstance(value, dict) and "ref_file" in value:
+                    assert (BENCH_ROOT / value["ref_file"].removeprefix("bench/")).stat().st_size

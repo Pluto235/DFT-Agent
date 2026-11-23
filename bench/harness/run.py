@@ -1,5 +1,6 @@
 """Harness CLI: 一次 bench run 的 7-phase 编排。"""
 import argparse
+import csv
 import datetime
 import json
 import shlex
@@ -25,7 +26,7 @@ from harness.lib.audit import audit_run, audit_passed, GATING_FLAGS
 def main() -> int:
     parser = argparse.ArgumentParser(description="Evaluate a solver on a DFT-Agent Bench task.")
     mode = parser.add_mutually_exclusive_group(required=True)
-    mode.add_argument("--list-tasks", action="store_true", help="List available task IDs and exit")
+    mode.add_argument("--list-tasks", nargs="?", const="all", choices=("all", "stable", "exploratory", "held_out", "frozen"), help="List IDs from the release manifest and exit (default: all)")
     mode.add_argument("--task-id", help="Task ID to evaluate (see --list-tasks)")
     parser.add_argument("--solver", help="Python solver entry point (required with --task-id)")
     parser.add_argument("--solver-args", default="", help="Extra args passed to solver (shell-quoted)")
@@ -35,8 +36,10 @@ def main() -> int:
                              "matches web-fresh backend Pydantic schemas/run.py 7200)")
     args = parser.parse_args()
     if args.list_tasks:
-        for path in sorted((_BENCH_ROOT / "questions").glob("M*_T*/M*_T*_*.json")):
-            print(path.stem)
+        with (_BENCH_ROOT / "task_manifest.tsv").open() as manifest:
+            for task in csv.DictReader(manifest, delimiter="\t"):
+                if args.list_tasks in ("all", task["set"]) or (args.list_tasks == "frozen" and task["frozen_100"] == "1"):
+                    print(task["task_id"])
         return 0
     if not args.solver:
         parser.error("--task-id requires --solver")

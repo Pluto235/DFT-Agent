@@ -37,7 +37,9 @@ in the prepared work directory. It passes:
 
 For T1, return `vc_relax_out` (the final relaxation log). For T2, return
 `scf_out`, `bands_out`, `bands_data`, `dos_dat` and `nscf_dos_out`. The prompt
-explains each file. Log the shell commands actually executed to `workdir/bash.log`
+explains each file. For T3, return `eos_points_csv`; for T4, return
+`stress_strain_csv`. Keep the individual QE output logs in the work directory
+so the harness can audit the volume or strain calculations. Log the shell commands actually executed to `workdir/bash.log`
 using `$ command` lines. The audit reads this log for QE invocation and
 network commands, and checks completion and timing in the submitted outputs.
 

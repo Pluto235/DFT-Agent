@@ -48,7 +48,7 @@ trap 'rm -rf "$TMPDIR"' EXIT
 
 TARBALL="$TMPDIR/all_pbe_UPF_v1.5.tar.gz"
 echo "[fetch] 下载到 $TARBALL …"
-curl -fSL -o "$TARBALL" "$URL"
+curl --retry 3 --retry-all-errors --connect-timeout 15 --max-time 120 -fSL -o "$TARBALL" "$URL"
 
 ACTUAL_SHA256="$(sha256sum "$TARBALL" | awk '{print $1}')"
 if [[ "$ACTUAL_SHA256" != "$EXPECTED_SHA256" ]]; then

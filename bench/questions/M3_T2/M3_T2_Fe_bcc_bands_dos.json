@@ -1,0 +1,350 @@
+{
+  "schema_version": "1.2",
+  "id": "M3_T2_Fe_bcc_bands_dos",
+  "difficulty": "M3",
+  "material": {
+    "formula": "Fe",
+    "name": "Fe, bcc",
+    "structure": "bcc",
+    "space_group": "Im-3m",
+    "space_group_number": 229,
+    "atoms_per_primitive_cell": 2,
+    "advisory_notes": null,
+    "reference_source": "elemental bcc Fe (Materials Project)",
+    "initial_structure": {
+      "source": "Materials Project (mp-13)",
+      "note": "MP VASP+PAW PBE primitive cell (M3 自跑前的初始结构)",
+      "lattice_type": "Cubic",
+      "lattice_constants_angstrom": {
+        "a": 2.477813028804854,
+        "b": 2.477809133849768,
+        "c": 4.054295207189474
+      },
+      "lattice_angles_degree": {
+        "alpha": 90.00003845025343,
+        "beta": 90.00031950636807,
+        "gamma": 109.469836683298
+      },
+      "atomic_positions_crystal": [
+        {
+          "element": "Fe",
+          "position": [
+            0.50000002,
+            0.50000008,
+            0.49999999
+          ]
+        },
+        {
+          "element": "Fe",
+          "position": [
+            0.99999998,
+            0.99999992,
+            1e-08
+          ]
+        }
+      ]
+    },
+    "pseudopotential": {
+      "family": "GBRV_USPP_PBE_v1.5",
+      "relativistic": "scalar",
+      "files": {
+        "Fe": "Fe.upf"
+      }
+    },
+    "magnetic_metadata": {
+      "nspin": 2,
+      "magnetic_order": "FM",
+      "main_magnetic_element": "Fe",
+      "starting_magnetization": {
+        "Fe": 0.5
+      },
+      "collinear": "Yes",
+      "expected_is_metal": true
+    }
+  },
+  "task": {
+    "type": "bands_dos",
+    "prompt": null,
+    "policy": {
+      "network_allowed": false
+    }
+  },
+  "evaluator": {
+    "type": "qe_bands_dos_combined",
+    "extract_fields": [
+      "band_gap_ev",
+      "gap_type",
+      "vbm_k_label",
+      "cbm_k_label",
+      "dos_e_fermi",
+      "dos_curve"
+    ],
+    "data_sources": {
+      "bands_out": "bands.out",
+      "bands_data": "bands.dat",
+      "dos_data": "dos.dat"
+    },
+    "extraction_method": "custom",
+    "extraction_config": {
+      "dos_energy_window_ev": [
+        -5,
+        5
+      ],
+      "k_label_source": "seekpath"
+    }
+  },
+  "ground_truth": {
+    "band_gap_ev": {
+      "value": 0.0,
+      "unit": "eV",
+      "tolerance": 0.1,
+      "rule": "graded_absolute"
+    },
+    "gap_type": {
+      "value": "metal",
+      "rule": "exact"
+    },
+    "vbm_k_label": {
+      "value": "metal",
+      "rule": "k_label_match",
+      "tolerance": 0.05
+    },
+    "cbm_k_label": {
+      "value": "metal",
+      "rule": "k_label_match",
+      "tolerance": 0.05
+    },
+    "dos_e_fermi": {
+      "value": 18.1917,
+      "unit": "eV",
+      "tolerance": 0.1,
+      "rule": "absolute"
+    },
+    "dos_curve": {
+      "value": {
+        "ref_file": "bench/questions/M3_T2/gt_data/M3_T2_Fe_bcc_bands_dos/dos_reference.dat"
+      },
+      "unit": "states/eV/fu",
+      "tolerance": 0.1,
+      "rule": "curve_f1"
+    }
+  },
+  "scoring": {
+    "aggregate": "all_fields_weighted",
+    "field_weights": {
+      "band_gap_ev": 0.4,
+      "gap_type": 0.15,
+      "vbm_k_label": 0.1,
+      "cbm_k_label": 0.1,
+      "dos_e_fermi": 0.05,
+      "dos_curve": 0.2
+    },
+    "pass_criterion": "all_fields_passed",
+    "partial_credit": true
+  },
+  "convergence_evidence": {
+    "scan_points": [
+      {
+        "key": "e50_d30",
+        "round": 1,
+        "ecutwfc_ry": 50.0,
+        "ecutrho_ry": 500.0,
+        "kmesh": [
+          14,
+          14,
+          8
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 36,
+        "step_walls_sec": {
+          "scf": 67.18612909317017,
+          "nscf": 130.121497631073,
+          "bands_pw": 98.21006679534912,
+          "bands_pp": 1.7671265602111816
+        },
+        "band_gap_ev": 0.0,
+        "dos_e_fermi": 18.1861,
+        "vbm_k_label": "metal",
+        "cbm_k_label": "metal",
+        "gap_type": "metal"
+      },
+      {
+        "key": "e60_d30",
+        "round": 1,
+        "ecutwfc_ry": 60.0,
+        "ecutrho_ry": 600.0,
+        "kmesh": [
+          14,
+          14,
+          8
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 36,
+        "step_walls_sec": {
+          "scf": 75.52727818489075,
+          "nscf": 129.40642738342285,
+          "bands_pw": 101.06375455856323,
+          "bands_pp": 2.117624521255493
+        },
+        "band_gap_ev": 0.0,
+        "dos_e_fermi": 18.1863,
+        "vbm_k_label": "metal",
+        "cbm_k_label": "metal",
+        "gap_type": "metal"
+      },
+      {
+        "key": "e80_d30",
+        "round": 1,
+        "ecutwfc_ry": 80.0,
+        "ecutrho_ry": 800.0,
+        "kmesh": [
+          14,
+          14,
+          8
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 36,
+        "step_walls_sec": {
+          "scf": 103.79504585266113,
+          "nscf": 157.5832953453064,
+          "bands_pw": 123.65550446510315,
+          "bands_pp": 2.718691825866699
+        },
+        "band_gap_ev": 0.0,
+        "dos_e_fermi": 18.1857,
+        "vbm_k_label": "metal",
+        "cbm_k_label": "metal",
+        "gap_type": "metal"
+      },
+      {
+        "key": "e80_d20",
+        "round": 2,
+        "ecutwfc_ry": 80.0,
+        "ecutrho_ry": 800.0,
+        "kmesh": [
+          10,
+          10,
+          6
+        ],
+        "kmesh_density": 20.0,
+        "nbnd": 36,
+        "step_walls_sec": {
+          "scf": 44.23255372047424,
+          "nscf": 66.21296882629395,
+          "bands_pw": 122.04735827445984,
+          "bands_pp": 2.6722583770751953
+        },
+        "band_gap_ev": 0.0,
+        "dos_e_fermi": 18.1915,
+        "vbm_k_label": "metal",
+        "cbm_k_label": "metal",
+        "gap_type": "metal"
+      },
+      {
+        "key": "e80_d40",
+        "round": 2,
+        "ecutwfc_ry": 80.0,
+        "ecutrho_ry": 800.0,
+        "kmesh": [
+          18,
+          18,
+          10
+        ],
+        "kmesh_density": 40.0,
+        "nbnd": 36,
+        "step_walls_sec": {
+          "scf": 208.9422287940979,
+          "nscf": 353.0763657093048,
+          "bands_pw": 236.27879118919373,
+          "bands_pp": 4.374059200286865
+        },
+        "band_gap_ev": 0.0,
+        "dos_e_fermi": 18.1921,
+        "vbm_k_label": "metal",
+        "cbm_k_label": "metal",
+        "gap_type": "metal"
+      },
+      {
+        "key": "e80_d50",
+        "round": 2,
+        "ecutwfc_ry": 80.0,
+        "ecutrho_ry": 800.0,
+        "kmesh": [
+          22,
+          22,
+          12
+        ],
+        "kmesh_density": 50.0,
+        "nbnd": 36,
+        "step_walls_sec": {
+          "scf": 590.1226935386658,
+          "nscf": 990.3259706497192,
+          "bands_pw": 245.89664506912231,
+          "bands_pp": 4.322985649108887
+        },
+        "band_gap_ev": 0.0,
+        "dos_e_fermi": 18.1917,
+        "vbm_k_label": "metal",
+        "cbm_k_label": "metal",
+        "gap_type": "metal"
+      }
+    ],
+    "classification": {
+      "classification": "converged",
+      "round1_ecutwfc": {
+        "delta_band_gap_ev": 0.0,
+        "delta_e_fermi_ev": 0.0005999999999986017,
+        "last_two_keys": [
+          "e60_d30",
+          "e80_d30"
+        ],
+        "scan_keys": [
+          "e50_d30",
+          "e60_d30",
+          "e80_d30"
+        ]
+      },
+      "round2_kmesh": {
+        "delta_band_gap_ev": 0.0,
+        "delta_e_fermi_ev": 0.00039999999999906777,
+        "last_two_keys": [
+          "e80_d40",
+          "e80_d50"
+        ],
+        "scan_keys": [
+          "e80_d20",
+          "e80_d40",
+          "e80_d50"
+        ]
+      },
+      "thresholds": {
+        "band_gap_thr_ev": 0.02,
+        "e_fermi_thr_ev": 0.02,
+        "marginal_factor": 2.0
+      },
+      "reason": "all 4 deltas within converged thresholds"
+    },
+    "wall_time_sec": 3876.650802373886,
+    "canonical_point_key": "e80_d50",
+    "canonical_kmesh": [
+      22,
+      22,
+      12
+    ],
+    "dos_params": {
+      "sigma_ev": 0.02,
+      "de_ev": 0.01
+    }
+  },
+  "metadata": {
+    "author": "weilin",
+    "generated_at": "2026-05-13",
+    "reviewer": null,
+    "gt_qe_version": "7.5CN-GPU",
+    "gt_machine": null,
+    "gt_wall_time_sec": null,
+    "gt_quality": "self_run_converged",
+    "gt_switched_at": null,
+    "notes": "M3 bands+DOS 题目（FM only v1）；ground_truth 待 t2 pipeline 跑完回填."
+  }
+}

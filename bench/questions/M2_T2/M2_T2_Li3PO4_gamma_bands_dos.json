@@ -1,0 +1,399 @@
+{
+  "schema_version": "1.3",
+  "id": "M2_T2_Li3PO4_gamma_bands_dos",
+  "difficulty": {
+    "material_tier": "M2",
+    "task_tier": "T2",
+    "overall_level": null
+  },
+  "material": {
+    "formula": "Li3PO4",
+    "name": "γ-Li3PO4 (orthorhombic)",
+    "structure": "orthorhombic",
+    "space_group": "Pnma",
+    "space_group_number": 62,
+    "atoms_per_primitive_cell": 32,
+    "advisory_notes": null,
+    "reference_source": {
+      "database": "Materials Project",
+      "id": "mp-2878",
+      "url": "https://next-gen.materialsproject.org/materials/mp-2878"
+    },
+    "initial_structure": {
+      "source": "mp-2878",
+      "note": "Starting geometry provided to agent. Agent should treat it as an initial structure (relaxed or not is not stated).",
+      "lattice_type": "primitive",
+      "lattice_constants_angstrom": {
+        "a": 4.893,
+        "b": 6.071,
+        "c": 10.416
+      },
+      "lattice_angles_degree": {
+        "alpha": 90.0,
+        "beta": 90.0,
+        "gamma": 90.0
+      },
+      "atomic_positions_crystal": [
+        {
+          "element": "Li",
+          "position": [
+            0.695345,
+            0.498461,
+            0.835689
+          ]
+        },
+        {
+          "element": "Li",
+          "position": [
+            0.195345,
+            0.501539,
+            0.664311
+          ]
+        },
+        {
+          "element": "Li",
+          "position": [
+            0.304655,
+            0.998461,
+            0.164311
+          ]
+        },
+        {
+          "element": "Li",
+          "position": [
+            0.804655,
+            0.001539,
+            0.335689
+          ]
+        },
+        {
+          "element": "Li",
+          "position": [
+            0.304655,
+            0.501539,
+            0.164311
+          ]
+        },
+        {
+          "element": "Li",
+          "position": [
+            0.804655,
+            0.498461,
+            0.335689
+          ]
+        },
+        {
+          "element": "Li",
+          "position": [
+            0.695345,
+            0.001539,
+            0.835689
+          ]
+        },
+        {
+          "element": "Li",
+          "position": [
+            0.195345,
+            0.998461,
+            0.664311
+          ]
+        },
+        {
+          "element": "Li",
+          "position": [
+            0.797217,
+            0.25,
+            0.576247
+          ]
+        },
+        {
+          "element": "Li",
+          "position": [
+            0.297217,
+            0.75,
+            0.923753
+          ]
+        },
+        {
+          "element": "Li",
+          "position": [
+            0.202783,
+            0.75,
+            0.423753
+          ]
+        },
+        {
+          "element": "Li",
+          "position": [
+            0.702783,
+            0.25,
+            0.076247
+          ]
+        },
+        {
+          "element": "P",
+          "position": [
+            0.690672,
+            0.75,
+            0.588146
+          ]
+        },
+        {
+          "element": "P",
+          "position": [
+            0.809328,
+            0.75,
+            0.088146
+          ]
+        },
+        {
+          "element": "P",
+          "position": [
+            0.309328,
+            0.25,
+            0.411854
+          ]
+        },
+        {
+          "element": "P",
+          "position": [
+            0.190672,
+            0.25,
+            0.911854
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.624734,
+            0.25,
+            0.410818
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.794347,
+            0.957312,
+            0.65858
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.124734,
+            0.75,
+            0.089182
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.375266,
+            0.75,
+            0.589182
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.794347,
+            0.542688,
+            0.65858
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.294347,
+            0.042688,
+            0.84142
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.205653,
+            0.457312,
+            0.34142
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.705653,
+            0.542688,
+            0.15858
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.205653,
+            0.042688,
+            0.34142
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.705653,
+            0.957312,
+            0.15858
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.794841,
+            0.75,
+            0.448834
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.294347,
+            0.457312,
+            0.84142
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.705159,
+            0.75,
+            0.948834
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.205159,
+            0.25,
+            0.551166
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.294841,
+            0.25,
+            0.051166
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.875266,
+            0.25,
+            0.910818
+          ]
+        }
+      ]
+    },
+    "pseudopotential": {
+      "family": "GBRV_USPP_PBE_v1.5",
+      "relativistic": "scalar",
+      "files": {
+        "Li": "Li.upf",
+        "P": "P.upf",
+        "O": "O.upf"
+      }
+    }
+  },
+  "task": {
+    "type": "bands_dos",
+    "prompt": null,
+    "policy": {
+      "network_allowed": false
+    }
+  },
+  "evaluator": {
+    "type": "qe_bands_dos_combined",
+    "extract_fields": [
+      "band_gap_ev",
+      "gap_type",
+      "vbm_k_label",
+      "cbm_k_label",
+      "dos_e_fermi",
+      "dos_curve"
+    ],
+    "data_sources": {
+      "bands_out": "bands.out",
+      "bands_data": "bands.dat",
+      "dos_data": "dos.dat"
+    },
+    "extraction_method": "custom",
+    "extraction_config": {
+      "dos_energy_window_ev": [
+        -5,
+        5
+      ],
+      "k_label_source": "seekpath"
+    }
+  },
+  "ground_truth": {
+    "band_gap_ev": {
+      "value": 5.7961,
+      "unit": "eV",
+      "tolerance": 0.1,
+      "rule": "graded_absolute"
+    },
+    "gap_type": {
+      "value": "indirect",
+      "rule": "exact"
+    },
+    "vbm_k_label": {
+      "value": null,
+      "rule": "k_label_match",
+      "tolerance": 0.05
+    },
+    "cbm_k_label": {
+      "value": null,
+      "rule": "k_label_match",
+      "tolerance": 0.05
+    },
+    "dos_e_fermi": {
+      "value": 2.7214,
+      "unit": "eV",
+      "tolerance": 0.1,
+      "rule": "absolute"
+    },
+    "dos_curve": {
+      "value": {
+        "ref_file": "bench/questions/M2_T2/gt_data/M2_T2_Li3PO4_gamma_bands_dos/dos_reference.dat"
+      },
+      "unit": "states/eV/fu",
+      "tolerance": 0.1,
+      "rule": "curve_f1"
+    }
+  },
+  "scoring": {
+    "aggregate": "all_fields_weighted",
+    "field_weights": {
+      "band_gap_ev": 0.4,
+      "gap_type": 0.15,
+      "vbm_k_label": 0.1,
+      "cbm_k_label": 0.1,
+      "dos_e_fermi": 0.05,
+      "dos_curve": 0.2
+    },
+    "pass_criterion": "all_fields_passed",
+    "partial_credit": true
+  },
+  "convergence_evidence": null,
+  "metadata": {
+    "author": "weilin",
+    "generated_at": "2026-04-24",
+    "reviewer": null,
+    "gt_qe_version": null,
+    "gt_machine": null,
+    "gt_wall_time_sec": null,
+    "gt_quality": "self_run_failed_kept_mp",
+    "gt_switched_at": "2026-04-30",
+    "notes": "bench schema v1.2. T2 k-path derived by agent via seekpath; GT k-labels derived by same seekpath on the initial structure and then matched to MP VBM/CBM frac_coords (B1: nearest, threshold 0.05, else OFF_PATH). DOS reference curve downloaded from MP (C1: missing → field dropped, weights renormalized).; T2 self-run FAILED 2026-04-30 (D policy investigation); see https://github.com/wanweilin/dft-gt-issue-cases (if material listed); bench keeps MP GT until QE setup is debugged.; v1.3 schema gap fix 2026-04-30: dos_curve field added (was missing in v1.2; weights → Si T2 template 6-field); see todo/archive/schema-gap-dos-curve-3-questions.md; dos_reference.dat is placeholder (FAIL_NO_DATA, awaiting QE setup debug or yang manual fill)",
+    "dos_curve_placeholder": true,
+    "is_stable": false
+  }
+}

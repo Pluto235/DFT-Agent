@@ -1,24 +1,8 @@
 # Bench Question Schema
 
-The public practice set uses schema version `1.3`. It contains two task
-families over the M1 material tier:
-
-- `M1_T1_<material>_vc_relax`
-- `M1_T2_<material>_bands_dos`
-
-## Layout
-
-```text
-bench/
-├── questions/
-│   ├── M1_T1/
-│   └── M1_T2/
-├── schema/
-│   ├── examples/
-│   ├── fields/
-│   └── prompts/
-└── pseudos/
-```
+Task IDs pair a material tier with a workflow. The [manifest](../task_manifest.tsv)
+lists the files and evaluation sets; [the coverage grid](../../README.md#benchmark-design-four-material-tiers--four-workflows)
+gives the counts. Task JSONs are under `questions/<tier>_<workflow>/`.
 
 Each question is one JSON file, and its filename matches its `id`. Numeric
 ground-truth values and scoring rules are embedded in the JSON. Larger
@@ -29,7 +13,7 @@ referenced through `value.ref_file`.
 
 | Field | Required | Purpose |
 |---|---:|---|
-| `schema_version` | yes | Schema compatibility marker, currently `1.3` |
+| `schema_version` | yes | Schema compatibility marker, `1.2` or `1.3` in this snapshot |
 | `id` | yes | Globally unique task identifier |
 | `difficulty` | yes | Material and task tier labels |
 | `material` | yes | Structure, source, and pseudopotential mapping |
@@ -51,7 +35,7 @@ M1_T1_Si_vc_relax
 M1_T2_GaAs_bands_dos
 ```
 
-`difficulty.material_tier` is `M1`; `difficulty.task_tier` is `T1` or `T2`.
+In v1.3, the ID prefix matches `difficulty.material_tier` and `difficulty.task_tier`. The 30 M3 files use v1.2 and store `difficulty` as the string `M3`; read their workflow tier from the ID or manifest.
 
 ## Task Types
 
@@ -68,6 +52,10 @@ The agent performs SCF/NSCF, band-structure, and density-of-states work. The
 submission includes QE log files plus machine-readable bands and DOS data.
 Typical scored fields include band gap, gap type, VBM/CBM labels, Fermi-level
 DOS, and DOS-curve similarity.
+
+### T3 and T4
+
+EOS tasks fit an energy–volume curve. Elastic tasks fit stiffnesses from finite strains and stresses. See the [prompt templates](prompts/) for the required outputs.
 
 ## Units
 
@@ -90,7 +78,7 @@ logs for forbidden network access.
 
 ## Examples
 
-The current examples cover both retained task types:
+Two examples from the M1 tier:
 
 | Example | Focus |
 |---|---|

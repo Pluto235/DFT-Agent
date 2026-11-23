@@ -1,0 +1,475 @@
+{
+  "schema_version": "1.2",
+  "id": "M3_T1_MnF2_vc_relax",
+  "difficulty": "M3",
+  "material": {
+    "formula": "MnF2",
+    "name": "MnF₂",
+    "structure": "rutile",
+    "space_group": "P4_2/mnm",
+    "space_group_number": 136,
+    "atoms_per_primitive_cell": 6,
+    "advisory_notes": null,
+    "reference_source": "rutile MnF₂ (Materials Project)",
+    "initial_structure": {
+      "source": "Materials Project (mp-560902)",
+      "note": "MP VASP+PAW PBE primitive cell (M3 自跑前的初始结构)",
+      "lattice_type": "Tetragonal",
+      "lattice_constants_angstrom": {
+        "a": 3.31042523,
+        "b": 4.87305925,
+        "c": 4.87305925
+      },
+      "lattice_angles_degree": {
+        "alpha": 90.0,
+        "beta": 90.0,
+        "gamma": 90.0
+      },
+      "atomic_positions_crystal": [
+        {
+          "element": "Mn",
+          "position": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "element": "Mn",
+          "position": [
+            0.0,
+            0.0,
+            -0.0
+          ]
+        },
+        {
+          "element": "F",
+          "position": [
+            -0.0,
+            0.69516878,
+            0.69516878
+          ]
+        },
+        {
+          "element": "F",
+          "position": [
+            0.5,
+            0.8048312200000001,
+            0.19516878000000001
+          ]
+        },
+        {
+          "element": "F",
+          "position": [
+            0.0,
+            0.30483122,
+            0.30483122
+          ]
+        },
+        {
+          "element": "F",
+          "position": [
+            0.5,
+            0.19516878000000001,
+            0.8048312200000001
+          ]
+        }
+      ]
+    },
+    "pseudopotential": {
+      "family": "GBRV_USPP_PBE_v1.5",
+      "relativistic": "scalar",
+      "files": {
+        "Mn": "Mn.upf",
+        "F": "F.upf"
+      }
+    },
+    "magnetic_metadata": {
+      "nspin": 2,
+      "magnetic_order": "AFM",
+      "main_magnetic_element": "Mn",
+      "starting_magnetization": {
+        "Mn1": 0.7,
+        "Mn2": -0.7,
+        "F": 0.0
+      },
+      "afm_species_split": true,
+      "collinear": "Yes",
+      "yaml_hint_magnetic_order": "FM",
+      "expected_is_metal": false
+    }
+  },
+  "task": {
+    "type": "vc_relax",
+    "prompt": null,
+    "policy": {
+      "network_allowed": false
+    }
+  },
+  "evaluator": {
+    "type": "qe_vc_relax",
+    "extract_fields": [
+      "a",
+      "b",
+      "c",
+      "alpha",
+      "beta",
+      "gamma",
+      "space_group_number",
+      "point_group",
+      "crystal_system",
+      "total_magnetization_per_cell",
+      "absolute_magnetization_per_cell"
+    ],
+    "data_sources": {
+      "relax_out": "relax.out"
+    },
+    "extraction_method": "custom"
+  },
+  "ground_truth": {
+    "a": {
+      "value": 3.320960207,
+      "unit": "angstrom",
+      "tolerance": 0.01,
+      "rule": "relative"
+    },
+    "b": {
+      "value": 4.939299209000063,
+      "unit": "angstrom",
+      "tolerance": 0.01,
+      "rule": "relative"
+    },
+    "c": {
+      "value": 4.9392991970000635,
+      "unit": "angstrom",
+      "tolerance": 0.01,
+      "rule": "relative"
+    },
+    "alpha": {
+      "value": 89.99998164882922,
+      "unit": "degree",
+      "tolerance": 1.0,
+      "rule": "absolute"
+    },
+    "beta": {
+      "value": 90.00000006930547,
+      "unit": "degree",
+      "tolerance": 1.0,
+      "rule": "absolute"
+    },
+    "gamma": {
+      "value": 89.999999861389,
+      "unit": "degree",
+      "tolerance": 1.0,
+      "rule": "absolute"
+    },
+    "space_group_number": {
+      "value": 136,
+      "rule": "exact"
+    },
+    "point_group": {
+      "value": "4/mmm",
+      "rule": "exact"
+    },
+    "crystal_system": {
+      "value": "tetragonal",
+      "rule": "exact"
+    },
+    "total_magnetization_per_cell": {
+      "value": 0.0,
+      "unit": "bohr_mag/cell",
+      "tolerance": 0.5,
+      "rule": "absolute"
+    },
+    "absolute_magnetization_per_cell": {
+      "value": 9.61,
+      "unit": "bohr_mag/cell",
+      "tolerance": 0.5,
+      "rule": "absolute"
+    }
+  },
+  "final_structure": {
+    "source": "pipeline/m3/M3_MnF2/e80_d50_AFM/relax.out",
+    "cell_angstrom": [
+      [
+        3.320960207,
+        4e-09,
+        -2e-09
+      ],
+      [
+        6e-09,
+        4.939299209,
+        7.91e-07
+      ],
+      [
+        -3e-09,
+        7.91e-07,
+        4.939299197
+      ]
+    ],
+    "atomic_positions_crystal": [
+      [
+        "Mn1",
+        0.5000000001,
+        0.5000000136,
+        0.5000000191
+      ],
+      [
+        "Mn2",
+        -1e-10,
+        -5.4e-09,
+        -7.8e-09
+      ],
+      [
+        "F",
+        -1.3e-09,
+        0.6964807738,
+        0.6964807732
+      ],
+      [
+        "F",
+        0.5000000026,
+        0.8035193351,
+        0.1964806539
+      ],
+      [
+        "F",
+        -4e-10,
+        0.3035192294,
+        0.303519227
+      ],
+      [
+        "F",
+        0.499999999,
+        0.1964806535,
+        0.8035193345
+      ]
+    ]
+  },
+  "scoring": {
+    "aggregate": "all_fields_weighted",
+    "field_weights": {
+      "a": 0.1,
+      "b": 0.1,
+      "c": 0.1,
+      "alpha": 0.05,
+      "beta": 0.05,
+      "gamma": 0.05,
+      "space_group_number": 0.1,
+      "point_group": 0.05,
+      "crystal_system": 0.05,
+      "total_magnetization_per_cell": 0.2,
+      "absolute_magnetization_per_cell": 0.15
+    },
+    "pass_criterion": "all_fields_passed",
+    "partial_credit": true
+  },
+  "convergence_evidence": {
+    "methodology": "Two-round convergence scan: Round 1 fixes kmesh density at 30 and scans ecutwfc in {50,60,80,100,120,150}; Round 2 fixes ecutwfc at 80 and scans kmesh density in {20,30,40,50}. Magnetic methodology (杨博 5/13 双探针): canonical point (e80_d50) runs both FM and AFM initialisations, picks the lower-energy one as physical ground state (AFM for this material); other scan points use the yaml-hint init (FM) since they only certify convergence of the energy/lattice trend. AFM cells use a species split (e.g. Cr→Cr1/Cr2 共用 Cr.upf) with alternating ±starting_magnetization; FM cells keep the original elements with positive starting_magnetization. Convergence criteria: ΔE < 0.5 meV/atom and Δlattice_rel < 1% (geometry-relative, Plan B 杨博 0427).",
+    "ecutwfc_scan": {
+      "values_ry": [
+        50.0,
+        60.0,
+        80.0,
+        100.0,
+        120.0,
+        150.0
+      ],
+      "kmesh_fixed": [
+        10,
+        6,
+        6
+      ],
+      "delta_E_meV_per_atom": [
+        7.020129417206913,
+        2.355485600671775,
+        3.945537589227369,
+        0.7928717597773645,
+        1.031424910393791,
+        0.0
+      ],
+      "delta_P_kbar": [
+        0.009999999999999898,
+        0.96,
+        0.6,
+        0.85,
+        0.29999999999999993,
+        0.0
+      ],
+      "lattice_per_point": [
+        {
+          "a_angstrom": 3.338721983,
+          "b_angstrom": 4.953496236,
+          "c_angstrom": 4.953496236,
+          "alpha_degree": 90.0,
+          "beta_degree": 90.0,
+          "gamma_degree": 90.0,
+          "space_group_number": 136
+        },
+        {
+          "a_angstrom": 3.339595751,
+          "b_angstrom": 4.944356306,
+          "c_angstrom": 4.944356306,
+          "alpha_degree": 90.0,
+          "beta_degree": 90.0,
+          "gamma_degree": 90.0,
+          "space_group_number": 136
+        },
+        {
+          "a_angstrom": 3.33904302,
+          "b_angstrom": 4.953892633,
+          "c_angstrom": 4.953892633,
+          "alpha_degree": 90.0,
+          "beta_degree": 90.0,
+          "gamma_degree": 90.0,
+          "space_group_number": 136
+        },
+        {
+          "a_angstrom": 3.339307997,
+          "b_angstrom": 4.952164817,
+          "c_angstrom": 4.952164817,
+          "alpha_degree": 90.0,
+          "beta_degree": 90.0,
+          "gamma_degree": 90.0,
+          "space_group_number": 136
+        },
+        {
+          "a_angstrom": 3.339809188,
+          "b_angstrom": 4.949047673,
+          "c_angstrom": 4.949047673,
+          "alpha_degree": 90.0,
+          "beta_degree": 90.0,
+          "gamma_degree": 90.0,
+          "space_group_number": 136
+        },
+        {
+          "a_angstrom": 3.339419336,
+          "b_angstrom": 4.950678473,
+          "c_angstrom": 4.950678473,
+          "alpha_degree": 90.0,
+          "beta_degree": 90.0,
+          "gamma_degree": 90.0,
+          "space_group_number": 136
+        }
+      ]
+    },
+    "kmesh_scan": {
+      "values": [
+        [
+          6,
+          4,
+          4
+        ],
+        [
+          10,
+          6,
+          6
+        ],
+        [
+          12,
+          8,
+          8
+        ],
+        [
+          16,
+          10,
+          10
+        ]
+      ],
+      "ecutwfc_fixed_ry": 80.0,
+      "delta_E_meV_per_atom": [
+        0.07455919775080184,
+        0.017415286934159096,
+        0.0042857933434729606,
+        0.0
+      ],
+      "delta_P_kbar": [
+        0.020000000000000018,
+        0.11999999999999988,
+        0.09999999999999987,
+        0.0
+      ],
+      "lattice_per_point": [
+        {
+          "a_angstrom": 3.338961669,
+          "b_angstrom": 4.9537925860014695,
+          "c_angstrom": 4.9537926180014695,
+          "alpha_degree": 90.00008827204213,
+          "beta_degree": 90.0000000805837,
+          "gamma_degree": 89.99999997127418,
+          "space_group_number": 136
+        },
+        {
+          "a_angstrom": 3.33904302,
+          "b_angstrom": 4.953892633,
+          "c_angstrom": 4.953892633,
+          "alpha_degree": 90.0,
+          "beta_degree": 90.0,
+          "gamma_degree": 90.0,
+          "space_group_number": 136
+        },
+        {
+          "a_angstrom": 3.339041294,
+          "b_angstrom": 4.953884406000009,
+          "c_angstrom": 4.953884371000009,
+          "alpha_degree": 89.99999315302927,
+          "beta_degree": 90.00000009774136,
+          "gamma_degree": 89.99999998843418,
+          "space_group_number": 136
+        },
+        {
+          "a_angstrom": 3.339042157,
+          "b_angstrom": 4.953880993000001,
+          "c_angstrom": 4.953880982,
+          "alpha_degree": 90.0000014110321,
+          "beta_degree": 90.0,
+          "gamma_degree": 89.99999993098379,
+          "space_group_number": 136
+        }
+      ]
+    },
+    "converged_params": {
+      "ecutwfc_ry": 80.0,
+      "ecutrho_ry": 800.0,
+      "kmesh": [
+        16,
+        10,
+        10
+      ],
+      "kmesh_density_pts_per_inv_angstrom": 50.0
+    },
+    "convergence_threshold": {
+      "delta_E_meV_per_atom": 0.5,
+      "delta_P_kbar": 0.5,
+      "delta_l_relative_converged": 0.01,
+      "delta_l_relative_marginal": 0.02,
+      "criterion": "geometry-relative (Plan B, 杨博 0427)"
+    },
+    "raw_outputs_dir": "dft-gt-pipeline/tools/gt_selfrun/m3/workdir/M3_MnF2",
+    "scan_mag_init": "FM",
+    "canonical_mag_init": "AFM",
+    "magnetic_ground_state_decision": {
+      "material_id": "M3_MnF2",
+      "canonical_point": "e80_d50",
+      "ground_state": "AFM",
+      "reason": "energy_comparison",
+      "fm_energy_ry": -617.29312725,
+      "afm_energy_ry": -617.30047584,
+      "fm_status": "OK",
+      "afm_status": "OK",
+      "fm_total_mag": 10.0,
+      "afm_total_mag": 0.0
+    }
+  },
+  "metadata": {
+    "author": "weilin",
+    "generated_at": "2026-05-15",
+    "reviewer": null,
+    "gt_qe_version": "7.5CN-GPU",
+    "gt_machine": null,
+    "gt_wall_time_sec": 16828.6800699234,
+    "gt_quality": "self_run_converged",
+    "gt_switched_at": "2026-05-15",
+    "notes": "M3 自跑 GT (PBE + nspin=2 + 杨博 5/13 双探针方法论). canonical_point (e80_d50) 同跑 FM 和 AFM, 取能量低的作物理基态; 本材料 ground_state=AFM. AFM cell 用 species 拆分 (e.g. Cr1/Cr2 共用 Cr.upf, ±starting_mag). Hubbard +U 未启用（M1/M2 一致 + 避免 DFT 知识考点泄露）. 救援参数 (mixing_TF / trust_radius / bfgs_ndim 调参) 已拿掉. advisory_notes 留 null，等杨博 5/13 模板定稿."
+  }
+}

@@ -1,0 +1,844 @@
+{
+  "schema_version": "1.3",
+  "id": "M2_T1_Bi12TiO20_sillenite_vc_relax",
+  "difficulty": {
+    "material_tier": "M2",
+    "task_tier": "T1",
+    "overall_level": null
+  },
+  "material": {
+    "formula": "Bi12TiO20",
+    "name": "bismuth titanium sillenite",
+    "structure": "cubic sillenite",
+    "space_group": "I23",
+    "space_group_number": 197,
+    "atoms_per_primitive_cell": 33,
+    "advisory_notes": null,
+    "reference_source": {
+      "database": "Materials Project",
+      "id": "mp-23494",
+      "url": "https://next-gen.materialsproject.org/materials/mp-23494"
+    },
+    "initial_structure": {
+      "source": "mp-23494",
+      "note": "MP primitive cell (VASP+PAW PBE geometry), provided as initial structure. Agent should run QE vc-relax on this.",
+      "lattice_type": "primitive",
+      "lattice_constants_angstrom": {
+        "a": 8.816,
+        "b": 8.816,
+        "c": 8.816
+      },
+      "lattice_angles_degree": {
+        "alpha": 109.471,
+        "beta": 109.471,
+        "gamma": 109.471
+      },
+      "atomic_positions_crystal": [
+        {
+          "element": "Ti",
+          "position": [
+            1.0,
+            1.0,
+            0.0
+          ]
+        },
+        {
+          "element": "Bi",
+          "position": [
+            0.503945,
+            0.695344,
+            0.838203
+          ]
+        },
+        {
+          "element": "Bi",
+          "position": [
+            0.496055,
+            0.334258,
+            0.191399
+          ]
+        },
+        {
+          "element": "Bi",
+          "position": [
+            0.857141,
+            0.665742,
+            0.161797
+          ]
+        },
+        {
+          "element": "Bi",
+          "position": [
+            0.695344,
+            0.838203,
+            0.503945
+          ]
+        },
+        {
+          "element": "Bi",
+          "position": [
+            0.161797,
+            0.857141,
+            0.665742
+          ]
+        },
+        {
+          "element": "Bi",
+          "position": [
+            0.191399,
+            0.496055,
+            0.334258
+          ]
+        },
+        {
+          "element": "Bi",
+          "position": [
+            0.665742,
+            0.161797,
+            0.857141
+          ]
+        },
+        {
+          "element": "Bi",
+          "position": [
+            0.808601,
+            0.142859,
+            0.304656
+          ]
+        },
+        {
+          "element": "Bi",
+          "position": [
+            0.304656,
+            0.808601,
+            0.142859
+          ]
+        },
+        {
+          "element": "Bi",
+          "position": [
+            0.838203,
+            0.503945,
+            0.695344
+          ]
+        },
+        {
+          "element": "Bi",
+          "position": [
+            0.334258,
+            0.191399,
+            0.496055
+          ]
+        },
+        {
+          "element": "Bi",
+          "position": [
+            0.142859,
+            0.304656,
+            0.808601
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.207859,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            1.0,
+            0.207859,
+            0.0
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.792141,
+            0.792141,
+            0.792141
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            1.0,
+            1.0,
+            0.207859
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.611737,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            1.0,
+            0.611737,
+            0.0
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.388263,
+            0.388263,
+            0.388263
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            1.0,
+            1.0,
+            0.611737
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.616489,
+            0.237161,
+            0.356564
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.383511,
+            0.740075,
+            0.620673
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.880598,
+            0.259925,
+            0.643436
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.237161,
+            0.356564,
+            0.616489
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.643436,
+            0.880598,
+            0.259925
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.119402,
+            0.762839,
+            0.379327
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.740075,
+            0.620673,
+            0.383511
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.356564,
+            0.616489,
+            0.237161
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.762839,
+            0.379327,
+            0.119402
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.379327,
+            0.119402,
+            0.762839
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.259925,
+            0.643436,
+            0.880598
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.620673,
+            0.383511,
+            0.740075
+          ]
+        }
+      ]
+    },
+    "pseudopotential": {
+      "family": "GBRV_USPP_PBE_v1.5",
+      "relativistic": "scalar",
+      "files": {
+        "Bi": "Bi.upf",
+        "Ti": "Ti.upf",
+        "O": "O.upf"
+      }
+    }
+  },
+  "task": {
+    "type": "vc_relax",
+    "prompt": null,
+    "policy": {
+      "network_allowed": false
+    }
+  },
+  "evaluator": {
+    "type": "qe_vc_relax_output",
+    "extract_fields": [
+      "a",
+      "b",
+      "c",
+      "alpha",
+      "beta",
+      "gamma",
+      "space_group_number",
+      "point_group",
+      "crystal_system"
+    ],
+    "data_sources": {
+      "primary": "relax.out"
+    },
+    "extraction_method": "pymatgen_spacegroup_analyzer",
+    "extraction_config": {
+      "symprec": 0.001,
+      "angle_tolerance": 5
+    }
+  },
+  "ground_truth": {
+    "a": {
+      "value": 8.959068600938478,
+      "unit": "angstrom",
+      "tolerance": 0.01,
+      "rule": "relative"
+    },
+    "b": {
+      "value": 8.959068526218939,
+      "unit": "angstrom",
+      "tolerance": 0.01,
+      "rule": "relative"
+    },
+    "c": {
+      "value": 8.959068451065633,
+      "unit": "angstrom",
+      "tolerance": 0.01,
+      "rule": "relative"
+    },
+    "alpha": {
+      "value": 109.47121848536999,
+      "unit": "degree",
+      "tolerance": 1.0,
+      "rule": "absolute"
+    },
+    "beta": {
+      "value": 109.47121963063022,
+      "unit": "degree",
+      "tolerance": 1.0,
+      "rule": "absolute"
+    },
+    "gamma": {
+      "value": 109.47121918519866,
+      "unit": "degree",
+      "tolerance": 1.0,
+      "rule": "absolute"
+    },
+    "space_group_number": {
+      "value": 197,
+      "rule": "exact"
+    },
+    "point_group": {
+      "value": "23",
+      "rule": "exact"
+    },
+    "crystal_system": {
+      "value": "cubic",
+      "rule": "exact"
+    }
+  },
+  "final_structure": {
+    "source": "bench/workdir/M2_T1_Bi12TiO20_sillenite_vc_relax/e80_d30/relax.out",
+    "cell_angstrom": [
+      [
+        8.446717753,
+        -2.9888e-05,
+        -2.986347252
+      ],
+      [
+        -4.223315715,
+        7.315096468,
+        -2.986347119
+      ],
+      [
+        -1.7231e-05,
+        -2.9684e-05,
+        8.959090597
+      ]
+    ],
+    "atomic_positions_crystal": [
+      [
+        "Ti",
+        0.9999998179,
+        0.9999998128,
+        -1.591e-07
+      ],
+      [
+        "Bi",
+        0.503633431,
+        0.6973690252,
+        0.8367937894
+      ],
+      [
+        "Bi",
+        0.4963665379,
+        0.3331604761,
+        0.1937355697
+      ],
+      [
+        "Bi",
+        0.8605755368,
+        0.6668398005,
+        0.1632064611
+      ],
+      [
+        "Bi",
+        0.6973690863,
+        0.8367938696,
+        0.5036334898
+      ],
+      [
+        "Bi",
+        0.1632062817,
+        0.8605754902,
+        0.6668397179
+      ],
+      [
+        "Bi",
+        0.1937355754,
+        0.4963665069,
+        0.333160395
+      ],
+      [
+        "Bi",
+        0.6668398,
+        0.1632064243,
+        0.8605755443
+      ],
+      [
+        "Bi",
+        0.8062642334,
+        0.1394247978,
+        0.3026310533
+      ],
+      [
+        "Bi",
+        0.3026309495,
+        0.8062642109,
+        0.1394246815
+      ],
+      [
+        "Bi",
+        0.8367938282,
+        0.5036334853,
+        0.6973690012
+      ],
+      [
+        "Bi",
+        0.3331604551,
+        0.1937355884,
+        0.4963665875
+      ],
+      [
+        "Bi",
+        0.1394246992,
+        0.3026309448,
+        0.8062641808
+      ],
+      [
+        "O",
+        0.2055414452,
+        1.000000084,
+        0.9999998049
+      ],
+      [
+        "O",
+        0.9999999201,
+        0.2055415896,
+        2.71e-07
+      ],
+      [
+        "O",
+        0.7944581326,
+        0.7944580951,
+        0.7944581445
+      ],
+      [
+        "O",
+        1.0000002963,
+        0.9999997878,
+        0.2055415334
+      ],
+      [
+        "O",
+        0.6129826142,
+        1.0000001046,
+        1.0000001199
+      ],
+      [
+        "O",
+        1.0000000841,
+        0.6129825703,
+        5.78e-08
+      ],
+      [
+        "O",
+        0.3870176219,
+        0.3870176414,
+        0.3870176053
+      ],
+      [
+        "O",
+        1.0000000395,
+        1.0000000911,
+        0.6129825458
+      ],
+      [
+        "O",
+        0.6203228516,
+        0.2398881416,
+        0.3563136525
+      ],
+      [
+        "O",
+        0.3796773176,
+        0.7359909416,
+        0.6195652136
+      ],
+      [
+        "O",
+        0.8835740827,
+        0.2640087829,
+        0.6436859643
+      ],
+      [
+        "O",
+        0.23988797,
+        0.3563135795,
+        0.6203227638
+      ],
+      [
+        "O",
+        0.6436860544,
+        0.8835741681,
+        0.2640088896
+      ],
+      [
+        "O",
+        0.1164259317,
+        0.7601117926,
+        0.3804349354
+      ],
+      [
+        "O",
+        0.7359910043,
+        0.6195652817,
+        0.3796774137
+      ],
+      [
+        "O",
+        0.3563136849,
+        0.6203228862,
+        0.2398881011
+      ],
+      [
+        "O",
+        0.7601117223,
+        0.3804349074,
+        0.1164259163
+      ],
+      [
+        "O",
+        0.3804348728,
+        0.116425867,
+        0.7601117507
+      ],
+      [
+        "O",
+        0.2640088572,
+        0.6436859394,
+        0.8835741043
+      ],
+      [
+        "O",
+        0.6195652643,
+        0.3796773151,
+        0.7359908999
+      ]
+    ]
+  },
+  "scoring": {
+    "aggregate": "all_fields_weighted",
+    "field_weights": {
+      "a": 0.2,
+      "b": 0.2,
+      "c": 0.2,
+      "alpha": 0.05,
+      "beta": 0.05,
+      "gamma": 0.05,
+      "space_group_number": 0.25
+    },
+    "pass_criterion": "all_fields_passed",
+    "partial_credit": true
+  },
+  "convergence_evidence": {
+    "methodology": "Two-round convergence scan: Round 1 fixes kmesh density at 30 and scans ecutwfc in {30,40,50,60,80}; Round 2 fixes ecutwfc at 80 and scans kmesh density in {20,30,40,50}. Convergence criteria: ΔE < 0.05 meV/atom and ΔP < 0.5 kbar.",
+    "ecutwfc_scan": {
+      "values_ry": [
+        30.0,
+        40.0,
+        50.0,
+        60.0,
+        80.0,
+        100.0,
+        120.0,
+        150.0
+      ],
+      "kmesh_fixed": [
+        4,
+        4,
+        4
+      ],
+      "delta_E_meV_per_atom": [
+        124.95867551513572,
+        22.54784919202919,
+        12.944196575093564,
+        7.703893826183038,
+        4.617615532584311,
+        1.7259811074536537,
+        1.1758410953695504,
+        0.0
+      ],
+      "delta_P_kbar": [
+        10.48,
+        0.9,
+        0.17,
+        0.16,
+        0.37,
+        0.03,
+        0.15000000000000002,
+        0.0
+      ],
+      "lattice_per_point": [
+        {
+          "a_angstrom": 8.729971,
+          "b_angstrom": 8.729973,
+          "c_angstrom": 8.729973,
+          "alpha_degree": 109.4712,
+          "beta_degree": 109.4712,
+          "gamma_degree": 109.4712,
+          "space_group_number": 197
+        },
+        {
+          "a_angstrom": 8.927642,
+          "b_angstrom": 8.927642,
+          "c_angstrom": 8.927642,
+          "alpha_degree": 109.4712,
+          "beta_degree": 109.4712,
+          "gamma_degree": 109.4712,
+          "space_group_number": 197
+        },
+        {
+          "a_angstrom": 8.955862,
+          "b_angstrom": 8.955862,
+          "c_angstrom": 8.955861,
+          "alpha_degree": 109.4712,
+          "beta_degree": 109.4712,
+          "gamma_degree": 109.4712,
+          "space_group_number": 197
+        },
+        {
+          "a_angstrom": 8.952646,
+          "b_angstrom": 8.952646,
+          "c_angstrom": 8.952646,
+          "alpha_degree": 109.4712,
+          "beta_degree": 109.4712,
+          "gamma_degree": 109.4712,
+          "space_group_number": 197
+        },
+        {
+          "a_angstrom": 8.959091,
+          "b_angstrom": 8.95909,
+          "c_angstrom": 8.959091,
+          "alpha_degree": 109.4712,
+          "beta_degree": 109.4712,
+          "gamma_degree": 109.4712,
+          "space_group_number": 197
+        },
+        {
+          "a_angstrom": 8.961666,
+          "b_angstrom": 8.96166,
+          "c_angstrom": 8.961658,
+          "alpha_degree": 109.4712,
+          "beta_degree": 109.4712,
+          "gamma_degree": 109.4712,
+          "space_group_number": 197
+        },
+        {
+          "a_angstrom": 8.962467,
+          "b_angstrom": 8.962468,
+          "c_angstrom": 8.962468,
+          "alpha_degree": 109.4712,
+          "beta_degree": 109.4712,
+          "gamma_degree": 109.4712,
+          "space_group_number": 197
+        },
+        {
+          "a_angstrom": 8.962076,
+          "b_angstrom": 8.962072,
+          "c_angstrom": 8.962074,
+          "alpha_degree": 109.4712,
+          "beta_degree": 109.4713,
+          "gamma_degree": 109.4712,
+          "space_group_number": 197
+        }
+      ]
+    },
+    "kmesh_scan": {
+      "values": [
+        [
+          4,
+          4,
+          4
+        ],
+        [
+          4,
+          4,
+          4
+        ],
+        [
+          6,
+          6,
+          6
+        ],
+        [
+          8,
+          8,
+          8
+        ]
+      ],
+      "ecutwfc_fixed_ry": 80.0,
+      "delta_E_meV_per_atom": [
+        0.002148050288825247,
+        0.002148050288825247,
+        6.184415502312648e-05,
+        0.0
+      ],
+      "delta_P_kbar": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "lattice_per_point": [
+        {
+          "a_angstrom": 8.959091,
+          "b_angstrom": 8.95909,
+          "c_angstrom": 8.959091,
+          "alpha_degree": 109.4712,
+          "beta_degree": 109.4712,
+          "gamma_degree": 109.4712,
+          "space_group_number": 197
+        },
+        {
+          "a_angstrom": 8.959091,
+          "b_angstrom": 8.95909,
+          "c_angstrom": 8.959091,
+          "alpha_degree": 109.4712,
+          "beta_degree": 109.4712,
+          "gamma_degree": 109.4712,
+          "space_group_number": 197
+        },
+        {
+          "a_angstrom": 8.959068,
+          "b_angstrom": 8.959069,
+          "c_angstrom": 8.959068,
+          "alpha_degree": 109.4712,
+          "beta_degree": 109.4712,
+          "gamma_degree": 109.4712,
+          "space_group_number": 197
+        },
+        {
+          "a_angstrom": 8.959069,
+          "b_angstrom": 8.959069,
+          "c_angstrom": 8.959068,
+          "alpha_degree": 109.4712,
+          "beta_degree": 109.4712,
+          "gamma_degree": 109.4712,
+          "space_group_number": 197
+        }
+      ]
+    },
+    "converged_params": {
+      "ecutwfc_ry": 80.0,
+      "ecutrho_ry": 800.0,
+      "kmesh": [
+        8,
+        8,
+        8
+      ],
+      "kmesh_density_pts_per_inv_angstrom": 50.0
+    },
+    "convergence_threshold": {
+      "delta_E_meV_per_atom": 0.5,
+      "delta_P_kbar": 0.5,
+      "delta_l_relative_converged": 0.01,
+      "delta_l_relative_marginal": 0.02,
+      "criterion": "geometry-relative (Plan B, 杨博 0427)"
+    },
+    "raw_outputs_dir": "bench/gt_selfrun/workdir/M2_T1_Bi12TiO20_sillenite_vc_relax"
+  },
+  "metadata": {
+    "author": "weilin",
+    "generated_at": "2026-04-24",
+    "reviewer": null,
+    "gt_qe_version": "7.5CN-GPU",
+    "gt_machine": null,
+    "gt_wall_time_sec": 26591.085822820663,
+    "gt_quality": "self_run_converged",
+    "gt_switched_at": "2026-04-29",
+    "notes": "bench schema v1.2. P1: GT = initial_structure (MP VASP+PAW PBE lattice) + wide tolerance (D2: 1% relative / 1° absolute) absorbing QE+GBRV-USPP vs VASP+PAW methodology difference. P2 may self-run QE to replace GT; see review_for_yang_round3.md.; v1.3 GT switched MP→self-run 2026-04-29 (D policy); see todo/bench/t1-gt-full-replacement.md"
+  }
+}

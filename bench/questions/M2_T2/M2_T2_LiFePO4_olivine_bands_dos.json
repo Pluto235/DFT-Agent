@@ -1,0 +1,610 @@
+{
+  "schema_version": "1.3",
+  "id": "M2_T2_LiFePO4_olivine_bands_dos",
+  "difficulty": {
+    "material_tier": "M2",
+    "task_tier": "T2",
+    "overall_level": null
+  },
+  "material": {
+    "formula": "LiFePO4",
+    "name": "LiFePO4 (olivine, battery cathode)",
+    "structure": "orthorhombic olivine",
+    "space_group": "Pnma",
+    "space_group_number": 62,
+    "atoms_per_primitive_cell": 28,
+    "advisory_notes": null,
+    "reference_source": {
+      "database": "Materials Project",
+      "id": "mp-19017",
+      "url": "https://next-gen.materialsproject.org/materials/mp-19017"
+    },
+    "initial_structure": {
+      "source": "mp-19017",
+      "note": "Starting geometry provided to agent. Agent should treat it as an initial structure (relaxed or not is not stated).",
+      "lattice_type": "primitive",
+      "lattice_constants_angstrom": {
+        "a": 4.655,
+        "b": 5.971,
+        "c": 10.236
+      },
+      "lattice_angles_degree": {
+        "alpha": 90.0,
+        "beta": 90.0,
+        "gamma": 90.0
+      },
+      "atomic_positions_crystal": [
+        {
+          "element": "Li",
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "element": "Li",
+          "position": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "element": "Li",
+          "position": [
+            0.5,
+            0.0,
+            0.5
+          ]
+        },
+        {
+          "element": "Li",
+          "position": [
+            0.0,
+            0.5,
+            0.0
+          ]
+        },
+        {
+          "element": "Fe",
+          "position": [
+            0.529866,
+            0.25,
+            0.781151
+          ]
+        },
+        {
+          "element": "Fe",
+          "position": [
+            0.029866,
+            0.75,
+            0.718849
+          ]
+        },
+        {
+          "element": "Fe",
+          "position": [
+            0.970134,
+            0.25,
+            0.281151
+          ]
+        },
+        {
+          "element": "Fe",
+          "position": [
+            0.470134,
+            0.75,
+            0.218849
+          ]
+        },
+        {
+          "element": "P",
+          "position": [
+            0.418623,
+            0.25,
+            0.093866
+          ]
+        },
+        {
+          "element": "P",
+          "position": [
+            0.918623,
+            0.75,
+            0.406134
+          ]
+        },
+        {
+          "element": "P",
+          "position": [
+            0.081377,
+            0.25,
+            0.593866
+          ]
+        },
+        {
+          "element": "P",
+          "position": [
+            0.581377,
+            0.75,
+            0.906134
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.744787,
+            0.25,
+            0.094231
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.713735,
+            0.545558,
+            0.834155
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.713735,
+            0.954442,
+            0.834155
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.255213,
+            0.75,
+            0.905769
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.709864,
+            0.75,
+            0.044309
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.244787,
+            0.75,
+            0.405769
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.286265,
+            0.045558,
+            0.165845
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.213735,
+            0.454442,
+            0.665845
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.786265,
+            0.545558,
+            0.334155
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.786265,
+            0.954442,
+            0.334155
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.290136,
+            0.25,
+            0.955691
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.209864,
+            0.25,
+            0.455691
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.790136,
+            0.75,
+            0.544309
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.755213,
+            0.25,
+            0.594231
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.213735,
+            0.045558,
+            0.665845
+          ]
+        },
+        {
+          "element": "O",
+          "position": [
+            0.286265,
+            0.454442,
+            0.165845
+          ]
+        }
+      ]
+    },
+    "pseudopotential": {
+      "family": "GBRV_USPP_PBE_v1.5",
+      "relativistic": "scalar",
+      "files": {
+        "Li": "Li.upf",
+        "Fe": "Fe.upf",
+        "P": "P.upf",
+        "O": "O.upf"
+      }
+    }
+  },
+  "task": {
+    "type": "bands_dos",
+    "prompt": null,
+    "policy": {
+      "network_allowed": false
+    }
+  },
+  "evaluator": {
+    "type": "qe_bands_dos_combined",
+    "extract_fields": [
+      "band_gap_ev",
+      "gap_type",
+      "vbm_k_label",
+      "cbm_k_label",
+      "dos_e_fermi",
+      "dos_curve"
+    ],
+    "data_sources": {
+      "bands_out": "bands.out",
+      "bands_data": "bands.dat",
+      "dos_data": "dos.dat"
+    },
+    "extraction_method": "custom",
+    "extraction_config": {
+      "dos_energy_window_ev": [
+        -5,
+        5
+      ],
+      "k_label_source": "seekpath"
+    }
+  },
+  "ground_truth": {
+    "band_gap_ev": {
+      "value": 0.37819999999999965,
+      "unit": "eV",
+      "tolerance": 0.1,
+      "rule": "graded_absolute"
+    },
+    "gap_type": {
+      "value": "indirect",
+      "rule": "exact"
+    },
+    "vbm_k_label": {
+      "value": "(0.000, 0.400, 0.000)",
+      "rule": "k_label_match",
+      "tolerance": 0.05
+    },
+    "cbm_k_label": {
+      "value": "(0.000, 0.300, 0.000)",
+      "rule": "k_label_match",
+      "tolerance": 0.05
+    },
+    "dos_e_fermi": {
+      "value": 9.6563,
+      "unit": "eV",
+      "tolerance": 0.1,
+      "rule": "absolute"
+    },
+    "dos_curve": {
+      "value": {
+        "ref_file": "bench/questions/M2_T2/gt_data/M2_T2_LiFePO4_olivine_bands_dos/dos_reference.dat"
+      },
+      "unit": "states/eV/fu",
+      "tolerance": 0.1,
+      "rule": "curve_f1"
+    }
+  },
+  "scoring": {
+    "aggregate": "all_fields_weighted",
+    "field_weights": {
+      "band_gap_ev": 0.4,
+      "gap_type": 0.15,
+      "vbm_k_label": 0.1,
+      "cbm_k_label": 0.1,
+      "dos_e_fermi": 0.05,
+      "dos_curve": 0.2
+    },
+    "pass_criterion": "all_fields_passed",
+    "partial_credit": true
+  },
+  "convergence_evidence": {
+    "scan_points": [
+      {
+        "key": "e30_d30",
+        "round": 1,
+        "ecutwfc_ry": 30.0,
+        "ecutrho_ry": 300.0,
+        "kmesh": [
+          6,
+          6,
+          4
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 135,
+        "step_walls_sec": {
+          "scf": 61.00777983665466,
+          "nscf": 54.48900008201599,
+          "bands_pw": 475.5359859466553,
+          "bands_pp": 29.273523092269897
+        },
+        "band_gap_ev": 0.38839999999999897,
+        "dos_e_fermi": 9.6454,
+        "vbm_k_label": "OFF_PATH",
+        "cbm_k_label": "OFF_PATH",
+        "gap_type": "indirect"
+      },
+      {
+        "key": "e40_d30",
+        "round": 1,
+        "ecutwfc_ry": 40.0,
+        "ecutrho_ry": 400.0,
+        "kmesh": [
+          6,
+          6,
+          4
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 135,
+        "step_walls_sec": {
+          "scf": 69.92078518867493,
+          "nscf": 68.60841369628906,
+          "bands_pw": 603.9875349998474,
+          "bands_pp": 44.399420976638794
+        },
+        "band_gap_ev": 0.3946000000000005,
+        "dos_e_fermi": 9.6534,
+        "vbm_k_label": "OFF_PATH",
+        "cbm_k_label": "OFF_PATH",
+        "gap_type": "indirect"
+      },
+      {
+        "key": "e50_d30",
+        "round": 1,
+        "ecutwfc_ry": 50.0,
+        "ecutrho_ry": 500.0,
+        "kmesh": [
+          6,
+          6,
+          4
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 135,
+        "step_walls_sec": {
+          "scf": 73.72074294090271,
+          "nscf": 78.53005504608154,
+          "bands_pw": 689.7090263366699,
+          "bands_pp": 62.45774269104004
+        },
+        "band_gap_ev": 0.38890000000000136,
+        "dos_e_fermi": 9.6527,
+        "vbm_k_label": "OFF_PATH",
+        "cbm_k_label": "OFF_PATH",
+        "gap_type": "indirect"
+      },
+      {
+        "key": "e60_d30",
+        "round": 1,
+        "ecutwfc_ry": 60.0,
+        "ecutrho_ry": 600.0,
+        "kmesh": [
+          6,
+          6,
+          4
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 135,
+        "step_walls_sec": {
+          "scf": 84.74750590324402,
+          "nscf": 85.26027512550354,
+          "bands_pw": 749.2132511138916,
+          "bands_pp": 80.99549078941345
+        },
+        "band_gap_ev": 0.3930000000000007,
+        "dos_e_fermi": 9.6516,
+        "vbm_k_label": "OFF_PATH",
+        "cbm_k_label": "OFF_PATH",
+        "gap_type": "indirect"
+      },
+      {
+        "key": "e80_d30",
+        "round": 1,
+        "ecutwfc_ry": 80.0,
+        "ecutrho_ry": 800.0,
+        "kmesh": [
+          6,
+          6,
+          4
+        ],
+        "kmesh_density": 30.0,
+        "nbnd": 135,
+        "step_walls_sec": {
+          "scf": 96.76986074447632,
+          "nscf": 99.35779809951782,
+          "bands_pw": 873.3762080669403,
+          "bands_pp": 124.30317258834839
+        },
+        "band_gap_ev": 0.3902000000000001,
+        "dos_e_fermi": 9.6514,
+        "vbm_k_label": "OFF_PATH",
+        "cbm_k_label": "OFF_PATH",
+        "gap_type": "indirect"
+      },
+      {
+        "key": "e80_d20",
+        "round": 2,
+        "ecutwfc_ry": 80.0,
+        "ecutrho_ry": 800.0,
+        "kmesh": [
+          4,
+          4,
+          2
+        ],
+        "kmesh_density": 20.0,
+        "nbnd": 135,
+        "step_walls_sec": {
+          "scf": 37.97015023231506,
+          "nscf": 38.918543338775635,
+          "bands_pw": 864.1535692214966,
+          "bands_pp": 126.36362671852112
+        },
+        "band_gap_ev": 0.4040999999999997,
+        "dos_e_fermi": 9.6262,
+        "vbm_k_label": "OFF_PATH",
+        "cbm_k_label": "OFF_PATH",
+        "gap_type": "indirect"
+      },
+      {
+        "key": "e80_d40",
+        "round": 2,
+        "ecutwfc_ry": 80.0,
+        "ecutrho_ry": 800.0,
+        "kmesh": [
+          10,
+          8,
+          4
+        ],
+        "kmesh_density": 40.0,
+        "nbnd": 135,
+        "step_walls_sec": {
+          "scf": 176.03932309150696,
+          "nscf": 182.26470756530762,
+          "bands_pw": 877.5784034729004,
+          "bands_pp": 123.30919647216797
+        },
+        "band_gap_ev": 0.3730000000000011,
+        "dos_e_fermi": 9.6573,
+        "vbm_k_label": "OFF_PATH",
+        "cbm_k_label": "OFF_PATH",
+        "gap_type": "indirect"
+      },
+      {
+        "key": "e80_d50",
+        "round": 2,
+        "ecutwfc_ry": 80.0,
+        "ecutrho_ry": 800.0,
+        "kmesh": [
+          12,
+          10,
+          6
+        ],
+        "kmesh_density": 50.0,
+        "nbnd": 135,
+        "step_walls_sec": {
+          "scf": 261.30826449394226,
+          "nscf": 329.9103651046753,
+          "bands_pw": 879.6550135612488,
+          "bands_pp": 124.28515934944153
+        },
+        "band_gap_ev": 0.37819999999999965,
+        "dos_e_fermi": 9.6564,
+        "vbm_k_label": "OFF_PATH",
+        "cbm_k_label": "OFF_PATH",
+        "gap_type": "indirect"
+      }
+    ],
+    "classification": {
+      "classification": "converged",
+      "round1_ecutwfc": {
+        "delta_band_gap_ev": 0.00280000000000058,
+        "delta_e_fermi_ev": 0.00019999999999953388,
+        "last_two_keys": [
+          "e60_d30",
+          "e80_d30"
+        ],
+        "scan_keys": [
+          "e30_d30",
+          "e40_d30",
+          "e50_d30",
+          "e60_d30",
+          "e80_d30"
+        ]
+      },
+      "round2_kmesh": {
+        "delta_band_gap_ev": 0.005199999999998539,
+        "delta_e_fermi_ev": 0.0008999999999996788,
+        "last_two_keys": [
+          "e80_d40",
+          "e80_d50"
+        ],
+        "scan_keys": [
+          "e80_d20",
+          "e80_d40",
+          "e80_d50"
+        ]
+      },
+      "thresholds": {
+        "band_gap_thr_ev": 0.02,
+        "e_fermi_thr_ev": 0.02,
+        "marginal_factor": 2.0
+      },
+      "reason": "all 4 deltas within converged thresholds"
+    },
+    "wall_time_sec": 8539.355845451355,
+    "canonical_point_key": "e80_d50",
+    "canonical_kmesh": [
+      12,
+      10,
+      6
+    ],
+    "dos_params": {
+      "sigma_ev": 0.02,
+      "de_ev": 0.01
+    }
+  },
+  "metadata": {
+    "author": "weilin",
+    "generated_at": "2026-04-24",
+    "reviewer": null,
+    "gt_qe_version": "7.5CN-GPU",
+    "gt_machine": null,
+    "gt_wall_time_sec": 8539.355845451355,
+    "gt_quality": "self_run_converged",
+    "gt_switched_at": "2026-04-30",
+    "notes": "bench schema v1.2. T2 k-path derived by agent via seekpath; GT k-labels derived by same seekpath on the initial structure and then matched to MP VBM/CBM frac_coords (B1: nearest, threshold 0.05, else OFF_PATH). DOS reference curve downloaded from MP (C1: missing → field dropped, weights renormalized).; v1.3 T2 GT switched MP→self-run 2026-04-30 (D policy extension); see todo/archive/t2-gt-full-replacement.md; 2026-05-11: marked is_stable=false (deferred from M2 normal). Reason: material is intrinsically magnetic (Fe/Co/Mn) but M2 GT uses paramagnetic PBE (nspin=1) per Yang's M1/M2-no-magnetism decision. Agent runs with cleaned advisory_notes correctly use nspin=2 → scores collapse vs polluted-baseline (1.0/0.55 → 0.28/0/failed). Yang reviewing whether to migrate to M3 (nspin=2 GT) or extract a different non-magnetic property.",
+    "is_stable": false
+  }
+}

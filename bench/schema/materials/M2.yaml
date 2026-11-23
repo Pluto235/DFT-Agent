@@ -1,0 +1,234 @@
+# M2: Low-Symmetry and Large Unit Cells (>10 atoms/primitive)
+# 来源：杨博 2026-04-23 材料分类（见 user_input/2026-04-23_jinyang_meeting.md）
+# 难度源自"结构复杂度"而非电子关联；上限 40 atoms/cell
+# 总数：29 种
+#
+# 字段含义见 M1.yaml 头部说明
+
+materials:
+  # ============================================================
+  # Subclass 1: Distorted Perovskites & Simple Oxides
+  # ============================================================
+  - id: CaTiO3_orthorhombic
+    formula: CaTiO3
+    subclass: distorted_perovskites
+    expected_space_group: Pnma
+    expected_atoms_per_primitive_cell: 20
+    polymorph_note: "Orthorhombic perovskite (GdFeO3-type) — 室温稳定相。cubic Pm-3m 是高温相 (>1500 K)"
+    mp_id_hint: null
+  - id: SrTiO3_lowT
+    formula: SrTiO3
+    subclass: distorted_perovskites
+    expected_space_group: null
+    expected_atoms_per_primitive_cell: 20
+    polymorph_note: "杨博清单写 'Orthorhombic Low-T phase, 20 atoms/cell'——标准低温相是 I4/mcm 四方 (<105 K)，20 atoms；若 MP 有 orthorhombic Pnma 变体优先；否则退回 I4/mcm"
+    mp_id_hint: null
+  - id: CsPbI3_gamma
+    formula: CsPbI3
+    subclass: distorted_perovskites
+    expected_space_group: Pnma
+    expected_atoms_per_primitive_cell: 20
+    polymorph_note: "γ-CsPbI3 orthorhombic (black perovskite phase, 室温稳定之一)"
+    mp_id_hint: null
+  - id: ZrO2_baddeleyite
+    formula: ZrO2
+    subclass: distorted_perovskites
+    expected_space_group: P2_1/c
+    expected_atoms_per_primitive_cell: 12
+    polymorph_note: "Baddeleyite (monoclinic, 室温稳定相)"
+    mp_id_hint: null
+  - id: HfO2_monoclinic
+    formula: HfO2
+    subclass: distorted_perovskites
+    expected_space_group: P2_1/c
+    expected_atoms_per_primitive_cell: 12
+    polymorph_note: "Monoclinic baddeleyite-type (HfO2 室温稳定相)"
+    mp_id_hint: null
+  - id: MgSiO3_bridgmanite
+    formula: MgSiO3
+    subclass: distorted_perovskites
+    expected_space_group: Pbnm
+    expected_atoms_per_primitive_cell: 20
+    polymorph_note: "Bridgmanite (lower mantle 主要相，Pbnm 与 Pnma 是同一空间群不同 setting)"
+    mp_id_hint: null
+  - id: YAlO3_YAP
+    formula: YAlO3
+    subclass: distorted_perovskites
+    expected_space_group: Pbnm
+    expected_atoms_per_primitive_cell: 20
+    polymorph_note: "YAP orthorhombic perovskite"
+    mp_id_hint: null
+  - id: WO3_roomT
+    formula: WO3
+    subclass: distorted_perovskites
+    expected_space_group: P2_1/n
+    expected_atoms_per_primitive_cell: 32
+    polymorph_note: "Room-T monoclinic (γ-WO3，严重畸变的钙钛矿状ReO3-type)；P2_1/n 是 P2_1/c 的非标准 setting，两者是同一 SG #14"
+    mp_id_hint: null
+
+  # ============================================================
+  # Subclass 2: Skutterudites
+  # ============================================================
+  - id: CoSb3
+    formula: CoSb3
+    subclass: skutterudites
+    expected_space_group: Im-3
+    expected_atoms_per_primitive_cell: 16
+    polymorph_note: "Skutterudite cubic"
+    mp_id_hint: null
+  - id: IrSb3
+    formula: IrSb3
+    subclass: skutterudites
+    expected_space_group: Im-3
+    expected_atoms_per_primitive_cell: 16
+    polymorph_note: "Skutterudite cubic"
+    mp_id_hint: null
+  - id: CeFe4Sb12
+    formula: CeFe4Sb12
+    subclass: skutterudites
+    expected_space_group: Im-3
+    expected_atoms_per_primitive_cell: 17
+    polymorph_note: "Filled skutterudite (Ce 填充 Im-3 框架)"
+    mp_id_hint: null
+  - id: YbCo4Sb12
+    formula: YbCo4Sb12
+    subclass: skutterudites
+    expected_space_group: Im-3
+    expected_atoms_per_primitive_cell: 17
+    polymorph_note: "Filled skutterudite"
+    mp_id_hint: null
+
+  # ============================================================
+  # Subclass 3: Spinels & Sillenites
+  # ============================================================
+  - id: MgAl2O4_spinel
+    formula: MgAl2O4
+    subclass: spinels_sillenites
+    expected_space_group: Fd-3m
+    expected_atoms_per_primitive_cell: 14
+    polymorph_note: "Normal spinel — 注：也在 M1 subclass 7 出现，重复性待杨博确认"
+    mp_id_hint: null
+  - id: ZnAl2O4_gahnite
+    formula: ZnAl2O4
+    subclass: spinels_sillenites
+    expected_space_group: Fd-3m
+    expected_atoms_per_primitive_cell: 14
+    polymorph_note: "Gahnite spinel"
+    mp_id_hint: null
+  - id: CdGa2O4
+    formula: CdGa2O4
+    subclass: spinels_sillenites
+    expected_space_group: Fd-3m
+    expected_atoms_per_primitive_cell: 14
+    polymorph_note: "Spinel"
+    mp_id_hint: null
+  - id: Bi12TiO20_sillenite
+    formula: Bi12TiO20
+    subclass: spinels_sillenites
+    expected_space_group: I23
+    expected_atoms_per_primitive_cell: 33
+    polymorph_note: "Sillenite cubic"
+    mp_id_hint: null
+  - id: Ti3O5_monoclinic
+    formula: Ti3O5
+    subclass: spinels_sillenites
+    expected_space_group: C2/m
+    expected_atoms_per_primitive_cell: 32
+    polymorph_note: "Monoclinic λ-Ti3O5 或 β-Ti3O5 (C2/m 是常见 setting)；让脚本取 MP lowest-hull 内的单斜相"
+    mp_id_hint: null
+
+  # ============================================================
+  # Subclass 4: Silicates & Minerals
+  # ============================================================
+  - id: SiO2_coesite
+    formula: SiO2
+    subclass: silicates_minerals
+    expected_space_group: C2/c
+    expected_atoms_per_primitive_cell: 24
+    polymorph_note: "Coesite (high-pressure monoclinic SiO2 polymorph)"
+    mp_id_hint: null
+  - id: LiAlSi2O6_spodumene
+    formula: LiAlSi2O6
+    subclass: silicates_minerals
+    expected_space_group: C2/c
+    expected_atoms_per_primitive_cell: 40
+    polymorph_note: "Spodumene monoclinic"
+    mp_id_hint: null
+  - id: ZrSiO4_zircon
+    formula: ZrSiO4
+    subclass: silicates_minerals
+    expected_space_group: I4_1/amd
+    expected_atoms_per_primitive_cell: 12
+    polymorph_note: "Zircon tetragonal"
+    mp_id_hint: null
+  - id: Ag2Se_naumannite
+    formula: Ag2Se
+    subclass: silicates_minerals
+    expected_space_group: P2_12_12_1
+    expected_atoms_per_primitive_cell: 12
+    polymorph_note: "Naumannite orthorhombic (β-Ag2Se, 室温低对称相)"
+    mp_id_hint: null
+
+  # ============================================================
+  # Subclass 5: Solid-State Electrolytes & Battery Electrodes
+  # ============================================================
+  - id: Li3PO4_gamma
+    formula: Li3PO4
+    subclass: battery_electrolytes
+    expected_space_group: Pnma
+    expected_atoms_per_primitive_cell: 32
+    polymorph_note: "γ-Li3PO4 orthorhombic (room-T stable)"
+    mp_id_hint: null
+  - id: Li4SiO4
+    formula: Li4SiO4
+    subclass: battery_electrolytes
+    expected_space_group: P2_1/m
+    expected_atoms_per_primitive_cell: 18
+    polymorph_note: "Monoclinic (空间群 setting 取决于 source，让脚本取 lowest-hull 的单斜相)"
+    mp_id_hint: null
+  - id: LiFePO4_olivine
+    formula: LiFePO4
+    subclass: battery_electrolytes
+    expected_space_group: Pnma
+    expected_atoms_per_primitive_cell: 28
+    polymorph_note: "Triphylite olivine — 注意：LiFePO4 含 Fe，可能需要自旋极化 + DFT+U（M3/M4 议题）；在 M2 语境下可用 non-magnetic 近似做基准；杨博清单把它归入 M2 表示优先看结构复杂度"
+    mp_id_hint: null
+  - id: LiCoPO4_olivine
+    formula: LiCoPO4
+    subclass: battery_electrolytes
+    expected_space_group: Pnma
+    expected_atoms_per_primitive_cell: 28
+    polymorph_note: "Olivine — Co 磁性同样可能影响；作 M2 结构基准"
+    mp_id_hint: null
+  - id: LiMnPO4_olivine
+    formula: LiMnPO4
+    subclass: battery_electrolytes
+    expected_space_group: Pnma
+    expected_atoms_per_primitive_cell: 28
+    polymorph_note: "Olivine — Mn 磁性同样可能影响；作 M2 结构基准"
+    mp_id_hint: null
+
+  # ============================================================
+  # Subclass 6: Complex Intermetallics & Zintl Phases
+  # ============================================================
+  - id: Sr3AlSb3
+    formula: Sr3AlSb3
+    subclass: intermetallics_zintl
+    expected_space_group: Pnma
+    expected_atoms_per_primitive_cell: 28
+    polymorph_note: "Zintl phase, orthorhombic"
+    mp_id_hint: null
+  - id: BaZn2Sb2
+    formula: BaZn2Sb2
+    subclass: intermetallics_zintl
+    expected_space_group: null
+    expected_atoms_per_primitive_cell: 20
+    polymorph_note: "Zintl phase, orthorhombic（杨博清单未给明 SG，让脚本取 lowest-hull 正交相）"
+    mp_id_hint: null
+  - id: FeCr_sigma
+    formula: FeCr
+    subclass: intermetallics_zintl
+    expected_space_group: P4_2/mnm
+    expected_atoms_per_primitive_cell: 30
+    polymorph_note: "σ-phase tetragonal — 注意 Fe/Cr 都是 3d 磁性元素，标准 GGA 下做 non-magnetic 近似（磁性议题放 M3）"
+    mp_id_hint: null

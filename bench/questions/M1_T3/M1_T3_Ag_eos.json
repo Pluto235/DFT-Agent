@@ -1,0 +1,232 @@
+{
+  "schema_version": "1.3",
+  "id": "M1_T3_Ag_eos",
+  "difficulty": {
+    "material_tier": "M1",
+    "task_tier": "T3",
+    "overall_level": null
+  },
+  "material": {
+    "formula": "Ag",
+    "name": "silver (fcc)",
+    "structure": "fcc",
+    "space_group": "Fm-3m",
+    "space_group_number": 225,
+    "atoms_per_primitive_cell": 1,
+    "advisory_notes": null,
+    "reference_source": {
+      "database": "Materials Project",
+      "id": "mp-124",
+      "url": "https://next-gen.materialsproject.org/materials/mp-124"
+    },
+    "initial_structure": {
+      "source": "M1_T1_Ag_vc_relax canonical GT (T1 vc-relax final structure)",
+      "note": "T1 弛豫后的最终结构。T3/T4 不再走 vc-relax；在此结构基础上做体积扫描 (T3) / 应变扫描 (T4)，每点 fixed cell + ionic relax。",
+      "lattice_type": "primitive",
+      "lattice_constants_angstrom": {
+        "a": 2.927986453412777,
+        "b": 2.9279864460098675,
+        "c": 2.927986452
+      },
+      "lattice_angles_degree": {
+        "alpha": 59.99999993232483,
+        "beta": 60.00000001596123,
+        "gamma": 59.999999749962406
+      },
+      "atomic_positions_crystal": [
+        {
+          "element": "Ag",
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "cell_vectors_angstrom": [
+        [
+          2.536394247,
+          2e-09,
+          1.464387908
+        ],
+        [
+          0.845464751,
+          2.391335429,
+          1.464387908
+        ],
+        [
+          0.0,
+          -0.0,
+          2.928775817
+        ]
+      ]
+    },
+    "pseudopotential": {
+      "family": "GBRV_USPP_PBE_v1.5",
+      "relativistic": "scalar",
+      "files": {
+        "Ag": "Ag.upf"
+      }
+    }
+  },
+  "task": {
+    "type": "eos",
+    "prompt": null,
+    "policy": {
+      "network_allowed": false
+    }
+  },
+  "evaluator": {
+    "type": "qe_eos_bm3",
+    "extract_fields": [
+      "v0_ang3_cell",
+      "b0_gpa",
+      "b0_prime",
+      "fit_rms_mev_per_atom"
+    ],
+    "data_sources": {
+      "eos_points_csv": "eos_points.csv",
+      "fit_json": "fit.json"
+    },
+    "extraction_method": "custom",
+    "extraction_config": {
+      "fit_model": "birch_murnaghan_3rd_order",
+      "volume_ratio_grid": [
+        0.94,
+        0.96,
+        0.98,
+        1.0,
+        1.02,
+        1.04,
+        1.06
+      ],
+      "curve_energy_unit": "meV/atom",
+      "curve_compare_axis": "volume_ratio",
+      "curve_score_rule": "rmse_after_energy_zero_alignment"
+    }
+  },
+  "ground_truth": {
+    "v0_ang3_cell": {
+      "value": 17.86832949166998,
+      "unit": "angstrom^3/cell",
+      "tolerance": 0.01,
+      "rule": "graded_relative"
+    },
+    "b0_gpa": {
+      "value": 91.8098510759059,
+      "unit": "GPa",
+      "tolerance": 0.1,
+      "rule": "graded_relative"
+    },
+    "b0_prime": {
+      "value": 5.78142583080756,
+      "unit": "dimensionless",
+      "tolerance": 0.75,
+      "rule": "absolute"
+    }
+  },
+  "scoring": {
+    "aggregate": "all_fields_weighted",
+    "field_weights": {
+      "v0_ang3_cell": 0.42,
+      "b0_gpa": 0.48,
+      "b0_prime": 0.1
+    },
+    "pass_criterion": "all_fields_passed",
+    "partial_credit": true
+  },
+  "convergence_evidence": {
+    "methodology": "T3 EOS: 七体积点 [0.94..1.06] × V0 同比缩放 a/b/c (保 shape)，每点 fixed-cell ionic relax (calculation='relax', cell_dofree='none')，BM3 fit total energy(volume) → V0/B0/B0'。",
+    "source_structure": {
+      "task_id": "M1_T1_Ag_vc_relax",
+      "kind": "T1 canonical 弛豫结构"
+    },
+    "volume_grid": [
+      0.94,
+      0.96,
+      0.98,
+      1.0,
+      1.02,
+      1.04,
+      1.06
+    ],
+    "calculation_protocol": {
+      "cell_shape": "isotropic scaling a/b/c (V^(1/3))，保持 cell shape",
+      "cell_fixed_each_point": true,
+      "internal_positions_relaxed": true,
+      "fit_model": "BM3 (3rd-order Birch-Murnaghan)",
+      "failure_policy": "any-point fail = whole material fail (D7)"
+    },
+    "converged_params": {
+      "ecutwfc_ry": 80.0,
+      "ecutrho_ry": 800.0,
+      "kmesh": [
+        22,
+        22,
+        22
+      ],
+      "kmesh_density_pts_per_inv_angstrom": 50.0,
+      "occupations": null
+    },
+    "per_volume_points": [
+      {
+        "ratio": 0.94,
+        "volume_ang3": 16.698261,
+        "energy_ry": -295.62874571,
+        "pressure_kbar": 71.11
+      },
+      {
+        "ratio": 0.96,
+        "volume_ang3": 17.053543,
+        "energy_ry": -295.62975624,
+        "pressure_kbar": 44.57
+      },
+      {
+        "ratio": 0.98,
+        "volume_ang3": 17.408825,
+        "energy_ry": -295.63036196,
+        "pressure_kbar": 21.42
+      },
+      {
+        "ratio": 1.0,
+        "volume_ang3": 17.764107,
+        "energy_ry": -295.630613,
+        "pressure_kbar": 1.18
+      },
+      {
+        "ratio": 1.02,
+        "volume_ang3": 18.119389,
+        "energy_ry": -295.63055388,
+        "pressure_kbar": -16.49
+      },
+      {
+        "ratio": 1.04,
+        "volume_ang3": 18.474672,
+        "energy_ry": -295.63022386,
+        "pressure_kbar": -31.93
+      },
+      {
+        "ratio": 1.06,
+        "volume_ang3": 18.829954,
+        "energy_ry": -295.62965794,
+        "pressure_kbar": -45.36
+      }
+    ],
+    "fit_quality": {
+      "fit_rms_mev_per_atom": 0.0016183907819721465,
+      "v0_fit_within_scan_range": true,
+      "classification": "converged"
+    },
+    "raw_outputs_dir": "pipeline/tools/gt_selfrun/eos/workdir/M1_T3_Ag_eos"
+  },
+  "metadata": {
+    "author": "weilin",
+    "generated_at": "2026-05-21",
+    "reviewer": null,
+    "gt_qe_version": "QE 7.5",
+    "gt_machine": "V100 rental (CSTNET)",
+    "gt_wall_time_sec": null,
+    "gt_quality": "converged",
+    "notes": "T3 EOS pilot question (M1 7 mat pilot, design D1). Ground truth values 全部 null，待 P5 EOS pipeline 跑完 promote 填入。设计 doc: notes/2026-05-20-t3-t4-pipeline-design.html Promoted 2026-06-03T13:11:33.371944+00:00: V0=17.8683 Å³, B0=91.81 GPa, B0'=5.781, fit_rms=0.002 meV/atom."
+  }
+}

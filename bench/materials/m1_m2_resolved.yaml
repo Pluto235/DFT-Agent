@@ -1,0 +1,5314 @@
+library_version: GBRV_USPP_PBE_v1.5
+pseudo_path: bench/pseudos/GBRV_USPP_PBE_v1.5
+generated_at: '2026-04-23'
+generated_by: weilin
+resolved_at: '2026-04-24'
+source_yaml: m1_m2.yaml
+source_document: user_input/2026-04-23_jingyang_meeting.md
+first_batch_plan:
+  total_materials: 86
+  m1_count: 61
+  m2_count: 25
+  tasks:
+  - T1_vc_relax
+  - T2_bands_dos
+  total_questions: 172
+resolution_summary:
+  total: 86
+  verified: 86
+  conflict: 0
+  unresolved: 0
+M1:
+  description: 'Materials computationally inexpensive and generally well-described
+    by standard semi-local functionals (PBE / LDA). Serves as the agent''s baseline
+    floor.
+
+    '
+  categories:
+    elemental_semiconductors:
+      label: Elemental Semiconductors & Insulators (Group IV & V)
+      materials:
+      - id: M1_C_diamond
+        formula: C
+        name: carbon (diamond)
+        structure_hint: diamond
+        space_group: Fd-3m
+        space_group_number: 227
+        atoms_per_primitive_cell: 2
+        mp_id: mp-66
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 2.517827
+          lattice_b: 2.517827
+          lattice_c: 2.517827
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: C
+            position:
+            - 0.5
+            - 0.5
+            - 0.5
+          - element: C
+            position:
+            - 0.75
+            - 0.75
+            - 0.75
+        mp_metadata_symmetry:
+          symbol: Fd-3m
+          number: 227
+        mp_energy_above_hull: 0.11226490000000101
+        mp_is_stable: false
+      - id: M1_Si
+        formula: Si
+        name: silicon (diamond)
+        structure_hint: diamond
+        space_group: Fd-3m
+        space_group_number: 227
+        atoms_per_primitive_cell: 2
+        mp_id: mp-149
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 3.849279
+          lattice_b: 3.849279
+          lattice_c: 3.849279
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Si
+            position:
+            - 0.25
+            - 0.25
+            - 0.25
+          - element: Si
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+        mp_metadata_symmetry:
+          symbol: Fd-3m
+          number: 227
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_Ge
+        formula: Ge
+        name: germanium (diamond)
+        structure_hint: diamond
+        space_group: Fd-3m
+        space_group_number: 227
+        atoms_per_primitive_cell: 2
+        mp_id: mp-32
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 4.012728
+          lattice_b: 4.012728
+          lattice_c: 4.012728
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Ge
+            position:
+            - 0.5
+            - 0.5
+            - 0.5
+          - element: Ge
+            position:
+            - 0.75
+            - 0.75
+            - 0.75
+        mp_metadata_symmetry:
+          symbol: Fd-3m
+          number: 227
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_Sn_alpha
+        formula: Sn
+        name: α-Sn (gray tin, diamond-cubic semiconductor)
+        structure_hint: diamond
+        space_group: Fd-3m
+        space_group_number: 227
+        atoms_per_primitive_cell: 2
+        mp_id: mp-117
+        notes: 'polymorph differentiator — Yang listed Sn twice: α-Sn (gray, semiconductor)
+          here and β-Sn (white, metal) under simple_metals'
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 4.645673
+          lattice_b: 4.645673
+          lattice_c: 4.645673
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Sn
+            position:
+            - 0.0
+            - 0.0
+            - 1.0
+          - element: Sn
+            position:
+            - 0.25
+            - 0.25
+            - 0.25
+        mp_metadata_symmetry:
+          symbol: Fd-3m
+          number: 227
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_P_black
+        formula: P
+        name: black phosphorus
+        structure_hint: orthorhombic puckered layers
+        space_group: Cmce
+        space_group_number: 64
+        atoms_per_primitive_cell: 4
+        mp_id: mp-157
+        notes: multiple phosphorus polymorphs exist; Yang explicitly specified black
+          phosphorus (orthorhombic)
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 5.708038
+          lattice_b: 5.708038
+          lattice_c: 4.543636
+          alpha: 90.0
+          beta: 90.0
+          gamma: 146.4432
+          sites:
+          - element: P
+            position:
+            - 0.404143
+            - 0.595857
+            - 0.911185
+          - element: P
+            position:
+            - 0.595857
+            - 0.404143
+            - 0.088815
+          - element: P
+            position:
+            - 0.095857
+            - 0.904143
+            - 0.411185
+          - element: P
+            position:
+            - 0.904143
+            - 0.095857
+            - 0.588815
+        mp_metadata_symmetry:
+          symbol: Cmce
+          number: 64
+        mp_energy_above_hull: 0.020214559523809003
+        mp_is_stable: false
+        resolution_notes:
+        - '2 candidates; picked mp-157 (E_hull=0.020214559523809003), others: [(''mp-1120743'',
+          0.8729975666666651)]'
+    iii_v_semiconductors:
+      label: III-V Semiconductors
+      materials:
+      - id: M1_AlN
+        formula: AlN
+        name: aluminum nitride (wurtzite)
+        structure_hint: wurtzite
+        space_group: P6_3mc
+        space_group_number: 186
+        atoms_per_primitive_cell: 4
+        mp_id: mp-661
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 3.128588
+          lattice_b: 3.128588
+          lattice_c: 5.016955
+          alpha: 90.0
+          beta: 90.0
+          gamma: 120.0
+          sites:
+          - element: Al
+            position:
+            - 0.666667
+            - 0.333333
+            - 0.499287
+          - element: Al
+            position:
+            - 0.333333
+            - 0.666667
+            - 0.999287
+          - element: N
+            position:
+            - 0.666667
+            - 0.333333
+            - 0.880713
+          - element: N
+            position:
+            - 0.333333
+            - 0.666667
+            - 0.380713
+        mp_metadata_symmetry:
+          symbol: P6_3mc
+          number: 186
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_AlP
+        formula: AlP
+        name: aluminum phosphide (zincblende)
+        structure_hint: zincblende
+        space_group: F-43m
+        space_group_number: 216
+        atoms_per_primitive_cell: 2
+        mp_id: mp-1550
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 3.869972
+          lattice_b: 3.869972
+          lattice_c: 3.869972
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Al
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+          - element: P
+            position:
+            - 0.75
+            - 0.75
+            - 0.75
+        mp_metadata_symmetry:
+          symbol: F-43m
+          number: 216
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_AlAs
+        formula: AlAs
+        name: aluminum arsenide (zincblende)
+        structure_hint: zincblende
+        space_group: F-43m
+        space_group_number: 216
+        atoms_per_primitive_cell: 2
+        mp_id: mp-2172
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 4.013398
+          lattice_b: 4.013398
+          lattice_c: 4.013398
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Al
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+          - element: As
+            position:
+            - 0.75
+            - 0.75
+            - 0.75
+        mp_metadata_symmetry:
+          symbol: F-43m
+          number: 216
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_AlSb
+        formula: AlSb
+        name: aluminum antimonide (zincblende)
+        structure_hint: zincblende
+        space_group: F-43m
+        space_group_number: 216
+        atoms_per_primitive_cell: 2
+        mp_id: mp-2624
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 4.373485
+          lattice_b: 4.373485
+          lattice_c: 4.373485
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Al
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+          - element: Sb
+            position:
+            - 0.75
+            - 0.75
+            - 0.75
+        mp_metadata_symmetry:
+          symbol: F-43m
+          number: 216
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_GaN
+        formula: GaN
+        name: gallium nitride (wurtzite)
+        structure_hint: wurtzite
+        space_group: P6_3mc
+        space_group_number: 186
+        atoms_per_primitive_cell: 4
+        mp_id: mp-804
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 3.18893
+          lattice_b: 3.18893
+          lattice_c: 5.192357
+          alpha: 90.0
+          beta: 90.0
+          gamma: 120.0
+          sites:
+          - element: Ga
+            position:
+            - 0.666667
+            - 0.333333
+            - 0.499084
+          - element: Ga
+            position:
+            - 0.333333
+            - 0.666667
+            - 0.999084
+          - element: N
+            position:
+            - 0.666667
+            - 0.333333
+            - 0.875916
+          - element: N
+            position:
+            - 0.333333
+            - 0.666667
+            - 0.375916
+        mp_metadata_symmetry:
+          symbol: P6_3mc
+          number: 186
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_GaP
+        formula: GaP
+        name: gallium phosphide (zincblende)
+        structure_hint: zincblende
+        space_group: F-43m
+        space_group_number: 216
+        atoms_per_primitive_cell: 2
+        mp_id: mp-2490
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 3.854881
+          lattice_b: 3.854881
+          lattice_c: 3.854881
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Ga
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+          - element: P
+            position:
+            - 0.25
+            - 0.25
+            - 0.25
+        mp_metadata_symmetry:
+          symbol: F-43m
+          number: 216
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_GaAs
+        formula: GaAs
+        name: gallium arsenide (zincblende)
+        structure_hint: zincblende
+        space_group: F-43m
+        space_group_number: 216
+        atoms_per_primitive_cell: 2
+        mp_id: mp-2534
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 4.065993
+          lattice_b: 4.065993
+          lattice_c: 4.065993
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Ga
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+          - element: As
+            position:
+            - 0.25
+            - 0.25
+            - 0.25
+        mp_metadata_symmetry:
+          symbol: F-43m
+          number: 216
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_GaSb
+        formula: GaSb
+        name: gallium antimonide (zincblende)
+        structure_hint: zincblende
+        space_group: F-43m
+        space_group_number: 216
+        atoms_per_primitive_cell: 2
+        mp_id: mp-1156
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 4.339662
+          lattice_b: 4.339662
+          lattice_c: 4.339662
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Ga
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+          - element: Sb
+            position:
+            - 0.75
+            - 0.75
+            - 0.75
+        mp_metadata_symmetry:
+          symbol: F-43m
+          number: 216
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_InP
+        formula: InP
+        name: indium phosphide (zincblende)
+        structure_hint: zincblende
+        space_group: F-43m
+        space_group_number: 216
+        atoms_per_primitive_cell: 2
+        mp_id: mp-20351
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 4.174725
+          lattice_b: 4.174725
+          lattice_c: 4.174725
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: In
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+          - element: P
+            position:
+            - 0.25
+            - 0.25
+            - 0.25
+        mp_metadata_symmetry:
+          symbol: F-43m
+          number: 216
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_InAs
+        formula: InAs
+        name: indium arsenide (zincblende)
+        structure_hint: zincblende
+        space_group: F-43m
+        space_group_number: 216
+        atoms_per_primitive_cell: 2
+        mp_id: mp-20305
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 4.318388
+          lattice_b: 4.318388
+          lattice_c: 4.318388
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: In
+            position:
+            - 0.75
+            - 0.75
+            - 0.75
+          - element: As
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+        mp_metadata_symmetry:
+          symbol: F-43m
+          number: 216
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_InSb
+        formula: InSb
+        name: indium antimonide (zincblende)
+        structure_hint: zincblende
+        space_group: F-43m
+        space_group_number: 216
+        atoms_per_primitive_cell: 2
+        mp_id: mp-20012
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 4.690396
+          lattice_b: 4.690396
+          lattice_c: 4.690396
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: In
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+          - element: Sb
+            position:
+            - 0.25
+            - 0.25
+            - 0.25
+        mp_metadata_symmetry:
+          symbol: F-43m
+          number: 216
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+    ii_vi_semiconductors:
+      label: II-VI Semiconductors
+      materials:
+      - id: M1_ZnO
+        formula: ZnO
+        name: zinc oxide (wurtzite)
+        structure_hint: wurtzite
+        space_group: P6_3mc
+        space_group_number: 186
+        atoms_per_primitive_cell: 4
+        mp_id: mp-2133
+        notes: shallow Zn-3d states — standard GGA underestimates band gap
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 3.237351
+          lattice_b: 3.237351
+          lattice_c: 5.222061
+          alpha: 90.0
+          beta: 90.0
+          gamma: 120.0
+          sites:
+          - element: Zn
+            position:
+            - 0.666667
+            - 0.333333
+            - 0.500592
+          - element: Zn
+            position:
+            - 0.333333
+            - 0.666667
+            - 0.000592
+          - element: O
+            position:
+            - 0.666667
+            - 0.333333
+            - 0.879718
+          - element: O
+            position:
+            - 0.333333
+            - 0.666667
+            - 0.379718
+        mp_metadata_symmetry:
+          symbol: P6_3mc
+          number: 186
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_ZnS
+        formula: ZnS
+        name: zinc sulfide (zincblende)
+        structure_hint: zincblende
+        space_group: F-43m
+        space_group_number: 216
+        atoms_per_primitive_cell: 2
+        mp_id: mp-10695
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 3.809443
+          lattice_b: 3.809443
+          lattice_c: 3.809443
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Zn
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+          - element: S
+            position:
+            - 0.25
+            - 0.25
+            - 0.25
+        mp_metadata_symmetry:
+          symbol: F-43m
+          number: 216
+        mp_energy_above_hull: 0.00014624571428500002
+        mp_is_stable: false
+      - id: M1_ZnSe
+        formula: ZnSe
+        name: zinc selenide (zincblende)
+        structure_hint: zincblende
+        space_group: F-43m
+        space_group_number: 216
+        atoms_per_primitive_cell: 2
+        mp_id: mp-1190
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 4.005679
+          lattice_b: 4.005679
+          lattice_c: 4.005679
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Zn
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+          - element: Se
+            position:
+            - 0.75
+            - 0.75
+            - 0.75
+        mp_metadata_symmetry:
+          symbol: F-43m
+          number: 216
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_ZnTe
+        formula: ZnTe
+        name: zinc telluride (zincblende)
+        structure_hint: zincblende
+        space_group: F-43m
+        space_group_number: 216
+        atoms_per_primitive_cell: 2
+        mp_id: mp-2176
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 4.321292
+          lattice_b: 4.321292
+          lattice_c: 4.321292
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Zn
+            position:
+            - 0.5
+            - 0.5
+            - 0.5
+          - element: Te
+            position:
+            - 0.25
+            - 0.25
+            - 0.25
+        mp_metadata_symmetry:
+          symbol: F-43m
+          number: 216
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_CdS
+        formula: CdS
+        name: cadmium sulfide (wurtzite)
+        structure_hint: wurtzite
+        space_group: P6_3mc
+        space_group_number: 186
+        atoms_per_primitive_cell: 4
+        mp_id: mp-672
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 4.168838
+          lattice_b: 4.168838
+          lattice_c: 6.779617
+          alpha: 90.0
+          beta: 90.0
+          gamma: 120.0
+          sites:
+          - element: Cd
+            position:
+            - 0.666667
+            - 0.333333
+            - 0.500224
+          - element: Cd
+            position:
+            - 0.333333
+            - 0.666667
+            - 0.000224
+          - element: S
+            position:
+            - 0.666667
+            - 0.333333
+            - 0.876776
+          - element: S
+            position:
+            - 0.333333
+            - 0.666667
+            - 0.376776
+        mp_metadata_symmetry:
+          symbol: P6_3mc
+          number: 186
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_CdSe
+        formula: CdSe
+        name: cadmium selenide (zincblende)
+        structure_hint: zincblende
+        space_group: F-43m
+        space_group_number: 216
+        atoms_per_primitive_cell: 2
+        mp_id: mp-2691
+        notes: MP ground state is zincblende (F-43m). CdSe wurtzite and zincblende
+          are nearly degenerate — accepting MP's zincblende per Claude-vs-MP rule.
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 4.342019
+          lattice_b: 4.342019
+          lattice_c: 4.342019
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Cd
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+          - element: Se
+            position:
+            - 0.75
+            - 0.75
+            - 0.75
+        mp_metadata_symmetry:
+          symbol: F-43m
+          number: 216
+        mp_energy_above_hull: 0.000553682500001
+        mp_is_stable: false
+      - id: M1_CdTe
+        formula: CdTe
+        name: cadmium telluride (zincblende)
+        structure_hint: zincblende
+        space_group: F-43m
+        space_group_number: 216
+        atoms_per_primitive_cell: 2
+        mp_id: mp-406
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 4.64161
+          lattice_b: 4.64161
+          lattice_c: 4.64161
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Cd
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+          - element: Te
+            position:
+            - 0.25
+            - 0.25
+            - 0.25
+        mp_metadata_symmetry:
+          symbol: F-43m
+          number: 216
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+    alkali_halides:
+      label: Alkali & Alkaline-Earth Halides
+      materials:
+      - id: M1_LiF
+        formula: LiF
+        name: lithium fluoride (rocksalt)
+        structure_hint: rocksalt
+        space_group: Fm-3m
+        space_group_number: 225
+        atoms_per_primitive_cell: 2
+        mp_id: mp-1138
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 2.887419
+          lattice_b: 2.887419
+          lattice_c: 2.887419
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Li
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+          - element: F
+            position:
+            - 0.5
+            - 0.5
+            - 0.5
+        mp_metadata_symmetry:
+          symbol: Fm-3m
+          number: 225
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_LiCl
+        formula: LiCl
+        name: lithium chloride (rocksalt)
+        structure_hint: rocksalt
+        space_group: Fm-3m
+        space_group_number: 225
+        atoms_per_primitive_cell: 2
+        mp_id: mp-22905
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 3.595104
+          lattice_b: 3.595104
+          lattice_c: 3.595104
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Li
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+          - element: Cl
+            position:
+            - 0.5
+            - 0.5
+            - 0.5
+        mp_metadata_symmetry:
+          symbol: Fm-3m
+          number: 225
+        mp_energy_above_hull: 0.0204618825
+        mp_is_stable: false
+      - id: M1_LiBr
+        formula: LiBr
+        name: lithium bromide (rocksalt)
+        structure_hint: rocksalt
+        space_group: Fm-3m
+        space_group_number: 225
+        atoms_per_primitive_cell: 2
+        mp_id: mp-23259
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 3.850466
+          lattice_b: 3.850466
+          lattice_c: 3.850466
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Li
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+          - element: Br
+            position:
+            - 0.5
+            - 0.5
+            - 0.5
+        mp_metadata_symmetry:
+          symbol: Fm-3m
+          number: 225
+        mp_energy_above_hull: 0.0098957125
+        mp_is_stable: false
+      - id: M1_NaF
+        formula: NaF
+        name: sodium fluoride (rocksalt)
+        structure_hint: rocksalt
+        space_group: Fm-3m
+        space_group_number: 225
+        atoms_per_primitive_cell: 2
+        mp_id: mp-682
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 3.232743
+          lattice_b: 3.232743
+          lattice_c: 3.232743
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Na
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+          - element: F
+            position:
+            - 0.5
+            - 0.5
+            - 0.5
+        mp_metadata_symmetry:
+          symbol: Fm-3m
+          number: 225
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_NaCl
+        formula: NaCl
+        name: sodium chloride (rocksalt)
+        structure_hint: rocksalt
+        space_group: Fm-3m
+        space_group_number: 225
+        atoms_per_primitive_cell: 2
+        mp_id: mp-22862
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 3.951402
+          lattice_b: 3.951402
+          lattice_c: 3.951402
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Na
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+          - element: Cl
+            position:
+            - 0.5
+            - 0.5
+            - 0.5
+        mp_metadata_symmetry:
+          symbol: Fm-3m
+          number: 225
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_NaBr
+        formula: NaBr
+        name: sodium bromide (rocksalt)
+        structure_hint: rocksalt
+        space_group: Fm-3m
+        space_group_number: 225
+        atoms_per_primitive_cell: 2
+        mp_id: mp-22916
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 4.188253
+          lattice_b: 4.188253
+          lattice_c: 4.188253
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Na
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+          - element: Br
+            position:
+            - 0.5
+            - 0.5
+            - 0.5
+        mp_metadata_symmetry:
+          symbol: Fm-3m
+          number: 225
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_KF
+        formula: KF
+        name: potassium fluoride (rocksalt)
+        structure_hint: rocksalt
+        space_group: Fm-3m
+        space_group_number: 225
+        atoms_per_primitive_cell: 2
+        mp_id: mp-463
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 3.753907
+          lattice_b: 3.753907
+          lattice_c: 3.753907
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: K
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+          - element: F
+            position:
+            - 0.5
+            - 0.5
+            - 0.5
+        mp_metadata_symmetry:
+          symbol: Fm-3m
+          number: 225
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_KCl
+        formula: KCl
+        name: potassium chloride (rocksalt)
+        structure_hint: rocksalt
+        space_group: Fm-3m
+        space_group_number: 225
+        atoms_per_primitive_cell: 2
+        mp_id: mp-23193
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 4.443277
+          lattice_b: 4.443277
+          lattice_c: 4.443277
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: K
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+          - element: Cl
+            position:
+            - 0.5
+            - 0.5
+            - 0.5
+        mp_metadata_symmetry:
+          symbol: Fm-3m
+          number: 225
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_KBr
+        formula: KBr
+        name: potassium bromide (rocksalt)
+        structure_hint: rocksalt
+        space_group: Fm-3m
+        space_group_number: 225
+        atoms_per_primitive_cell: 2
+        mp_id: mp-23251
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 4.659185
+          lattice_b: 4.659185
+          lattice_c: 4.659185
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: K
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+          - element: Br
+            position:
+            - 0.5
+            - 0.5
+            - 0.5
+        mp_metadata_symmetry:
+          symbol: Fm-3m
+          number: 225
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_RbCl
+        formula: RbCl
+        name: rubidium chloride (rocksalt)
+        structure_hint: rocksalt
+        space_group: Fm-3m
+        space_group_number: 225
+        atoms_per_primitive_cell: 2
+        mp_id: mp-23295
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 4.679219
+          lattice_b: 4.679219
+          lattice_c: 4.679219
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Rb
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+          - element: Cl
+            position:
+            - 0.5
+            - 0.5
+            - 0.5
+        mp_metadata_symmetry:
+          symbol: Fm-3m
+          number: 225
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_CsCl
+        formula: CsCl
+        name: cesium chloride (CsCl-type)
+        structure_hint: CsCl-type simple cubic
+        space_group: Pm-3m
+        space_group_number: 221
+        atoms_per_primitive_cell: 2
+        mp_id: mp-22865
+        notes: not rocksalt — CsCl adopts its own CsCl-type structure (space group
+          221)
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 4.143698
+          lattice_b: 4.143698
+          lattice_c: 4.143698
+          alpha: 90.0
+          beta: 90.0
+          gamma: 90.0
+          sites:
+          - element: Cs
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+          - element: Cl
+            position:
+            - 0.5
+            - 0.5
+            - 0.5
+        mp_metadata_symmetry:
+          symbol: Pm-3m
+          number: 221
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+    simple_metals:
+      label: Simple Metals & Main Group Metals
+      materials:
+      - id: M1_Li
+        formula: Li
+        name: lithium (bcc)
+        structure_hint: bcc
+        space_group: Im-3m
+        space_group_number: 229
+        atoms_per_primitive_cell: 1
+        mp_id: mp-135
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 2.978532
+          lattice_b: 2.978532
+          lattice_c: 2.978532
+          alpha: 109.4712
+          beta: 109.4712
+          gamma: 109.4712
+          sites:
+          - element: Li
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+        mp_metadata_symmetry:
+          symbol: Im-3m
+          number: 229
+        mp_energy_above_hull: 0.009650863333333001
+        mp_is_stable: false
+      - id: M1_Na
+        formula: Na
+        name: sodium (bcc)
+        structure_hint: bcc
+        space_group: Im-3m
+        space_group_number: 229
+        atoms_per_primitive_cell: 1
+        mp_id: mp-127
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 3.644281
+          lattice_b: 3.644281
+          lattice_c: 3.644281
+          alpha: 109.4712
+          beta: 109.4712
+          gamma: 109.4712
+          sites:
+          - element: Na
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+        mp_metadata_symmetry:
+          symbol: Im-3m
+          number: 229
+        mp_energy_above_hull: 0.015772269999999002
+        mp_is_stable: false
+      - id: M1_K
+        formula: K
+        name: potassium (bcc)
+        structure_hint: bcc
+        space_group: Im-3m
+        space_group_number: 229
+        atoms_per_primitive_cell: 1
+        mp_id: mp-58
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 4.672308
+          lattice_b: 4.672308
+          lattice_c: 4.672308
+          alpha: 109.4712
+          beta: 109.4712
+          gamma: 109.4712
+          sites:
+          - element: K
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+        mp_metadata_symmetry:
+          symbol: Im-3m
+          number: 229
+        mp_energy_above_hull: 0.015213726250000002
+        mp_is_stable: false
+      - id: M1_Rb
+        formula: Rb
+        name: rubidium (body-centered tetragonal, quasi-bcc)
+        structure_hint: 'body-centered tetragonal I4/mmm (Yang 2026-04-25: chose mp-639755
+          as a quasi-bcc representative; mp-70 is an 8-atom P1 low-symmetry phase)'
+        space_group: I4/mmm
+        space_group_number: 139
+        atoms_per_primitive_cell: 1
+        mp_id: mp-639755
+        notes: 'Yang 2026-04-25: chose mp-639755 (I4/mmm, 1 atom/primitive) as quasi-bcc
+          representative. Original mp-70 fallback was an 8-atom P1 low-symmetry phase,
+          not standard bcc Rb. I4/mmm is bcc-like with c/a ≠ 1.
+
+          '
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 4.991573
+          lattice_b: 4.991573
+          lattice_c: 4.991573
+          alpha: 107.4161
+          beta: 107.4161
+          gamma: 113.6646
+          sites:
+          - element: Rb
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+        mp_metadata_symmetry:
+          symbol: I4/mmm
+          number: 139
+        mp_energy_above_hull: 0.007387402500000001
+        mp_is_stable: false
+      - id: M1_Be
+        formula: Be
+        name: beryllium (hcp)
+        structure_hint: hcp
+        space_group: P6_3/mmc
+        space_group_number: 194
+        atoms_per_primitive_cell: 2
+        mp_id: mp-87
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 2.264783
+          lattice_b: 2.264783
+          lattice_c: 3.574102
+          alpha: 90.0
+          beta: 90.0
+          gamma: 120.0
+          sites:
+          - element: Be
+            position:
+            - 0.333333
+            - 0.666667
+            - 0.75
+          - element: Be
+            position:
+            - 0.666667
+            - 0.333333
+            - 0.25
+        mp_metadata_symmetry:
+          symbol: P6_3/mmc
+          number: 194
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_Mg
+        formula: Mg
+        name: magnesium (hcp)
+        structure_hint: hcp
+        space_group: P6_3/mmc
+        space_group_number: 194
+        atoms_per_primitive_cell: 2
+        mp_id: mp-153
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 3.172023
+          lattice_b: 3.172023
+          lattice_c: 5.141205
+          alpha: 90.0
+          beta: 90.0
+          gamma: 120.0
+          sites:
+          - element: Mg
+            position:
+            - 0.333333
+            - 0.666667
+            - 0.25
+          - element: Mg
+            position:
+            - 0.666667
+            - 0.333333
+            - 0.75
+        mp_metadata_symmetry:
+          symbol: P6_3/mmc
+          number: 194
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_Ca
+        formula: Ca
+        name: calcium (fcc)
+        structure_hint: fcc
+        space_group: Fm-3m
+        space_group_number: 225
+        atoms_per_primitive_cell: 1
+        mp_id: mp-45
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 3.943404
+          lattice_b: 3.943404
+          lattice_c: 3.943404
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Ca
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+        mp_metadata_symmetry:
+          symbol: Fm-3m
+          number: 225
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_Sr
+        formula: Sr
+        name: strontium (hcp, PBE ground state)
+        structure_hint: hcp
+        space_group: P6_3/mmc
+        space_group_number: 194
+        atoms_per_primitive_cell: 2
+        mp_id: mp-139
+        notes: Experimentally Sr is fcc at RT; PBE ground state in MP is hcp. Accepting
+          MP per Claude-vs-MP rule.
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 4.301199
+          lattice_b: 4.301199
+          lattice_c: 7.044557
+          alpha: 90.0
+          beta: 90.0
+          gamma: 120.0
+          sites:
+          - element: Sr
+            position:
+            - 0.333333
+            - 0.666667
+            - 0.25
+          - element: Sr
+            position:
+            - 0.666667
+            - 0.333333
+            - 0.75
+        mp_metadata_symmetry:
+          symbol: P6_3/mmc
+          number: 194
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_Al
+        formula: Al
+        name: aluminum (fcc)
+        structure_hint: fcc
+        space_group: Fm-3m
+        space_group_number: 225
+        atoms_per_primitive_cell: 1
+        mp_id: mp-134
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 2.855955
+          lattice_b: 2.855955
+          lattice_c: 2.855955
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Al
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+        mp_metadata_symmetry:
+          symbol: Fm-3m
+          number: 225
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_Ga
+        formula: Ga
+        name: α-Ga (orthorhombic)
+        structure_hint: α-Ga orthorhombic
+        space_group: Cmce
+        space_group_number: 64
+        atoms_per_primitive_cell: 4
+        mp_id: mp-142
+        notes: low-symmetry orthorhombic; MP space group may be reported as Cmca (=Cmce
+          in old notation)
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 4.398079
+          lattice_b: 4.398079
+          lattice_c: 4.555504
+          alpha: 90.0
+          beta: 90.0
+          gamma: 119.4884
+          sites:
+          - element: Ga
+            position:
+            - 0.655696
+            - 0.344304
+            - 0.415401
+          - element: Ga
+            position:
+            - 0.844304
+            - 0.155696
+            - 0.915401
+          - element: Ga
+            position:
+            - 0.344304
+            - 0.655696
+            - 0.584599
+          - element: Ga
+            position:
+            - 0.155696
+            - 0.844304
+            - 0.084599
+        mp_metadata_symmetry:
+          symbol: Cmce
+          number: 64
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+        resolution_notes:
+        - '2 candidates; picked mp-142 (E_hull=0.0), others: [(''mp-1007857'', 0.12453846500000001)]'
+      - id: M1_In
+        formula: In
+        name: indium (body-centered tetragonal, I4/mmm)
+        structure_hint: body-centered tetragonal
+        space_group: I4/mmm
+        space_group_number: 139
+        atoms_per_primitive_cell: 1
+        mp_id: mp-85
+        notes: 'MP''s summary.symmetry metadata for mp-85 incorrectly labels the structure
+          as Fm-3m, but the actual structure returned by MP (lattice α=β=120.7°, γ=90°)
+          is unambiguously body-centered tetragonal I4/mmm. SG here is derived from
+          structure via spglib (cross-validated 2026-04-25). Symmetry fields should
+          trust spglib-on-structure over summary metadata for this material.
+
+          '
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 3.319938
+          lattice_b: 3.319938
+          lattice_c: 3.319938
+          alpha: 118.6106
+          beta: 118.6106
+          gamma: 92.4239
+          sites:
+          - element: In
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+        mp_metadata_symmetry:
+          symbol: Fm-3m
+          number: 225
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+        resolution_notes:
+        - '⚠ MP internal inconsistency: summary.symmetry reports SG Fm-3m (225) but
+          spglib on the returned structure gives I4/mmm (139). Trusting spglib.'
+      - id: M1_Sn_beta
+        formula: Sn
+        name: β-Sn (white tin, body-centered tetragonal metal)
+        structure_hint: body-centered tetragonal
+        space_group: I4_1/amd
+        space_group_number: 141
+        atoms_per_primitive_cell: 2
+        mp_id: mp-84
+        notes: polymorph differentiator — see M1_Sn_alpha
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 4.454954
+          lattice_b: 4.454954
+          lattice_c: 4.454954
+          alpha: 97.4047
+          beta: 97.4047
+          gamma: 137.9231
+          sites:
+          - element: Sn
+            position:
+            - 0.25
+            - 0.75
+            - 0.5
+          - element: Sn
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+        mp_metadata_symmetry:
+          symbol: I4_1/amd
+          number: 141
+        mp_energy_above_hull: 0.12017831000000001
+        mp_is_stable: false
+      - id: M1_Pb
+        formula: Pb
+        name: lead (fcc)
+        structure_hint: fcc
+        space_group: Fm-3m
+        space_group_number: 225
+        atoms_per_primitive_cell: 1
+        mp_id: mp-20483
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 3.528116
+          lattice_b: 3.528116
+          lattice_c: 3.528116
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Pb
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+        mp_metadata_symmetry:
+          symbol: Fm-3m
+          number: 225
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+    nonmagnetic_transition_metals:
+      label: Non-Magnetic Transition Metals (Closed/Full d-shells)
+      materials:
+      - id: M1_Cu
+        formula: Cu
+        name: copper (fcc)
+        structure_hint: fcc
+        space_group: Fm-3m
+        space_group_number: 225
+        atoms_per_primitive_cell: 1
+        mp_id: mp-30
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 2.529625
+          lattice_b: 2.529625
+          lattice_c: 2.529625
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Cu
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+        mp_metadata_symmetry:
+          symbol: Fm-3m
+          number: 225
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_Ag
+        formula: Ag
+        name: silver (fcc)
+        structure_hint: fcc
+        space_group: Fm-3m
+        space_group_number: 225
+        atoms_per_primitive_cell: 1
+        mp_id: mp-124
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 2.902218
+          lattice_b: 2.902218
+          lattice_c: 2.902218
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Ag
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+        mp_metadata_symmetry:
+          symbol: Fm-3m
+          number: 225
+        mp_energy_above_hull: 0.0021267149999990003
+        mp_is_stable: false
+      - id: M1_Au
+        formula: Au
+        name: gold (fcc)
+        structure_hint: fcc
+        space_group: Fm-3m
+        space_group_number: 225
+        atoms_per_primitive_cell: 1
+        mp_id: mp-81
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 2.949546
+          lattice_b: 2.949546
+          lattice_c: 2.949546
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Au
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+        mp_metadata_symmetry:
+          symbol: Fm-3m
+          number: 225
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_Zn
+        formula: Zn
+        name: zinc (hcp)
+        structure_hint: hcp
+        space_group: P6_3/mmc
+        space_group_number: 194
+        atoms_per_primitive_cell: 2
+        mp_id: mp-79
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 2.61436
+          lattice_b: 2.61436
+          lattice_c: 4.873161
+          alpha: 90.0
+          beta: 90.0
+          gamma: 120.0
+          sites:
+          - element: Zn
+            position:
+            - 0.333333
+            - 0.666667
+            - 0.25
+          - element: Zn
+            position:
+            - 0.666667
+            - 0.333333
+            - 0.75
+        mp_metadata_symmetry:
+          symbol: P6_3/mmc
+          number: 194
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_Cd
+        formula: Cd
+        name: cadmium (hcp)
+        structure_hint: hcp
+        space_group: P6_3/mmc
+        space_group_number: 194
+        atoms_per_primitive_cell: 2
+        mp_id: mp-94
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 2.958475
+          lattice_b: 2.958475
+          lattice_c: 5.885928
+          alpha: 90.0
+          beta: 90.0
+          gamma: 120.0
+          sites:
+          - element: Cd
+            position:
+            - 0.333333
+            - 0.666667
+            - 0.25
+          - element: Cd
+            position:
+            - 0.666667
+            - 0.333333
+            - 0.75
+        mp_metadata_symmetry:
+          symbol: P6_3/mmc
+          number: 194
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_Pd
+        formula: Pd
+        name: palladium (fcc)
+        structure_hint: fcc
+        space_group: Fm-3m
+        space_group_number: 225
+        atoms_per_primitive_cell: 1
+        mp_id: mp-2
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 2.769951
+          lattice_b: 2.769951
+          lattice_c: 2.769951
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Pd
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+        mp_metadata_symmetry:
+          symbol: Fm-3m
+          number: 225
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_Pt
+        formula: Pt
+        name: platinum (fcc)
+        structure_hint: fcc
+        space_group: Fm-3m
+        space_group_number: 225
+        atoms_per_primitive_cell: 1
+        mp_id: mp-126
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 2.788228
+          lattice_b: 2.788228
+          lattice_c: 2.788228
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Pt
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+        mp_metadata_symmetry:
+          symbol: Fm-3m
+          number: 225
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+    simple_oxides_nitrides_ternaries:
+      label: Simple Oxides, Nitrides, and Ternaries
+      materials:
+      - id: M1_MgO
+        formula: MgO
+        name: magnesium oxide (rocksalt)
+        structure_hint: rocksalt
+        space_group: Fm-3m
+        space_group_number: 225
+        atoms_per_primitive_cell: 2
+        mp_id: mp-1265
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 2.965608
+          lattice_b: 2.965608
+          lattice_c: 2.965608
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Mg
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+          - element: O
+            position:
+            - 0.5
+            - 0.5
+            - 0.5
+        mp_metadata_symmetry:
+          symbol: Fm-3m
+          number: 225
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_CaO
+        formula: CaO
+        name: calcium oxide (rocksalt)
+        structure_hint: rocksalt
+        space_group: Fm-3m
+        space_group_number: 225
+        atoms_per_primitive_cell: 2
+        mp_id: mp-2605
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 3.399141
+          lattice_b: 3.399141
+          lattice_c: 3.399141
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Ca
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+          - element: O
+            position:
+            - 0.5
+            - 0.5
+            - 0.5
+        mp_metadata_symmetry:
+          symbol: Fm-3m
+          number: 225
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_SrO
+        formula: SrO
+        name: strontium oxide (rocksalt)
+        structure_hint: rocksalt
+        space_group: Fm-3m
+        space_group_number: 225
+        atoms_per_primitive_cell: 2
+        mp_id: mp-2472
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 3.654023
+          lattice_b: 3.654023
+          lattice_c: 3.654023
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Sr
+            position:
+            - 0.5
+            - 0.5
+            - 0.5
+          - element: O
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+        mp_metadata_symmetry:
+          symbol: Fm-3m
+          number: 225
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_SiO2_alpha_quartz
+        formula: SiO2
+        name: α-quartz SiO2 (trigonal)
+        structure_hint: α-quartz trigonal
+        space_group: P3_221
+        space_group_number: 154
+        atoms_per_primitive_cell: 9
+        mp_id: mp-6930
+        notes: polymorph differentiator — see M2 Coesite; also α-quartz may be reported
+          as P3_1 2 1 (SG 152) depending on handedness
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 4.916558
+          lattice_b: 4.916558
+          lattice_c: 5.431625
+          alpha: 90.0
+          beta: 90.0
+          gamma: 120.0
+          sites:
+          - element: Si
+            position:
+            - 0.0
+            - 0.468798
+            - 0.333333
+          - element: Si
+            position:
+            - 0.531202
+            - 0.531202
+            - 0.0
+          - element: Si
+            position:
+            - 0.468798
+            - 0.0
+            - 0.666667
+          - element: O
+            position:
+            - 0.144538
+            - 0.73144
+            - 0.54782
+          - element: O
+            position:
+            - 0.586901
+            - 0.855462
+            - 0.881153
+          - element: O
+            position:
+            - 0.26856
+            - 0.413099
+            - 0.214486
+          - element: O
+            position:
+            - 0.413099
+            - 0.26856
+            - 0.785514
+          - element: O
+            position:
+            - 0.855462
+            - 0.586901
+            - 0.118847
+          - element: O
+            position:
+            - 0.73144
+            - 0.144538
+            - 0.45218
+        mp_metadata_symmetry:
+          symbol: P3_221
+          number: 154
+        mp_energy_above_hull: 0.000625704444445
+        mp_is_stable: false
+      - id: M1_Al2O3_corundum
+        formula: Al2O3
+        name: sapphire / α-Al2O3 (corundum)
+        structure_hint: corundum (R-3c)
+        space_group: R-3c
+        space_group_number: 167
+        atoms_per_primitive_cell: 10
+        mp_id: mp-1143
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 5.177955
+          lattice_b: 5.177955
+          lattice_c: 5.177955
+          alpha: 55.2896
+          beta: 55.2896
+          gamma: 55.2896
+          sites:
+          - element: Al
+            position:
+            - 0.147904
+            - 0.147904
+            - 0.147904
+          - element: Al
+            position:
+            - 0.352096
+            - 0.352096
+            - 0.352096
+          - element: Al
+            position:
+            - 0.647904
+            - 0.647904
+            - 0.647904
+          - element: Al
+            position:
+            - 0.852096
+            - 0.852096
+            - 0.852096
+          - element: O
+            position:
+            - 0.556145
+            - 0.943855
+            - 0.25
+          - element: O
+            position:
+            - 0.75
+            - 0.443855
+            - 0.056145
+          - element: O
+            position:
+            - 0.25
+            - 0.556145
+            - 0.943855
+          - element: O
+            position:
+            - 0.943855
+            - 0.25
+            - 0.556145
+          - element: O
+            position:
+            - 0.056145
+            - 0.75
+            - 0.443855
+          - element: O
+            position:
+            - 0.443855
+            - 0.056145
+            - 0.75
+        mp_metadata_symmetry:
+          symbol: R-3c
+          number: 167
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M1_LiAlO2
+        formula: LiAlO2
+        name: lithium aluminate (γ-LiAlO2, tetragonal)
+        structure_hint: γ-LiAlO2 tetragonal
+        space_group: P4_12_12
+        space_group_number: 92
+        atoms_per_primitive_cell: 16
+        mp_id: mp-3427
+        notes: γ-LiAlO2 is the stable RT polymorph; multiple polymorphs exist (α rhombohedral,
+          β monoclinic)
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 5.154417
+          lattice_b: 5.154417
+          lattice_c: 6.235786
+          alpha: 90.0
+          beta: 90.0
+          gamma: 90.0
+          sites:
+          - element: Li
+            position:
+            - 0.686534
+            - 0.313466
+            - 0.25
+          - element: Li
+            position:
+            - 0.186534
+            - 0.186534
+            - 0.5
+          - element: Li
+            position:
+            - 0.313466
+            - 0.686534
+            - 0.75
+          - element: Li
+            position:
+            - 0.813466
+            - 0.813466
+            - 0.0
+          - element: Al
+            position:
+            - 0.824958
+            - 0.824958
+            - 0.5
+          - element: Al
+            position:
+            - 0.675042
+            - 0.324958
+            - 0.75
+          - element: Al
+            position:
+            - 0.324958
+            - 0.675042
+            - 0.25
+          - element: Al
+            position:
+            - 0.175042
+            - 0.175042
+            - 0.0
+          - element: O
+            position:
+            - 0.292222
+            - 0.334898
+            - 0.228693
+          - element: O
+            position:
+            - 0.165102
+            - 0.792222
+            - 0.478693
+          - element: O
+            position:
+            - 0.792222
+            - 0.165102
+            - 0.521307
+          - element: O
+            position:
+            - 0.834898
+            - 0.207778
+            - 0.978693
+          - element: O
+            position:
+            - 0.207778
+            - 0.834898
+            - 0.021307
+          - element: O
+            position:
+            - 0.665102
+            - 0.707778
+            - 0.271307
+          - element: O
+            position:
+            - 0.334898
+            - 0.292222
+            - 0.771307
+          - element: O
+            position:
+            - 0.707778
+            - 0.665102
+            - 0.728693
+        mp_metadata_symmetry:
+          symbol: P4_12_12
+          number: 92
+        mp_energy_above_hull: 0.014060453749999001
+        mp_is_stable: false
+      - id: M1_BN_hex
+        formula: BN
+        name: hexagonal boron nitride (h-BN)
+        structure_hint: hexagonal (layered)
+        space_group: P6_3/mmc
+        space_group_number: 194
+        atoms_per_primitive_cell: 4
+        mp_id: mp-984
+        notes: Yang listed BN with 'Hexagonal or Cubic'; h-BN is chosen here as the
+          default. See known_issues for c-BN alternative.
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 2.512428
+          lattice_b: 2.512428
+          lattice_c: 7.707265
+          alpha: 90.0
+          beta: 90.0
+          gamma: 120.0
+          sites:
+          - element: B
+            position:
+            - 0.333333
+            - 0.666667
+            - 0.25
+          - element: B
+            position:
+            - 0.666667
+            - 0.333333
+            - 0.75
+          - element: N
+            position:
+            - 0.333333
+            - 0.666667
+            - 0.75
+          - element: N
+            position:
+            - 0.666667
+            - 0.333333
+            - 0.25
+        mp_metadata_symmetry:
+          symbol: P6_3/mmc
+          number: 194
+        mp_energy_above_hull: 0.005704095
+        mp_is_stable: false
+M2:
+  description: 'Complex physical structure (low symmetry, >10 atoms/cell). Standard
+    DFT still applies; difficulty is structural, not electronic. Atoms/cell capped
+    at 40.
+
+    '
+  categories:
+    distorted_perovskites:
+      label: Distorted Perovskites & Simple Oxides
+      materials:
+      - id: M2_CaTiO3_tet
+        formula: CaTiO3
+        name: tetragonal CaTiO3 (I4/mcm)
+        structure_hint: tetragonal perovskite (I4/mcm)
+        space_group: I4/mcm
+        space_group_number: 140
+        atoms_per_primitive_cell: 10
+        mp_id: mp-3442
+        notes: 'Yang 0425 review decision (Option 1-A): mp-3442 explicitly given by
+          Yang IS tetragonal I4/mcm; the ''Orthorhombic'' label in the sub-list was
+          a typo. Primitive cell has 10 atoms (= 20 atoms in conventional cell, matching
+          Yang''s ''20 atoms/cell'' count).'
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 5.441143
+          lattice_b: 5.441143
+          lattice_c: 5.441143
+          alpha: 120.8455
+          beta: 120.8455
+          gamma: 88.5417
+          sites:
+          - element: Ca
+            position:
+            - 0.25
+            - 0.75
+            - 0.5
+          - element: Ca
+            position:
+            - 0.75
+            - 0.25
+            - 0.5
+          - element: Ti
+            position:
+            - 0.5
+            - 0.5
+            - 0.0
+          - element: Ti
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+          - element: O
+            position:
+            - 0.808697
+            - 0.308697
+            - 0.117394
+          - element: O
+            position:
+            - 0.308697
+            - 0.191303
+            - 0.5
+          - element: O
+            position:
+            - 0.691303
+            - 0.808697
+            - 0.5
+          - element: O
+            position:
+            - 0.191303
+            - 0.691303
+            - 0.882606
+          - element: O
+            position:
+            - 0.75
+            - 0.75
+            - 0.0
+          - element: O
+            position:
+            - 0.25
+            - 0.25
+            - 0.0
+        mp_metadata_symmetry:
+          symbol: I4/mcm
+          number: 140
+        mp_energy_above_hull: 0.017396585500002
+        mp_is_stable: false
+      - id: M2_SrTiO3_tet_lowT
+        formula: SrTiO3
+        name: tetragonal SrTiO3 (I4/mcm, low-T phase)
+        structure_hint: tetragonal perovskite (I4/mcm)
+        space_group: I4/mcm
+        space_group_number: 140
+        atoms_per_primitive_cell: 10
+        mp_id: mp-4651
+        notes: 'Yang 0425 review decision (Option 2-A): SrTiO3 low-T phase is tetragonal
+          I4/mcm (from cubic Pm-3m ~105 K). Yang''s original ''Orthorhombic'' was
+          a typo. Primitive has 10 atoms (= 20 atoms in conventional cell).'
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 5.534899
+          lattice_b: 5.534899
+          lattice_c: 5.534899
+          alpha: 120.1502
+          beta: 120.1502
+          gamma: 89.7401
+          sites:
+          - element: Sr
+            position:
+            - 0.75
+            - 0.25
+            - 0.5
+          - element: Sr
+            position:
+            - 0.25
+            - 0.75
+            - 0.5
+          - element: Ti
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+          - element: Ti
+            position:
+            - 0.5
+            - 0.5
+            - 0.0
+          - element: O
+            position:
+            - 0.770957
+            - 0.270957
+            - 0.041915
+          - element: O
+            position:
+            - 0.270957
+            - 0.229043
+            - 0.5
+          - element: O
+            position:
+            - 0.729043
+            - 0.770957
+            - 0.5
+          - element: O
+            position:
+            - 0.229043
+            - 0.729043
+            - 0.958085
+          - element: O
+            position:
+            - 0.75
+            - 0.75
+            - 0.0
+          - element: O
+            position:
+            - 0.25
+            - 0.25
+            - 0.0
+        mp_metadata_symmetry:
+          symbol: I4/mcm
+          number: 140
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M2_CsPbI3_gamma
+        formula: CsPbI3
+        name: γ-CsPbI3 (orthorhombic)
+        structure_hint: orthorhombic perovskite
+        space_group: Pnma
+        space_group_number: 62
+        atoms_per_primitive_cell: 20
+        mp_id: mp-540839
+        notes: γ-phase is the black-phase photovoltaic polymorph
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 4.847142
+          lattice_b: 10.650447
+          lattice_c: 18.031199
+          alpha: 90.0
+          beta: 90.0
+          gamma: 90.0
+          sites:
+          - element: Cs
+            position:
+            - 0.75
+            - 0.081276
+            - 0.67212
+          - element: Cs
+            position:
+            - 0.25
+            - 0.918724
+            - 0.32788
+          - element: Cs
+            position:
+            - 0.75
+            - 0.581276
+            - 0.82788
+          - element: Cs
+            position:
+            - 0.25
+            - 0.418724
+            - 0.17212
+          - element: Pb
+            position:
+            - 0.25
+            - 0.161849
+            - 0.939217
+          - element: Pb
+            position:
+            - 0.75
+            - 0.838151
+            - 0.060783
+          - element: Pb
+            position:
+            - 0.25
+            - 0.661849
+            - 0.560783
+          - element: Pb
+            position:
+            - 0.75
+            - 0.338151
+            - 0.439217
+          - element: I
+            position:
+            - 0.75
+            - 0.337211
+            - 0.002045
+          - element: I
+            position:
+            - 0.25
+            - 0.662789
+            - 0.997955
+          - element: I
+            position:
+            - 0.75
+            - 0.837211
+            - 0.497955
+          - element: I
+            position:
+            - 0.25
+            - 0.162789
+            - 0.502045
+          - element: I
+            position:
+            - 0.25
+            - 0.029272
+            - 0.112308
+          - element: I
+            position:
+            - 0.75
+            - 0.970728
+            - 0.887692
+          - element: I
+            position:
+            - 0.25
+            - 0.529272
+            - 0.387692
+          - element: I
+            position:
+            - 0.75
+            - 0.470728
+            - 0.612308
+          - element: I
+            position:
+            - 0.25
+            - 0.296317
+            - 0.787306
+          - element: I
+            position:
+            - 0.75
+            - 0.703683
+            - 0.212694
+          - element: I
+            position:
+            - 0.25
+            - 0.796317
+            - 0.712694
+          - element: I
+            position:
+            - 0.75
+            - 0.203683
+            - 0.287306
+        mp_metadata_symmetry:
+          symbol: Pnma
+          number: 62
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+        resolution_notes:
+        - '2 candidates; picked mp-540839 (E_hull=0.0), others: [(''mp-1120768'',
+          0.015823317000002002)]'
+      - id: M2_ZrO2_baddeleyite
+        formula: ZrO2
+        name: baddeleyite (monoclinic ZrO2)
+        structure_hint: monoclinic
+        space_group: P2_1/c
+        space_group_number: 14
+        atoms_per_primitive_cell: 12
+        mp_id: mp-2858
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 5.153988
+          lattice_b: 5.228109
+          lattice_c: 5.329696
+          alpha: 90.0
+          beta: 99.4369
+          gamma: 90.0
+          sites:
+          - element: Zr
+            position:
+            - 0.276309
+            - 0.042147
+            - 0.209598
+          - element: Zr
+            position:
+            - 0.276309
+            - 0.457853
+            - 0.709598
+          - element: Zr
+            position:
+            - 0.723691
+            - 0.542147
+            - 0.290402
+          - element: Zr
+            position:
+            - 0.723691
+            - 0.957853
+            - 0.790402
+          - element: O
+            position:
+            - 0.930791
+            - 0.833712
+            - 0.156172
+          - element: O
+            position:
+            - 0.930791
+            - 0.666288
+            - 0.656172
+          - element: O
+            position:
+            - 0.449303
+            - 0.74258
+            - 0.978604
+          - element: O
+            position:
+            - 0.550697
+            - 0.24258
+            - 0.521396
+          - element: O
+            position:
+            - 0.449303
+            - 0.75742
+            - 0.478604
+          - element: O
+            position:
+            - 0.550697
+            - 0.25742
+            - 0.021396
+          - element: O
+            position:
+            - 0.069209
+            - 0.333712
+            - 0.343828
+          - element: O
+            position:
+            - 0.069209
+            - 0.166288
+            - 0.843828
+        mp_metadata_symmetry:
+          symbol: P2_1/c
+          number: 14
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M2_HfO2_monoclinic
+        formula: HfO2
+        name: monoclinic HfO2
+        structure_hint: monoclinic
+        space_group: P2_1/c
+        space_group_number: 14
+        atoms_per_primitive_cell: 12
+        mp_id: mp-352
+        notes: Hf has two GBRV variants (Hf.upf standard, Hf_plus4.upf for +4 oxidation);
+          this uses Hf_plus4.upf
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 5.094175
+          lattice_b: 5.150645
+          lattice_c: 5.27621
+          alpha: 90.0
+          beta: 99.5588
+          gamma: 90.0
+          sites:
+          - element: Hf
+            position:
+            - 0.723864
+            - 0.541935
+            - 0.292093
+          - element: Hf
+            position:
+            - 0.276136
+            - 0.041935
+            - 0.207907
+          - element: Hf
+            position:
+            - 0.276136
+            - 0.458065
+            - 0.707907
+          - element: Hf
+            position:
+            - 0.723864
+            - 0.958065
+            - 0.792093
+          - element: O
+            position:
+            - 0.552002
+            - 0.257474
+            - 0.021422
+          - element: O
+            position:
+            - 0.447998
+            - 0.757474
+            - 0.478578
+          - element: O
+            position:
+            - 0.447998
+            - 0.742526
+            - 0.978578
+          - element: O
+            position:
+            - 0.552002
+            - 0.242526
+            - 0.521422
+          - element: O
+            position:
+            - 0.931639
+            - 0.669241
+            - 0.653747
+          - element: O
+            position:
+            - 0.068361
+            - 0.169241
+            - 0.846253
+          - element: O
+            position:
+            - 0.068361
+            - 0.330759
+            - 0.346253
+          - element: O
+            position:
+            - 0.931639
+            - 0.830759
+            - 0.153747
+        mp_metadata_symmetry:
+          symbol: P2_1/c
+          number: 14
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M2_MgSiO3_bridgmanite
+        formula: MgSiO3
+        name: bridgmanite MgSiO3 (Earth's lower mantle)
+        structure_hint: orthorhombic perovskite
+        space_group: Pnma
+        space_group_number: 62
+        atoms_per_primitive_cell: 20
+        mp_id: mp-3547
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 4.830907
+          lattice_b: 4.981026
+          lattice_c: 6.978868
+          alpha: 90.0
+          beta: 90.0
+          gamma: 90.0
+          sites:
+          - element: Mg
+            position:
+            - 0.514619
+            - 0.556068
+            - 0.25
+          - element: Mg
+            position:
+            - 0.014619
+            - 0.943932
+            - 0.75
+          - element: Mg
+            position:
+            - 0.985381
+            - 0.056068
+            - 0.25
+          - element: Mg
+            position:
+            - 0.485381
+            - 0.443932
+            - 0.75
+          - element: Si
+            position:
+            - 0.5
+            - 0.0
+            - 0.5
+          - element: Si
+            position:
+            - 0.0
+            - 0.5
+            - 0.5
+          - element: Si
+            position:
+            - 0.0
+            - 0.5
+            - 0.0
+          - element: Si
+            position:
+            - 0.5
+            - 0.0
+            - 0.0
+          - element: O
+            position:
+            - 0.196586
+            - 0.201751
+            - 0.946622
+          - element: O
+            position:
+            - 0.696586
+            - 0.298249
+            - 0.053378
+          - element: O
+            position:
+            - 0.303414
+            - 0.701751
+            - 0.553378
+          - element: O
+            position:
+            - 0.803414
+            - 0.798249
+            - 0.446622
+          - element: O
+            position:
+            - 0.803414
+            - 0.798249
+            - 0.053378
+          - element: O
+            position:
+            - 0.303414
+            - 0.701751
+            - 0.946622
+          - element: O
+            position:
+            - 0.696586
+            - 0.298249
+            - 0.446622
+          - element: O
+            position:
+            - 0.196586
+            - 0.201751
+            - 0.553378
+          - element: O
+            position:
+            - 0.103242
+            - 0.465406
+            - 0.25
+          - element: O
+            position:
+            - 0.603242
+            - 0.034594
+            - 0.75
+          - element: O
+            position:
+            - 0.396758
+            - 0.965406
+            - 0.25
+          - element: O
+            position:
+            - 0.896758
+            - 0.534594
+            - 0.75
+        mp_metadata_symmetry:
+          symbol: Pnma
+          number: 62
+        mp_energy_above_hull: 0.21704053316667002
+        mp_is_stable: false
+        resolution_notes:
+        - '2 candidates; picked mp-3547 (E_hull=0.21704053316667002), others: [(''mp-1256030'',
+          0.44185109816667)]'
+      - id: M2_YAlO3_YAP
+        formula: YAlO3
+        name: YAP / yttrium aluminum perovskite
+        structure_hint: orthorhombic perovskite
+        space_group: Pnma
+        space_group_number: 62
+        atoms_per_primitive_cell: 20
+        mp_id: mp-3792
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 5.176031
+          lattice_b: 5.317359
+          lattice_c: 7.372493
+          alpha: 90.0
+          beta: 90.0
+          gamma: 90.0
+          sites:
+          - element: Y
+            position:
+            - 0.011851
+            - 0.947654
+            - 0.75
+          - element: Y
+            position:
+            - 0.511851
+            - 0.552346
+            - 0.25
+          - element: Y
+            position:
+            - 0.488149
+            - 0.447654
+            - 0.75
+          - element: Y
+            position:
+            - 0.988149
+            - 0.052346
+            - 0.25
+          - element: Al
+            position:
+            - 0.0
+            - 0.5
+            - 0.0
+          - element: Al
+            position:
+            - 0.5
+            - 0.0
+            - 0.0
+          - element: Al
+            position:
+            - 0.5
+            - 0.0
+            - 0.5
+          - element: Al
+            position:
+            - 0.0
+            - 0.5
+            - 0.5
+          - element: O
+            position:
+            - 0.706329
+            - 0.293448
+            - 0.456084
+          - element: O
+            position:
+            - 0.206329
+            - 0.206552
+            - 0.543916
+          - element: O
+            position:
+            - 0.793671
+            - 0.793448
+            - 0.043916
+          - element: O
+            position:
+            - 0.293671
+            - 0.706552
+            - 0.956084
+          - element: O
+            position:
+            - 0.293671
+            - 0.706552
+            - 0.543916
+          - element: O
+            position:
+            - 0.793671
+            - 0.793448
+            - 0.456084
+          - element: O
+            position:
+            - 0.206329
+            - 0.206552
+            - 0.956084
+          - element: O
+            position:
+            - 0.706329
+            - 0.293448
+            - 0.043916
+          - element: O
+            position:
+            - 0.083189
+            - 0.478724
+            - 0.25
+          - element: O
+            position:
+            - 0.583189
+            - 0.021276
+            - 0.75
+          - element: O
+            position:
+            - 0.416811
+            - 0.978724
+            - 0.25
+          - element: O
+            position:
+            - 0.916811
+            - 0.521276
+            - 0.75
+        mp_metadata_symmetry:
+          symbol: Pnma
+          number: 62
+        mp_energy_above_hull: 0.018835838049996
+        mp_is_stable: false
+      - id: M2_WO3_roomT
+        formula: WO3
+        name: WO3 (room-T monoclinic)
+        structure_hint: highly distorted monoclinic perovskite-like
+        space_group: P2_1/c
+        space_group_number: 14
+        atoms_per_primitive_cell: 32
+        mp_id: mp-619461
+        notes: WO3 has many polymorphs; Yang said 'Room-T phase, highly distorted,
+          32 atoms/cell'. SG symbol updated from P2_1/n → P2_1/c (same SG 14, different
+          notation; MP's canonical form).
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 7.718894
+          lattice_b: 7.680222
+          lattice_c: 7.750959
+          alpha: 90.0
+          beta: 90.1831
+          gamma: 90.0
+          sites:
+          - element: W
+            position:
+            - 0.511433
+            - 0.753064
+            - 0.765305
+          - element: W
+            position:
+            - 0.488567
+            - 0.246936
+            - 0.234695
+          - element: W
+            position:
+            - 0.010949
+            - 0.755143
+            - 0.734777
+          - element: W
+            position:
+            - 0.989051
+            - 0.244857
+            - 0.265223
+          - element: W
+            position:
+            - 0.511433
+            - 0.746936
+            - 0.265305
+          - element: W
+            position:
+            - 0.488567
+            - 0.253064
+            - 0.734695
+          - element: W
+            position:
+            - 0.010949
+            - 0.744857
+            - 0.234777
+          - element: W
+            position:
+            - 0.989051
+            - 0.255143
+            - 0.765223
+          - element: O
+            position:
+            - 0.998854
+            - 0.767428
+            - 0.99685
+          - element: O
+            position:
+            - 0.001146
+            - 0.232572
+            - 0.00315
+          - element: O
+            position:
+            - 0.498934
+            - 0.766317
+            - 0.503436
+          - element: O
+            position:
+            - 0.501066
+            - 0.233683
+            - 0.496564
+          - element: O
+            position:
+            - 0.498934
+            - 0.733683
+            - 0.003436
+          - element: O
+            position:
+            - 0.501066
+            - 0.266317
+            - 0.996564
+          - element: O
+            position:
+            - 0.998854
+            - 0.732572
+            - 0.49685
+          - element: O
+            position:
+            - 0.001146
+            - 0.267428
+            - 0.50315
+          - element: O
+            position:
+            - 0.987357
+            - 0.001124
+            - 0.732435
+          - element: O
+            position:
+            - 0.012643
+            - 0.998876
+            - 0.267565
+          - element: O
+            position:
+            - 0.486941
+            - 0.500968
+            - 0.733713
+          - element: O
+            position:
+            - 0.513059
+            - 0.499032
+            - 0.266287
+          - element: O
+            position:
+            - 0.513059
+            - 0.000968
+            - 0.766287
+          - element: O
+            position:
+            - 0.486941
+            - 0.999032
+            - 0.233713
+          - element: O
+            position:
+            - 0.012643
+            - 0.501124
+            - 0.767565
+          - element: O
+            position:
+            - 0.987357
+            - 0.498876
+            - 0.232435
+          - element: O
+            position:
+            - 0.746493
+            - 0.262992
+            - 0.754635
+          - element: O
+            position:
+            - 0.253507
+            - 0.737008
+            - 0.245365
+          - element: O
+            position:
+            - 0.246441
+            - 0.237174
+            - 0.745598
+          - element: O
+            position:
+            - 0.753559
+            - 0.762826
+            - 0.254402
+          - element: O
+            position:
+            - 0.746493
+            - 0.237008
+            - 0.254635
+          - element: O
+            position:
+            - 0.253507
+            - 0.762992
+            - 0.745365
+          - element: O
+            position:
+            - 0.246441
+            - 0.262826
+            - 0.245598
+          - element: O
+            position:
+            - 0.753559
+            - 0.737174
+            - 0.754402
+        mp_metadata_symmetry:
+          symbol: P2_1/c
+          number: 14
+        mp_energy_above_hull: 0.0070996409375
+        mp_is_stable: false
+        resolution_notes:
+        - '4 candidates; picked mp-619461 (E_hull=0.0070996409375), others: [(''mp-19033'',
+          0.007246704062499), (''mp-825726'', 0.009396323437499), (''mp-636148'',
+          0.030668768437498002)]'
+    skutterudites:
+      label: Skutterudites
+      materials:
+      - id: M2_CoSb3
+        formula: CoSb3
+        name: cobalt triantimonide (skutterudite)
+        structure_hint: cubic skutterudite
+        space_group: Im-3
+        space_group_number: 204
+        atoms_per_primitive_cell: 16
+        mp_id: mp-1317
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 7.840293
+          lattice_b: 7.840293
+          lattice_c: 7.840293
+          alpha: 109.4712
+          beta: 109.4712
+          gamma: 109.4712
+          sites:
+          - element: Co
+            position:
+            - 1.0
+            - 1.0
+            - 0.5
+          - element: Co
+            position:
+            - 0.0
+            - 0.5
+            - 0.0
+          - element: Co
+            position:
+            - 0.5
+            - 0.5
+            - 0.5
+          - element: Co
+            position:
+            - 0.5
+            - 0.0
+            - 0.0
+          - element: Sb
+            position:
+            - 0.841261
+            - 0.175114
+            - 0.333852
+          - element: Sb
+            position:
+            - 0.666148
+            - 0.158739
+            - 0.824886
+          - element: Sb
+            position:
+            - 0.507409
+            - 0.666148
+            - 0.841261
+          - element: Sb
+            position:
+            - 0.666148
+            - 0.841261
+            - 0.507409
+          - element: Sb
+            position:
+            - 0.492591
+            - 0.333852
+            - 0.158739
+          - element: Sb
+            position:
+            - 0.333852
+            - 0.841261
+            - 0.175114
+          - element: Sb
+            position:
+            - 0.175114
+            - 0.333852
+            - 0.841261
+          - element: Sb
+            position:
+            - 0.824886
+            - 0.666148
+            - 0.158739
+          - element: Sb
+            position:
+            - 0.333852
+            - 0.158739
+            - 0.492591
+          - element: Sb
+            position:
+            - 0.841261
+            - 0.507409
+            - 0.666148
+          - element: Sb
+            position:
+            - 0.158739
+            - 0.492591
+            - 0.333852
+          - element: Sb
+            position:
+            - 0.158739
+            - 0.824886
+            - 0.666148
+        mp_metadata_symmetry:
+          symbol: Im-3
+          number: 204
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M2_IrSb3
+        formula: IrSb3
+        name: iridium triantimonide (skutterudite)
+        structure_hint: cubic skutterudite
+        space_group: Im-3
+        space_group_number: 204
+        atoms_per_primitive_cell: 16
+        mp_id: mp-1239
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 8.077344
+          lattice_b: 8.077344
+          lattice_c: 8.077344
+          alpha: 109.4712
+          beta: 109.4712
+          gamma: 109.4712
+          sites:
+          - element: Sb
+            position:
+            - 0.153653
+            - 0.813876
+            - 0.660223
+          - element: Sb
+            position:
+            - 0.153653
+            - 0.493429
+            - 0.339777
+          - element: Sb
+            position:
+            - 0.846347
+            - 0.506571
+            - 0.660223
+          - element: Sb
+            position:
+            - 0.339777
+            - 0.153653
+            - 0.493429
+          - element: Sb
+            position:
+            - 0.846347
+            - 0.186124
+            - 0.339777
+          - element: Sb
+            position:
+            - 0.660223
+            - 0.153653
+            - 0.813876
+          - element: Sb
+            position:
+            - 0.506571
+            - 0.660223
+            - 0.846347
+          - element: Sb
+            position:
+            - 0.660223
+            - 0.846347
+            - 0.506571
+          - element: Sb
+            position:
+            - 0.493429
+            - 0.339777
+            - 0.153653
+          - element: Sb
+            position:
+            - 0.339777
+            - 0.846347
+            - 0.186124
+          - element: Sb
+            position:
+            - 0.186124
+            - 0.339777
+            - 0.846347
+          - element: Sb
+            position:
+            - 0.813876
+            - 0.660223
+            - 0.153653
+          - element: Ir
+            position:
+            - 0.5
+            - 0.0
+            - 0.0
+          - element: Ir
+            position:
+            - 0.5
+            - 0.5
+            - 0.5
+          - element: Ir
+            position:
+            - 1.0
+            - 0.5
+            - 0.0
+          - element: Ir
+            position:
+            - 1.0
+            - 0.0
+            - 0.5
+        mp_metadata_symmetry:
+          symbol: Im-3
+          number: 204
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+    spinels_sillenites:
+      label: Spinels & Sillenites
+      materials:
+      - id: M2_MgAl2O4_spinel
+        formula: MgAl2O4
+        name: magnesium aluminate spinel (normal spinel)
+        structure_hint: normal spinel
+        space_group: Fd-3m
+        space_group_number: 227
+        atoms_per_primitive_cell: 14
+        mp_id: mp-3536
+        notes: 'Yang listed MgAl2O4 in both M1 (as ''Magnesium Aluminate Spinel''
+          under simple oxides) and M2 (14 atoms/primitive). Defaulting to M2 because
+          14 atoms/primitive exceeds M1 threshold; see known_issues.duplicate_MgAl2O4.
+
+          '
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 5.713699
+          lattice_b: 5.713699
+          lattice_c: 5.713699
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Mg
+            position:
+            - 0.25
+            - 0.25
+            - 0.25
+          - element: Mg
+            position:
+            - 1.0
+            - 1.0
+            - 0.0
+          - element: Al
+            position:
+            - 0.125
+            - 0.625
+            - 0.625
+          - element: Al
+            position:
+            - 0.625
+            - 0.625
+            - 0.625
+          - element: Al
+            position:
+            - 0.625
+            - 0.125
+            - 0.625
+          - element: Al
+            position:
+            - 0.625
+            - 0.625
+            - 0.125
+          - element: O
+            position:
+            - 0.861279
+            - 0.861279
+            - 0.861279
+          - element: O
+            position:
+            - 0.833838
+            - 0.388721
+            - 0.388721
+          - element: O
+            position:
+            - 0.388721
+            - 0.388721
+            - 0.833838
+          - element: O
+            position:
+            - 0.388721
+            - 0.833838
+            - 0.388721
+          - element: O
+            position:
+            - 0.861279
+            - 0.861279
+            - 0.416162
+          - element: O
+            position:
+            - 0.861279
+            - 0.416162
+            - 0.861279
+          - element: O
+            position:
+            - 0.388721
+            - 0.388721
+            - 0.388721
+          - element: O
+            position:
+            - 0.416162
+            - 0.861279
+            - 0.861279
+        mp_metadata_symmetry:
+          symbol: Fd-3m
+          number: 227
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M2_ZnAl2O4_gahnite
+        formula: ZnAl2O4
+        name: gahnite (zinc aluminate spinel)
+        structure_hint: normal spinel
+        space_group: Fd-3m
+        space_group_number: 227
+        atoms_per_primitive_cell: 14
+        mp_id: mp-2908
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 5.710079
+          lattice_b: 5.710079
+          lattice_c: 5.710079
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Al
+            position:
+            - 0.625
+            - 0.625
+            - 0.625
+          - element: Al
+            position:
+            - 0.125
+            - 0.625
+            - 0.625
+          - element: Al
+            position:
+            - 0.625
+            - 0.625
+            - 0.125
+          - element: Al
+            position:
+            - 0.625
+            - 0.125
+            - 0.625
+          - element: Zn
+            position:
+            - 0.25
+            - 0.25
+            - 0.25
+          - element: Zn
+            position:
+            - 0.0
+            - 0.0
+            - 1.0
+          - element: O
+            position:
+            - 0.389289
+            - 0.832132
+            - 0.389289
+          - element: O
+            position:
+            - 0.860711
+            - 0.860711
+            - 0.417868
+          - element: O
+            position:
+            - 0.860711
+            - 0.860711
+            - 0.860711
+          - element: O
+            position:
+            - 0.417868
+            - 0.860711
+            - 0.860711
+          - element: O
+            position:
+            - 0.389289
+            - 0.389289
+            - 0.389289
+          - element: O
+            position:
+            - 0.832132
+            - 0.389289
+            - 0.389289
+          - element: O
+            position:
+            - 0.860711
+            - 0.417868
+            - 0.860711
+          - element: O
+            position:
+            - 0.389289
+            - 0.389289
+            - 0.832132
+        mp_metadata_symmetry:
+          symbol: Fd-3m
+          number: 227
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M2_CdGa2O4_spinel
+        formula: CdGa2O4
+        name: cadmium gallate (spinel)
+        structure_hint: spinel
+        space_group: Fd-3m
+        space_group_number: 227
+        atoms_per_primitive_cell: 14
+        mp_id: mp-3443
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 6.106695
+          lattice_b: 6.106695
+          lattice_c: 6.106695
+          alpha: 60.0
+          beta: 60.0
+          gamma: 60.0
+          sites:
+          - element: Cd
+            position:
+            - 0.25
+            - 0.25
+            - 0.25
+          - element: Cd
+            position:
+            - 0.0
+            - 0.0
+            - 1.0
+          - element: Ga
+            position:
+            - 0.625
+            - 0.625
+            - 0.625
+          - element: Ga
+            position:
+            - 0.125
+            - 0.625
+            - 0.625
+          - element: Ga
+            position:
+            - 0.625
+            - 0.625
+            - 0.125
+          - element: Ga
+            position:
+            - 0.625
+            - 0.125
+            - 0.625
+          - element: O
+            position:
+            - 0.393211
+            - 0.820368
+            - 0.393211
+          - element: O
+            position:
+            - 0.856789
+            - 0.856789
+            - 0.429632
+          - element: O
+            position:
+            - 0.856789
+            - 0.856789
+            - 0.856789
+          - element: O
+            position:
+            - 0.429632
+            - 0.856789
+            - 0.856789
+          - element: O
+            position:
+            - 0.393211
+            - 0.393211
+            - 0.393211
+          - element: O
+            position:
+            - 0.820368
+            - 0.393211
+            - 0.393211
+          - element: O
+            position:
+            - 0.856789
+            - 0.429632
+            - 0.856789
+          - element: O
+            position:
+            - 0.393211
+            - 0.393211
+            - 0.820368
+        mp_metadata_symmetry:
+          symbol: Fd-3m
+          number: 227
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M2_Bi12TiO20_sillenite
+        formula: Bi12TiO20
+        name: bismuth titanium sillenite
+        structure_hint: cubic sillenite
+        space_group: I23
+        space_group_number: 197
+        atoms_per_primitive_cell: 33
+        mp_id: mp-23494
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 8.816013
+          lattice_b: 8.816013
+          lattice_c: 8.816013
+          alpha: 109.4712
+          beta: 109.4712
+          gamma: 109.4712
+          sites:
+          - element: Ti
+            position:
+            - 1.0
+            - 1.0
+            - 0.0
+          - element: Bi
+            position:
+            - 0.503945
+            - 0.695344
+            - 0.838203
+          - element: Bi
+            position:
+            - 0.496055
+            - 0.334258
+            - 0.191399
+          - element: Bi
+            position:
+            - 0.857141
+            - 0.665742
+            - 0.161797
+          - element: Bi
+            position:
+            - 0.695344
+            - 0.838203
+            - 0.503945
+          - element: Bi
+            position:
+            - 0.161797
+            - 0.857141
+            - 0.665742
+          - element: Bi
+            position:
+            - 0.191399
+            - 0.496055
+            - 0.334258
+          - element: Bi
+            position:
+            - 0.665742
+            - 0.161797
+            - 0.857141
+          - element: Bi
+            position:
+            - 0.808601
+            - 0.142859
+            - 0.304656
+          - element: Bi
+            position:
+            - 0.304656
+            - 0.808601
+            - 0.142859
+          - element: Bi
+            position:
+            - 0.838203
+            - 0.503945
+            - 0.695344
+          - element: Bi
+            position:
+            - 0.334258
+            - 0.191399
+            - 0.496055
+          - element: Bi
+            position:
+            - 0.142859
+            - 0.304656
+            - 0.808601
+          - element: O
+            position:
+            - 0.207859
+            - 1.0
+            - 1.0
+          - element: O
+            position:
+            - 1.0
+            - 0.207859
+            - 0.0
+          - element: O
+            position:
+            - 0.792141
+            - 0.792141
+            - 0.792141
+          - element: O
+            position:
+            - 1.0
+            - 1.0
+            - 0.207859
+          - element: O
+            position:
+            - 0.611737
+            - 1.0
+            - 1.0
+          - element: O
+            position:
+            - 1.0
+            - 0.611737
+            - 0.0
+          - element: O
+            position:
+            - 0.388263
+            - 0.388263
+            - 0.388263
+          - element: O
+            position:
+            - 1.0
+            - 1.0
+            - 0.611737
+          - element: O
+            position:
+            - 0.616489
+            - 0.237161
+            - 0.356564
+          - element: O
+            position:
+            - 0.383511
+            - 0.740075
+            - 0.620673
+          - element: O
+            position:
+            - 0.880598
+            - 0.259925
+            - 0.643436
+          - element: O
+            position:
+            - 0.237161
+            - 0.356564
+            - 0.616489
+          - element: O
+            position:
+            - 0.643436
+            - 0.880598
+            - 0.259925
+          - element: O
+            position:
+            - 0.119402
+            - 0.762839
+            - 0.379327
+          - element: O
+            position:
+            - 0.740075
+            - 0.620673
+            - 0.383511
+          - element: O
+            position:
+            - 0.356564
+            - 0.616489
+            - 0.237161
+          - element: O
+            position:
+            - 0.762839
+            - 0.379327
+            - 0.119402
+          - element: O
+            position:
+            - 0.379327
+            - 0.119402
+            - 0.762839
+          - element: O
+            position:
+            - 0.259925
+            - 0.643436
+            - 0.880598
+          - element: O
+            position:
+            - 0.620673
+            - 0.383511
+            - 0.740075
+        mp_metadata_symmetry:
+          symbol: I23
+          number: 197
+        mp_energy_above_hull: 0.007387453181822001
+        mp_is_stable: false
+      - id: M2_Ti3O5
+        formula: Ti3O5
+        name: Ti3O5 (α-phase, orthorhombic Cmcm)
+        structure_hint: orthorhombic Cmcm
+        space_group: Cmcm
+        space_group_number: 63
+        atoms_per_primitive_cell: 16
+        mp_id: mp-8057
+        notes: 'Yang 0425 review decision (Option 3-A): atoms_per_primitive_cell updated
+          from 32 (Yang''s conventional) → 16 (MP primitive). MP ground state is mp-8057,
+          orthorhombic Cmcm (α-Ti3O5). Yang''s ''Monoclinic'' label was approximate
+          — MP''s stable phase is orthorhombic; accepted per MP-authoritative rule
+          within Yang''s Option A.'
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 5.263463
+          lattice_b: 5.263463
+          lattice_c: 10.011514
+          alpha: 90.0
+          beta: 90.0
+          gamma: 138.0124
+          sites:
+          - element: Ti
+            position:
+            - 0.699412
+            - 0.300588
+            - 0.25
+          - element: Ti
+            position:
+            - 0.300588
+            - 0.699412
+            - 0.75
+          - element: Ti
+            position:
+            - 0.369847
+            - 0.630153
+            - 0.058092
+          - element: Ti
+            position:
+            - 0.630153
+            - 0.369847
+            - 0.941908
+          - element: Ti
+            position:
+            - 0.630153
+            - 0.369847
+            - 0.558092
+          - element: Ti
+            position:
+            - 0.369847
+            - 0.630153
+            - 0.441908
+          - element: O
+            position:
+            - 0.729128
+            - 0.270872
+            - 0.75
+          - element: O
+            position:
+            - 0.270872
+            - 0.729128
+            - 0.25
+          - element: O
+            position:
+            - 0.44794
+            - 0.55206
+            - 0.877412
+          - element: O
+            position:
+            - 0.55206
+            - 0.44794
+            - 0.122588
+          - element: O
+            position:
+            - 0.55206
+            - 0.44794
+            - 0.377412
+          - element: O
+            position:
+            - 0.44794
+            - 0.55206
+            - 0.622588
+          - element: O
+            position:
+            - 0.81729
+            - 0.18271
+            - 0.432238
+          - element: O
+            position:
+            - 0.18271
+            - 0.81729
+            - 0.567762
+          - element: O
+            position:
+            - 0.18271
+            - 0.81729
+            - 0.932238
+          - element: O
+            position:
+            - 0.81729
+            - 0.18271
+            - 0.067762
+        mp_metadata_symmetry:
+          symbol: Cmcm
+          number: 63
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+    silicates_minerals:
+      label: Silicates & Minerals
+      materials:
+      - id: M2_SiO2_coesite
+        formula: SiO2
+        name: coesite (high-pressure SiO2 polymorph)
+        structure_hint: monoclinic coesite
+        space_group: C2/c
+        space_group_number: 15
+        atoms_per_primitive_cell: 18
+        mp_id: mp-12787
+        notes: 'polymorph differentiator — see M1_SiO2_alpha_quartz. Yang 0425 review
+          decision (Option 3-A): atoms updated from 24 (Yang''s conventional) → 18
+          (MP primitive).'
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 7.305841
+          lattice_b: 7.305841
+          lattice_c: 8.743698
+          alpha: 53.5906
+          beta: 126.4094
+          gamma: 141.2919
+          sites:
+          - element: Si
+            position:
+            - 0.090865
+            - 0.424058
+            - 0.345717
+          - element: Si
+            position:
+            - 0.424058
+            - 0.090865
+            - 0.154283
+          - element: Si
+            position:
+            - 0.909135
+            - 0.575942
+            - 0.654283
+          - element: Si
+            position:
+            - 0.575942
+            - 0.909135
+            - 0.845717
+          - element: Si
+            position:
+            - 0.973879
+            - 0.973879
+            - 0.75
+          - element: Si
+            position:
+            - 0.026121
+            - 0.026121
+            - 0.25
+          - element: O
+            position:
+            - 0.845637
+            - 0.713778
+            - 0.689631
+          - element: O
+            position:
+            - 0.713778
+            - 0.845637
+            - 0.810369
+          - element: O
+            position:
+            - 0.154363
+            - 0.286222
+            - 0.310369
+          - element: O
+            position:
+            - 0.286222
+            - 0.154363
+            - 0.189631
+          - element: O
+            position:
+            - 0.062719
+            - 0.272123
+            - 0.567492
+          - element: O
+            position:
+            - 0.272123
+            - 0.062719
+            - 0.932508
+          - element: O
+            position:
+            - 0.632837
+            - 0.214314
+            - 0.687767
+          - element: O
+            position:
+            - 0.214314
+            - 0.632837
+            - 0.812233
+          - element: O
+            position:
+            - 0.367163
+            - 0.785686
+            - 0.312233
+          - element: O
+            position:
+            - 0.785686
+            - 0.367163
+            - 0.187767
+          - element: O
+            position:
+            - 0.727877
+            - 0.937281
+            - 0.067492
+          - element: O
+            position:
+            - 0.937281
+            - 0.727877
+            - 0.432508
+        mp_metadata_symmetry:
+          symbol: C2/c
+          number: 15
+        mp_energy_above_hull: 0.002772185555556
+        mp_is_stable: false
+      - id: M2_LiAlSi2O6_spodumene
+        formula: LiAlSi2O6
+        name: spodumene (pyroxene)
+        structure_hint: monoclinic pyroxene
+        space_group: C2/c
+        space_group_number: 15
+        atoms_per_primitive_cell: 20
+        mp_id: mp-6340
+        notes: 'Yang 0425 review decision (Option 3-A): atoms updated from 40 (Yang''s
+          conventional) → 20 (MP primitive). MP''s formula_pretty is ''LiAl(SiO3)2''
+          (same composition, nested notation).'
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 6.409977
+          lattice_b: 6.409977
+          lattice_c: 5.274985
+          alpha: 74.6761
+          beta: 105.3239
+          gamma: 97.2626
+          sites:
+          - element: Li
+            position:
+            - 0.7295
+            - 0.7295
+            - 0.25
+          - element: Li
+            position:
+            - 0.2705
+            - 0.2705
+            - 0.75
+          - element: Al
+            position:
+            - 0.09453
+            - 0.09453
+            - 0.25
+          - element: Al
+            position:
+            - 0.90547
+            - 0.90547
+            - 0.75
+          - element: Si
+            position:
+            - 0.613277
+            - 0.199956
+            - 0.242023
+          - element: Si
+            position:
+            - 0.199956
+            - 0.613277
+            - 0.257977
+          - element: Si
+            position:
+            - 0.386723
+            - 0.800044
+            - 0.757977
+          - element: Si
+            position:
+            - 0.800044
+            - 0.386723
+            - 0.742023
+          - element: O
+            position:
+            - 0.807927
+            - 0.026128
+            - 0.359041
+          - element: O
+            position:
+            - 0.026128
+            - 0.807927
+            - 0.140959
+          - element: O
+            position:
+            - 0.192073
+            - 0.973872
+            - 0.640959
+          - element: O
+            position:
+            - 0.973872
+            - 0.192073
+            - 0.859041
+          - element: O
+            position:
+            - 0.367901
+            - 0.099609
+            - 0.20015
+          - element: O
+            position:
+            - 0.099609
+            - 0.367901
+            - 0.29985
+          - element: O
+            position:
+            - 0.632099
+            - 0.900391
+            - 0.79985
+          - element: O
+            position:
+            - 0.900391
+            - 0.632099
+            - 0.70015
+          - element: O
+            position:
+            - 0.662574
+            - 0.372536
+            - 0.435169
+          - element: O
+            position:
+            - 0.372536
+            - 0.662574
+            - 0.064831
+          - element: O
+            position:
+            - 0.337426
+            - 0.627464
+            - 0.564831
+          - element: O
+            position:
+            - 0.627464
+            - 0.337426
+            - 0.935169
+        mp_metadata_symmetry:
+          symbol: C2/c
+          number: 15
+        mp_energy_above_hull: 0.034599064833336
+        mp_is_stable: false
+      - id: M2_ZrSiO4_zircon
+        formula: ZrSiO4
+        name: zircon
+        structure_hint: tetragonal zircon-type
+        space_group: I4_1/amd
+        space_group_number: 141
+        atoms_per_primitive_cell: 12
+        mp_id: mp-4820
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 5.558521
+          lattice_b: 5.558521
+          lattice_c: 5.558521
+          alpha: 106.908
+          beta: 106.908
+          gamma: 114.7291
+          sites:
+          - element: Zr
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+          - element: Zr
+            position:
+            - 0.25
+            - 0.75
+            - 0.5
+          - element: Si
+            position:
+            - 0.5
+            - 0.5
+            - 0.0
+          - element: Si
+            position:
+            - 0.75
+            - 0.25
+            - 0.5
+          - element: O
+            position:
+            - 0.3207
+            - 0.136677
+            - 0.815977
+          - element: O
+            position:
+            - 0.754723
+            - 0.0707
+            - 0.684023
+          - element: O
+            position:
+            - 0.386677
+            - 0.0707
+            - 0.315977
+          - element: O
+            position:
+            - 0.3207
+            - 0.504723
+            - 0.184023
+          - element: O
+            position:
+            - 0.495277
+            - 0.6793
+            - 0.815977
+          - element: O
+            position:
+            - 0.9293
+            - 0.613323
+            - 0.684023
+          - element: O
+            position:
+            - 0.9293
+            - 0.245277
+            - 0.315977
+          - element: O
+            position:
+            - 0.863323
+            - 0.6793
+            - 0.184023
+        mp_metadata_symmetry:
+          symbol: I4_1/amd
+          number: 141
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M2_Ag2Se_naumannite
+        formula: Ag2Se
+        name: naumannite (orthorhombic β-Ag2Se)
+        structure_hint: orthorhombic
+        space_group: P2_12_12_1
+        space_group_number: 19
+        atoms_per_primitive_cell: 12
+        mp_id: mp-2047939
+        notes: β-phase (low-T); α-Ag2Se is high-T bcc
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 5.265462
+          lattice_b: 6.798065
+          lattice_c: 6.883211
+          alpha: 90.0
+          beta: 90.0
+          gamma: 90.0
+          sites:
+          - element: Ag
+            position:
+            - 0.11784
+            - 0.287181
+            - 0.415834
+          - element: Ag
+            position:
+            - 0.397447
+            - 0.90719
+            - 0.303402
+          - element: Ag
+            position:
+            - 0.602553
+            - 0.40719
+            - 0.196598
+          - element: Ag
+            position:
+            - 0.88216
+            - 0.787181
+            - 0.084166
+          - element: Ag
+            position:
+            - 0.61784
+            - 0.212819
+            - 0.584166
+          - element: Ag
+            position:
+            - 0.897447
+            - 0.59281
+            - 0.696598
+          - element: Ag
+            position:
+            - 0.102553
+            - 0.09281
+            - 0.803402
+          - element: Ag
+            position:
+            - 0.38216
+            - 0.712819
+            - 0.915834
+          - element: Se
+            position:
+            - 0.570206
+            - 0.066773
+            - 0.964723
+          - element: Se
+            position:
+            - 0.429794
+            - 0.566773
+            - 0.535277
+          - element: Se
+            position:
+            - 0.070206
+            - 0.433227
+            - 0.035277
+          - element: Se
+            position:
+            - 0.929794
+            - 0.933227
+            - 0.464723
+        mp_metadata_symmetry:
+          symbol: P2_12_12_1
+          number: 19
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+        resolution_notes:
+        - '4 candidates; picked mp-2047939 (E_hull=0.0), others: [(''mp-568936'',
+          0.002313837500004), (''mp-754954'', 0.005026770000000001), (''mp-1183005'',
+          0.052263529166665004)]'
+    battery_electrolytes:
+      label: Solid-State Electrolytes & Battery Electrodes
+      materials:
+      - id: M2_Li3PO4_gamma
+        formula: Li3PO4
+        name: γ-Li3PO4 (orthorhombic)
+        structure_hint: orthorhombic
+        space_group: Pnma
+        space_group_number: 62
+        atoms_per_primitive_cell: 32
+        mp_id: mp-2878
+        notes: null
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 4.892645
+          lattice_b: 6.070796
+          lattice_c: 10.416297
+          alpha: 90.0
+          beta: 90.0
+          gamma: 90.0
+          sites:
+          - element: Li
+            position:
+            - 0.695345
+            - 0.498461
+            - 0.835689
+          - element: Li
+            position:
+            - 0.195345
+            - 0.501539
+            - 0.664311
+          - element: Li
+            position:
+            - 0.304655
+            - 0.998461
+            - 0.164311
+          - element: Li
+            position:
+            - 0.804655
+            - 0.001539
+            - 0.335689
+          - element: Li
+            position:
+            - 0.304655
+            - 0.501539
+            - 0.164311
+          - element: Li
+            position:
+            - 0.804655
+            - 0.498461
+            - 0.335689
+          - element: Li
+            position:
+            - 0.695345
+            - 0.001539
+            - 0.835689
+          - element: Li
+            position:
+            - 0.195345
+            - 0.998461
+            - 0.664311
+          - element: Li
+            position:
+            - 0.797217
+            - 0.25
+            - 0.576247
+          - element: Li
+            position:
+            - 0.297217
+            - 0.75
+            - 0.923753
+          - element: Li
+            position:
+            - 0.202783
+            - 0.75
+            - 0.423753
+          - element: Li
+            position:
+            - 0.702783
+            - 0.25
+            - 0.076247
+          - element: P
+            position:
+            - 0.690672
+            - 0.75
+            - 0.588146
+          - element: P
+            position:
+            - 0.809328
+            - 0.75
+            - 0.088146
+          - element: P
+            position:
+            - 0.309328
+            - 0.25
+            - 0.411854
+          - element: P
+            position:
+            - 0.190672
+            - 0.25
+            - 0.911854
+          - element: O
+            position:
+            - 0.624734
+            - 0.25
+            - 0.410818
+          - element: O
+            position:
+            - 0.794347
+            - 0.957312
+            - 0.65858
+          - element: O
+            position:
+            - 0.124734
+            - 0.75
+            - 0.089182
+          - element: O
+            position:
+            - 0.375266
+            - 0.75
+            - 0.589182
+          - element: O
+            position:
+            - 0.794347
+            - 0.542688
+            - 0.65858
+          - element: O
+            position:
+            - 0.294347
+            - 0.042688
+            - 0.84142
+          - element: O
+            position:
+            - 0.205653
+            - 0.457312
+            - 0.34142
+          - element: O
+            position:
+            - 0.705653
+            - 0.542688
+            - 0.15858
+          - element: O
+            position:
+            - 0.205653
+            - 0.042688
+            - 0.34142
+          - element: O
+            position:
+            - 0.705653
+            - 0.957312
+            - 0.15858
+          - element: O
+            position:
+            - 0.794841
+            - 0.75
+            - 0.448834
+          - element: O
+            position:
+            - 0.294347
+            - 0.457312
+            - 0.84142
+          - element: O
+            position:
+            - 0.705159
+            - 0.75
+            - 0.948834
+          - element: O
+            position:
+            - 0.205159
+            - 0.25
+            - 0.551166
+          - element: O
+            position:
+            - 0.294841
+            - 0.25
+            - 0.051166
+          - element: O
+            position:
+            - 0.875266
+            - 0.25
+            - 0.910818
+        mp_metadata_symmetry:
+          symbol: Pnma
+          number: 62
+        mp_energy_above_hull: 0.0024853862500000003
+        mp_is_stable: false
+      - id: M2_LiFePO4_olivine
+        formula: LiFePO4
+        name: LiFePO4 (olivine, battery cathode)
+        structure_hint: orthorhombic olivine
+        space_group: Pnma
+        space_group_number: 62
+        atoms_per_primitive_cell: 28
+        mp_id: mp-19017
+        notes: 'Fe is magnetic; ground state is AFM below T_N ~ 50 K. For first-batch
+          M2 classification (structural complexity, not magnetism), treating as paramagnetic
+          / nonmagnetic PBE is Yang''s default. Future M3 extension may redo these
+          with nspin=2.
+
+          '
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 4.654917
+          lattice_b: 5.970755
+          lattice_c: 10.236196
+          alpha: 90.0
+          beta: 90.0
+          gamma: 90.0
+          sites:
+          - element: Li
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+          - element: Li
+            position:
+            - 0.5
+            - 0.5
+            - 0.5
+          - element: Li
+            position:
+            - 0.5
+            - 0.0
+            - 0.5
+          - element: Li
+            position:
+            - 0.0
+            - 0.5
+            - 0.0
+          - element: Fe
+            position:
+            - 0.529866
+            - 0.25
+            - 0.781151
+          - element: Fe
+            position:
+            - 0.029866
+            - 0.75
+            - 0.718849
+          - element: Fe
+            position:
+            - 0.970134
+            - 0.25
+            - 0.281151
+          - element: Fe
+            position:
+            - 0.470134
+            - 0.75
+            - 0.218849
+          - element: P
+            position:
+            - 0.418623
+            - 0.25
+            - 0.093866
+          - element: P
+            position:
+            - 0.918623
+            - 0.75
+            - 0.406134
+          - element: P
+            position:
+            - 0.081377
+            - 0.25
+            - 0.593866
+          - element: P
+            position:
+            - 0.581377
+            - 0.75
+            - 0.906134
+          - element: O
+            position:
+            - 0.744787
+            - 0.25
+            - 0.094231
+          - element: O
+            position:
+            - 0.713735
+            - 0.545558
+            - 0.834155
+          - element: O
+            position:
+            - 0.713735
+            - 0.954442
+            - 0.834155
+          - element: O
+            position:
+            - 0.255213
+            - 0.75
+            - 0.905769
+          - element: O
+            position:
+            - 0.709864
+            - 0.75
+            - 0.044309
+          - element: O
+            position:
+            - 0.244787
+            - 0.75
+            - 0.405769
+          - element: O
+            position:
+            - 0.286265
+            - 0.045558
+            - 0.165845
+          - element: O
+            position:
+            - 0.213735
+            - 0.454442
+            - 0.665845
+          - element: O
+            position:
+            - 0.786265
+            - 0.545558
+            - 0.334155
+          - element: O
+            position:
+            - 0.786265
+            - 0.954442
+            - 0.334155
+          - element: O
+            position:
+            - 0.290136
+            - 0.25
+            - 0.955691
+          - element: O
+            position:
+            - 0.209864
+            - 0.25
+            - 0.455691
+          - element: O
+            position:
+            - 0.790136
+            - 0.75
+            - 0.544309
+          - element: O
+            position:
+            - 0.755213
+            - 0.25
+            - 0.594231
+          - element: O
+            position:
+            - 0.213735
+            - 0.045558
+            - 0.665845
+          - element: O
+            position:
+            - 0.286265
+            - 0.454442
+            - 0.165845
+        mp_metadata_symmetry:
+          symbol: Pnma
+          number: 62
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M2_LiCoPO4_olivine
+        formula: LiCoPO4
+        name: LiCoPO4 (olivine)
+        structure_hint: orthorhombic olivine
+        space_group: Pnma
+        space_group_number: 62
+        atoms_per_primitive_cell: 28
+        mp_id: mp-776295
+        notes: Co magnetic; T_N ~ 22 K. Same paramagnetic-default caveat as LiFePO4.
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 4.925207
+          lattice_b: 6.416428
+          lattice_c: 9.098859
+          alpha: 90.0
+          beta: 90.0
+          gamma: 90.0
+          sites:
+          - element: Li
+            position:
+            - 0.959896
+            - 0.75
+            - 0.162332
+          - element: Li
+            position:
+            - 0.459896
+            - 0.25
+            - 0.337668
+          - element: Li
+            position:
+            - 0.540104
+            - 0.75
+            - 0.662332
+          - element: Li
+            position:
+            - 0.040104
+            - 0.25
+            - 0.837668
+          - element: Co
+            position:
+            - 0.5
+            - 0.5
+            - 0.0
+          - element: Co
+            position:
+            - 0.0
+            - 0.5
+            - 0.5
+          - element: Co
+            position:
+            - 0.5
+            - 0.0
+            - 0.0
+          - element: Co
+            position:
+            - 0.0
+            - 0.0
+            - 0.5
+          - element: P
+            position:
+            - 0.970737
+            - 0.25
+            - 0.178948
+          - element: P
+            position:
+            - 0.470737
+            - 0.75
+            - 0.321052
+          - element: P
+            position:
+            - 0.529263
+            - 0.25
+            - 0.678948
+          - element: P
+            position:
+            - 0.029263
+            - 0.75
+            - 0.821052
+          - element: O
+            position:
+            - 0.277871
+            - 0.25
+            - 0.135051
+          - element: O
+            position:
+            - 0.777871
+            - 0.75
+            - 0.364949
+          - element: O
+            position:
+            - 0.222129
+            - 0.25
+            - 0.635051
+          - element: O
+            position:
+            - 0.722129
+            - 0.75
+            - 0.864949
+          - element: O
+            position:
+            - 0.424125
+            - 0.75
+            - 0.148937
+          - element: O
+            position:
+            - 0.924125
+            - 0.25
+            - 0.351063
+          - element: O
+            position:
+            - 0.075875
+            - 0.75
+            - 0.648937
+          - element: O
+            position:
+            - 0.575875
+            - 0.25
+            - 0.851063
+          - element: O
+            position:
+            - 0.835195
+            - 0.050142
+            - 0.119705
+          - element: O
+            position:
+            - 0.835195
+            - 0.449858
+            - 0.119705
+          - element: O
+            position:
+            - 0.335195
+            - 0.550142
+            - 0.380295
+          - element: O
+            position:
+            - 0.335195
+            - 0.949858
+            - 0.380295
+          - element: O
+            position:
+            - 0.664805
+            - 0.050142
+            - 0.619705
+          - element: O
+            position:
+            - 0.664805
+            - 0.449858
+            - 0.619705
+          - element: O
+            position:
+            - 0.164805
+            - 0.550142
+            - 0.880295
+          - element: O
+            position:
+            - 0.164805
+            - 0.949858
+            - 0.880295
+        mp_metadata_symmetry:
+          symbol: Pnma
+          number: 62
+        mp_energy_above_hull: 0.046479466785701
+        mp_is_stable: false
+        resolution_notes:
+        - '4 candidates; picked mp-776295 (E_hull=0.046479466785701), others: [(''mp-757650'',
+          0.052376355357129006), (''mp-18915'', 0.056138515714272), (''mp-758092'',
+          0.08989154749998701)]'
+      - id: M2_LiMnPO4_olivine
+        formula: LiMnPO4
+        name: LiMnPO4 (olivine)
+        structure_hint: orthorhombic olivine
+        space_group: Pnma
+        space_group_number: 62
+        atoms_per_primitive_cell: 28
+        mp_id: mp-18997
+        notes: Mn magnetic; T_N ~ 33 K. Same paramagnetic-default caveat as LiFePO4.
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 4.792029
+          lattice_b: 6.178591
+          lattice_c: 10.594184
+          alpha: 90.0
+          beta: 90.0
+          gamma: 90.0
+          sites:
+          - element: Li
+            position:
+            - 0.5
+            - 0.5
+            - 0.5
+          - element: Li
+            position:
+            - 0.0
+            - 0.0
+            - 0.0
+          - element: Li
+            position:
+            - 0.5
+            - 0.0
+            - 0.5
+          - element: Li
+            position:
+            - 0.0
+            - 0.5
+            - 0.0
+          - element: Mn
+            position:
+            - 0.47255
+            - 0.75
+            - 0.781161
+          - element: Mn
+            position:
+            - 0.02745
+            - 0.75
+            - 0.281161
+          - element: Mn
+            position:
+            - 0.52745
+            - 0.25
+            - 0.218839
+          - element: Mn
+            position:
+            - 0.97255
+            - 0.25
+            - 0.718839
+          - element: P
+            position:
+            - 0.08956
+            - 0.25
+            - 0.407899
+          - element: P
+            position:
+            - 0.41044
+            - 0.25
+            - 0.907899
+          - element: P
+            position:
+            - 0.91044
+            - 0.75
+            - 0.592101
+          - element: P
+            position:
+            - 0.58956
+            - 0.75
+            - 0.092101
+          - element: O
+            position:
+            - 0.768653
+            - 0.25
+            - 0.403413
+          - element: O
+            position:
+            - 0.731347
+            - 0.25
+            - 0.903413
+          - element: O
+            position:
+            - 0.231347
+            - 0.75
+            - 0.596587
+          - element: O
+            position:
+            - 0.268653
+            - 0.75
+            - 0.096587
+          - element: O
+            position:
+            - 0.289976
+            - 0.25
+            - 0.044348
+          - element: O
+            position:
+            - 0.210024
+            - 0.25
+            - 0.544348
+          - element: O
+            position:
+            - 0.710024
+            - 0.75
+            - 0.955652
+          - element: O
+            position:
+            - 0.789976
+            - 0.75
+            - 0.455652
+          - element: O
+            position:
+            - 0.222527
+            - 0.450543
+            - 0.338916
+          - element: O
+            position:
+            - 0.277473
+            - 0.049457
+            - 0.838916
+          - element: O
+            position:
+            - 0.777473
+            - 0.950543
+            - 0.661084
+          - element: O
+            position:
+            - 0.722527
+            - 0.549457
+            - 0.161084
+          - element: O
+            position:
+            - 0.777473
+            - 0.549457
+            - 0.661084
+          - element: O
+            position:
+            - 0.722527
+            - 0.950543
+            - 0.161084
+          - element: O
+            position:
+            - 0.222527
+            - 0.049457
+            - 0.338916
+          - element: O
+            position:
+            - 0.277473
+            - 0.450543
+            - 0.838916
+        mp_metadata_symmetry:
+          symbol: Pnma
+          number: 62
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+        resolution_notes:
+        - '7 candidates; picked mp-18997 (E_hull=0.0), others: [(''mp-1663944'', 0.023136596785708),
+          (''mp-776296'', 0.037746336071422006), (''mp-857360'', 0.053334796785708),
+          (''mp-859087'', 0.06474848071427801)]'
+    intermetallics_zintl:
+      label: Complex Intermetallics & Zintl Phases
+      materials:
+      - id: M2_Sr3AlSb3
+        formula: Sr3AlSb3
+        name: Sr3AlSb3 (Zintl phase)
+        structure_hint: orthorhombic Zintl (Cmce)
+        space_group: Cmce
+        space_group_number: 64
+        atoms_per_primitive_cell: 28
+        mp_id: mp-17667
+        notes: SG updated from Pnma (62) → Cmce (64) per MP authoritative value. Both
+          are orthorhombic; Yang only specified 'Orthorhombic'.
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 10.856328
+          lattice_b: 10.856328
+          lattice_c: 13.602847
+          alpha: 90.0
+          beta: 90.0
+          gamma: 142.6801
+          sites:
+          - element: Sr
+            position:
+            - 0.189256
+            - 0.189256
+            - 0.353803
+          - element: Sr
+            position:
+            - 0.689256
+            - 0.689256
+            - 0.146197
+          - element: Sr
+            position:
+            - 0.310744
+            - 0.310744
+            - 0.853803
+          - element: Sr
+            position:
+            - 0.810744
+            - 0.810744
+            - 0.646197
+          - element: Sr
+            position:
+            - 0.87311
+            - 0.52129
+            - 0.870634
+          - element: Sr
+            position:
+            - 0.02129
+            - 0.37311
+            - 0.629366
+          - element: Sr
+            position:
+            - 0.62689
+            - 0.97871
+            - 0.370634
+          - element: Sr
+            position:
+            - 0.47871
+            - 0.126891
+            - 0.129366
+          - element: Sr
+            position:
+            - 0.12689
+            - 0.47871
+            - 0.129366
+          - element: Sr
+            position:
+            - 0.97871
+            - 0.62689
+            - 0.370634
+          - element: Sr
+            position:
+            - 0.373109
+            - 0.02129
+            - 0.629366
+          - element: Sr
+            position:
+            - 0.52129
+            - 0.87311
+            - 0.870634
+          - element: Al
+            position:
+            - 0.08623
+            - 0.91377
+            - 1.0
+          - element: Al
+            position:
+            - 0.41377
+            - 0.58623
+            - 0.5
+          - element: Al
+            position:
+            - 0.91377
+            - 0.08623
+            - 0.0
+          - element: Al
+            position:
+            - 0.58623
+            - 0.41377
+            - 0.5
+          - element: Sb
+            position:
+            - 0.711033
+            - 0.711033
+            - 0.393041
+          - element: Sb
+            position:
+            - 0.211033
+            - 0.211033
+            - 0.106959
+          - element: Sb
+            position:
+            - 0.788967
+            - 0.788967
+            - 0.893041
+          - element: Sb
+            position:
+            - 0.288967
+            - 0.288967
+            - 0.606959
+          - element: Sb
+            position:
+            - 0.371582
+            - 0.051164
+            - 0.877705
+          - element: Sb
+            position:
+            - 0.551164
+            - 0.871582
+            - 0.622295
+          - element: Sb
+            position:
+            - 0.128418
+            - 0.448836
+            - 0.377705
+          - element: Sb
+            position:
+            - 0.948836
+            - 0.628418
+            - 0.122295
+          - element: Sb
+            position:
+            - 0.628418
+            - 0.948836
+            - 0.122295
+          - element: Sb
+            position:
+            - 0.448836
+            - 0.128418
+            - 0.377705
+          - element: Sb
+            position:
+            - 0.871582
+            - 0.551164
+            - 0.622295
+          - element: Sb
+            position:
+            - 0.051164
+            - 0.371582
+            - 0.877705
+        mp_metadata_symmetry:
+          symbol: Cmce
+          number: 64
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
+      - id: M2_BaZn2Sb2
+        formula: BaZn2Sb2
+        name: BaZn2Sb2 (Zintl phase)
+        structure_hint: orthorhombic Zintl (Pnma)
+        space_group: Pnma
+        space_group_number: 62
+        atoms_per_primitive_cell: 20
+        mp_id: mp-14207
+        notes: SG updated from Cmcm (63) → Pnma (62) per MP authoritative value. Both
+          are orthorhombic; Yang only specified 'Orthorhombic'. MP's formula_pretty
+          is 'Ba(ZnSb)2' (same composition, nested notation).
+        resolution_status: VERIFIED
+        initial_structure_from_mp:
+          lattice_a: 4.522534
+          lattice_b: 10.642425
+          lattice_c: 11.653481
+          alpha: 90.0
+          beta: 90.0
+          gamma: 90.0
+          sites:
+          - element: Ba
+            position:
+            - 0.25
+            - 0.245947
+            - 0.822622
+          - element: Ba
+            position:
+            - 0.75
+            - 0.754053
+            - 0.177378
+          - element: Ba
+            position:
+            - 0.25
+            - 0.745947
+            - 0.677378
+          - element: Ba
+            position:
+            - 0.75
+            - 0.254053
+            - 0.322622
+          - element: Zn
+            position:
+            - 0.75
+            - 0.901002
+            - 0.449825
+          - element: Zn
+            position:
+            - 0.25
+            - 0.098998
+            - 0.550175
+          - element: Zn
+            position:
+            - 0.25
+            - 0.598998
+            - 0.949825
+          - element: Zn
+            position:
+            - 0.75
+            - 0.401002
+            - 0.050175
+          - element: Zn
+            position:
+            - 0.75
+            - 0.449647
+            - 0.619523
+          - element: Zn
+            position:
+            - 0.25
+            - 0.550353
+            - 0.380477
+          - element: Zn
+            position:
+            - 0.75
+            - 0.949647
+            - 0.880477
+          - element: Zn
+            position:
+            - 0.25
+            - 0.050353
+            - 0.119523
+          - element: Sb
+            position:
+            - 0.75
+            - 0.149453
+            - 0.038008
+          - element: Sb
+            position:
+            - 0.25
+            - 0.850547
+            - 0.961992
+          - element: Sb
+            position:
+            - 0.25
+            - 0.350547
+            - 0.538008
+          - element: Sb
+            position:
+            - 0.75
+            - 0.649453
+            - 0.461992
+          - element: Sb
+            position:
+            - 0.75
+            - 0.022944
+            - 0.660485
+          - element: Sb
+            position:
+            - 0.25
+            - 0.977056
+            - 0.339515
+          - element: Sb
+            position:
+            - 0.75
+            - 0.522944
+            - 0.839515
+          - element: Sb
+            position:
+            - 0.25
+            - 0.477056
+            - 0.160485
+        mp_metadata_symmetry:
+          symbol: Pnma
+          number: 62
+        mp_energy_above_hull: 0.0
+        mp_is_stable: true
