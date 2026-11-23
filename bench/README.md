@@ -28,6 +28,14 @@ bench/
 
 M2 及更高材料层、T3/T4 任务和 web 平台不在本公开版中。
 
+以下命令均从本目录（`bench/`）执行。浏览题目只需 Python 3.10+：
+
+```bash
+python3 harness/run.py --list-tasks
+```
+
+[用已有 Si 输出试评分](harness/README.md#score-a-saved-output)只需安装 Python 依赖。
+
 ## 环境准备
 
 需要 Python 3.10+。实际运行题目还需要 Quantum ESPRESSO；可通过
@@ -53,16 +61,21 @@ jq . questions/M1_T2/M1_T2_Si_bands_dos.json
 每道题的 JSON 包含材料、任务、ground truth、评分规则和审计策略。T2 的
 DOS 曲线通过 `ground_truth.*.value.ref_file` 引用同目录下的参考数据。
 
-## 运行 Harness
+## 运行自己的 solver
+
+将路径换成你的 Python 入口，在同一 Python 环境中安装它需要的依赖。
 
 ```bash
 python harness/run.py \
   --task-id M1_T1_Si_vc_relax \
-  --solver ../agent/v1/solve.py \
+  --solver /path/to/your/solve.py \
   --runs-dir runs
 ```
 
-具体 solver CLI 契约、输出文件要求和审计规则见 `harness/README.md`。
+[Harness 文档](harness/README.md#solver-interface)列出了参数、QE 输出、日志和报告字段。
+也可以使用参考实现 `../agent/v1/agent/solve.py` 或 `../agent/v4.3/solve.py`；
+先按对应 README 配置模型，再通过 `--solver-args` 传入模型参数。
+公开版与论文评测范围的对应关系见[仓库首页](../README.md#public-edition-and-paper-scope)。
 
 ## 重新生成题目
 

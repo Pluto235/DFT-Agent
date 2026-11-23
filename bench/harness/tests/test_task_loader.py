@@ -1,4 +1,6 @@
 import json
+import subprocess
+import sys
 from pathlib import Path
 import pytest
 
@@ -127,3 +129,16 @@ def test_derive_initial_files_t2_multi_element():
         if f["name"].startswith("pseudos/"):
             assert f["size"] is None or f["size"] > 0
             assert "(GBRV_USPP_PBE_v1.5)" in f["description"]
+
+
+def test_cli_lists_only_loadable_tasks_without_setup(tmp_path):
+    output = subprocess.check_output(
+        [sys.executable, "-S", str(BENCH_ROOT / "harness/run.py"), "--list-tasks"],
+        cwd=tmp_path, text=True,
+    )
+    expected = sorted(
+        json.loads(path.read_text())["id"]
+        for path in (BENCH_ROOT / "questions").glob("*/*.json")
+    )
+    assert output.splitlines() == expected
+    assert not list(tmp_path.iterdir())

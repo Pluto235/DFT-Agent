@@ -1,63 +1,42 @@
-# DFT-Agent
+# DFT-Agent Bench
 
-A compact public practice edition of DFT-Agent: LLM agents that run Quantum
-ESPRESSO workflows, plus a structured benchmark and evaluation harness.
+Evaluate your own solver on Quantum ESPRESSO (QE) workflows. This public edition
+contains **116 tasks for 58 M1 materials**. The harness renders each prompt,
+scores properties extracted from the solver's QE outputs, and checks execution
+evidence before assigning the final score.
 
-## Included
+## Start with the benchmark
 
-- `agent/v1/`: baseline multi-provider solver
-- `agent/v4.3/`: planner-orchestrator solver with executor and verifier roles
-- `bench/questions/M1_T1/`: 58 variable-cell relaxation tasks
-- `bench/questions/M1_T2/`: 58 band-structure and DOS tasks
-- `bench/harness/`: prompt rendering, solver execution, auditing, and scoring
-- `bench/schema/`, `bench/materials/`, and `bench/pseudos/`: benchmark definitions
-  and reproducibility data
-
-The retained benchmark contains **58 M1 materials and 116 tasks**. M2 and
-later material tiers, T3/T4 tasks, agent v5.1, and the web platform are not
-part of this practice edition.
-
-## Quick Start
-
-Python 3.10 or newer is required. Running DFT tasks also requires a Quantum
-ESPRESSO installation.
-
-### Agents
+From the repository root, list the task IDs with Python 3.10+:
 
 ```bash
-cd agent/v1
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-pytest -q
+python3 bench/harness/run.py --list-tasks
 ```
 
-Use `agent/v4.3` instead to work with the planner-orchestrator version. See
-each version's README for its CLI and provider configuration.
+- **Explore a task.** Inspect the [silicon relaxation task](bench/questions/M1_T1/M1_T1_Si_vc_relax.json) for its input structure, reference values and scoring tolerances. During evaluation, pass only the rendered prompt and prepared working directory to the solver.
+- **Try scoring offline.** Use a [bundled silicon output fixture](bench/harness/README.md#score-a-saved-output) to inspect field scores without running QE or calling a model.
+- **Evaluate your solver.** Follow the [setup and single-task command](bench/README.md#运行自己的-solver). The [solver interface](bench/harness/README.md#solver-interface) specifies the arguments, output files and execution log. Any Python adapter implementing it can participate.
 
-### Benchmark
+## Public edition and paper scope
 
-```bash
-cd bench
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-bash setup.sh
-python harness/run.py --help
-```
+| Scope | Tasks and materials | Solver coverage |
+| --- | --- | --- |
+| This checkout | 58 M1 materials, each with one variable-cell relaxation (T1) and one bands + DOS workflow (T2). | Bring your own solver or use the included v1 or v4.3 reference implementation. |
+| Paper benchmark | 200+ tasks across multiple material tiers, also covering equations of state and elastic tensors. | The paper compares near-bare ReAct v1 with the bundled v5.1 scaffold on two models. |
+| Paper's frozen analysis | A fixed 100-task diagnostic slice. The paper links a review artifact containing the slice, prompts, scorer and solver revisions. | Use the linked artifact to identify the revisions for that analysis. |
 
-`bench/setup.sh` fetches and verifies the GBRV pseudopotentials. See
-`bench/README.md` and `bench/harness/README.md` for the task format and solver
-contract.
+Report results for this checkout as **public M1 T1/T2**, with the Git commit,
+evaluated task IDs, solver/model, budget and repeat count. The paper's aggregate
+scores use different evaluation scopes. Cite [DFT-Agent Bench: Scaffold Effects
+and Execution Provenance in Autonomous DFT](https://arxiv.org/abs/2611.10629).
 
-## Repository Scope
+## Reference agents
 
-Runtime outputs, credentials, local environment files, databases, raw
-pseudopotential files, and internal web deployment code are intentionally
-excluded.
+[v1](agent/v1/) is the baseline solver. [v4.3](agent/v4.3/) adds planner,
+executor and verifier roles. Their READMEs cover dependencies and provider
+configuration. The v5.1 scaffold used in the paper is outside this edition.
 
 ## License
 
-Project code is licensed under the [MIT License](LICENSE). Third-party
-datasets, pseudopotentials, and referenced materials remain subject to their
-respective licenses and terms of use.
+Project code is licensed under the [MIT License](LICENSE). Third-party datasets,
+pseudopotentials and referenced materials retain their respective terms.

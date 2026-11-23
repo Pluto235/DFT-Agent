@@ -23,20 +23,28 @@ from harness.lib.audit import audit_run, audit_passed, GATING_FLAGS
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="dft-agent-bench v1.2 harness")
-    parser.add_argument("--task-id", required=True)
-    parser.add_argument("--solver", required=True, help="Path to solver entry point (e.g. solve.py)")
+    parser = argparse.ArgumentParser(description="Evaluate a solver on a DFT-Agent Bench task.")
+    mode = parser.add_mutually_exclusive_group(required=True)
+    mode.add_argument("--list-tasks", action="store_true", help="List available task IDs and exit")
+    mode.add_argument("--task-id", help="Task ID to evaluate (see --list-tasks)")
+    parser.add_argument("--solver", help="Python solver entry point (required with --task-id)")
     parser.add_argument("--solver-args", default="", help="Extra args passed to solver (shell-quoted)")
     parser.add_argument("--runs-dir", default="runs/")
     parser.add_argument("--timeout", type=int, default=7200,
                         help="Total wall clock for solver (seconds; default 2h, "
                              "matches web-fresh backend Pydantic schemas/run.py 7200)")
     args = parser.parse_args()
+    if args.list_tasks:
+        for path in sorted((_BENCH_ROOT / "questions").glob("M*_T*/M*_T*_*.json")):
+            print(path.stem)
+        return 0
+    if not args.solver:
+        parser.error("--task-id requires --solver")
     # solver subprocess 的 cwd 是 workdir；--solver 若传相对路径会在那里解析失败。
     # 立即 resolve 为绝对路径，下游使用安全（e2e Run #1 pre-3 暴露的问题）。
     args.solver = str(Path(args.solver).resolve())
 
-    bench_root = Path(__file__).parent.parent.resolve()
+    bench_root = _BENCH_ROOT
     # 关键: runs_dir 立即 resolve 成 absolute
     # （solver subprocess 的 cwd 会是 workdir，若传 relative path 会解析错）
     runs_dir = Path(args.runs_dir).resolve()
