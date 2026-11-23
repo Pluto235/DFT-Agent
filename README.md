@@ -19,14 +19,14 @@ to M1/T2 keeps the material pool fixed and changes the target from a relaxed
 structure to electronic properties. The two labels do not imply a single
 numerical difficulty score.
 
-![Benchmark coverage across four material tiers and four workflows. M1 and M2 contain 245 stable tasks and 41 held-out tasks. M3 has 15 exploratory tasks each for relaxation and bands + DOS. M4 has no public tasks.](bench/figures/task_coverage.png)
+![Public task counts for T1–T4 by material tier. M1 has 58, 58, 52 and 52. M2 has 28, 28, 5 and 5. M3 has 15, 15, 0 and 0. M4 has no public tasks.](bench/figures/task_coverage.png)
 
 <details>
 <summary>Browse task files by matrix cell</summary>
 
-- **M1** · [T1 · 52 of 58 stable](bench/questions/M1_T1/) · [T2 · 43 of 58](bench/questions/M1_T2/) · [T3 · 52 of 52](bench/questions/M1_T3/) · [T4 · 45 of 52](bench/questions/M1_T4/)
-- **M2** · [T1 · 25 of 28 stable](bench/questions/M2_T1/) · [T2 · 22 of 28](bench/questions/M2_T2/) · [T3 · 4 of 5](bench/questions/M2_T3/) · [T4 · 2 of 5](bench/questions/M2_T4/)
-- **M3** · [T1 · 15 exploratory](bench/questions/M3_T1/) · [T2 · 15 exploratory](bench/questions/M3_T2/)
+- **M1** · [T1 · 58](bench/questions/M1_T1/) · [T2 · 58](bench/questions/M1_T2/) · [T3 · 52](bench/questions/M1_T3/) · [T4 · 52](bench/questions/M1_T4/)
+- **M2** · [T1 · 28](bench/questions/M2_T1/) · [T2 · 28](bench/questions/M2_T2/) · [T3 · 5](bench/questions/M2_T3/) · [T4 · 5](bench/questions/M2_T4/)
+- **M3** · [T1 · 15](bench/questions/M3_T1/) · [T2 · 15](bench/questions/M3_T2/)
 
 </details>
 
