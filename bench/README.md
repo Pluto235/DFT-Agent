@@ -1,49 +1,45 @@
-# DFT Agent Bench
+# DFT-Agent Bench
 
-单题文件在 `questions/M*_T*/`，对应目录内的 `gt_data/<task_id>/` 保存 DOS、EOS 或弹性参考数据。
-[逐题清单](task_manifest.tsv)给出全部 316 个 ID 的分组和 GT 质量。[4 × 4 覆盖图](../README.md#benchmark-design-four-material-tiers--four-workflows)列出了每格数量。
+Each file in `questions/M*_T*/` defines one task. Where a task uses a DOS, equation-of-state or elastic reference curve, its data lives under `gt_data/<task_id>/` in the same task group. The [task manifest](task_manifest.tsv) lists all 316 IDs, their release sets and reference quality. The [coverage figure](../README.md#benchmark-design-four-material-tiers--four-workflows) shows the counts by material tier and workflow.
 
-- `stable`：245 道 M1/M2 正式评测题。按上游 schema，`metadata.is_stable` 缺省取 true。
-- `exploratory`：30 道 M3 磁性体系题，单列报告。论文讨论了 CoO 与 Cr₂O₃ 的 DFT+U 诊断。
-- `held_out`：41 道显式标为 `is_stable=false` 的题，部分参考值为空。仅作诊断。
-- `frozen`：论文 100 题固定切片，跨越以上三组，可凭 ID 与结果 CSV 对接。
+| Selection | Tasks | Use |
+| --- | ---: | --- |
+| `stable` | 245 | Standard M1/M2 comparisons. The upstream schema treats a missing `metadata.is_stable` flag as true. |
+| `exploratory` | 30 | M3 magnetic systems. Report these separately. The paper discusses DFT+U diagnostics for CoO and Cr₂O₃. |
+| `held_out` | 41 | Diagnostics. These tasks have `metadata.is_stable=false`, and some reference values are missing. |
+| `frozen` | 100 | The paper's fixed diagnostic slice. Its IDs span the three sets above. |
 
-以下命令均从本目录（`bench/`）执行。浏览题目只需 Python 3.10+：
+Run the commands below from `bench/`. Listing tasks requires only Python 3.10 or later.
 
 ```bash
 python3 harness/run.py --list-tasks stable
 ```
 
-[用已有 Si 输出试评分](harness/README.md#score-a-saved-output)只需安装 Python 依赖。
+To try scoring before installing Quantum ESPRESSO (QE), use the [saved silicon output](harness/README.md#score-a-saved-output).
 
-## 环境准备
-
-需要 Python 3.10+。实际运行题目还需要 Quantum ESPRESSO；可通过
-`QE_GPU_WRAPPER_DIR` 指向包含 `pw.x`、`bands.x` 和 `dos.x` 的目录。
+## Setup
 
 ```bash
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 bash setup.sh
 ```
 
-`setup.sh` 会下载 GBRV USPP PBE v1.5 赝势并校验 SHA256。原始 UPF 文件
-不提交到仓库。
+The setup script downloads the GBRV USPP PBE v1.5 pseudopotentials and verifies their SHA256 checksum. For live calculations, install QE and put its executables on `PATH`, or set `QE_GPU_WRAPPER_DIR` to the directory containing binaries such as `pw.x`, `bands.x` and `dos.x`.
 
-## 查看题目
+## Inspect a task
 
 ```bash
 jq . questions/M1_T1/M1_T1_Si_vc_relax.json
 jq . questions/M1_T2/M1_T2_Si_bands_dos.json
 ```
 
-每道题的 JSON 包含材料、任务、ground truth、评分规则和审计策略。T2 的
-DOS 曲线通过 `ground_truth.*.value.ref_file` 引用同目录下的参考数据。
+The task JSON describes the material, workflow, ground truth, scoring rules and execution policy. A T2 DOS reference uses `ground_truth.*.value.ref_file` to identify its data file.
 
-## 运行自己的 solver
+## Run your own solver
 
-将路径换成你的 Python 入口，在同一 Python 环境中安装它需要的依赖。
+Install your solver's dependencies in the same Python environment and replace the example path with your adapter.
 
 ```bash
 python harness/run.py \
@@ -52,21 +48,16 @@ python harness/run.py \
   --runs-dir runs
 ```
 
-[Harness 文档](harness/README.md#solver-interface)列出了参数、QE 输出、日志和报告字段。
-也可以使用参考实现 `../agent/v1/agent/solve.py` 或 `../agent/v5.1/solve.py`；
-先按[参考实现指南](../agent/README.md)配置模型，再通过 `--solver-args` 传入模型参数。
-公开版与论文评测范围的对应关系见[仓库首页](../README.md#public-edition-and-paper-scope)。
+The [solver interface](harness/README.md#solver-interface) covers arguments, required QE outputs, logs and report fields. To run either reference implementation, configure its provider and pass model options through `--solver-args`. See the [reference agent commands](../agent/README.md) and the [scope of the paper comparison](../README.md#public-edition-and-paper-scope).
 
-## 题目来源
+## Task provenance
 
-任务 JSON、评分用参考曲线和四类工作流模板来自合作组源码提交 `8214293`。
-`materials/` 包含 M1/M2 和 M3 材料记录，M4 候选清单不计入题目数。
-`questions/generate.py` 是早期 M1/M2 T1/T2 种子生成器；复用已发布 benchmark 请直接使用冻结的题目文件。
-生成种子不能复原审阅后的参考值。运行时无需 Materials Project API key。
+The task JSONs, scoring curves and four workflow templates come from the collaborators' snapshot `8214293`. The `materials/` directory contains the M1/M2 and M3 material records. M4 candidates do not contribute to the release counts.
 
-## 数据来源
+Use the frozen files in `questions/` to reproduce the benchmark. The earlier seed generator, `questions/generate.py`, covers M1/M2 T1/T2 and predates the reviewed reference values. Running the benchmark requires no Materials Project API key.
 
-- 赝势：K. F. Garrity et al., *Comput. Mater. Sci.* **81**, 446 (2014),
-  [DOI:10.1016/j.commatsci.2013.08.053](https://doi.org/10.1016/j.commatsci.2013.08.053)
-- 材料结构与电子结构：[Materials Project](https://next-gen.materialsproject.org/)
-- 高对称 k-path：Hinuma et al., *Comput. Mater. Sci.* **128**, 140 (2017)
+## Data sources
+
+- Pseudopotentials: K. F. Garrity et al., *Computational Materials Science* **81**, 446 (2014). [DOI](https://doi.org/10.1016/j.commatsci.2013.08.053)
+- Materials and electronic structure: [Materials Project](https://next-gen.materialsproject.org/)
+- High-symmetry k-point paths: Hinuma et al., *Computational Materials Science* **128**, 140 (2017).

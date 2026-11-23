@@ -2,7 +2,7 @@
 
 Run the commands below from `bench/`. List tasks with
 `python3 harness/run.py --list-tasks`. For a live run, follow the
-[benchmark setup and solver command](../README.md#运行自己的-solver).
+[benchmark setup and solver command](../README.md#run-your-own-solver).
 
 ## Score a saved output
 
