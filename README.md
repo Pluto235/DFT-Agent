@@ -6,6 +6,8 @@ includes **245 stable M1/M2 tasks** and **30 exploratory M3 tasks**. Another
 scores properties extracted from the solver's QE outputs, and checks execution
 evidence before assigning the final score.
 
+Use the [benchmark](bench/) to evaluate a solver, inspect the [reference agents](agent/), or [browse tasks and reports in the local web interface](web/).
+
 ## Benchmark design: four material tiers × four workflows
 
 Each task pairs a material with a QE workflow. The **M axis** groups materials by
