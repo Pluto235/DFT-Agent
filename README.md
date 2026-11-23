@@ -100,11 +100,11 @@ Scores are provenance-gated, and failed runs count as zero. The 100-task slice c
 
 The figures show the paper's broader evaluation. Each panel compares v1 and v5.1 on tasks evaluated with the same model. [Read the paper on arXiv](https://arxiv.org/abs/2611.10629).
 
-![Mean execution-gated scores for v1 and v5.1 across four workflows, with separate panels for DeepSeek and Opus](figures/fig_compare.png)
+![Mean execution-gated scores for v1 and v5.1 across four workflows, with separate panels for DeepSeek and Opus](agent/figures/fig_compare.png)
 
 **Figure 1.** On common M1/M2 tasks, both models gain on bands + DOS. Elastic-tensor scores rise for DeepSeek and change little for Opus. Error bars show 95% task-clustered bootstrap intervals.
 
-![Heatmaps of the change in execution-gated score from v1 to v5.1 by material tier and workflow for each model](figures/fig_tierheat.png)
+![Heatmaps of the change in execution-gated score from v1 to v5.1 by material tier and workflow for each model](agent/figures/fig_tierheat.png)
 
 **Figure 2.** Each cell shows the mean paired score difference (v5.1 minus v1). On M3 variable-cell relaxation, both models gain 0.17. Hatched cells contain fewer than ten paired tasks.
 
