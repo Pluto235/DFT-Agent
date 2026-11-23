@@ -3,6 +3,7 @@
 历史 curve_l2 测试在 S5 全量迁移到 curve_f1 后已删除（见
 todo/bench/t2-dos-scoring-f1-overhaul.md S5）。
 """
+import os
 import pytest
 from pathlib import Path
 
@@ -115,14 +116,8 @@ def test_curve_f1_all_zero_pred(tmp_path):
 def test_curve_f1_sn_real_data():
     """真实 Sn α Run 1 dos.dat（已减 EF）vs GT dos_reference.dat
     → F1 ≈ 0.949 ± 0.005。"""
-    pred_path = Path(
-        "./web/runs_local/"
-        "2026-05-10T18-44-28Z_M1_T2_Sn_alpha_bands_dos/workdir/runs/sn_bands_dos/dos.dat"
-    )
-    gt_path = Path(
-        "./bench/questions/M1_T2/"
-        "gt_data/M1_T2_Sn_alpha_bands_dos/dos_reference.dat"
-    )
+    pred_path = Path(os.getenv("BENCH_WEB_RUNS_DIR", "runs_local")) / "2026-05-10T18-44-28Z_M1_T2_Sn_alpha_bands_dos/workdir/runs/sn_bands_dos/dos.dat"
+    gt_path = Path(__file__).resolve().parents[2] / "questions/M1_T2" / "gt_data/M1_T2_Sn_alpha_bands_dos/dos_reference.dat"
     if not pred_path.exists() or not gt_path.exists():
         pytest.skip(f"real data missing: pred={pred_path.exists()} gt={gt_path.exists()}")
 

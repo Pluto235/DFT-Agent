@@ -1,0 +1,16 @@
+.env
+.env.*
+!.env.example
+tokens.yaml
+tokens.yml
+*.sqlite
+*.sqlite3
+*.sqlite-*
+*.db
+*.db-*
+*.pem
+*.key
+runs_local/
+__pycache__/
+.pytest_cache/
+node_modules/

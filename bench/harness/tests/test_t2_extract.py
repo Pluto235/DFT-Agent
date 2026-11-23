@@ -18,6 +18,7 @@ No QE binary required. Uses small synthetic fixtures.
 """
 from __future__ import annotations
 
+import os
 from pathlib import Path
 
 import pytest
@@ -716,8 +717,7 @@ def _safe_exists(p: Path) -> bool:
         return False
 
 
-_REAL_SN_DOS_NSCF = Path(
-    "./web/runs_local/"
+_REAL_SN_DOS_NSCF = Path(os.getenv("BENCH_WEB_RUNS_DIR", "runs_local")) / (
     "2026-05-10T18-44-28Z_M1_T2_Sn_alpha_bands_dos/workdir/runs/sn_bands_dos/"
     "dos_nscf.out"
 )

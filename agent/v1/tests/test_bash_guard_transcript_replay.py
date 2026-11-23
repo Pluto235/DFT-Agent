@@ -20,7 +20,7 @@ from agent.tools.bash_guard import check_command
 
 _TRANSCRIPT_ROOT_STR = os.environ.get(
     "BENCH_WEB_RUNS_DIR",
-    "./web/runs_local",
+    "runs_local",
 )
 _TRANSCRIPT_ROOT = Path(_TRANSCRIPT_ROOT_STR)
 
