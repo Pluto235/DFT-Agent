@@ -19,16 +19,18 @@ to M1/T2 keeps the material pool fixed and changes the target from a relaxed
 structure to electronic properties. The two labels do not imply a single
 numerical difficulty score.
 
-| Material tier | T1 · Variable-cell relaxation | T2 · Bands + DOS | T3 · Equation of state | T4 · Elastic tensor |
-| --- | ---: | ---: | ---: | ---: |
-| **M1** · Simple elemental and binary crystals | [52 / 58](bench/questions/M1_T1/) | [43 / 58](bench/questions/M1_T2/) | [52 / 52](bench/questions/M1_T3/) | [45 / 52](bench/questions/M1_T4/) |
-| **M2** · Larger or lower-symmetry cells | [25 / 28](bench/questions/M2_T1/) | [22 / 28](bench/questions/M2_T2/) | [4 / 5](bench/questions/M2_T3/) | [2 / 5](bench/questions/M2_T4/) |
-| **M3** · Magnetic transition-metal systems | [15 exploratory](bench/questions/M3_T1/) | [15 exploratory](bench/questions/M3_T2/) | — | — |
-| **M4** · Strongly correlated systems | — | — | — | — |
+![Benchmark coverage across four material tiers and four workflows. M1 and M2 contain 245 stable tasks and 41 held-out tasks. M3 has 15 exploratory tasks each for relaxation and bands + DOS. M4 has no public tasks.](bench/figures/task_coverage.png)
 
-M1/M2 entries show **stable tasks / task files**. A dash means no task files
-in this release. The [task manifest](bench/task_manifest.tsv) marks every ID
-as stable, exploratory or held out and records its frozen-slice membership.
+<details>
+<summary>Browse task files by matrix cell</summary>
+
+- **M1** · [T1 · 52 of 58 stable](bench/questions/M1_T1/) · [T2 · 43 of 58](bench/questions/M1_T2/) · [T3 · 52 of 52](bench/questions/M1_T3/) · [T4 · 45 of 52](bench/questions/M1_T4/)
+- **M2** · [T1 · 25 of 28 stable](bench/questions/M2_T1/) · [T2 · 22 of 28](bench/questions/M2_T2/) · [T3 · 4 of 5](bench/questions/M2_T3/) · [T4 · 2 of 5](bench/questions/M2_T4/)
+- **M3** · [T1 · 15 exploratory](bench/questions/M3_T1/) · [T2 · 15 exploratory](bench/questions/M3_T2/)
+
+</details>
+
+The [task manifest](bench/task_manifest.tsv) lists every task ID, its release set and its membership in the frozen 100-task slice.
 
 T1 relaxes the cell and atomic positions. T2
 computes the band structure and density of states. T3 fits an energy–volume

@@ -1,7 +1,7 @@
 # DFT Agent Bench
 
 单题文件在 `questions/M*_T*/`，对应目录内的 `gt_data/<task_id>/` 保存 DOS、EOS 或弹性参考数据。
-[逐题清单](task_manifest.tsv)给出全部 316 个 ID 的分组和 GT 质量。[4 × 4 覆盖表](../README.md#benchmark-design-four-material-tiers--four-workflows)列出了每格数量。
+[逐题清单](task_manifest.tsv)给出全部 316 个 ID 的分组和 GT 质量。[4 × 4 覆盖图](../README.md#benchmark-design-four-material-tiers--four-workflows)列出了每格数量。
 
 - `stable`：245 道 M1/M2 正式评测题。按上游 schema，`metadata.is_stable` 缺省取 true。
 - `exploratory`：30 道 M3 磁性体系题，单列报告。论文讨论了 CoO 与 Cr₂O₃ 的 DFT+U 诊断。
