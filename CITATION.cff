@@ -1,0 +1,42 @@
+cff-version: 1.2.0
+message: "If you use DFT-Agent Bench in your research, please cite the paper below."
+title: "DFT-Agent Bench"
+type: software
+authors:
+  - family-names: Liu
+    given-names: Shijie
+  - family-names: Yang
+    given-names: Jin
+  - family-names: Wan
+    given-names: Weilin
+  - family-names: Han
+    given-names: Jingtao
+  - family-names: LI
+    given-names: Jia
+  - family-names: Deng
+    given-names: Tianqi
+repository-code: "https://github.com/Pluto235/DFT-Agent"
+license: MIT
+preferred-citation:
+  type: article
+  title: "DFT-Agent Bench: Scaffold Effects and Execution Provenance in Autonomous DFT"
+  authors:
+    - family-names: Liu
+      given-names: Shijie
+    - family-names: Yang
+      given-names: Jin
+    - family-names: Wan
+      given-names: Weilin
+    - family-names: Han
+      given-names: Jingtao
+    - family-names: LI
+      given-names: Jia
+    - family-names: Deng
+      given-names: Tianqi
+  journal: arXiv
+  year: 2026
+  date-published: 2026-11-07
+  identifiers:
+    - type: other
+      value: "arXiv:2611.10629"
+  url: "https://arxiv.org/abs/2611.10629"
