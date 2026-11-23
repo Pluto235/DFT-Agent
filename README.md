@@ -1,12 +1,14 @@
 # DFT-Agent Bench
 
-Evaluate your own solver on Quantum ESPRESSO (QE) workflows. This public edition
-includes **245 stable M1/M2 tasks** and **30 exploratory M3 tasks**. Another
-41 task definitions are retained for diagnostics. The harness renders each prompt,
-scores properties extracted from the solver's QE outputs, and checks execution
-evidence before assigning the final score.
+DFT-Agent Bench evaluates how well an agent can carry out Quantum ESPRESSO workflows. You can bring your own solver and use the same tasks, scoring rules and execution checks as the reference agents. [Read the paper on arXiv](https://arxiv.org/abs/2611.10629).
 
-Use the [benchmark](bench/) to evaluate a solver, inspect the [reference agents](agent/), or [browse tasks and reports in the local web interface](web/).
+| Module | Role |
+| --- | --- |
+| [`bench/`](bench/) | **The benchmark.** Supplies task prompts and reference data, runs your solver, scores the properties extracted from its QE outputs, and audits the execution logs. |
+| [`agent/`](agent/) | Two optional reference solvers from the paper: near-bare ReAct v1 and the engineered v5.1 scaffold. They use the same solver interface as an external agent. |
+| [`web/`](web/) | A local interface for browsing tasks, previewing prompts and inspecting run reports. [Preview the design](#local-web-preview). |
+
+**Start with the 245 stable tasks** for a benchmark comparison. The release also includes 30 exploratory magnetic-material tasks and 41 held-out task definitions for diagnostics. [Choose a task and connect your solver](#start-with-the-benchmark).
 
 ## Benchmark design: four material tiers × four workflows
 
@@ -103,6 +105,12 @@ The following figures reproduce the broader model-matched evaluation in the [pap
 ![Heatmaps of the change in gated score from v1 to v5.1 by material tier, workflow and model](results/figures/fig_tierheat.png)
 
 **Figure 2.** Each cell shows the change in execution-gated score from v1 to v5.1. On M3 relaxation, both models gain 0.17. Hatched cells contain fewer than ten paired tasks.
+
+## Local web preview
+
+![Local task catalogue with silicon relaxation selected, showing the agent prompt, crystal structure and input files](web/screenshots/catalogue.png)
+
+The local catalogue shows the 245 stable tasks and 30 exploratory tasks. Here, selecting `M1_T1_Si_vc_relax` reveals the prompt and input files supplied to the solver. [Run the interface locally](web/README.md).
 
 ## License
 

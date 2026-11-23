@@ -3,7 +3,7 @@
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "showTooltips": true,
   "playbackSpeed": 1,
-  "dataScale": 172,
+  "dataScale": "all",
   "forceRunState": "auto",
   "resultMode": "auto",
   "batchFailureRate": "random"
@@ -1046,7 +1046,6 @@ function MainApp({ user }) {
     }
   };
 
-  // Apply mock-data-scale tweak: slice the visible task list
   const visibleTasks = useMemo(() => {
     // Re-derive per-task aggregates from the live runs list so catalogue stays in
     // sync when the queue scheduler promotes runs (e.g. MoS2 shows its real score
@@ -1061,7 +1060,8 @@ function MainApp({ user }) {
         if (!slot.lastDone || (r.finished_at || r.created_at || '') > (slot.lastDone.finished_at || slot.lastDone.created_at || '')) slot.lastDone = r;
       }
     }
-    return state.tasks.slice(0, tweaks.dataScale).map(task => {
+    const tasks = tweaks.dataScale === 'all' ? state.tasks : state.tasks.slice(0, tweaks.dataScale);
+    return tasks.map(task => {
       const agg = byTask[task.task_id];
       if (!agg) return task;
       return {
@@ -1096,7 +1096,7 @@ function MainApp({ user }) {
       <TweakSection label="Mock data" />
       <TweakRadio label="Catalogue size"
         value={tweaks.dataScale}
-        options={[{ value: 8, label: '8' }, { value: 30, label: '30' }, { value: 172, label: '172' }]}
+        options={[{ value: 'all', label: 'All' }, { value: 8, label: '8' }, { value: 30, label: '30' }, { value: 172, label: '172' }]}
         onChange={(v) => setTweak('dataScale', v)} />
       <TweakSelect label="Batch failure rate"
         value={tweaks.batchFailureRate}
