@@ -116,6 +116,22 @@ The figures show the paper's broader evaluation. Each panel compares v1 and v5.1
 
 The local catalogue shows the 245 stable tasks and 30 exploratory tasks. Here, selecting `M1_T1_Si_vc_relax` reveals the prompt and input files supplied to the solver. [Run the interface locally](web/README.md).
 
+## Citation
+
+If you use DFT-Agent Bench in your research, please cite the paper:
+
+```bibtex
+@misc{liu2026dftagentbenchscaffoldeffects,
+  title={DFT-Agent Bench: Scaffold Effects and Execution Provenance in Autonomous DFT},
+  author={Shijie Liu and Jin Yang and Weilin Wan and Jingtao Han and Jia LI and Tianqi Deng},
+  year={2026},
+  eprint={2611.10629},
+  archivePrefix={arXiv},
+  primaryClass={cs.AI},
+  url={https://arxiv.org/abs/2611.10629}
+}
+```
+
 ## License
 
 Project code is licensed under the [MIT License](LICENSE). Third-party datasets,
